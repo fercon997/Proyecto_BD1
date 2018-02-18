@@ -10,7 +10,7 @@ CREATE TABLE Lugar(
 );
 
 CREATE TABLE Guarderia(
-  RIF varchar(10),
+  RIF varchar(12),
   Costo_mensualidad numeric(15) NOT NULL,
   Costo_multa numeric(10) NOT NULL,
   Costo_transporte numeric(10) NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE Act_Guarderia(
 );
 
 CREATE TABLE Horario_Act_Guarderia(
-  RIF_guarderia varchar(10),
+  RIF_guarderia varchar(12),
   Cod_actividad numeric(10),
   Fecha Date,
   Hora_inicio char(5),
@@ -114,7 +114,7 @@ CREATE TABLE Horario_Act_Guarderia(
 );
 
 CREATE TABLE Nino(
-  CI_representante varchar(10),
+  CI_representante numeric(8),
   Letra char(1),
   Nombre varchar(15) NOT NULL,
   Apellido varchar (15) NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE Parentesco_nino(
 
 CREATE TABLE Asistencia(
   Fecha date,
-  Consecutivo_Ins varchar(6),
+  Consecutivo_Ins varchar(10),
   Ano_inscripcion char(4),
   CI_representante varchar(10),
   Letra_nino char(1),
@@ -264,7 +264,7 @@ CREATE TABLE Padecimiento_enfermedad(
   Constraint Letra_nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino) references Nino(Letra),
   Constraint CI_representante_padecimiento_enfermedad_pk Primary Key(CI_representante),
   Constraint CI_representante_padecimiento_enfermedad_fk Foreign Key(CI_representante) references Nino(CI_representante),
-  Constraint Fecha_padecimiento_enfermedad_pk Primary Key(Fecha),
+  Constraint Fecha_padecimiento_enfermedad_pk Primary Key(Fecha)
 );
 
 CREATE TABLE Padecimiento_alergia(
@@ -276,5 +276,70 @@ CREATE TABLE Padecimiento_alergia(
   Constraint Letra_nino_padecimiento_alergia_pk Primary Key(Letra_nino),
   Constraint Letra_nino_padecimiento_alergia_fk Foreign Key(Letra_nino) references Nino(Letra),
   Constraint CI_representante_padecimiento_alergia_pk Primary Key(CI_representante),
-  Constraint CI_representante_padecimiento_alergia_fk Foreign Key(CI_representante) references Nino(CI_representante),
+  Constraint CI_representante_padecimiento_alergia_fk Foreign Key(CI_representante) references Nino(CI_representante)
+);
+
+CREATE TABLE autorizado_buscar(
+  ci_autorizado numeric(8),
+  ci_representante numeric(8),
+  letra_nino char(1),
+  CONSTRAINT auth_buscar_pk PRIMARY KEY (ci_autorizado, ci_representante, letra_nino),
+  CONSTRAINT ci_auth_buscar_fk FOREIGN KEY (ci_autorizado) REFERENCES Autorizado (ci),
+  CONSTRAINT letra_nino_buscar_fk, FOREIGN KEY (letra_nino, ci_representante) REFERENCES  Nino (letra, ci_representante)
+);
+
+CREATE TABLE inscripcion(
+  ano NUMERIC(4) LIKE ('____'),
+  consecutivo NUMERIC(10),
+  rif_guarderia VARCHAR(12),
+  ci_representante NUMERIC(8),
+  letra_nino CHAR(1),
+  fecha_inscripcion DATE NOT NULL,
+  hora_desde CHAR(5) LIKE ('__:__'),
+  hora_hasta CHAR(5) LIKE ('__:__'),
+  CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
+  CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia(rif),
+  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino(letra, ci_representante)
+);
+
+CREATE TABLE act_inscripcion(
+  consecutivo_inscripcion NUMERIC(10),
+  ano_inscripcion NUMERIC(4) LIKE ('____'),
+  rif_guarderia VARCHAR(12),
+  cod_actividad NUMERIC(10),
+  fecha_actividad DATE,
+  hora_inicio_act CHAR(5) LIKE ('__:__'),
+  letra_nino CHAR(1),
+  ci_representante NUMERIC(8),
+  consto_actividad NUMERIC(8, 2) NOT NULL,
+  CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
+  CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion(consecutivo, ano, letra_nino, ci_representante),
+  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia(rif_guarderia, cod_actividad, hora_inicio),
+);
+
+CREATE TABLE pago_mensual(
+  consecutivo NUMERIC(10),
+  cons_inscripcion NUMERIC(10),
+  ano_inscripcion NUMERIC(4),
+  concepto VARCHAR(20) NOT NULL,
+  monto NUMERIC(10, 2) NOT NULL,
+  fecha DATE NOT NULL,
+  forma_pago VARCHAR(17) NOT NULL,
+  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo),
+  CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion) REFERENCES inscripcion(consecutivo, ano)
+  CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito')),
+  CONSTRAINT like_ano_insc_pago_mensual CHECK(ano_inscripcion LIKE('____'))
+);
+
+CREATE TABLE multa(
+  fecha DATE,
+  cons_inscripcion NUMERIC(10),
+  ano_inscripcion NUMERIC(10),
+  letra_nino CHAR(1),
+  ci_representante NUMERIC(8),
+  monto NUMERIC(10, 2),
+  num_transferencia(20),
+  CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
+  CONSTRAINT asistencia_multa_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia(Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante)
+  CONSTRAINT like_ano_insc_multa CHECK (ano_inscripcion LIKE('____'))
 );
