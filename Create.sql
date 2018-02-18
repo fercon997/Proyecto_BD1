@@ -146,3 +146,138 @@ CREATE TABLE Parentesco_nino(
   Constraint Letra_nino_CI_ppal_parent_nino1_fk Foreign Key(Letra_nino, CI_principal) references Nino(Letra, CI_representante),
   Constraint Letra_nino_CI_ppal_parent_nino2_fk Foreign Key(Letra_pariente, CI_pariente_principal) references Nino(Letra, CI_representante)
 );
+
+CREATE TABLE Asistencia(
+  Fecha date,
+  Consecutivo_Ins varchar(6),
+  Ano_inscripcion char(4),
+  CI_representante varchar(10),
+  Letra_nino char(1),
+  CI_Padre_busco varchar(6),
+  CI_auth_busco varchar(6),
+  Hora_entrada char(5) NOT NULL,
+  Hora_salida char (5) NOT NULL,
+  Comio char(2) NOT NULL,
+  Constraint Fecha_asistencia_pk Primary Key(Fecha),
+  Constraint Consecutivo_Ins_asistencia_pk Primary Key(Consecutivo_Ins),
+  Constraint Consecutivo_Ins_asistencia_fk Foreign Key(Consecutivo_Ins) references Inscripcion(Consecutivo),
+  Constraint Ano_inscripcion_asistencia_pk Primary Key(Ano),
+  Constraint Ano_inscripcion_asistencia_fk Foreign Key(Ano) references Inscripcion(Ano),
+  Constraint CI_representante_asistencia_pk Primary Key(CI_representante),
+  Constraint CI_representante_asistencia_fk Foreign Key(CI_representante) references Inscripcion(CI_representante),
+  Constraint Letra_nino_asistencia_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_asistencia_fk Foreign Key(Letra_nino) references Inscripcion(Letra_nino),
+  Constraint CI_Padre_busco_fk Foreign Key(CI_Padre_busco) references Representante(CI),
+  Constraint CI_auth_busco_fk Foreign Key(CI_auth_busco) references Autorizado(CI),
+  Constraint Hora_entrada_valid Check(Hora_entrada LIKE ('__:__')),
+  Constraint Hora_salida_valid Check(Hora_salida LIKE ('__:__')),
+  Constraint Comio_valid Check(Comio IN ('SI', 'NO')),
+);
+
+CREATE TABLE Pediatra(
+  Codigo number(10),
+  Nombre varchar(15) NOT NULL,
+  Tlf_movil number(10) NOT NULL,
+  Tlf_oficina number(10) NOT NULL,
+  Constraint Codigo_pediatra_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Atencion(
+  Codigo_pediatra number(10),
+  Letra_nino char(1),
+  CI_ppal varchar(6),
+  Constraint Codigo_pediatra_atencion_pk Primary Key(Codigo_pediatra),
+  Constraint Codigo_pediatra_atencion_fk Foreign Key(Codigo_pediatra) references Pediatra(Codigo),
+  Constraint Letra_nino_atencion_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_atencion_fk Foreign Key(Letra_nino) references Nino(Letra),
+  Constraint CI_ppal_atencion_pk Primary Key(CI_ppal),
+  Constraint CI_ppal_atencion_fk Foreign Key(CI_ppal) references Nino(CI_representante),
+);
+
+CREATE TABLE Juego(
+  Codigo number(10),
+  Nombre varchar(15) NOT NULL,
+  Constraint Codigo_juego_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Gusto(
+  Codigo_juego number(10),
+  Letra_nino char(1),
+  CI_representante varchar(6),
+  Constraint Codigo_juego_gusto_pk Primary Key(Codigo_juego),
+  Constraint Codigo_juego_gusto_fk Foreign Key(Codigo_juego) references Juego(Codigo),
+  Constraint Letra_nino_gusto_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_gusto_fk Foreign Key(Letra_nino) references Nino(Letra),
+  Constraint CI_representante_gusto_pk Primary Key(CI_representante),
+  Constraint CI_representante_gusto_fk Foreign Key(CI_representante) references Nino(CI_representante),
+);
+
+CREATE TABLE Sintoma(
+  Codigo number(10),
+  Descripcion varchar(40),
+  Constraint Codigo_sintoma_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Medicamento(
+  Codigo number(10),
+  Descripcion varchar(40),
+  Constraint Codigo_sintoma_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Tratamiento(
+  Codigo_sintoma number(10),
+  Codigo_medicamento number(10),
+  Letra_nino char(1),
+  CI_representante varchar(6),
+  Cantidad number(4),
+  Constraint Codigo_sintoma_tratamiento_pk Primary Key(Codigo_sintoma),
+  Constraint Codigo_sintoma_tratamiento_fk Foreign Key(Codigo_sintoma) references Sintoma(Codigo),
+  Constraint Codigo_medicamento_tratamiento_pk Primary Key(Codigo_medicamento),
+  Constraint Codigo_medicamento_tratamiento_fk Foreign Key(Codigo_medicamento) references Medicamento(Codigo),
+  Constraint Letra_nino_tratamiento_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_tratamiento_fk Foreign Key(Letra_nino) references Nino(Letra),
+  Constraint CI_representante_tratamiento_pk Primary Key(CI_representante),
+  Constraint CI_representante_tratamiento_fk Foreign Key(CI_representante) references Nino(CI_representante),
+  Constraint Cantidad_tratamiento Primary Key(Cantidad),
+);
+
+CREATE TABLE Alergia(
+  Codigo number(10),
+  Descripcion varchar(40),
+  Constraint Codigo_alergia_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Enfermedad(
+  Codigo number(10),
+  Descripcion varchar(40),
+  Constraint Codigo_enfermedad_pk Primary Key(Codigo),
+);
+
+CREATE TABLE Padecimiento_enfermedad(
+  Codigo_enfermedad number(10),
+  Letra_nino char(1),
+  CI_representante varchar(6),
+  Fecha date,
+  Constraint Codigo_enfermedad_padecimiento_enfermedad_pk Primary Key(Codigo_enfermedad),
+  Constraint Codigo_enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad(Codigo),
+  Constraint Letra_nino_padecimiento_enfermedad_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino) references Nino(Letra),
+  Constraint CI_representante_padecimiento_enfermedad_pk Primary Key(CI_representante),
+  Constraint CI_representante_padecimiento_enfermedad_fk Foreign Key(CI_representante) references Nino(CI_representante),
+  Constraint Fecha_padecimiento_enfermedad_pk Primary Key(Fecha),
+);
+
+CREATE TABLE Padecimiento_alergia(
+  Codigo_alergia number(10),
+  Letra_nino char(1),
+  CI_representante varchar(6),
+  Constraint Codigo_alergia_padecimiento_alergia_pk Primary Key(Codigo_alergia),
+  Constraint Codigo_enfermedad_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia(Codigo),
+  Constraint Letra_nino_padecimiento_alergia_pk Primary Key(Letra_nino),
+  Constraint Letra_nino_padecimiento_alergia_fk Foreign Key(Letra_nino) references Nino(Letra),
+  Constraint CI_representante_padecimiento_alergia_pk Primary Key(CI_representante),
+  Constraint CI_representante_padecimiento_alergia_fk Foreign Key(CI_representante) references Nino(CI_representante),
+);
+
+
+
