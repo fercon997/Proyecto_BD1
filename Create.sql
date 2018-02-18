@@ -12,7 +12,7 @@ CREATE TABLE Lugar(
 CREATE TABLE Guarderia(
   RIF varchar(10),
   Costo_mensualidad numeric(15) NOT NULL,
-  Costo_multa numeric(10),
+  Costo_multa numeric(10) NOT NULL,
   Costo_transporte numeric(10) NOT NULL,
   Costo_agodic numeric(10) NOT NULL,
   Costo_hora_extra numeric(10) NOT NULL,
@@ -278,6 +278,3 @@ CREATE TABLE Padecimiento_alergia(
   Constraint CI_representante_padecimiento_alergia_pk Primary Key(CI_representante),
   Constraint CI_representante_padecimiento_alergia_fk Foreign Key(CI_representante) references Nino(CI_representante),
 );
-
-
-
