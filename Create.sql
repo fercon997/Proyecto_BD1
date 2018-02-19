@@ -27,15 +27,15 @@ CREATE TABLE Guarderia_4(
 
 CREATE TABLE Personal_4(
   CI varchar(10),
-  Nombre numeric(10) NOT NULL,
-  Apellido varchar(10) NOT NULL,
+  Nombre varchar(20) NOT NULL,
+  Apellido varchar(20) NOT NULL,
   Celular numeric(10) NOT NULL,
   Nivel_estudio varchar(15) NOT NULL,
   Sueldo numeric(10) NOT NULL,
   SeñalEncargada numeric(1) NOT NULL Default 0,
   Fecha_responsable Date Default NULL,
   Cod_direccion numeric(10),
-  RIF_guarderia varchar(10),
+  RIF_guarderia varchar(12),
   Constraint CI_per_pk Primary Key(CI),
   Constraint RIF_guard_per_fk Foreign Key(Rif_guarderia) references Guarderia_4 (Rif),
   Constraint Cod_dir_per_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo),
@@ -52,8 +52,8 @@ CREATE TABLE Experiencia_4(
 
 CREATE TABLE Representante_4(
   CI numeric(8),
-  Nombre varchar(10) NOT NULL,
-  Apellido varchar(10) NOT NULL,
+  Nombre varchar(20) NOT NULL,
+  Apellido varchar(20) NOT NULL,
   Celular numeric(10) NOT NULL,
   Tlf_casa numeric(10) NOT NULL,
   Tlf_oficina numeric(10) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE Actividad_4(
 );
 
 CREATE TABLE Act_Guarderia_4(
-  RIF_guarderia varchar(10),
+  RIF_guarderia varchar(12),
   Cod_actividad numeric(10),
   Costo_actividad numeric(10) NOT NULL,
   CupoMinimo numeric(3) NOT NULL,
