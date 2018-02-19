@@ -4,9 +4,11 @@ CREATE DATABASE Proyecto;
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
   Nombre varchar(50) NOT NULL,
+  tipo varchar(10) NOT NULL,
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
-  Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo)
+  Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo),
+  Constraint tipo_valid Check(tipo IN ('Estado', 'Ciudad', 'Municipio', 'Urb', 'Calle', 'Av', 'Casa', 'Edf'))
 );
 
 CREATE TABLE Guarderia_4(
