@@ -6,7 +6,7 @@ CREATE TABLE Lugar_4(
   Nombre varchar(50) NOT NULL,
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
-  Constraint cod_dir_fk Foreign Key(Codigo) references Lugar_4(Codigo)
+  Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo)
 );
 
 CREATE TABLE Guarderia_4(
