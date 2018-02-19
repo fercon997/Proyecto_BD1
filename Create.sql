@@ -7,7 +7,7 @@ CREATE TABLE Lugar_4(
   tipo varchar(10) NOT NULL,
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
-  Constraint cod_dir_fk Foreign Key(Codigo) references Lugar_4(Codigo),
+  Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo),
   Constraint tipo_lugar_check CHECK (tipo IN ('Estado', 'Municipio', 'Parroquia', 'Urbanizacion', 'Calle', 'Avenida'))
 );
 
