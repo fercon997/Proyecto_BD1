@@ -4,9 +4,11 @@ CREATE DATABASE Proyecto;
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
   Nombre varchar(50) NOT NULL,
+  tipo varchar(10) NOT NULL,
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
-  Constraint cod_dir_fk Foreign Key(Codigo) references Lugar_4(Codigo)
+  Constraint cod_dir_fk Foreign Key(Codigo) references Lugar_4(Codigo),
+  Constraint tipo_lugar_check CHECK (tipo IN ('Estado', 'Municipio', 'Parroquia', 'Urbanizacion', 'Calle', 'Avenida'))
 );
 
 CREATE TABLE Guarderia_4(
@@ -139,8 +141,7 @@ CREATE TABLE inscripcion_4(
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
   CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante),
   CONSTRAINT hora_desde_like CHECK (hora_desde LIKE('__:__')),
-  CONSTRAINT hora_hasta_insc_like CHECK (hora_hasta LIKE('__:__')),
-  CONSTRAINT letra_nino_insc_is_valid CHECK (letra_nino IN('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'))
+  CONSTRAINT hora_hasta_insc_like CHECK (hora_hasta LIKE('__:__'))
 );
 
 CREATE TABLE Parentesco_Padre_4(
