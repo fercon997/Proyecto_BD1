@@ -1,6 +1,6 @@
 \connect proyecto
 
-
+--Lugares
 insert into Lugar_4 values(1, 'Miranda', 'Estado');
 insert into Lugar_4 values(2, 'Vargas', 'Estado');
 insert into Lugar_4 values(3, 'Nueva Esparta', 'Estado');
@@ -22,3 +22,6 @@ insert into Lugar_4 values(18, 'Quinta Pampa', 'Casa', 17);
 insert into Lugar_4 values(19, 'Pampatar', 'Municipio', 3);
 insert into Lugar_4 values(20, 'Calle JM Vargas', 'Calle' ,19);
 insert into Lugar_4 values(21, 'Castillo San Carlos de Barromeo', 'Casa', 20);
+
+--Guarderias
+insert into Guarderia_4 values ('J29875441-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);

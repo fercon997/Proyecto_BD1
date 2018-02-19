@@ -18,13 +18,11 @@ CREATE TABLE Guarderia_4(
   Costo_transporte numeric(10) NOT NULL,
   Costo_agodic numeric(10) NOT NULL,
   Costo_hora_extra numeric(10) NOT NULL,
-  Horario_entrada char(5) NOT NULL,
-  Horario_salida  char(5) NOT NULL,
+  Horario_entrada time NOT NULL,
+  Horario_salida  time NOT NULL,
   Cod_direccion numeric(10),
   Constraint rif_guard_pk Primary Key(Rif),
-  Constraint cod_dir_guard_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo),
-  Constraint hora_entry_valid Check (Horario_entrada LIKE ('__:__')),
-  Constraint hora_sal_valid Check (Horario_salida LIKE ('__:__'))
+  Constraint cod_dir_guard_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo)
 );
 
 CREATE TABLE Personal_4(
