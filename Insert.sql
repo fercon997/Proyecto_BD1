@@ -99,6 +99,13 @@ insert into Act_Guarderia_4 values ('J128487902-9', 3, 200, 3, 25, 'V9214662');
 insert into Act_Guarderia_4 values ('J516782778-4', 4, 200, 2, 40, 'V8176220');
 insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194');
 
+--Horario-actividad-guardería
+insert into Horario_Act_Guarderia_4 values('J298754541-5', 1, '2018-03-04', '11:15', '12:45');
+insert into Horario_Act_Guarderia_4 values('J764219187-2', 2, '2018-04-05', '09:00', '11:00');
+insert into Horario_Act_Guarderia_4 values('J128487902-9', 3, '2018-04-04', '09:00', '10:40');
+insert into Horario_Act_Guarderia_4 values('J516782778-4', 4, '2018-05-03', '10:00', '11:00');
+insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:00', '16:00');
+
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
 
