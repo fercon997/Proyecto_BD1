@@ -137,7 +137,8 @@ CREATE TABLE inscripcion_4(
   hora_hasta time NOT NULL,
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
-  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante)
+  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante),
+  Constraint tiempo_total_valid Check( (EXTRACT(HOUR FROM hora_hasta)  - Extract(HOUR FROM hora_desde) ) <= 10)
 );
 
 CREATE TABLE Parentesco_Padre_4(
