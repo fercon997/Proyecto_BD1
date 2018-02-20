@@ -132,13 +132,11 @@ CREATE TABLE inscripcion_4(
   ci_representante varchar(10),
   letra_nino CHAR(1),
   fecha_inscripcion DATE NOT NULL,
-  hora_desde CHAR(5) NOT NULL,
-  hora_hasta CHAR(5) NOT NULL,
+  hora_desde time NOT NULL,
+  hora_hasta time NOT NULL,
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
-  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante),
-  CONSTRAINT hora_desde_like CHECK (hora_desde LIKE('__:__')),
-  CONSTRAINT hora_hasta_insc_like CHECK (hora_hasta LIKE('__:__'))
+  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante)
 );
 
 CREATE TABLE Parentesco_Padre_4(
@@ -148,7 +146,8 @@ CREATE TABLE Parentesco_Padre_4(
   Parentesco varchar(10),
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
   Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
-  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI)
+  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI),
+  Constraint parent_valid Check(Parentesco IN ('Padre', 'Madre'));
 );
 
 CREATE TABLE Parentesco_nino_4(
@@ -170,15 +169,13 @@ CREATE TABLE Asistencia_4(
   Letra_nino char(1),
   CI_Padre_busco varchar(10),
   CI_auth_busco varchar(10),
-  Hora_entrada char(5) NOT NULL,
-  Hora_salida char (5) NOT NULL,
+  Hora_entrada time NOT NULL,
+  Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
   Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino),
   Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino),
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI),
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),
-  Constraint Hora_entrada_valid Check(Hora_entrada LIKE ('__:__')),
-  Constraint Hora_salida_valid Check(Hora_salida LIKE ('__:__')),
   Constraint Comio_valid Check(Comio IN ('SI', 'NO'))
 );
 
