@@ -81,7 +81,7 @@ CREATE TABLE Autorizado_4(
 CREATE TABLE Actividad_4(
   Codigo numeric(10),
   Nombre varchar(15) NOT NULL,
-  Descripcion varchar(50) NOT NULL,
+  Descripcion varchar(100) NOT NULL,
   EdadMinima numeric(1) NOT NULL,
   Transporte numeric(1) NOT NULL,
   Constraint Cod_act_pk Primary Key(Codigo),
@@ -106,12 +106,10 @@ CREATE TABLE Horario_Act_Guarderia_4(
   RIF_guarderia varchar(12),
   Cod_actividad numeric(10),
   Fecha Date,
-  Hora_inicio char(5),
-  Hora_fin char(5) NOT NULL,
+  Hora_inicio time,
+  Hora_fin time NOT NULL,
   Constraint RIF_guard_Cod_act_hora_Fecha_Hora_init_pk Primary Key(RIF_guarderia, Cod_actividad, Fecha, Hora_inicio),
-  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad),
-  Constraint Hora_init_valid Check(Hora_inicio LIKE ('__:__')),
-  Constraint Hora_fin_valid Check(Hora_inicio LIKE ('__:__'))
+  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad)
 );
 
 CREATE TABLE Nino_4(
@@ -286,14 +284,13 @@ CREATE TABLE act_inscripcion_4(
   rif_guarderia VARCHAR(12),
   cod_actividad NUMERIC(10),
   fecha_actividad DATE,
-  hora_inicio_act CHAR(5),
+  hora_inicio_act time,
   letra_nino CHAR(1),
   ci_representante varchar(10),
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),
-  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio),
-  CONSTRAINT like_hora_inicio_act_insc CHECK (hora_inicio_act LIKE ('__:__'))
+  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
 );
 
 CREATE TABLE pago_mensual_4(
