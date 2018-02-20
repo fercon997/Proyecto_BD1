@@ -51,7 +51,7 @@ CREATE TABLE Experiencia_4(
 );
 
 CREATE TABLE Representante_4(
-  CI numeric(8),
+  CI varchar(10),
   Nombre varchar(20) NOT NULL,
   Apellido varchar(20) NOT NULL,
   Celular numeric(10) NOT NULL,
@@ -66,11 +66,12 @@ CREATE TABLE Representante_4(
   Constraint Cod_dir_rep_fk Foreign Key(Cod_direccion) references Lugar_4(Codigo),
   Constraint edo_civil_valid Check(Estado_civil IN ('C', 'S')),
   Constraint ppal_bool Check(Principal IN (0,1)),
-  Constraint email_valid Check(Email LIKE ('%_@%_._&'))
+  Constraint email_valid Check(Email LIKE ('%_@%_._%')),
+  Constraint ppal_valid check(Principal IN (0,1))
 );
 
 CREATE TABLE Autorizado_4(
-  CI numeric(8),
+  CI varchar(10),
   Nombre varchar(10) NOT NULL,
   Apellido varchar(10) NOT NULL,
   Celular numeric(10) NOT NULL,
@@ -114,7 +115,7 @@ CREATE TABLE Horario_Act_Guarderia_4(
 );
 
 CREATE TABLE Nino_4(
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Letra char(1),
   Nombre varchar(15) NOT NULL,
   Apellido varchar (15) NOT NULL,
@@ -130,7 +131,7 @@ CREATE TABLE inscripcion_4(
   ano NUMERIC(4),
   consecutivo NUMERIC(10),
   rif_guarderia VARCHAR(12),
-  ci_representante NUMERIC(8),
+  ci_representante varchar(10),
   letra_nino CHAR(1),
   fecha_inscripcion DATE NOT NULL,
   hora_desde CHAR(5) NOT NULL,
@@ -145,8 +146,8 @@ CREATE TABLE inscripcion_4(
 
 CREATE TABLE Parentesco_Padre_4(
   Letra_nino char(1),
-  CI_principal numeric(8),
-  CI_representante numeric(8),
+  CI_principal varchar(10),
+  CI_representante varchar(10),
   Parentesco varchar(10),
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
   Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
@@ -155,9 +156,9 @@ CREATE TABLE Parentesco_Padre_4(
 
 CREATE TABLE Parentesco_nino_4(
   Letra_nino char(1),
-  CI_principal numeric(8),
+  CI_principal varchar(10),
   Letra_pariente char(1),
-  CI_pariente_principal numeric(8),
+  CI_pariente_principal varchar(10),
   Parentesco varchar(5) NOT NULL,
   Constraint Letra_nino_CI_ppal_parent_nino1_y_nino2_pk Primary Key(Letra_nino, CI_principal, Letra_pariente, CI_pariente_principal),
   Constraint Letra_nino_CI_ppal_parent_nino1_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
@@ -168,10 +169,10 @@ CREATE TABLE Asistencia_4(
   Fecha date,
   Consecutivo_Ins numeric(10),
   Ano_inscripcion numeric(4),
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Letra_nino char(1),
-  CI_Padre_busco numeric(8),
-  CI_auth_busco numeric(8),
+  CI_Padre_busco varchar(10),
+  CI_auth_busco varchar(10),
   Hora_entrada char(5) NOT NULL,
   Hora_salida char (5) NOT NULL,
   Comio char(2) NOT NULL,
@@ -195,7 +196,7 @@ CREATE TABLE Pediatra_4(
 CREATE TABLE Atencion_4(
   Codigo_pediatra numeric(10),
   Letra_nino char(1),
-  CI_ppal numeric(8),
+  CI_ppal varchar(10),
   Constraint Atencion_pk Primary Key(Codigo_pediatra,Letra_nino,CI_ppal),
   Constraint Pediatra_atencion_fk Foreign Key(Codigo_pediatra) references Pediatra_4(Codigo),
   Constraint Nino_atencion_fk Foreign Key(Letra_nino,CI_ppal) references Nino_4(Letra,CI_representante)
@@ -210,7 +211,7 @@ CREATE TABLE Juego_4(
 CREATE TABLE Gusto_4(
   Codigo_juego numeric(10),
   Letra_nino char(1),
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Constraint Gusto_pk Primary Key(Codigo_juego,Letra_nino,CI_representante),
   Constraint Juego_gusto_fk Foreign Key(Codigo_juego) references Juego_4(Codigo),
   Constraint Nino_gusto_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
@@ -232,7 +233,7 @@ CREATE TABLE Tratamiento_4(
   Codigo_sintoma numeric(10),
   Codigo_medicamento numeric(10),
   Letra_nino char(1),
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Cantidad numeric(4),
   Constraint Tratamiento_pk Primary Key(Codigo_sintoma,Codigo_medicamento,Letra_nino,CI_representante,Cantidad),
   Constraint Sintoma_tratamiento_fk Foreign Key(Codigo_sintoma) references Sintoma_4(Codigo),
@@ -255,7 +256,7 @@ CREATE TABLE Enfermedad_4(
 CREATE TABLE Padecimiento_enfermedad_4(
   Codigo_enfermedad numeric(10),
   Letra_nino char(1),
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Fecha date,
   Constraint Padecimiento_enfermedad_pk Primary Key(Codigo_enfermedad,Letra_nino,CI_representante,Fecha),
   Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo),
@@ -265,15 +266,15 @@ CREATE TABLE Padecimiento_enfermedad_4(
 CREATE TABLE Padecimiento_alergia_4(
   Codigo_alergia numeric(10),
   Letra_nino char(1),
-  CI_representante numeric(8),
+  CI_representante varchar(10),
   Constraint Padecimiento_alergia_pk Primary Key(Codigo_alergia,Letra_nino,CI_representante),
   Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo),
   Constraint Nino_padecimiento_alergia_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
 );
 
 CREATE TABLE autorizado_buscar_4(
-  ci_autorizado numeric(8),
-  ci_representante numeric(8),
+  ci_autorizado varchar(10),
+  ci_representante varchar(10),
   letra_nino char(1),
   CONSTRAINT auth_buscar_pk PRIMARY KEY (ci_autorizado, ci_representante, letra_nino),
   CONSTRAINT ci_auth_buscar_fk FOREIGN KEY (ci_autorizado) REFERENCES Autorizado_4(ci),
@@ -288,7 +289,7 @@ CREATE TABLE act_inscripcion_4(
   fecha_actividad DATE,
   hora_inicio_act CHAR(5),
   letra_nino CHAR(1),
-  ci_representante NUMERIC(8),
+  ci_representante varchar(10),
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),
@@ -300,7 +301,7 @@ CREATE TABLE pago_mensual_4(
   consecutivo NUMERIC(10),
   cons_inscripcion NUMERIC(10),
   ano_inscripcion NUMERIC(4),
-  ci_representante NUMERIC(8),
+  ci_representante varchar(10),
   letra_nino CHAR(1),
   concepto VARCHAR(20) NOT NULL,
   monto NUMERIC(10, 2) NOT NULL,
@@ -317,7 +318,7 @@ CREATE TABLE multa_4(
   cons_inscripcion NUMERIC(10),
   ano_inscripcion NUMERIC(10),
   letra_nino CHAR(1),
-  ci_representante NUMERIC(8),
+  ci_representante varchar(10),
   monto NUMERIC(10, 2),
   num_transferencia NUMERIC(20),
   CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
@@ -360,7 +361,7 @@ CREATE TABLE factura_menu_4(
   cons_inscripcion NUMERIC(10),
   ano_inscripcion NUMERIC(4),
   letra_nino CHAR(1),
-  ci_representante NUMERIC(8),
+  ci_representante varchar(10),
   numero_menu NUMERIC(8),
   fecha_menu DATE,
   numero_trans NUMERIC(20) NOT NULL,
