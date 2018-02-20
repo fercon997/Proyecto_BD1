@@ -218,6 +218,13 @@ INSERT INTO inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', '2
 INSERT INTO inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
 INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
 
+--Asistencia
+INSERT INTO asistencia_4 values ('2016-01-07', 24, 2016, 'E10917655', 'B', NULL, 'V9187221', '08:15', '16:50', 'SI');
+INSERT INTO asistencia_4 values ('2016-09-27', 20, 2016, 'V15748739', 'C', NULL, 'V9214662', '08:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2013-10-03', 1, 2013, 'V8108418', 'A', 'V8108418', NULL '07:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2014-10-25', 2, 2014, 'V8108418', 'B', NULL, 'V12018977' '07:25', '16:45', 'SI');
+INSERT INTO asistencia_4 values ('2015-11-03', 5, 2015, 'V9757397', 'C', 'V9757397', NULL, '08:05', '17:55', 'NO');
+
 --Pediatras
 insert into Pediatra_4 values (1 , 'Jose Feliciano' , 04123345621, 02121298331);
 insert into Pediatra_4 values (2 , 'Diego Garcia' , 04241948631, 02125359871);
