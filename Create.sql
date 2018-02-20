@@ -348,7 +348,8 @@ CREATE TABLE menu_4(
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
-  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif)
+  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
+  CONSTRAINT fecha_semana_valid Check( Extract(DOW FROM fecha) != 6 AND Extract(DOW FROM fecha) != 0)
 );
 
 CREATE TABLE factura_menu_4(

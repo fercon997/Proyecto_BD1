@@ -220,9 +220,9 @@ INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2
 
 --Asistencia
 INSERT INTO asistencia_4 values ('2016-01-07', 24, 2016, 'E10917655', 'B', NULL, 'V9187221', '08:15', '16:50', 'SI');
-INSERT INTO asistencia_4 values ('2016-09-27', 20, 2016, 'V15748739', 'C', NULL, 'V9214662', '08:05', '16:55', 'NO');
-INSERT INTO asistencia_4 values ('2013-10-03', 1, 2013, 'V8108418', 'A', 'V8108418', NULL '07:05', '16:55', 'NO');
-INSERT INTO asistencia_4 values ('2014-10-25', 2, 2014, 'V8108418', 'B', NULL, 'V12018977' '07:25', '16:45', 'SI');
+INSERT INTO asistencia_4 values ('2016-09-27', 20, 2016, 'V20775874', 'C', NULL, 'V9214662', '08:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2013-10-03', 1, 2013, 'V8108418', 'A', 'V8108418', NULL, '07:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2014-10-25', 2, 2014, 'V8108418', 'B', NULL, 'V12018977', '07:25', '16:45', 'SI');
 INSERT INTO asistencia_4 values ('2015-11-03', 5, 2015, 'V9757397', 'C', 'V9757397', NULL, '08:05', '17:55', 'NO');
 
 --Pediatras
@@ -357,3 +357,13 @@ insert into plato_4 values(2, 'Plato del martes');
 insert into plato_4 values(3, 'Plato del miercoles');
 insert into plato_4 values(4, 'Plato del jueves');
 insert into plato_4 values(5, 'Plato del viernes');
+
+--Comida-plato
+insert into comida_plato_4 values(1, 1);
+insert into comida_plato_4 values(1, 2);
+insert into comida_plato_4 values(1, 3);
+insert into comida_plato_4 values(1, 4);
+insert into comida_plato_4 values(2, 1);
+insert into comida_plato_4 values(2, 2);
+insert into comida_plato_4 values(2, 3);
+insert into comida_plato_4 values(2, 5);
