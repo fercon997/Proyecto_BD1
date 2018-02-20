@@ -280,13 +280,13 @@ insert into Medicamento_4 values (4 , 'Antialérgico');
 insert into Medicamento_4 values (5 , 'Manzanilla');
 
 -- Tratamiento
-insert into Tratamiento_4 values (1, 3, 'A', 'V8108418', 20);
-insert into Tratamiento_4 values (5, 4, 'B', 'V8108418', 10);
-insert into Tratamiento_4 values (1, 3, 'A', 'V9757397', 100);
-insert into Tratamiento_4 values (2, 5, 'A', 'V9757397', 300);
-insert into Tratamiento_4 values (4, 2, 'B', 'V9757397', 20);
-insert into Tratamiento_4 values (4, 5, 'B', 'V14910819', 350);
-insert into Tratamiento_4 values (3, 1, 'C', 'E10917655', 25);
+insert into Tratamiento_4 values (1, 3, 'A', 'V8108418', '100 ml');
+insert into Tratamiento_4 values (5, 4, 'B', 'V8108418', '10 mg');
+insert into Tratamiento_4 values (1, 3, 'A', 'V9757397', '100 ml');
+insert into Tratamiento_4 values (2, 5, 'A', 'V9757397', '300 ml');
+insert into Tratamiento_4 values (4, 2, 'B', 'V9757397', '20 mg');
+insert into Tratamiento_4 values (4, 5, 'B', 'V14910819', '350 ml');
+insert into Tratamiento_4 values (3, 1, 'C', 'E10917655', '25 mg');
 
 --Alergia
 insert into Alergia_4 values ('1' , 'Al Ibuprofeno');

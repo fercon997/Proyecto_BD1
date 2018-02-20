@@ -230,7 +230,7 @@ CREATE TABLE Tratamiento_4(
   Codigo_medicamento numeric(10),
   Letra_nino char(1),
   CI_representante varchar(10),
-  Cantidad numeric(4),
+  Cantidad varchar(7),
   Constraint Tratamiento_pk Primary Key(Codigo_sintoma,Codigo_medicamento,Letra_nino,CI_representante,Cantidad),
   Constraint Sintoma_tratamiento_fk Foreign Key(Codigo_sintoma) references Sintoma_4(Codigo),
   Constraint Medicamento_tratamiento_fk Foreign Key(Codigo_medicamento) references Medicamento_4(Codigo),
