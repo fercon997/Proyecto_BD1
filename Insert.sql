@@ -367,3 +367,17 @@ insert into comida_plato_4 values(2, 1);
 insert into comida_plato_4 values(2, 2);
 insert into comida_plato_4 values(2, 3);
 insert into comida_plato_4 values(2, 5);
+
+--Menu
+insert into menu_4 values (1, '2018-03-05', 'J298754541-5', 200);
+insert into menu_4 values (2, '2018-03-05', 'J764219187-2', 200);
+insert into menu_4 values (3, '2018-03-05', 'J128487902-9', 200);
+insert into menu_4 values (4, '2018-03-05', 'J516782778-4', 200);
+insert into menu_4 values (5, '2018-03-05', 'J279154667-2', 200);
+
+--Factura-menu
+insert into factura_menu_4 values('2018-03-04', 2, 2014, 'V8108418', 'B', 1, '2018-03-05', '2558976495', 'Mercantil');
+insert into factura_menu_4 values('2018-03-04', 5, 2015, 'V9757397', 'C', 2, '2018-03-05', '2550176251', 'Mercantil');
+insert into factura_menu_4 values('2018-03-04', 11, 2014, 'V12769574', 'C', 3, '2018-03-05', '1987654102', 'Banesco');
+insert into factura_menu_4 values('2018-03-04', 14, 2016, 'E21879397', 'A', 4, '2018-03-05', '2551298578', 'Mercantil');
+insert into factura_menu_4 values('2018-03-04', 22, 2015, 'V15748739', 'B', 5, '2018-03-05', '9870154178', 'BOD');
