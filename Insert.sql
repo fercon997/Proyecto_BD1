@@ -196,20 +196,87 @@ INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '20
 INSERT INTO inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', '2013-02-25', '07:00', '17:00');
 INSERT INTO inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', '2014-09-14', '07:00', '17:00');
 INSERT INTO inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
-
+INSERT INTO inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', '2016-09-12', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', '2016-09-12', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', '2016-09-23', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', '2018-01-10', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', '2013-09-20', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', '2013-09-20', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', '2013-09-12', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', '2013-09-12', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', '2016-09-25', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', '2013-01-10', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', '2015-01-20', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', '2015-01-13', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
 --Pediatras
-insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
-insert into Pediatra_4 values ('2' , 'Diego Garcia' , '04241948631' , '02125359871');
-insert into Pediatra_4 values ('3' , 'Mariana Mendez' , '04167821231' ,  '02128721345');
-insert into Pediatra_4 values ('4' , 'Javier Clemente' , '04143561891' , '02123457896');
-insert into Pediatra_4 values ('5' , 'Daniela Bustamante' , '04126521487' , '02123567823');
+insert into Pediatra_4 values (1 , 'Jose Feliciano' , 04123345621, 02121298331);
+insert into Pediatra_4 values (2 , 'Diego Garcia' , 04241948631, 02125359871);
+insert into Pediatra_4 values (3 , 'Mariana Mendez' , 04167821231,  02128721345);
+insert into Pediatra_4 values (4 , 'Javier Clemente' , 04143561891, 02123457896);
+insert into Pediatra_4 values (5 , 'Daniela Bustamante' , 04126521487, 02123567823);
+
+--Atención
+insert into Atencion_4 values (1, 'A', 'V8108418');
+insert into Atencion_4 values (1, 'B', 'V8108418');
+insert into Atencion_4 values (1, 'A', 'V9757397');
+insert into Atencion_4 values (1, 'B', 'V9757397');
+insert into Atencion_4 values (1, 'C', 'V9757397');
+insert into Atencion_4 values (2, 'A', 'V24871662');
+insert into Atencion_4 values (2, 'B', 'V24871662');
+insert into Atencion_4 values (2, 'C', 'V24871662');
+insert into Atencion_4 values (2, 'A', 'V12769574');
+insert into Atencion_4 values (2, 'B', 'V12769574');
+insert into Atencion_4 values (2, 'C', 'V12769574');
+insert into Atencion_4 values (3, 'A', 'V20145701');
+insert into Atencion_4 values (3, 'B', 'V20145701');
+insert into Atencion_4 values (3, 'A', 'E21879397');
+insert into Atencion_4 values (3, 'B', 'E21879397');
+insert into Atencion_4 values (4, 'A', 'V14910819');
+insert into Atencion_4 values (4, 'B', 'V14910819');
+insert into Atencion_4 values (4, 'A', 'V20775874');
+insert into Atencion_4 values (4, 'B', 'V20775874');
+insert into Atencion_4 values (4, 'C', 'V20775874');
+insert into Atencion_4 values (5, 'A', 'V15748739');
+insert into Atencion_4 values (5, 'B', 'V15748739');
+insert into Atencion_4 values (5, 'A', 'E10917655');
+insert into Atencion_4 values (5, 'B', 'E10917655');
+insert into Atencion_4 values (5, 'C', 'E10917655');
 
 --Juego
-insert into Juego_4 values ('1' , 'Lego');
-insert into Juego_4 values ('2' , 'Lanzar Pelota');
-insert into Juego_4 values ('3' , 'Patear Pelota');
-insert into Juego_4 values ('4' , 'Tacos');
-insert into Juego_4 values ('5' , 'Triciclo');
+insert into Juego_4 values (1 , 'Lego');
+insert into Juego_4 values (2 , 'Lanzar Pelota');
+insert into Juego_4 values (3 , 'Patear Pelota');
+insert into Juego_4 values (4 , 'Tacos');
+insert into Juego_4 values (5 , 'Triciclo');
+
+--Gusto
+insert into Gusto_4 values (1, 'A', 'V8108418');
+insert into Gusto_4 values (1, 'B', 'V8108418');
+insert into Gusto_4 values (1, 'A', 'V9757397');
+insert into Gusto_4 values (1, 'B', 'V9757397');
+insert into Gusto_4 values (1, 'C', 'V9757397');
+insert into Gusto_4 values (2, 'A', 'V24871662');
+insert into Gusto_4 values (2, 'B', 'V24871662');
+insert into Gusto_4 values (2, 'C', 'V24871662');
+insert into Gusto_4 values (2, 'A', 'V12769574');
+insert into Gusto_4 values (2, 'B', 'V12769574');
+insert into Gusto_4 values (2, 'C', 'V12769574');
+insert into Gusto_4 values (3, 'A', 'V20145701');
+insert into Gusto_4 values (3, 'B', 'V20145701');
+insert into Gusto_4 values (3, 'A', 'E21879397');
+insert into Gusto_4 values (3, 'B', 'E21879397');
+insert into Gusto_4 values (4, 'A', 'V14910819');
+insert into Gusto_4 values (4, 'B', 'V14910819');
+insert into Gusto_4 values (4, 'A', 'V20775874');
+insert into Gusto_4 values (4, 'B', 'V20775874');
+insert into Gusto_4 values (4, 'C', 'V20775874');
+insert into Gusto_4 values (5, 'A', 'V15748739');
+insert into Gusto_4 values (5, 'B', 'V15748739');
+insert into Gusto_4 values (5, 'A', 'E10917655');
+insert into Gusto_4 values (5, 'B', 'E10917655');
+insert into Gusto_4 values (5, 'C', 'E10917655');
 
 --Sintoma
 insert into Sintoma_4 values ('1' , 'Tos');
