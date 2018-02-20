@@ -148,7 +148,8 @@ CREATE TABLE Parentesco_Padre_4(
   Parentesco varchar(10),
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
   Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
-  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI)
+  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI),
+  Constraint parent_valid Check(Parentesco IN ('Padre', 'Madre'));
 );
 
 CREATE TABLE Parentesco_nino_4(
