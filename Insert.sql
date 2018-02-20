@@ -8,7 +8,7 @@ insert into Lugar_4 values(4, 'Caracas', 'Ciudad', 1);
 insert into Lugar_4 values(5, 'Baruta', 'Municipio', 4);
 insert into Lugar_4 values(6, 'Los Samanes', 'Urbanizacion', 5);
 insert into Lugar_4 values(7, 'Av. Las Colinas', 'Avenida', 6);
-insert into Lugar_4 values(8, 'Edf Las Ternarias', 'Edificio', 7);
+insert into Lugar_4 values(8, 'Edf. Las Ternarias', 'Edificio', 7);
 insert into Lugar_4 values(9, 'El cafetal', 'Urbanizacion', 4);
 insert into Lugar_4 values(10, 'El limon', 'Calle', 9);
 insert into Lugar_4 values(11, 'Quinta Almeida', 'Casa', 10);
@@ -50,37 +50,42 @@ insert into Experiencia_4 values ('E25978194', 'Academia de futbol infantil');
 
 --Representantes
 insert into Representante_4 values ('V8108418', 'Henrietta', 'Zazalli', 04245019827, 02129448721, 02129871451, 'Hzaza@gmail.com', 'Albañil', 'C', 1, 23 );
-insert into Representante_4 values ('V24871662', 'Daniel', 'Guerra', 04167810091, 02129876612, 02128876542, 'losada@gmail.com', 'Ingeniero', 'S', 1, 24);
+insert into Representante_4 values ('V24871662', 'Daniel', 'Guerra', 04167810091, 02959876612, 02958876542, 'losada@gmail.com', 'Ingeniero', 'S', 1, 24);
 insert into Representante_4 values ('V20145701', 'Cristoff', 'Ruiz', 04129018764, 02129087651, 02127650918, 'ffRui@gmail.com', 'Profesor', 'C', 1, 25);
 insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 04269018765, 02120918716, 02129108714, 'siso@hotmail.com', 'Contadora', 'C', 1, 25);
 insert into Representante_4 values ('E10917655', 'Danielle', 'Sturaro', 04169870191, 02129980198, 02126517891, 'atalancia@yahoo.net', 'Mafioso', 'S', 1, 22);
+insert into Representante_4 values ('V9757397', 'Gabriela', 'Correia', 04141862963, 02127549738, 02129758467, 'gaby007@gmail.com', 'Profesora', 'C', 1, 22);
+insert into Representante_4 values ('V12769574', 'Jorge', 'Colina', 04168479356, 02957935621, 02958768933, 'jorgecol@hotmail.com', 'Psicólogo', 'S', 1, 24);
+insert into Representante_4 values ('E21879397', 'Matías', 'Messi', 04247893873, 02121231232, 02126894783, 'messimatias@gmail.com', 'Chef', 'C', 1, 23);
+insert into Representante_4 values ('V20775874', 'Valeria', 'Gutierrez', 04128746736, 02126749839, 02128476378, 'gutivaleria@gmail.com', 'Ingeniero', 'C', 1, 8);
+insert into Representante_4 values ('V15748739', 'María', 'Guevara', 04267578476, 02957389873, 02956748937, 'maryguevara@hotmail.com', 'Periodista', 'C', 1, 24);
 
 -- Niño
 INSERT INTO Nino_4 VALUES ('V8108418', 'A', 'Diego', 'Gonzáles', '2012-06-21', 'M');
 INSERT INTO Nino_4 VALUES ('V8108418', 'B', 'Fernando', 'Gonzáles', '2013-03-17', 'M');
-INSERT INTO Nino_4 VALUES ('V8108418', 'C', 'Antonieta', 'Gonzáles', '2014-05-13', 'F');
-INSERT INTO Nino_4 VALUES ('V8108418', 'D', 'Daniela', 'Gonzáles', '2014-05-13', 'F');
-INSERT INTO Nino_4 VALUES ('V8108418', 'E', 'Armando', 'Gonzáles', '2014-05-21', 'M');
+INSERT INTO Nino_4 VALUES ('V9757397', 'A', 'Antonieta', 'González', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V9757397', 'B', 'Daniela', 'González', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V9757397', 'C', 'Armando', 'González', '2014-05-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
 INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
-INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
-INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
-INSERT INTO Nino_4 VALUES ('V20145701', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
-INSERT INTO Nino_4 VALUES ('V20145701', 'D', 'Luis', 'Ruiz', '2015-08-30', 'M');
-INSERT INTO Nino_4 VALUES ('V20145701', 'E', 'Ariana', 'Ruiz', '2015-08-30', 'F');
-INSERT INTO Nino_4 VALUES ('V20145701', 'F', 'Laura', 'Ruiz', '2015-08-30', 'F');
-INSERT INTO Nino_4 VALUES ('V20145701', 'G', 'José', 'Ruiz', '2016-10-12', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
+INSERT INTO Nino_4 VALUES ('V12769574', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Luis', 'Ruiz', '2015-08-30', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Ariana', 'Ruiz', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('E21879397', 'A', 'Laura', 'Messi', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('E21879397', 'B', 'José', 'Messi', '2016-10-12', 'M');
 INSERT INTO Nino_4 VALUES ('V14910819', 'A', 'Sofía', 'Cañizales', '2012-09-11', 'F');
 INSERT INTO Nino_4 VALUES ('V14910819', 'B', 'Carmen', 'Cañizales', '2012-09-11', 'F');
-INSERT INTO Nino_4 VALUES ('V14910819', 'C', 'Selena', 'Cañizales', '2012-09-11', 'F');
-INSERT INTO Nino_4 VALUES ('V14910819', 'D', 'Rosita', 'Cañizales', '2012-09-11', 'F');
-INSERT INTO Nino_4 VALUES ('V14910819', 'E', 'Hector', 'Cañizales', '2015-02-28', 'M');
-INSERT INTO Nino_4 VALUES ('E10917655', 'A', 'Andrea', 'Sturaro', '2012-01-02', 'M');
-INSERT INTO Nino_4 VALUES ('E10917655', 'B', 'Concetta', 'Sturaro', '2012-12-28', 'F');
-INSERT INTO Nino_4 VALUES ('E10917655', 'C', 'Fabio', 'Sturaro', '2013-11-15', 'M');
-INSERT INTO Nino_4 VALUES ('E10917655', 'D', 'Giorgio', 'Sturaro', '2014-10-21', 'M');
-INSERT INTO Nino_4 VALUES ('E10917655', 'E', 'Giulia', 'Sturaro', '2015-12-03', 'F');
+INSERT INTO Nino_4 VALUES ('V20775874', 'A', 'Selena', 'Pérez', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V20775874', 'B', 'Rosita', 'Pérez', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V20775874', 'C', 'Hector', 'Pérez', '2015-02-28', 'M');
+INSERT INTO Nino_4 VALUES ('V15748739', 'A', 'Andrea', 'Gómez', '2012-01-02', 'F');
+INSERT INTO Nino_4 VALUES ('V15748739', 'B', 'Fabio', 'Gómez', '2013-11-15', 'M');
+INSERT INTO Nino_4 VALUES ('E10917655', 'A', 'Concetta', 'Sturaro', '2012-12-28', 'F');
+INSERT INTO Nino_4 VALUES ('E10917655', 'B', 'Giorgio', 'Sturaro', '2014-10-21', 'M');
+INSERT INTO Nino_4 VALUES ('E10917655', 'C', 'Giulia', 'Sturaro', '2015-12-03', 'F');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
@@ -116,9 +121,9 @@ INSERT INTO inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', '201
 INSERT INTO inscripcion_4 values (2015, 3, 'J764219187-2', 'V8108418', 'C', '2015-09-23', '08:00', '17:00');
 INSERT INTO inscripcion_4 values (2015, 4, 'J764219187-2', 'V8108418', 'D', '2015-09-23', '08:00', '17:00');
 INSERT INTO inscripcion_4 values (2015, 5, 'J764219187-2', 'V8108418', 'E', '2015-10-02', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', '2014-08-18', '07:00', '18.00');
-INSERT INTO inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', '2015-08-28', '07:00', '18.00');
-INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '2018-01-18', '07:00', '18.00');
+INSERT INTO inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', '2014-08-18', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', '2015-08-28', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '2018-01-18', '08:00', '18:00');
 
 --Pediatras
 insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');

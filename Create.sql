@@ -57,7 +57,7 @@ CREATE TABLE Representante_4(
   Celular numeric(10) NOT NULL,
   Tlf_casa numeric(10) NOT NULL,
   Tlf_oficina numeric(10) NOT NULL,
-  Email varchar(20) NOT NULL,
+  Email varchar(30) NOT NULL,
   Profesion varchar(20) NOT NULL,
   Estado_civil char(1) NOT NULL,
   Principal numeric(1) NOT NULL,
