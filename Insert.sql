@@ -29,9 +29,9 @@ insert into Lugar_4 values(25, 'Las candelitas', 'Edificio', 10);
 
 --Guarderias
 insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);
-insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 10);
+insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 11);
 insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 14);
-insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 17);
+insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 18);
 insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 21);
 
 --Personal
@@ -366,9 +366,21 @@ insert into comida_plato_4 values(1, 4);
 insert into comida_plato_4 values(2, 1);
 insert into comida_plato_4 values(2, 2);
 insert into comida_plato_4 values(2, 3);
-insert into comida_plato_4 values(2, 5);
+insert into comida_plato_4 values(3, 5);
+insert into comida_plato_4 values(3, 1);
+insert into comida_plato_4 values(3, 2);
+insert into comida_plato_4 values(3, 3);
+insert into comida_plato_4 values(3, 5);
+insert into comida_plato_4 values(4, 1);
+insert into comida_plato_4 values(4, 2);
+insert into comida_plato_4 values(4, 3);
+insert into comida_plato_4 values(4, 4);
+insert into comida_plato_4 values(5, 1);
+insert into comida_plato_4 values(5, 2);
+insert into comida_plato_4 values(5, 3);
+insert into comida_plato_4 values(5, 4);
 
---Menu
+  --Menu
 insert into menu_4 values (1, '2018-03-05', 'J298754541-5', 200);
 insert into menu_4 values (2, '2018-03-05', 'J764219187-2', 200);
 insert into menu_4 values (3, '2018-03-05', 'J128487902-9', 200);
@@ -381,3 +393,10 @@ insert into factura_menu_4 values('2018-03-04', 5, 2015, 'V9757397', 'C', 2, '20
 insert into factura_menu_4 values('2018-03-04', 11, 2014, 'V12769574', 'C', 3, '2018-03-05', '1987654102', 'Banesco');
 insert into factura_menu_4 values('2018-03-04', 14, 2016, 'E21879397', 'A', 4, '2018-03-05', '2551298578', 'Mercantil');
 insert into factura_menu_4 values('2018-03-04', 22, 2015, 'V15748739', 'B', 5, '2018-03-05', '9870154178', 'BOD');
+
+--Menu semanal
+insert into menu_semanal_4 values(1, '2018-03-05', 1);
+insert into menu_semanal_4 values(2, '2018-03-05', 3);
+insert into menu_semanal_4 values(3, '2018-03-05', 4);
+insert into menu_semanal_4 values(4, '2018-03-05', 5);
+insert into menu_semanal_4 values(5, '2018-03-05', 2);
