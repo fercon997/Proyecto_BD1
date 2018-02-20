@@ -198,11 +198,38 @@ INSERT INTO inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', '2
 INSERT INTO inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
 
 --Pediatras
-insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
-insert into Pediatra_4 values ('2' , 'Diego Garcia' , '04241948631' , '02125359871');
-insert into Pediatra_4 values ('3' , 'Mariana Mendez' , '04167821231' ,  '02128721345');
-insert into Pediatra_4 values ('4' , 'Javier Clemente' , '04143561891' , '02123457896');
-insert into Pediatra_4 values ('5' , 'Daniela Bustamante' , '04126521487' , '02123567823');
+insert into Pediatra_4 values (1 , 'Jose Feliciano' , 04123345621, 02121298331);
+insert into Pediatra_4 values (2 , 'Diego Garcia' , 04241948631, 02125359871);
+insert into Pediatra_4 values (3 , 'Mariana Mendez' , 04167821231,  02128721345);
+insert into Pediatra_4 values (4 , 'Javier Clemente' , 04143561891, 02123457896);
+insert into Pediatra_4 values (5 , 'Daniela Bustamante' , 04126521487, 02123567823);
+
+--Atención
+insert into Atencion_4 values (1, 'A', 'V8108418');
+insert into Atencion_4 values (1, 'B', 'V8108418');
+insert into Atencion_4 values (1, 'A', 'V9757397');
+insert into Atencion_4 values (1, 'B', 'V9757397');
+insert into Atencion_4 values (1, 'C', 'V9757397');
+insert into Atencion_4 values (2, 'A', 'V24871662');
+insert into Atencion_4 values (2, 'B', 'V24871662');
+insert into Atencion_4 values (2, 'C', 'V24871662');
+insert into Atencion_4 values (2, 'A', 'V12769574');
+insert into Atencion_4 values (2, 'B', 'V12769574');
+insert into Atencion_4 values (2, 'C', 'V12769574');
+insert into Atencion_4 values (3, 'A', 'V20145701');
+insert into Atencion_4 values (3, 'B', 'V20145701');
+insert into Atencion_4 values (3, 'A', 'E21879397');
+insert into Atencion_4 values (3, 'B', 'E21879397');
+insert into Atencion_4 values (4, 'A', 'V14910819');
+insert into Atencion_4 values (4, 'B', 'V14910819');
+insert into Atencion_4 values (4, 'A', 'V20775874');
+insert into Atencion_4 values (4, 'B', 'V20775874');
+insert into Atencion_4 values (4, 'C', 'V20775874');
+insert into Atencion_4 values (5, 'A', 'V15748739');
+insert into Atencion_4 values (5, 'B', 'V15748739');
+insert into Atencion_4 values (5, 'A', 'E10917655');
+insert into Atencion_4 values (5, 'B', 'E10917655');
+insert into Atencion_4 values (5, 'C', 'E10917655');
 
 --Juego
 insert into Juego_4 values ('1' , 'Lego');
