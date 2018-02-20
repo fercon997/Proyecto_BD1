@@ -232,11 +232,38 @@ insert into Atencion_4 values (5, 'B', 'E10917655');
 insert into Atencion_4 values (5, 'C', 'E10917655');
 
 --Juego
-insert into Juego_4 values ('1' , 'Lego');
-insert into Juego_4 values ('2' , 'Lanzar Pelota');
-insert into Juego_4 values ('3' , 'Patear Pelota');
-insert into Juego_4 values ('4' , 'Tacos');
-insert into Juego_4 values ('5' , 'Triciclo');
+insert into Juego_4 values (1 , 'Lego');
+insert into Juego_4 values (2 , 'Lanzar Pelota');
+insert into Juego_4 values (3 , 'Patear Pelota');
+insert into Juego_4 values (4 , 'Tacos');
+insert into Juego_4 values (5 , 'Triciclo');
+
+--Gusto
+insert into Gusto_4 values (1, 'A', 'V8108418');
+insert into Gusto_4 values (1, 'B', 'V8108418');
+insert into Gusto_4 values (1, 'A', 'V9757397');
+insert into Gusto_4 values (1, 'B', 'V9757397');
+insert into Gusto_4 values (1, 'C', 'V9757397');
+insert into Gusto_4 values (2, 'A', 'V24871662');
+insert into Gusto_4 values (2, 'B', 'V24871662');
+insert into Gusto_4 values (2, 'C', 'V24871662');
+insert into Gusto_4 values (2, 'A', 'V12769574');
+insert into Gusto_4 values (2, 'B', 'V12769574');
+insert into Gusto_4 values (2, 'C', 'V12769574');
+insert into Gusto_4 values (3, 'A', 'V20145701');
+insert into Gusto_4 values (3, 'B', 'V20145701');
+insert into Gusto_4 values (3, 'A', 'E21879397');
+insert into Gusto_4 values (3, 'B', 'E21879397');
+insert into Gusto_4 values (4, 'A', 'V14910819');
+insert into Gusto_4 values (4, 'B', 'V14910819');
+insert into Gusto_4 values (4, 'A', 'V20775874');
+insert into Gusto_4 values (4, 'B', 'V20775874');
+insert into Gusto_4 values (4, 'C', 'V20775874');
+insert into Gusto_4 values (5, 'A', 'V15748739');
+insert into Gusto_4 values (5, 'B', 'V15748739');
+insert into Gusto_4 values (5, 'A', 'E10917655');
+insert into Gusto_4 values (5, 'B', 'E10917655');
+insert into Gusto_4 values (5, 'C', 'E10917655');
 
 --Sintoma
 insert into Sintoma_4 values ('1' , 'Tos');
