@@ -72,8 +72,8 @@ CREATE TABLE Representante_4(
 
 CREATE TABLE Autorizado_4(
   CI varchar(10),
-  Nombre varchar(10) NOT NULL,
-  Apellido varchar(10) NOT NULL,
+  Nombre varchar(20) NOT NULL,
+  Apellido varchar(20) NOT NULL,
   Celular numeric(10) NOT NULL,
   Constraint CI_auth_pk Primary Key(CI)
 );

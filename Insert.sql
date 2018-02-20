@@ -56,3 +56,10 @@ insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 042690187
 insert into Representante_4 values ('E10917655', 'Danielle', 'Sturaro', 04169870191, 02129980198, 02126517891, 'atalancia@yahoo.net', 'Mafioso', 'S', 1, 22);
 
 --Autorizado
+insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
+insert into Autorizado_4 values ('V9214662', 'Juan', 'Pollizschter', 04167198427);
+insert into Autorizado_4 values ('V12018977', 'Alfredo', 'Martinez', 04249108761);
+insert into Autorizado_4 values ('V4987907', 'Sergio', 'Reveron', 04168901245);
+insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 04149871020);
+
+--Actividades
