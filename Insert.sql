@@ -8,13 +8,13 @@ insert into Lugar_4 values(4, 'Caracas', 'Ciudad', 1);
 insert into Lugar_4 values(5, 'Baruta', 'Municipio', 4);
 insert into Lugar_4 values(6, 'Los Samanes', 'Urbanizacion', 5);
 insert into Lugar_4 values(7, 'Av. Las Colinas', 'Avenida', 6);
-insert into Lugar_4 values(8, 'Edf Las Ternarias', 'Edfificio', 7);
+insert into Lugar_4 values(8, 'Edf Las Ternarias', 'Edificio', 7);
 insert into Lugar_4 values(9, 'El cafetal', 'Urbanizacion', 4);
 insert into Lugar_4 values(10, 'El limon', 'Calle', 9);
 insert into Lugar_4 values(11, 'Quinta Almeida', 'Casa', 10);
 insert into Lugar_4 values(12, 'Chacao', 'Municipio', 4);
 insert into Lugar_4 values(13, 'Calle Elice', 'Calle', 12);
-insert into Lugar_4 values(14, 'Edf Merwe', 'Edfificio', 13);
+insert into Lugar_4 values(14, 'Edf Merwe', 'Edificio', 13);
 insert into Lugar_4 values(15, 'La Guaira', 'Ciudad', 2);
 insert into Lugar_4 values(16, 'Catia La Mar', 'Municipio', 15);
 insert into Lugar_4 values(17, 'Av Balneario', 'Avenida', 16);
@@ -22,10 +22,10 @@ insert into Lugar_4 values(18, 'Quinta Pampa', 'Casa', 17);
 insert into Lugar_4 values(19, 'Pampatar', 'Municipio', 3);
 insert into Lugar_4 values(20, 'Calle JM Vargas', 'Calle' ,19);
 insert into Lugar_4 values(21, 'Castillo San Carlos de Barromeo', 'Casa', 20);
-insert into Lugar_4 values(22, 'Res Colinavila', 'Edf', 7);
+insert into Lugar_4 values(22, 'Res Colinavila', 'Edificio', 7);
 insert into Lugar_4 values(23, 'Quinta Pnooorab', 'Casa', 17);
-insert into Lugar_4 values(24, 'Juventus', 'Edf', 20);
-insert into Lugar_4 values(25, 'Las candelitas', 'Edf', 10);
+insert into Lugar_4 values(24, 'Juventus', 'Edificio', 20);
+insert into Lugar_4 values(25, 'Las candelitas', 'Edificio', 10);
 
 --Guarderias
 insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);
@@ -64,6 +64,13 @@ INSERT INTO Nino_4 VALUES ('V8108418', 'E', 'Armando', 'Gonzáles', '2014-05-21'
 INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
 INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'D', 'Luis', 'Ruiz', '2015-08-30', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'E', 'Ariana', 'Ruiz', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'F', 'Laura', 'Ruiz', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'G', 'José', 'Ruiz', '2016-10-12', 'M');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
@@ -76,6 +83,6 @@ insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 0414987102
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
 
 --Inscripción
-INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
 
 --Autorizado Buscar
