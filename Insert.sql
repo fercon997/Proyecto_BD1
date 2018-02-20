@@ -55,6 +55,16 @@ insert into Representante_4 values ('V20145701', 'Cristoff', 'Ruiz', 04129018764
 insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 04269018765, 02120918716, 02129108714, 'siso@hotmail.com', 'Contadora', 'C', 1, 25);
 insert into Representante_4 values ('E10917655', 'Danielle', 'Sturaro', 04169870191, 02129980198, 02126517891, 'atalancia@yahoo.net', 'Mafioso', 'S', 1, 22);
 
+-- Niño
+INSERT INTO Nino_4 VALUES ('V8108418', 'A', 'Diego', 'Gonzáles', '2012-06-21', 'M');
+INSERT INTO Nino_4 VALUES ('V8108418', 'B', 'Fernando', 'Gonzáles', '2013-03-17', 'M');
+INSERT INTO Nino_4 VALUES ('V8108418', 'C', 'Antonieta', 'Gonzáles', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V8108418', 'D', 'Daniela', 'Gonzáles', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V8108418', 'E', 'Armando', 'Gonzáles', '2014-05-21', 'M');
+INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
+INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
+INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
+
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
 insert into Autorizado_4 values ('V9214662', 'Juan', 'Pollizschter', 04167198427);
@@ -64,3 +74,8 @@ insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 0414987102
 
 --Actividades
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
+
+--Inscripción
+INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
+
+--Autorizado Buscar
