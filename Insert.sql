@@ -76,7 +76,11 @@ INSERT INTO Nino_4 VALUES ('V14910819', 'B', 'Carmen', 'Cañizales', '2012-09-11
 INSERT INTO Nino_4 VALUES ('V14910819', 'C', 'Selena', 'Cañizales', '2012-09-11', 'F');
 INSERT INTO Nino_4 VALUES ('V14910819', 'D', 'Rosita', 'Cañizales', '2012-09-11', 'F');
 INSERT INTO Nino_4 VALUES ('V14910819', 'E', 'Hector', 'Cañizales', '2015-02-28', 'M');
-
+INSERT INTO Nino_4 VALUES ('E10917655', 'A', 'Andrea', 'Sturaro', '2012-01-02', 'M');
+INSERT INTO Nino_4 VALUES ('E10917655', 'B', 'Concetta', 'Sturaro', '2012-12-28', 'F');
+INSERT INTO Nino_4 VALUES ('E10917655', 'C', 'Fabio', 'Sturaro', '2013-11-15', 'M');
+INSERT INTO Nino_4 VALUES ('E10917655', 'D', 'Giorgio', 'Sturaro', '2014-10-21', 'M');
+INSERT INTO Nino_4 VALUES ('E10917655', 'E', 'Giulia', 'Sturaro', '2015-12-03', 'F');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
