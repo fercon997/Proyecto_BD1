@@ -163,6 +163,13 @@ insert into Autorizado_4 values ('V12018977', 'Alfredo', 'Martinez', 04249108761
 insert into Autorizado_4 values ('V4987907', 'Sergio', 'Reveron', 04168901245);
 insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 04149871020);
 
+--Autorizado Buscar
+insert into autorizado_buscar_4 values ('V9187221', 'B', 'V9757397');
+insert into autorizado_buscar_4 values ('V9214662', 'A', 'V20775874');
+insert into autorizado_buscar_4 values ('V12018977', 'A', 'V12769574');
+insert into autorizado_buscar_4 values ('V4987907', 'A', 'V15748739');
+insert into autorizado_buscar_4 values ('V25987122', 'C', 'E10917655');
+
 --Actividades
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
 insert into Actividad_4 values(2, 'Natacion', 'Los niños aprenden a nadar con un instructor en un club seleccionado', 4, 1);
@@ -210,6 +217,7 @@ INSERT INTO inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', '2
 INSERT INTO inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', '2015-01-13', '08:00', '17:00');
 INSERT INTO inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
 INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
+
 --Pediatras
 insert into Pediatra_4 values (1 , 'Jose Feliciano' , 04123345621, 02121298331);
 insert into Pediatra_4 values (2 , 'Diego Garcia' , 04241948631, 02125359871);
@@ -328,9 +336,6 @@ insert into Padecimiento_enfermedad_4 values (3, 'A', 'V15748739', '2014-04-15')
 insert into Padecimiento_enfermedad_4 values (2, 'A', 'E21879397', '2016-11-01');
 insert into Padecimiento_enfermedad_4 values (4, 'A', 'V15748739', '2014-04-15');
 insert into Padecimiento_enfermedad_4 values (5, 'A', 'V9757397', '2017-08-11');
-
---Autorizado Buscar
-
 
 --Comida
 insert into comida_4 values(1, 'Proteina', 'Carne');

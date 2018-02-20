@@ -270,8 +270,8 @@ CREATE TABLE Padecimiento_alergia_4(
 
 CREATE TABLE autorizado_buscar_4(
   ci_autorizado varchar(10),
-  ci_representante varchar(10),
   letra_nino char(1),
+  ci_representante varchar(10),
   CONSTRAINT auth_buscar_pk PRIMARY KEY (ci_autorizado, ci_representante, letra_nino),
   CONSTRAINT ci_auth_buscar_fk FOREIGN KEY (ci_autorizado) REFERENCES Autorizado_4(ci),
   CONSTRAINT letra_nino_buscar_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES  Nino_4(letra, ci_representante)
