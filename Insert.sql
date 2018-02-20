@@ -71,6 +71,12 @@ INSERT INTO Nino_4 VALUES ('V20145701', 'D', 'Luis', 'Ruiz', '2015-08-30', 'M');
 INSERT INTO Nino_4 VALUES ('V20145701', 'E', 'Ariana', 'Ruiz', '2015-08-30', 'F');
 INSERT INTO Nino_4 VALUES ('V20145701', 'F', 'Laura', 'Ruiz', '2015-08-30', 'F');
 INSERT INTO Nino_4 VALUES ('V20145701', 'G', 'José', 'Ruiz', '2016-10-12', 'M');
+INSERT INTO Nino_4 VALUES ('V14910819', 'A', 'Sofía', 'Cañizales', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V14910819', 'B', 'Carmen', 'Cañizales', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V14910819', 'C', 'Selena', 'Cañizales', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V14910819', 'D', 'Rosita', 'Cañizales', '2012-09-11', 'F');
+INSERT INTO Nino_4 VALUES ('V14910819', 'E', 'Hector', 'Cañizales', '2015-02-28', 'M');
+
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
@@ -105,9 +111,9 @@ insert into Pediatra_4 values ('5' , 'Daniela Bustamante' , '04126521487' , '021
 
 --Juego
 insert into Juego_4 values ('1' , 'Lego');
-insert into Juego_4 values ('2' , 'Lanzar Pelota');	
-insert into Juego_4 values ('3' , 'Patear Pelota');	
-insert into Juego_4 values ('4' , 'Tacos');	
+insert into Juego_4 values ('2' , 'Lanzar Pelota');
+insert into Juego_4 values ('3' , 'Patear Pelota');
+insert into Juego_4 values ('4' , 'Tacos');
 insert into Juego_4 values ('5' , 'Triciclo');
 
 --Sintoma
