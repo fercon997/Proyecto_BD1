@@ -22,10 +22,10 @@ insert into Lugar_4 values(18, 'Quinta Pampa', 'Casa', 17);
 insert into Lugar_4 values(19, 'Pampatar', 'Municipio', 3);
 insert into Lugar_4 values(20, 'Calle JM Vargas', 'Calle' ,19);
 insert into Lugar_4 values(21, 'Castillo San Carlos de Barromeo', 'Casa', 20);
-insert into Lugar_4 values(22, 'Res Colinavila', 'Edf', 7);
+insert into Lugar_4 values(22, 'Res Colinavila', 'Edificio', 7);
 insert into Lugar_4 values(23, 'Quinta Pnooorab', 'Casa', 17);
 insert into Lugar_4 values(24, 'Juventus', 'Edf', 20);
-insert into Lugar_4 values(25, 'Las candelitas', 'Edf', 10);
+insert into Lugar_4 values(25, 'Las candelitas', 'Edificio', 10);
 
 --Guarderias
 insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);
@@ -74,7 +74,6 @@ insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 0414987102
 
 --Actividades
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
-<<<<<<< HEAD
 insert into Actividad_4 values(2, 'Natacion', 'Los niños aprenden a nadar con un instructor en un club seleccionado', 4, 1);
 insert into Actividad_4 values(3, 'Baby gym', 'Actividades recreativas para mantener activos a los mas pequeños', 1, 0);
 insert into Actividad_4 values(4, 'Matematica', 'Se les enseña lo básico de matematicas que requieren para entrar al colegio', 3, 0);
@@ -86,10 +85,8 @@ insert into Act_Guarderia_4 values('J764219187-2', 2, 200, 10, 40, 'V17958047');
 insert into Act_Guarderia_4 values ('J128487902-9', 3, 200, 3, 25, 'V9214662');
 insert into Act_Guarderia_4 values ('J516782778-4', 4, 200, 2, 40, 'V8176220');
 insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194');
-=======
 
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
 
 --Autorizado Buscar
->>>>>>> 6977aee55d5ed0cf5ceda62c20b87691d67c9a37
