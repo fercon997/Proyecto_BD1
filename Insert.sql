@@ -302,11 +302,18 @@ insert into Tratamiento_4 values (4, 5, 'B', 'V14910819', '350 ml');
 insert into Tratamiento_4 values (3, 1, 'C', 'E10917655', '25 mg');
 
 --Alergia
-insert into Alergia_4 values (1 , 'Al Ibuprofeno');
-insert into Alergia_4 values (2 , 'A los Camarones');
+insert into Alergia_4 values (1 , 'Maní');
+insert into Alergia_4 values (2 , 'Camarones');
 insert into Alergia_4 values (3 , 'Intolerante a la Lactosa');
-insert into Alergia_4 values (4 , 'A los Acaros');
-insert into Alergia_4 values (5 , 'Al gluten');
+insert into Alergia_4 values (4 , 'Acaros');
+insert into Alergia_4 values (5 , 'Gluten');
+
+-- Padecimiento Alergia
+insert into Padecimiento_alergia_4 values (1, 'B', 'V20775874');
+insert into Padecimiento_alergia_4 values (3, 'A', 'V24871662');
+insert into Padecimiento_alergia_4 values (5, 'A', 'V14910819');
+insert into Padecimiento_alergia_4 values (2, 'B', 'E10917655');
+insert into Padecimiento_alergia_4 values (4, 'C', 'V12769574');
 
 --Enfermedad
 insert into Enfermedad_4 values (1 , 'Lechina');
