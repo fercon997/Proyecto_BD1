@@ -6,18 +6,18 @@ insert into Lugar_4 values(2, 'Vargas', 'Estado');
 insert into Lugar_4 values(3, 'Nueva Esparta', 'Estado');
 insert into Lugar_4 values(4, 'Caracas', 'Ciudad', 1);
 insert into Lugar_4 values(5, 'Baruta', 'Municipio', 4);
-insert into Lugar_4 values(6, 'Los Samanes', 'Urb', 5);
-insert into Lugar_4 values(7, 'Av. Las Colinas', 'Av', 6);
-insert into Lugar_4 values(8, 'Edf Las Ternarias', 'Edf', 7);
-insert into Lugar_4 values(9, 'El cafetal', 'Urb', 4);
+insert into Lugar_4 values(6, 'Los Samanes', 'Urbanizacion', 5);
+insert into Lugar_4 values(7, 'Av. Las Colinas', 'Avenida', 6);
+insert into Lugar_4 values(8, 'Edf Las Ternarias', 'Edfificio', 7);
+insert into Lugar_4 values(9, 'El cafetal', 'Urbanizacion', 4);
 insert into Lugar_4 values(10, 'El limon', 'Calle', 9);
 insert into Lugar_4 values(11, 'Quinta Almeida', 'Casa', 10);
 insert into Lugar_4 values(12, 'Chacao', 'Municipio', 4);
 insert into Lugar_4 values(13, 'Calle Elice', 'Calle', 12);
-insert into Lugar_4 values(14, 'Edf Merwe', 'Edf', 13);
+insert into Lugar_4 values(14, 'Edf Merwe', 'Edfificio', 13);
 insert into Lugar_4 values(15, 'La Guaira', 'Ciudad', 2);
 insert into Lugar_4 values(16, 'Catia La Mar', 'Municipio', 15);
-insert into Lugar_4 values(17, 'Av Balneario', 'Av', 16);
+insert into Lugar_4 values(17, 'Av Balneario', 'Avenida', 16);
 insert into Lugar_4 values(18, 'Quinta Pampa', 'Casa', 17);
 insert into Lugar_4 values(19, 'Pampatar', 'Municipio', 3);
 insert into Lugar_4 values(20, 'Calle JM Vargas', 'Calle' ,19);
@@ -55,6 +55,16 @@ insert into Representante_4 values ('V20145701', 'Cristoff', 'Ruiz', 04129018764
 insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 04269018765, 02120918716, 02129108714, 'siso@hotmail.com', 'Contadora', 'C', 1, 25);
 insert into Representante_4 values ('E10917655', 'Danielle', 'Sturaro', 04169870191, 02129980198, 02126517891, 'atalancia@yahoo.net', 'Mafioso', 'S', 1, 22);
 
+-- Niño
+INSERT INTO Nino_4 VALUES ('V8108418', 'A', 'Diego', 'Gonzáles', '2012-06-21', 'M');
+INSERT INTO Nino_4 VALUES ('V8108418', 'B', 'Fernando', 'Gonzáles', '2013-03-17', 'M');
+INSERT INTO Nino_4 VALUES ('V8108418', 'C', 'Antonieta', 'Gonzáles', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V8108418', 'D', 'Daniela', 'Gonzáles', '2014-05-13', 'F');
+INSERT INTO Nino_4 VALUES ('V8108418', 'E', 'Armando', 'Gonzáles', '2014-05-21', 'M');
+INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
+INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
+INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
+
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
 insert into Autorizado_4 values ('V9214662', 'Juan', 'Pollizschter', 04167198427);
@@ -64,6 +74,7 @@ insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 0414987102
 
 --Actividades
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
+<<<<<<< HEAD
 insert into Actividad_4 values(2, 'Natacion', 'Los niños aprenden a nadar con un instructor en un club seleccionado', 4, 1);
 insert into Actividad_4 values(3, 'Baby gym', 'Actividades recreativas para mantener activos a los mas pequeños', 1, 0);
 insert into Actividad_4 values(4, 'Matematica', 'Se les enseña lo básico de matematicas que requieren para entrar al colegio', 3, 0);
@@ -75,3 +86,10 @@ insert into Act_Guarderia_4 values('J764219187-2', 2, 200, 10, 40, 'V17958047');
 insert into Act_Guarderia_4 values ('J128487902-9', 3, 200, 3, 25, 'V9214662');
 insert into Act_Guarderia_4 values ('J516782778-4', 4, 200, 2, 40, 'V8176220');
 insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194');
+=======
+
+--Inscripción
+INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
+
+--Autorizado Buscar
+>>>>>>> 6977aee55d5ed0cf5ceda62c20b87691d67c9a37

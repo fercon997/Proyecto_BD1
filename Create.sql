@@ -8,7 +8,7 @@ CREATE TABLE Lugar_4(
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
   Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo),
-  Constraint tipo_valid Check(tipo IN ('Estado', 'Ciudad', 'Municipio', 'Urb', 'Calle', 'Av', 'Casa', 'Edf'))
+  Constraint tipo_valid Check(tipo IN ('Estado', 'Ciudad', 'Municipio', 'Urbanizacion', 'Calle', 'Avenida', 'Casa', 'Edificio'))
 );
 
 CREATE TABLE Guarderia_4(
@@ -138,8 +138,7 @@ CREATE TABLE inscripcion_4(
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
   CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante),
   CONSTRAINT hora_desde_like CHECK (hora_desde LIKE('__:__')),
-  CONSTRAINT hora_hasta_insc_like CHECK (hora_hasta LIKE('__:__')),
-  CONSTRAINT letra_nino_insc_is_valid CHECK (letra_nino IN('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'))
+  CONSTRAINT hora_hasta_insc_like CHECK (hora_hasta LIKE('__:__'))
 );
 
 CREATE TABLE Parentesco_Padre_4(
@@ -185,7 +184,7 @@ CREATE TABLE Asistencia_4(
 
 CREATE TABLE Pediatra_4(
   Codigo numeric(10),
-  Nombre varchar(15) NOT NULL,
+  Nombre varchar(25) NOT NULL,
   Tlf_movil numeric(10) NOT NULL,
   Tlf_oficina numeric(10) NOT NULL,
   Constraint Pediatra_pk Primary Key(Codigo)
@@ -202,7 +201,7 @@ CREATE TABLE Atencion_4(
 
 CREATE TABLE Juego_4(
   Codigo numeric(10),
-  Nombre varchar(15) NOT NULL,
+  Nombre varchar(25) NOT NULL,
   Constraint Juego_pk Primary Key(Codigo)
 );
 
