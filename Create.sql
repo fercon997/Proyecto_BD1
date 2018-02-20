@@ -8,7 +8,7 @@ CREATE TABLE Lugar_4(
   cod_superior numeric(10),
   Constraint cod_dir_pk Primary Key(Codigo),
   Constraint cod_dir_fk Foreign Key(cod_superior) references Lugar_4(Codigo),
-  Constraint tipo_lugar_check CHECK (tipo IN ('Estado', 'Municipio', 'Parroquia', 'Urbanizacion', 'Calle', 'Avenida'))
+  Constraint tipo_valid Check(tipo IN ('Estado', 'Ciudad', 'Municipio', 'Urbanizacion', 'Calle', 'Avenida', 'Casa', 'Edificio'))
 );
 
 CREATE TABLE Guarderia_4(
