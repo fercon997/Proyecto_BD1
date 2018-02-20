@@ -122,7 +122,8 @@ CREATE TABLE Nino_4(
   Constraint CI_rep_Letra_nino_pk Primary Key(CI_representante, Letra),
   Constraint CI_rep_nino_fk Foreign Key(CI_representante) references Representante_4(CI),
   Constraint letra_nino_valid Check (Letra IN ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')),
-  Constraint sexo_valid Check(Sexo IN ('M', 'F'))
+  Constraint sexo_valid Check(Sexo IN ('M', 'F')),
+  Constraint nino_edad_valid Check( (Fecha_nacimiento - CURRENT_DATE) < 2550 AND (Fecha_nacimiento - CURRENT_DATE) >365)
 );
 
 CREATE TABLE inscripcion_4(
@@ -147,7 +148,7 @@ CREATE TABLE Parentesco_Padre_4(
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
   Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
   Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI),
-  Constraint parent_valid Check(Parentesco IN ('Padre', 'Madre'));
+  Constraint parent_valid Check(Parentesco IN ('Padre', 'Madre'))
 );
 
 CREATE TABLE Parentesco_nino_4(
