@@ -63,3 +63,4 @@ insert into Autorizado_4 values ('V4987907', 'Sergio', 'Reveron', 04168901245);
 insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 04149871020);
 
 --Actividades
+insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
