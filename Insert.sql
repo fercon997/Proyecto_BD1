@@ -64,6 +64,13 @@ INSERT INTO Nino_4 VALUES ('V8108418', 'E', 'Armando', 'Gonzáles', '2014-05-21'
 INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
 INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'D', 'Luis', 'Ruiz', '2015-08-30', 'M');
+INSERT INTO Nino_4 VALUES ('V20145701', 'E', 'Ariana', 'Ruiz', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'F', 'Laura', 'Ruiz', '2015-08-30', 'F');
+INSERT INTO Nino_4 VALUES ('V20145701', 'G', 'José', 'Ruiz', '2016-10-12', 'M');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
@@ -94,7 +101,7 @@ insert into Horario_Act_Guarderia_4 values('J516782778-4', 4, '2018-05-03', '10:
 insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:00', '16:00');
 
 --Inscripción
-INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
 
 --Pediatras
 insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331')
