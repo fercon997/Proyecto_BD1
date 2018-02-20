@@ -69,9 +69,9 @@ INSERT INTO Nino_4 VALUES ('V9757397', 'C', 'Armando', 'González', '2014-05-21'
 INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
 INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
-INSERT INTO Nino_4 VALUES ('V12769574', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
-INSERT INTO Nino_4 VALUES ('V12769574', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
-INSERT INTO Nino_4 VALUES ('V12769574', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'A', 'Rosana', 'Colina', '2012-01-14', 'F');
+INSERT INTO Nino_4 VALUES ('V12769574', 'B', 'Carlos', 'Colina', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'C', 'Laureano', 'Colina', '2013-02-26', 'M');
 INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Luis', 'Ruiz', '2015-08-30', 'M');
 INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Ariana', 'Ruiz', '2015-08-30', 'F');
 INSERT INTO Nino_4 VALUES ('E21879397', 'A', 'Laura', 'Messi', '2015-08-30', 'F');
@@ -86,6 +86,75 @@ INSERT INTO Nino_4 VALUES ('V15748739', 'B', 'Fabio', 'Gómez', '2013-11-15', 'M
 INSERT INTO Nino_4 VALUES ('E10917655', 'A', 'Concetta', 'Sturaro', '2012-12-28', 'F');
 INSERT INTO Nino_4 VALUES ('E10917655', 'B', 'Giorgio', 'Sturaro', '2014-10-21', 'M');
 INSERT INTO Nino_4 VALUES ('E10917655', 'C', 'Giulia', 'Sturaro', '2015-12-03', 'F');
+
+--Prentesco Padre
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V8108418', 'V8108418', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V8108418', 'V8108418', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V20145701', 'V20145701', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V20145701', 'V20145701', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'E21879397', 'E21879397', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'E21879397', 'E21879397', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V14910819', 'V14910819', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V14910819', 'V14910819', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V15748739', 'V15748739', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V15748739', 'V15748739', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'E10917655', 'E10917655', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'E10917655', 'E10917655', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'E10917655', 'E10917655', 'Padre');
+
+--Parentesco Niños
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V8108418', 'B', 'V8108418', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V8108418', 'A', 'V8108418', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V9757397', 'B', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V9757397', 'C', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V9757397', 'A', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V9757397', 'C', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V9757397', 'A', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V9757397', 'B', 'V9757397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V24871662', 'B', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V24871662', 'C', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V24871662', 'A', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V24871662', 'C', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V24871662', 'A', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V24871662', 'B', 'V24871662', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V12769574', 'B', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V12769574', 'C', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V12769574', 'A', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V12769574', 'C', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V12769574', 'A', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V12769574', 'B', 'V12769574', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V20145701', 'B', 'V20145701', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V20145701', 'A', 'V20145701', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'E21879397', 'B', 'E21879397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'E21879397', 'A', 'E21879397', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V14910819', 'B', 'V14910819', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V14910819', 'A', 'V14910819', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V20775874', 'B', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V20775874', 'C', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V20775874', 'A', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V20775874', 'C', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V20775874', 'A', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'V20775874', 'B', 'V20775874', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'V15748739', 'B', 'V15748739', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'V15748739', 'A', 'V15748739', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'E10917655', 'B', 'E10917655', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('A', 'E10917655', 'C', 'E10917655', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'E10917655', 'A', 'E10917655', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('B', 'E10917655', 'C', 'E10917655', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'E10917655', 'A', 'E10917655', 'Hermano');
+INSERT INTO Parentesco_nino_4 VALUES ('C', 'E10917655', 'B', 'E10917655', 'Hermano');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
@@ -118,12 +187,15 @@ insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
 INSERT INTO inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', '2014-09-11', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, 3, 'J764219187-2', 'V8108418', 'C', '2015-09-23', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, 4, 'J764219187-2', 'V8108418', 'D', '2015-09-23', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, 5, 'J764219187-2', 'V8108418', 'E', '2015-10-02', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2015, 3, 'J764219187-2', 'V9757397', 'A', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', '2015-10-02', '08:00', '18:00');
 INSERT INTO inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', '2014-08-18', '08:00', '18:00');
 INSERT INTO inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', '2015-08-28', '08:00', '18:00');
 INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '2018-01-18', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', '2013-02-25', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', '2014-09-14', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
 
 --Pediatras
 insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
