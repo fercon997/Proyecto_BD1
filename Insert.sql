@@ -196,20 +196,7 @@ INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '20
 INSERT INTO inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', '2013-02-25', '07:00', '17:00');
 INSERT INTO inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', '2014-09-14', '07:00', '17:00');
 INSERT INTO inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', '2016-09-12', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', '2016-09-12', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', '2016-09-23', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', '2018-01-10', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', '2013-09-20', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', '2013-09-20', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', '2013-09-12', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', '2013-09-12', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', '2016-09-25', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', '2013-01-10', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', '2015-01-20', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', '2015-01-13', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
+
 --Pediatras
 insert into Pediatra_4 values (1 , 'Jose Feliciano' , 04123345621, 02121298331);
 insert into Pediatra_4 values (2 , 'Diego Garcia' , 04241948631, 02125359871);
@@ -279,18 +266,21 @@ insert into Gusto_4 values (5, 'B', 'E10917655');
 insert into Gusto_4 values (5, 'C', 'E10917655');
 
 --Sintoma
-insert into Sintoma_4 values ('1' , 'Tos');
-insert into Sintoma_4 values ('2' , 'Dolor de Barriga');
-insert into Sintoma_4 values ('3' , 'Fiebre');
-insert into Sintoma_4 values ('4' , 'Dolor de Garganta');
-insert into Sintoma_4 values ('5' , 'Mocos');
+insert into Sintoma_4 values (1 , 'Tos');
+insert into Sintoma_4 values (2 , 'Dolor de Barriga');
+insert into Sintoma_4 values (3 , 'Fiebre');
+insert into Sintoma_4 values (4 , 'Dolor de Garganta');
+insert into Sintoma_4 values (5 , 'Mocos');
 
 --Medicamento
-insert into Medicamento_4 values ('1' , 'Atamel');
-insert into Medicamento_4 values ('2' , 'Ibuprofeno');
-insert into Medicamento_4 values ('3' , 'Jarabe para la Tos');
-insert into Medicamento_4 values ('4' , 'Antialérgico');
-insert into Medicamento_4 values ('5' , 'Manzanilla');
+insert into Medicamento_4 values (1 , 'Atamel');
+insert into Medicamento_4 values (2 , 'Ibuprofeno');
+insert into Medicamento_4 values (3 , 'Jarabe para la Tos');
+insert into Medicamento_4 values (4 , 'Antialérgico');
+insert into Medicamento_4 values (5 , 'Manzanilla');
+
+-- Tratamiento
+insert into Tratamiento_4 values (1, 3, 'A', 'V8108418');
 
 --Alergia
 insert into Alergia_4 values ('1' , 'Al Ibuprofeno');
