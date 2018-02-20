@@ -187,7 +187,7 @@ CREATE TABLE Asistencia_4(
 
 CREATE TABLE Pediatra_4(
   Codigo numeric(10),
-  Nombre varchar(15) NOT NULL,
+  Nombre varchar(25) NOT NULL,
   Tlf_movil numeric(10) NOT NULL,
   Tlf_oficina numeric(10) NOT NULL,
   Constraint Pediatra_pk Primary Key(Codigo)
@@ -204,7 +204,7 @@ CREATE TABLE Atencion_4(
 
 CREATE TABLE Juego_4(
   Codigo numeric(10),
-  Nombre varchar(15) NOT NULL,
+  Nombre varchar(25) NOT NULL,
   Constraint Juego_pk Primary Key(Codigo)
 );
 
