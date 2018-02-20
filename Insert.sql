@@ -104,7 +104,7 @@ insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
 
 --Pediatras
-insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331')
+insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
 insert into Pediatra_4 values ('2' , 'Diego Garcia' , '04241948631' , '02125359871');
 insert into Pediatra_4 values ('3' , 'Mariana Mendez' , '04167821231' ,  '02128721345');
 insert into Pediatra_4 values ('4' , 'Javier Clemente' , '04143561891' , '02123457896');
