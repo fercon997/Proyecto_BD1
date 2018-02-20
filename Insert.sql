@@ -289,18 +289,25 @@ insert into Tratamiento_4 values (4, 5, 'B', 'V14910819', '350 ml');
 insert into Tratamiento_4 values (3, 1, 'C', 'E10917655', '25 mg');
 
 --Alergia
-insert into Alergia_4 values ('1' , 'Al Ibuprofeno');
-insert into Alergia_4 values ('2' , 'A los Camarones');
-insert into Alergia_4 values ('3' , 'Intolerante a la Lactosa');
-insert into Alergia_4 values ('4' , 'A los Acaros');
-insert into Alergia_4 values ('5' , 'Al gluten');
+insert into Alergia_4 values (1 , 'Al Ibuprofeno');
+insert into Alergia_4 values (2 , 'A los Camarones');
+insert into Alergia_4 values (3 , 'Intolerante a la Lactosa');
+insert into Alergia_4 values (4 , 'A los Acaros');
+insert into Alergia_4 values (5 , 'Al gluten');
 
 --Enfermedad
-insert into Enfermedad_4 values ('1' , 'Lechina');
-insert into Enfermedad_4 values ('2' , 'Paperas');
-insert into Enfermedad_4 values ('3' , 'Asma');
-insert into Enfermedad_4 values ('4' , 'Sarampión');
-insert into Enfermedad_4 values ('5' , 'Otitis');
+insert into Enfermedad_4 values (1 , 'Lechina');
+insert into Enfermedad_4 values (2 , 'Paperas');
+insert into Enfermedad_4 values (3 , 'Asma');
+insert into Enfermedad_4 values (4 , 'Sarampión');
+insert into Enfermedad_4 values (5 , 'Otitis');
+
+--Padecimiento Enfermedad
+insert into Padecimiento_enfermedad_4 values (1, 'B', 'V12769574', '2013-12-04');
+insert into Padecimiento_enfermedad_4 values (3, 'A', 'V15748739', '2014-04-15');
+insert into Padecimiento_enfermedad_4 values (2, 'A', 'E21879397', '2016-11-01');
+insert into Padecimiento_enfermedad_4 values (4, 'A', 'V15748739', '2014-04-15');
+insert into Padecimiento_enfermedad_4 values (5, 'A', 'V9757397', '2017-08-11');
 
 --Autorizado Buscar
 
