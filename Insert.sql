@@ -89,4 +89,46 @@ insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194')
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2012-09-02', '07:00', '17:00');
 
+--Pediatras
+insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
+insert into Pediatra_4 values ('2' , 'Diego Garcia' , '04241948631' , '02125359871');
+insert into Pediatra_4 values ('3' , 'Mariana Mendez' , '04167821231' ,  '02128721345');
+insert into Pediatra_4 values ('4' , 'Javier Clemente' , '04143561891' , '02123457896');
+insert into Pediatra_4 values ('5' , 'Daniela Bustamante' , '04126521487' , '02123567823');
+
+--Juego
+insert into Juego_4 values ('1' , 'Lego');
+insert into Juego_4 values ('2' , 'Lanzar Pelota');	
+insert into Juego_4 values ('3' , 'Patear Pelota');	
+insert into Juego_4 values ('4' , 'Tacos');	
+insert into Juego_4 values ('5' , 'Triciclo');
+
+--Sintoma
+insert into Sintoma_4 values ('1' , 'Tos');
+insert into Sintoma_4 values ('2' , 'Dolor de Barriga');
+insert into Sintoma_4 values ('3' , 'Fiebre');
+insert into Sintoma_4 values ('4' , 'Dolor de Garganta');
+insert into Sintoma_4 values ('5' , 'Mocos');
+
+--Medicamento
+insert into Medicamento_4 values ('1' , 'Atamel');
+insert into Medicamento_4 values ('2' , 'Ibuprofeno');
+insert into Medicamento_4 values ('3' , 'Jarabe para la Tos');
+insert into Medicamento_4 values ('4' , 'Antialérgico');
+insert into Medicamento_4 values ('5' , 'Manzanilla');
+
+--Alergia
+insert into Alergia_4 values ('1' , 'Al Ibuprofeno');
+insert into Alergia_4 values ('2' , 'A los Camarones');
+insert into Alergia_4 values ('3' , 'Intolerante a la Lactosa');
+insert into Alergia_4 values ('4' , 'A los Acaros');
+insert into Alergia_4 values ('5' , 'Al gluten');
+
+--Enfermedad
+insert into Enfermedad_4 values ('1' , 'Lechina');
+insert into Enfermedad_4 values ('2' , 'Paperas');
+insert into Enfermedad_4 values ('3' , 'Asma');
+insert into Enfermedad_4 values ('4' , 'Sarampión');
+insert into Enfermedad_4 values ('5' , 'Otitis');
+
 --Autorizado Buscar
