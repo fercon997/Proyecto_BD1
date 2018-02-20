@@ -69,9 +69,9 @@ INSERT INTO Nino_4 VALUES ('V9757397', 'C', 'Armando', 'González', '2014-05-21'
 INSERT INTO Nino_4 VALUES ('V24871662', 'A', 'María', 'Guerra', '2013-02-15', 'F');
 INSERT INTO Nino_4 VALUES ('V24871662', 'B', 'Adrián', 'Guerra', '2014-03-21', 'M');
 INSERT INTO Nino_4 VALUES ('V24871662', 'C', 'Jesús', 'Guerra', '2016-12-25', 'M');
-INSERT INTO Nino_4 VALUES ('V12769574', 'A', 'Rosana', 'Ruiz', '2012-01-14', 'F');
-INSERT INTO Nino_4 VALUES ('V12769574', 'B', 'Carlos', 'Ruiz', '2013-02-26', 'M');
-INSERT INTO Nino_4 VALUES ('V12769574', 'C', 'Laureano', 'Ruiz', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'A', 'Rosana', 'Colina', '2012-01-14', 'F');
+INSERT INTO Nino_4 VALUES ('V12769574', 'B', 'Carlos', 'Colina', '2013-02-26', 'M');
+INSERT INTO Nino_4 VALUES ('V12769574', 'C', 'Laureano', 'Colina', '2013-02-26', 'M');
 INSERT INTO Nino_4 VALUES ('V20145701', 'A', 'Luis', 'Ruiz', '2015-08-30', 'M');
 INSERT INTO Nino_4 VALUES ('V20145701', 'B', 'Ariana', 'Ruiz', '2015-08-30', 'F');
 INSERT INTO Nino_4 VALUES ('E21879397', 'A', 'Laura', 'Messi', '2015-08-30', 'F');
@@ -86,6 +86,33 @@ INSERT INTO Nino_4 VALUES ('V15748739', 'B', 'Fabio', 'Gómez', '2013-11-15', 'M
 INSERT INTO Nino_4 VALUES ('E10917655', 'A', 'Concetta', 'Sturaro', '2012-12-28', 'F');
 INSERT INTO Nino_4 VALUES ('E10917655', 'B', 'Giorgio', 'Sturaro', '2014-10-21', 'M');
 INSERT INTO Nino_4 VALUES ('E10917655', 'C', 'Giulia', 'Sturaro', '2015-12-03', 'F');
+
+--Prentezco Padre
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V8108418', 'V8108418', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V8108418', 'V8108418', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V9757397', 'V9757397', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V24871662', 'V24871662', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V12769574', 'V12769574', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V20145701', 'V20145701', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V20145701', 'V20145701', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'E21879397', 'E21879397', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'E21879397', 'E21879397', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V14910819', 'V14910819', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V14910819', 'V14910819', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'V20775874', 'V20775874', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'V15748739', 'V15748739', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'V15748739', 'V15748739', 'Madre');
+INSERT INTO Parentesco_Padre_4 VALUES ('A', 'E10917655', 'E10917655', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('B', 'E10917655', 'E10917655', 'Padre');
+INSERT INTO Parentesco_Padre_4 VALUES ('C', 'E10917655', 'E10917655', 'Padre');
 
 --Autorizado
 insert into Autorizado_4 values ('V9187221', 'Jorge', 'Ramirez', 04166908170);
