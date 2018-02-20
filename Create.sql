@@ -143,7 +143,7 @@ CREATE TABLE Parentesco_Padre_4(
   Letra_nino char(1),
   CI_principal varchar(10),
   CI_representante varchar(10),
-  Parentesco varchar(10),
+  Parentesco varchar(5),
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
   Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
   Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI),
@@ -155,7 +155,7 @@ CREATE TABLE Parentesco_nino_4(
   CI_principal varchar(10),
   Letra_pariente char(1),
   CI_pariente_principal varchar(10),
-  Parentesco varchar(5) NOT NULL,
+  Parentesco varchar(10) NOT NULL,
   Constraint Letra_nino_CI_ppal_parent_nino1_y_nino2_pk Primary Key(Letra_nino, CI_principal, Letra_pariente, CI_pariente_principal),
   Constraint Letra_nino_CI_ppal_parent_nino1_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
   Constraint Letra_nino_CI_ppal_parent_nino2_fk Foreign Key(Letra_pariente, CI_pariente_principal) references Nino_4(Letra, CI_representante)
