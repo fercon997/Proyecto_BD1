@@ -331,7 +331,7 @@ CREATE TABLE comida_4(
   tipo VARCHAR(13) NOT NULL,
   nombre VARCHAR(20) NOT NULL,
   CONSTRAINT cod_comida_pk PRIMARY KEY (codigo),
-  CONSTRAINT tipo_comida_is_valid CHECK (tipo IN ('Proteina, Carbohidrato, Jugo natural, Ensalada'))
+  CONSTRAINT tipo_comida_is_valid CHECK (tipo IN ('Proteina', 'Carbohidrato', 'Jugo natural', 'Ensalada'))
 );
 
 CREATE TABLE comida_plato_4(

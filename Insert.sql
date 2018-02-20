@@ -240,3 +240,18 @@ insert into Enfermedad_4 values ('4' , 'Sarampión');
 insert into Enfermedad_4 values ('5' , 'Otitis');
 
 --Autorizado Buscar
+
+
+--Comida
+insert into comida_4 values(1, 'Proteina', 'Carne');
+insert into comida_4 values(2, 'Carbohidrato', 'Papas');
+insert into comida_4 values(3, 'Ensalada', 'Ensalada Cesar');
+insert into comida_4 values(4, 'Jugo natural', 'Juego de lechosa');
+insert into comida_4 values(5, 'Jugo natural', 'Juego de fresa');
+
+--Platos
+insert into plato_4 values(1, 'Plato del lunes');
+insert into plato_4 values(2, 'Plato del martes');
+insert into plato_4 values(3, 'Plato del miercoles');
+insert into plato_4 values(4, 'Plato del jueves');
+insert into plato_4 values(5, 'Plato del viernes');
