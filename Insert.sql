@@ -108,6 +108,13 @@ insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:
 
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', '2014-09-11', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 3, 'J764219187-2', 'V8108418', 'C', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 4, 'J764219187-2', 'V8108418', 'D', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 5, 'J764219187-2', 'V8108418', 'E', '2015-10-02', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', '2014-08-18', '07:00', '18.00');
+INSERT INTO inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', '2015-08-28', '07:00', '18.00');
+INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '2018-01-18', '07:00', '18.00');
 
 --Pediatras
 insert into Pediatra_4 values ('1' , 'Jose Feliciano' , '04123345621' , '02121298331');
