@@ -123,7 +123,7 @@ CREATE TABLE Nino_4(
   Constraint CI_rep_nino_fk Foreign Key(CI_representante) references Representante_4(CI),
   Constraint letra_nino_valid Check (Letra IN ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')),
   Constraint sexo_valid Check(Sexo IN ('M', 'F')),
-  Constraint nino_edad_valid Check( (Fecha_nacimiento - CURRENT_DATE) < 2550 AND (Fecha_nacimiento - CURRENT_DATE) >365)
+  Constraint nino_edad_valid Check( (CURRENT_DATE - Fecha_nacimiento) < 2550 AND (CURRENT_DATE - Fecha_nacimiento) >365)
 );
 
 CREATE TABLE inscripcion_4(
