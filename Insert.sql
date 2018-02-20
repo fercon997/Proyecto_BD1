@@ -64,3 +64,14 @@ insert into Autorizado_4 values ('V25987122', 'Augusto', 'Marchisio', 0414987102
 
 --Actividades
 insert into Actividad_4 values (1, 'Futbol', 'Los niños juegan futbol con un balón 3', 4, 1);
+insert into Actividad_4 values(2, 'Natacion', 'Los niños aprenden a nadar con un instructor en un club seleccionado', 4, 1);
+insert into Actividad_4 values(3, 'Baby gym', 'Actividades recreativas para mantener activos a los mas pequeños', 1, 0);
+insert into Actividad_4 values(4, 'Matematica', 'Se les enseña lo básico de matematicas que requieren para entrar al colegio', 3, 0);
+insert into Actividad_4 values(5, 'Siesta', 'Los niños duermen, ¡Es importante descansar!', 1, 0);
+
+--Actividad-guarderia
+insert into Act_Guarderia_4 values('J298754541-5', 1, 200, 6, 30, 'V24718965');
+insert into Act_Guarderia_4 values('J764219187-2', 2, 200, 10, 40, 'V17958047');
+insert into Act_Guarderia_4 values ('J128487902-9', 3, 200, 3, 25, 'V9214662');
+insert into Act_Guarderia_4 values ('J516782778-4', 4, 200, 2, 40, 'V8176220');
+insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194');
