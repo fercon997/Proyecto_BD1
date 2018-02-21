@@ -6,8 +6,7 @@
 package View;
 
 import Controller.GuarderiaController;
-import Model.DBConnection;
-import Model.GuarderiaDAO;
+import Model.*;
 
 /**
  *
@@ -15,7 +14,7 @@ import Model.GuarderiaDAO;
  */
 public class InitialView extends javax.swing.JFrame {
     
-     private GuarderiaDAO modeloGuarderia = new GuarderiaDAO();
+     private GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
      boolean comboBoxCreado = false;
 
@@ -36,6 +35,8 @@ public class InitialView extends javax.swing.JFrame {
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias9);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias10);
        comboBoxCreado = true;
+       editGuarderiaButton.setEnabled(false);
+       deleteGuarderiaButton.setEnabled(false);
     }
 
     /**
@@ -69,6 +70,9 @@ public class InitialView extends javax.swing.JFrame {
         ciudadLabel1 = new javax.swing.JLabel();
         horaEntradaLabel = new javax.swing.JLabel();
         horaSalidaLabel = new javax.swing.JLabel();
+        addGuarderiaButton = new javax.swing.JButton();
+        deleteGuarderiaButton = new javax.swing.JButton();
+        editGuarderiaButton = new javax.swing.JButton();
         jPanelInscripcion = new javax.swing.JPanel();
         jComboGuarderias1 = new javax.swing.JComboBox<>();
         jPanelNinos = new javax.swing.JPanel();
@@ -133,7 +137,7 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(rifLabel))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                                 .addComponent(horaEntradaLabel))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -207,25 +211,53 @@ public class InitialView extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
+        addGuarderiaButton.setText("Agregar");
+
+        deleteGuarderiaButton.setText("Eliminar");
+
+        editGuarderiaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editGuarderiaButton.setToolTipText("");
+        editGuarderiaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editGuarderiaButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
         jPanelInicio.setLayout(jPanelInicioLayout);
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(739, Short.MAX_VALUE)
+            .addGroup(jPanelInicioLayout.createSequentialGroup()
+                .addContainerGap(682, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboGuarderias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
+                        .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboGuarderias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
+                                .addComponent(editGuarderiaButton)
+                                .addGap(10, 10, 10)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
+                        .addComponent(addGuarderiaButton)
+                        .addGap(64, 64, 64)
+                        .addComponent(deleteGuarderiaButton)
+                        .addGap(57, 57, 57))))
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(43, 43, 43)
+                .addComponent(editGuarderiaButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addGuarderiaButton)
+                    .addComponent(deleteGuarderiaButton))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
@@ -250,7 +282,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
@@ -275,7 +307,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelNinosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
@@ -300,7 +332,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
@@ -325,7 +357,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Representantes", jPanelRepresentantes);
@@ -350,7 +382,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPersonalLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jComboGuarderias5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
@@ -375,7 +407,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -400,7 +432,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelComidaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -425,7 +457,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -450,7 +482,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelMultasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -475,7 +507,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelTarifasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tarifas", jPanelTarifas);
@@ -571,6 +603,10 @@ public class InitialView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboGuarderias10ActionPerformed
 
+    private void editGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editGuarderiaButtonMouseClicked
+        controladorGuarderia.editGuarderia();;
+    }//GEN-LAST:event_editGuarderiaButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -607,9 +643,12 @@ public class InitialView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JLabel calleLabel;
     public javax.swing.JLabel casaLabel;
     public javax.swing.JLabel ciudadLabel1;
+    public javax.swing.JButton deleteGuarderiaButton;
+    public javax.swing.JButton editGuarderiaButton;
     public javax.swing.JLabel estadoLabel;
     public javax.swing.JLabel horaEntradaLabel;
     public javax.swing.JLabel horaSalidaLabel;

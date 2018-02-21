@@ -1,38 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
-import Model.Guarderia;
-import Model.GuarderiaDAO;
-import Model.Lugar;
-import Model.LugarDAO;
+import Model.*;
+import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author Ignacio
- */
 public class GuarderiaController {
     
     InitialView initialView;
-    GuarderiaDAO modeloGuarderia;
-    LugarDAO modeloLugar = new LugarDAO();
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
+    LugarDAOImpl modeloLugar = new LugarDAOImpl();
     
     public boolean changing = false;
     private ArrayList<String> rifs;
 
-    public GuarderiaController(InitialView initialView, GuarderiaDAO modeloGuarderia) {
+    public GuarderiaController(InitialView initialView, GuarderiaDAOImpl modeloGuarderia) {
         this.initialView = initialView;
         this.modeloGuarderia = modeloGuarderia;
         loadRifs();
     }
     
-    public void loadRifs() {
+    private void loadRifs() {
         rifs = modeloGuarderia.getRifs();
     }
     
@@ -49,6 +38,11 @@ public class GuarderiaController {
     public void guarderiaChanged(JComboBox cb) {
         changing = true;
         int numGuard = cb.getSelectedIndex();
+        if (numGuard == 0) {
+            disableButtons(); 
+        } else {
+            enableButtons();
+        }
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
         initialView.jComboGuarderias1.setSelectedIndex(numGuard);
         initialView.jComboGuarderias2.setSelectedIndex(numGuard);
@@ -65,6 +59,16 @@ public class GuarderiaController {
             showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
+    }
+    
+    private void disableButtons() {
+        initialView.editGuarderiaButton.setEnabled(false);
+        initialView.deleteGuarderiaButton.setEnabled(false);
+    }
+    
+    private void enableButtons() {
+        initialView.editGuarderiaButton.setEnabled(true);
+        initialView.deleteGuarderiaButton.setEnabled(true);
     }
     
     public void showDatosGuarderia(int index) {
@@ -88,13 +92,19 @@ public class GuarderiaController {
             initialView.ciudadLabel1.setText("");
             initialView.estadoLabel.setText("");
         } else {
-            Lugar lugar = modeloLugar.getDatosLugar(rifs.get(index));
+            Lugar lugar = modeloLugar.getDatosLugar(rifs.get(index), "rif");
             initialView.casaLabel.setText(lugar.getCasa());
             initialView.calleLabel.setText(lugar.getCalle());
             initialView.municipioLabel.setText(lugar.getMunicipio());
             initialView.ciudadLabel1.setText(lugar.getCiudad());
             initialView.estadoLabel.setText(lugar.getEstado());
         }
+    }
+    
+    public void editGuarderia() {
+        EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
+        editGuarderiaView.setVisible(true);
+        editGuarderiaView.setLocationRelativeTo(null);
     }
     
 }

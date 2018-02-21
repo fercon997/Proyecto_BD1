@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.sql.DriverManager;
@@ -11,10 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-/**
- *
- * @author Ignacio
- */
+
 public class DBConnection {
     Connection connection;
     
@@ -32,7 +24,7 @@ public class DBConnection {
         System.out.println("El driver de PostgreSQL fue encontrada!");
         
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/proyecto", "postgres", "fc080997");
+            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/proyecto", "postgres", "");
         } catch(SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
             System.out.println("Conexión fallida");
