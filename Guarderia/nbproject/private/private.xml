@@ -6,7 +6,10 @@
             <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Model/DBConnection.java</file>
             <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/View/InitialView.java</file>
             <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Controller/GuarderiaController.java</file>
+            <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Model/Guarderia.java</file>
+            <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Model/Lugar.java</file>
             <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Model/GuarderiaDAO.java</file>
+            <file>file:/Users/Ignacio/Documents/UCAB/Semestre%206/Sistema%20de%20Bases%20de%20Datos%20I/Proyecto_BD1/Guarderia/src/Model/LugarDAO.java</file>
         </group>
     </open-files>
 </project-private>
