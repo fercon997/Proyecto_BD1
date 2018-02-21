@@ -30,6 +30,7 @@ public class GuarderiaController {
         ArrayList<Guarderia> guarderias = new ArrayList();
         guarderias = modeloGuarderia.loadGuarderias();
         int size = guarderias.size();
+        cb.addItem("Guarderías");
         for (int i = 0; i < size; i++) {
             System.out.println(guarderias.get(i).getComboText());
             cb.addItem(guarderias.get(i).getComboText());
