@@ -2,5 +2,5 @@ package Model;
 
 public interface LugarDAO {
     public void insertLugar(Lugar lugar);
-    public Lugar getDatosLugar(String rif);
+    public Lugar getDatosLugar(String codigo, String tipoCodigo);
 }

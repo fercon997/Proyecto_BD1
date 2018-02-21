@@ -76,7 +76,7 @@ public class GuarderiaController {
             initialView.ciudadLabel1.setText("");
             initialView.estadoLabel.setText("");
         } else {
-            Lugar lugar = modeloLugar.getDatosLugar(rifs.get(index));
+            Lugar lugar = modeloLugar.getDatosLugar(rifs.get(index), "rif");
             initialView.casaLabel.setText(lugar.getCasa());
             initialView.calleLabel.setText(lugar.getCalle());
             initialView.municipioLabel.setText(lugar.getMunicipio());

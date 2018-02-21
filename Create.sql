@@ -327,14 +327,14 @@ CREATE TABLE autorizado_buscar_4(
 );
 
 CREATE TABLE act_inscripcion_4(
-  consecutivo_inscripcion NUMERIC(10),
   ano_inscripcion NUMERIC(4),
+  consecutivo_inscripcion NUMERIC(10),
   rif_guarderia VARCHAR(12),
+  ci_representante varchar(10),
+  letra_nino CHAR(1),
   cod_actividad NUMERIC(10),
   fecha_actividad DATE,
   hora_inicio_act time,
-  letra_nino CHAR(1),
-  ci_representante varchar(10),
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),

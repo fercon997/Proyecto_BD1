@@ -1,46 +1,44 @@
 \connect proyecto
 
 --Lugares
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Miranda', 'Estado');
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Vargas', 'Estado');
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Nueva Esparta', 'Estado');
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Caracas', 'Ciudad', 1);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Baruta', 'Municipio', 4);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Los samanes', 'Urbanizacion', 4);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av. Las Colinas', 'Avenida', 5);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf. Las Ternarias', 'Edificio', 6);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'El cafetal', 'Urbanizacion', 4);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'El limon', 'Calle', 8);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Almeida', 'Casa', 9);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Chacao', 'Municipio', 4);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle Elice', 'Calle', 11);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf Merwe', 'Edificio', 12);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'La Guaira', 'Ciudad', 2);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Catia La Mar', 'Municipio', 14);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av Balneario', 'Avenida', 15);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pampa', 'Casa', 16);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Pampatar', 'Ciudad', 3);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Maneiro', 'Municipio', 18);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle JM Vargas', 'Calle' ,19);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Castillo San Carlos de Barromeo', 'Casa', 20);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Res Colinavila', 'Edificio', 6);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pnooorab', 'Casa', 16);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Juventus', 'Edificio', 20);
-insert into Lugar_4 values(nextval('Lugar_sequence'), 'Las candelitas', 'Edificio', 9);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Miranda', 'Estado'); --1
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Vargas', 'Estado'); --2
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Nueva Esparta', 'Estado'); --3
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Caracas', 'Ciudad', 1); --4
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Baruta', 'Municipio', 4); --5
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av. Las Colinas', 'Avenida', 5); --6
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf. Las Ternarias', 'Edificio', 6); --7
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'El limon', 'Calle', 5); --8
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Almeida', 'Casa', 8); --9
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Chacao', 'Municipio', 4); --10
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle Elice', 'Calle', 10); --11
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf Merwe', 'Edificio', 11); --12
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'La Guaira', 'Ciudad', 2); --13
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Catia La Mar', 'Municipio', 13); --14
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av Balneario', 'Avenida', 14); --15
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pampa', 'Casa', 15); --16
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Pampatar', 'Ciudad', 3); --17
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Maneiro', 'Municipio', 17); --18
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle JM Vargas', 'Calle' ,18); --19
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Castillo San Carlos de Barromeo', 'Casa', 19); --20
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Res Colinavila', 'Edificio', 6); --21
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pnooorab', 'Casa', 15); --22
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Juventus', 'Edificio', 19); --23
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Las candelitas', 'Edificio', 8); --24
 
 --Guarderias
 insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 7);
-insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 10);
-insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 13);
-insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 17);
-insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 21);
+insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 9);
+insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 12);
+insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 16);
+insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 20);
 
 --Personal
-insert into Personal_4 values ('V9214662' , 'Juan', 'Pollizschter', 04167198427, 'Universitario', 200, 1, '2017-12-02', 22, 'J128487902-9' );
-insert into Personal_4 values ('V24718965' , 'Enrique', 'Pollizschter', 04167198578, 'Bachillerato', 200, 1, '2018-01-20', 22, 'J298754541-5');
+insert into Personal_4 values ('V9214662' , 'Juan', 'Pollizschter', 04167198427, 'Universitario', 200, 1, '2017-12-02', 7, 'J128487902-9' );
+insert into Personal_4 values ('V24718965' , 'Enrique', 'Pollizschter', 04167198578, 'Bachillerato', 200, 1, '2018-01-20', 7, 'J298754541-5');
 insert into Personal_4 values ('V8176220', 'Maria', 'Hernandez', 04249810876, 'Postgrado', 400, 1, '2016-09-17', 23, 'J516782778-4');
-insert into Personal_4 values ('V17958047', 'Ernesto', 'Dawae', 04269108765, 'TSU', 400, 1, '2017-05-20', 22, 'J764219187-2');
-insert into Personal_4 values ('E25978194', 'Andrea', 'Pirlo', 04129876178, 'Universitario', 400, 1, '2017-11-10', 24, 'J279154667-2');
+insert into Personal_4 values ('V17958047', 'Ernesto', 'Dawae', 04269108765, 'TSU', 400, 1, '2017-05-20', 24, 'J764219187-2');
+insert into Personal_4 values ('E25978194', 'Andrea', 'Pirlo', 04129876178, 'Universitario', 400, 1, '2017-11-10', 23, 'J279154667-2');
 
 --Experiencia
 insert into Experiencia_4 values ('V9214662', 'Reformatorio');
@@ -52,14 +50,14 @@ insert into Experiencia_4 values ('E25978194', 'Academia de futbol infantil');
 --Representantes
 insert into Representante_4 values ('V8108418', 'Henrietta', 'Zazalli', 04245019827, 02129448721, 02129871451, 'Hzaza@gmail.com', 'Albañil', 'C', 1, 23 );
 insert into Representante_4 values ('V24871662', 'Daniel', 'Guerra', 04167810091, 02959876612, 02958876542, 'losada@gmail.com', 'Ingeniero', 'S', 1, 24);
-insert into Representante_4 values ('V20145701', 'Cristoff', 'Ruiz', 04129018764, 02129087651, 02127650918, 'ffRui@gmail.com', 'Profesor', 'C', 1, 25);
-insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 04269018765, 02120918716, 02129108714, 'siso@hotmail.com', 'Contadora', 'C', 1, 25);
+insert into Representante_4 values ('V20145701', 'Cristoff', 'Ruiz', 04129018764, 02129087651, 02127650918, 'ffRui@gmail.com', 'Profesor', 'C', 1, 24);
+insert into Representante_4 values ('V14910819', 'Claudia', 'Marcano', 04269018765, 02120918716, 02129108714, 'siso@hotmail.com', 'Contadora', 'C', 1, 24);
 insert into Representante_4 values ('E10917655', 'Danielle', 'Sturaro', 04169870191, 02129980198, 02126517891, 'atalancia@yahoo.net', 'Mafioso', 'S', 1, 22);
-insert into Representante_4 values ('V9757397', 'Gabriela', 'Correia', 04141862963, 02127549738, 02129758467, 'gaby007@gmail.com', 'Profesora', 'C', 1, 22);
-insert into Representante_4 values ('V12769574', 'Jorge', 'Colina', 04168479356, 02957935621, 02958768933, 'jorgecol@hotmail.com', 'Psicólogo', 'S', 1, 24);
+insert into Representante_4 values ('V9757397', 'Gabriela', 'Correia', 04141862963, 02127549738, 02129758467, 'gaby007@gmail.com', 'Profesora', 'C', 1, 12);
+insert into Representante_4 values ('V12769574', 'Jorge', 'Colina', 04168479356, 02957935621, 02958768933, 'jorgecol@hotmail.com', 'Psicólogo', 'S', 1, 12);
 insert into Representante_4 values ('E21879397', 'Matías', 'Messi', 04247893873, 02121231232, 02126894783, 'messimatias@gmail.com', 'Chef', 'C', 1, 23);
-insert into Representante_4 values ('V20775874', 'Valeria', 'Gutierrez', 04128746736, 02126749839, 02128476378, 'gutivaleria@gmail.com', 'Ingeniero', 'C', 1, 8);
-insert into Representante_4 values ('V15748739', 'María', 'Guevara', 04267578476, 02957389873, 02956748937, 'maryguevara@hotmail.com', 'Periodista', 'C', 1, 24);
+insert into Representante_4 values ('V20775874', 'Valeria', 'Gutierrez', 04128746736, 02126749839, 02128476378, 'gutivaleria@gmail.com', 'Ingeniero', 'C', 1, 9);
+insert into Representante_4 values ('V15748739', 'María', 'Guevara', 04267578476, 02957389873, 02956748937, 'maryguevara@hotmail.com', 'Periodista', 'C', 1, 7);
 
 -- Niño
 INSERT INTO Nino_4 VALUES ('V8108418', 'A', 'Diego', 'Gonzáles', '2012-06-21', 'M');
@@ -193,31 +191,58 @@ insert into Horario_Act_Guarderia_4 values('J516782778-4', 4, '2018-05-03', '10:
 insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:00', '16:00');
 
 --Inscripción
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2014, nextval('Inscripcion_sequence'), 'J298754541-5', 'V8108418', 'B', '2014-09-11', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J764219187-2', 'V9757397', 'A', '2015-09-23', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J764219187-2', 'V9757397', 'B', '2015-09-23', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J764219187-2', 'V9757397', 'C', '2015-10-02', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2014, nextval('Inscripcion_sequence'), 'J516782778-4', 'V24871662', 'A', '2014-08-18', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J516782778-4', 'V24871662', 'B', '2015-08-28', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2018, nextval('Inscripcion_sequence'), 'J516782778-4', 'V24871662', 'C', '2018-01-18', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J128487902-9', 'V12769574', 'A', '2013-02-25', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2014, nextval('Inscripcion_sequence'), 'J128487902-9', 'V12769574', 'B', '2014-09-14', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2014, nextval('Inscripcion_sequence'), 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, nextval('Inscripcion_sequence'), 'J764219187-2', 'V20145701', 'A', '2016-09-12', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, nextval('Inscripcion_sequence'), 'J764219187-2', 'V20145701', 'B', '2016-09-12', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, nextval('Inscripcion_sequence'), 'J516782778-4', 'E21879397', 'A', '2016-09-23', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2018, nextval('Inscripcion_sequence'), 'J516782778-4', 'E21879397', 'B', '2018-01-10', '08:00', '18:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J128487902-9', 'V14910819', 'A', '2013-09-20', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J128487902-9', 'V14910819', 'B', '2013-09-20', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J298754541-5', 'V20775874', 'A', '2013-09-12', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J298754541-5', 'V20775874', 'B', '2013-09-12', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, nextval('Inscripcion_sequence'), 'J298754541-5', 'V20775874', 'C', '2016-09-25', '07:00', '17:00');
-INSERT INTO inscripcion_4 values (2013, nextval('Inscripcion_sequence'), 'J279154667-2', 'V15748739', 'A', '2013-01-10', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J279154667-2', 'V15748739', 'B', '2015-01-20', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2015, nextval('Inscripcion_sequence'), 'J279154667-2', 'E10917655', 'A', '2015-01-13', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2016, nextval('Inscripcion_sequence'), 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
-INSERT INTO inscripcion_4 values (2017, nextval('Inscripcion_sequence'), 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', '2014-09-11', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 3, 'J764219187-2', 'V9757397', 'A', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', '2015-09-23', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', '2015-10-02', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', '2014-08-18', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', '2015-08-28', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', '2018-01-18', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', '2013-02-25', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', '2014-09-14', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', '2014-09-14', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', '2016-09-12', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', '2016-09-12', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', '2016-09-23', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', '2018-01-10', '08:00', '18:00');
+INSERT INTO inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', '2013-09-20', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', '2013-09-20', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', '2013-09-12', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', '2013-09-12', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', '2016-09-25', '07:00', '17:00');
+INSERT INTO inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', '2013-01-10', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', '2015-01-20', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', '2015-01-13', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', '2016-01-06', '08:00', '17:00');
+INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
+
+--Actividad-Inscripción
+insert into act_inscripcion_4 values (2015, 3, 'J764219187-2', 'V9757397', 'A', 2, '2018-04-05', '09:00', 200);
+insert into act_inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', 2, '2018-04-05', '09:00', 200);
+insert into act_inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', 2, '2018-04-05', '09:00', 200);
+insert into act_inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', 2, '2018-04-05', '09:00', 200);
+insert into act_inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', 2, '2018-04-05', '09:00', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', 3, '2018-04-04', '09:00', 200);
+insert into act_inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', 3, '2018-04-04', '09:00', 200);
+insert into act_inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', 3, '2018-04-04', '09:00', 200);
+insert into act_inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', 3, '2018-04-04', '09:00', 200);
+insert into act_inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', 3, '2018-04-04', '09:00', 200);
+insert into act_inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', 4, '2018-05-03', '10:00', 200);
+insert into act_inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', 4, '2018-05-03', '10:00', 200);
+insert into act_inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', 4, '2018-05-03', '10:00', 200);
+insert into act_inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', 4, '2018-05-03', '10:00', 200);
+insert into act_inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', 4, '2018-05-03', '10:00', 200);
+insert into act_inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', 5, '2018-04-14', '14:00', 200);
+insert into act_inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', 5, '2018-04-14', '14:00', 200);
+insert into act_inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', 5, '2018-04-14', '14:00', 200);
+insert into act_inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', 5, '2018-04-14', '14:00', 200);
+insert into act_inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', 5, '2018-04-14', '14:00', 200);
 
 --Asistencia
 INSERT INTO asistencia_4 values ('2016-01-07', 24, 2016, 'E10917655', 'B', NULL, 'V9187221', '08:15', '16:50', 'SI');
