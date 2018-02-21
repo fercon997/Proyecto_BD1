@@ -6,6 +6,7 @@ insert into Lugar_4 values(nextval('Lugar_sequence'), 'Vargas', 'Estado');
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Nueva Esparta', 'Estado');
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Caracas', 'Ciudad', 1);
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Baruta', 'Municipio', 4);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Los samanes', 'Urbanizacion', 4);
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av. Las Colinas', 'Avenida', 5);
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf. Las Ternarias', 'Edificio', 6);
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'El cafetal', 'Urbanizacion', 4);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Model.*;
@@ -10,20 +5,16 @@ import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author Ignacio
- */
 public class GuarderiaController {
     
     InitialView initialView;
-    GuarderiaDAO modeloGuarderia;
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
     
     public boolean changing = false;
     private ArrayList<String> rifs;
 
-    public GuarderiaController(InitialView initialView, GuarderiaDAO modeloGuarderia) {
+    public GuarderiaController(InitialView initialView, GuarderiaDAOImpl modeloGuarderia) {
         this.initialView = initialView;
         this.modeloGuarderia = modeloGuarderia;
         loadRifs();

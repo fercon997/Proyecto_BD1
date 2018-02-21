@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
-<<<<<<< HEAD
- * @author fercon997
- */
 public class Lugar {
     int codigo;
     String nombre;
@@ -22,6 +12,7 @@ public class Lugar {
     private String estado;
 
     public Lugar() {
+        
     }
 
     public Lugar(int codigo, String nombre, String tipo, int codigo_superior) {
