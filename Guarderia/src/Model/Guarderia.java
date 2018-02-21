@@ -5,7 +5,7 @@
  */
 package Model;
 
-import java.time.LocalTime;
+import java.sql.Time;
 
 /**
  *
@@ -16,8 +16,8 @@ public class Guarderia {
     private String comboText;
     private String nombre;
     private String costoMensualidad;
-    private LocalTime horaEntrada;
-    private LocalTime horaSalida;
+    private Time horaEntrada;
+    private Time horaSalida;
 
     public String getRif() {
         return rif;
@@ -51,19 +51,19 @@ public class Guarderia {
         this.costoMensualidad = costoMensualidad;
     }
 
-    public LocalTime getHoraEntrada() {
+    public Time getHoraEntrada() {
         return horaEntrada;
     }
 
-    public void setHoraEntrada(LocalTime horaEntrada) {
+    public void setHoraEntrada(Time horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
 
-    public LocalTime getHoraSalida() {
+    public Time getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(LocalTime horaSalida) {
+    public void setHoraSalida(Time horaSalida) {
         this.horaSalida = horaSalida;
     }    
 }

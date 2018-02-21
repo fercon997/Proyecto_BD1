@@ -5,6 +5,50 @@ CREATE SEQUENCE Lugar_sequence
   start 1
   increment 1;
 
+CREATE SEQUENCE Actividad_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Inscripcion_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Pediatra_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Juego_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Sintoma_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Medicamento_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Alergia_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Enfermedad_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Comida_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Plato_sequence
+  start 1
+  increment 1;
+
+CREATE SEQUENCE Menu_sequence
+  start 1
+  increment 1;
+
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
   Nombre varchar(50) NOT NULL,
