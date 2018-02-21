@@ -28,11 +28,11 @@ insert into Lugar_4 values(24, 'Juventus', 'Edificio', 20);
 insert into Lugar_4 values(25, 'Las candelitas', 'Edificio', 10);
 
 --Guarderias
-insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);
+insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 7);
 insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 10);
-insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 14);
+insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 13);
 insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 17);
-insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 21);
+insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 20);
 
 --Personal
 insert into Personal_4 values ('V9214662' , 'Juan', 'Pollizschter', 04167198427, 'Universitario', 200, 1, '2017-12-02', 22, 'J128487902-9' );
@@ -220,9 +220,9 @@ INSERT INTO inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', '2
 
 --Asistencia
 INSERT INTO asistencia_4 values ('2016-01-07', 24, 2016, 'E10917655', 'B', NULL, 'V9187221', '08:15', '16:50', 'SI');
-INSERT INTO asistencia_4 values ('2016-09-27', 20, 2016, 'V15748739', 'C', NULL, 'V9214662', '08:05', '16:55', 'NO');
-INSERT INTO asistencia_4 values ('2013-10-03', 1, 2013, 'V8108418', 'A', 'V8108418', NULL '07:05', '16:55', 'NO');
-INSERT INTO asistencia_4 values ('2014-10-25', 2, 2014, 'V8108418', 'B', NULL, 'V12018977' '07:25', '16:45', 'SI');
+INSERT INTO asistencia_4 values ('2016-09-27', 20, 2016, 'V20775874', 'C', NULL, 'V9214662', '08:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2013-10-03', 1, 2013, 'V8108418', 'A', 'V8108418', NULL, '07:05', '16:55', 'NO');
+INSERT INTO asistencia_4 values ('2014-10-25', 2, 2014, 'V8108418', 'B', NULL, 'V12018977', '07:25', '16:45', 'SI');
 INSERT INTO asistencia_4 values ('2015-11-03', 5, 2015, 'V9757397', 'C', 'V9757397', NULL, '08:05', '17:55', 'NO');
 
 --Pediatras
