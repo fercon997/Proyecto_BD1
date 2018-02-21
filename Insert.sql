@@ -1,31 +1,31 @@
 \connect proyecto
 
 --Lugares
-insert into Lugar_4 values(1, 'Miranda', 'Estado');
-insert into Lugar_4 values(2, 'Vargas', 'Estado');
-insert into Lugar_4 values(3, 'Nueva Esparta', 'Estado');
-insert into Lugar_4 values(4, 'Caracas', 'Ciudad', 1);
-insert into Lugar_4 values(5, 'Baruta', 'Municipio', 4);
-insert into Lugar_4 values(6, 'Los Samanes', 'Urbanizacion', 5);
-insert into Lugar_4 values(7, 'Av. Las Colinas', 'Avenida', 6);
-insert into Lugar_4 values(8, 'Edf. Las Ternarias', 'Edificio', 7);
-insert into Lugar_4 values(9, 'El cafetal', 'Urbanizacion', 4);
-insert into Lugar_4 values(10, 'El limon', 'Calle', 9);
-insert into Lugar_4 values(11, 'Quinta Almeida', 'Casa', 10);
-insert into Lugar_4 values(12, 'Chacao', 'Municipio', 4);
-insert into Lugar_4 values(13, 'Calle Elice', 'Calle', 12);
-insert into Lugar_4 values(14, 'Edf Merwe', 'Edificio', 13);
-insert into Lugar_4 values(15, 'La Guaira', 'Ciudad', 2);
-insert into Lugar_4 values(16, 'Catia La Mar', 'Municipio', 15);
-insert into Lugar_4 values(17, 'Av Balneario', 'Avenida', 16);
-insert into Lugar_4 values(18, 'Quinta Pampa', 'Casa', 17);
-insert into Lugar_4 values(19, 'Pampatar', 'Municipio', 3);
-insert into Lugar_4 values(20, 'Calle JM Vargas', 'Calle' ,19);
-insert into Lugar_4 values(21, 'Castillo San Carlos de Barromeo', 'Casa', 20);
-insert into Lugar_4 values(22, 'Res Colinavila', 'Edificio', 7);
-insert into Lugar_4 values(23, 'Quinta Pnooorab', 'Casa', 17);
-insert into Lugar_4 values(24, 'Juventus', 'Edificio', 20);
-insert into Lugar_4 values(25, 'Las candelitas', 'Edificio', 10);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Miranda', 'Estado');
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Vargas', 'Estado');
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Nueva Esparta', 'Estado');
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Caracas', 'Ciudad', 1);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Baruta', 'Municipio', 4);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Los Samanes', 'Urbanizacion', 5);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av. Las Colinas', 'Avenida', 6);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf. Las Ternarias', 'Edificio', 7);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'El cafetal', 'Urbanizacion', 4);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'El limon', 'Calle', 9);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Almeida', 'Casa', 10);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Chacao', 'Municipio', 4);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle Elice', 'Calle', 12);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Edf Merwe', 'Edificio', 13);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'La Guaira', 'Ciudad', 2);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Catia La Mar', 'Municipio', 15);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Av Balneario', 'Avenida', 16);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pampa', 'Casa', 17);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Pampatar', 'Municipio', 3);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Calle JM Vargas', 'Calle' ,19);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Castillo San Carlos de Barromeo', 'Casa', 20);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Res Colinavila', 'Edificio', 7);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Quinta Pnooorab', 'Casa', 17);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Juventus', 'Edificio', 20);
+insert into Lugar_4 values(nextval('Lugar_sequence'), 'Las candelitas', 'Edificio', 10);
 
 --Guarderias
 insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 8);
