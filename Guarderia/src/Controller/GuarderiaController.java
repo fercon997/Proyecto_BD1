@@ -17,13 +17,13 @@ import javax.swing.JComboBox;
 public class GuarderiaController {
     
     InitialView initialView;
-    GuarderiaDAO modeloGuarderia;
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
     
     public boolean changing = false;
     private ArrayList<String> rifs;
 
-    public GuarderiaController(InitialView initialView, GuarderiaDAO modeloGuarderia) {
+    public GuarderiaController(InitialView initialView, GuarderiaDAOImpl modeloGuarderia) {
         this.initialView = initialView;
         this.modeloGuarderia = modeloGuarderia;
         loadRifs();

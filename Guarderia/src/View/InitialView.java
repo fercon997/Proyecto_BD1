@@ -6,8 +6,7 @@
 package View;
 
 import Controller.GuarderiaController;
-import Model.DBConnection;
-import Model.GuarderiaDAO;
+import Model.*;
 
 /**
  *
@@ -15,7 +14,7 @@ import Model.GuarderiaDAO;
  */
 public class InitialView extends javax.swing.JFrame {
     
-     private GuarderiaDAO modeloGuarderia = new GuarderiaDAO();
+     private GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
      boolean comboBoxCreado = false;
 

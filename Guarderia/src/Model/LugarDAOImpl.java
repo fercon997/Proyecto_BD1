@@ -40,6 +40,7 @@ public class LugarDAOImpl implements LugarDAO {
         
     }
     
+    @Override
     public Lugar getDatosLugar(String rif) {
         Connection connection = con.connectToPostgres();
         Lugar lugar = new Lugar();
