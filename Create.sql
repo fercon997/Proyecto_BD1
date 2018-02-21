@@ -1,6 +1,10 @@
 CREATE DATABASE Proyecto;
 \connect proyecto
 
+CREATE SEQUENCE Lugar_sequence
+  start 1
+  increment 1;
+
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
   Nombre varchar(50) NOT NULL,
