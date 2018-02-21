@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -20,7 +21,7 @@ public class GuarderiaController {
         loadRifs();
     }
     
-    public void loadRifs() {
+    private void loadRifs() {
         rifs = modeloGuarderia.getRifs();
     }
     
@@ -37,6 +38,11 @@ public class GuarderiaController {
     public void guarderiaChanged(JComboBox cb) {
         changing = true;
         int numGuard = cb.getSelectedIndex();
+        if (numGuard == 0) {
+            disableButtons(); 
+        } else {
+            enableButtons();
+        }
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
         initialView.jComboGuarderias1.setSelectedIndex(numGuard);
         initialView.jComboGuarderias2.setSelectedIndex(numGuard);
@@ -53,6 +59,16 @@ public class GuarderiaController {
             showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
+    }
+    
+    private void disableButtons() {
+        initialView.editGuarderiaButton.setEnabled(false);
+        initialView.deleteGuarderiaButton.setEnabled(false);
+    }
+    
+    private void enableButtons() {
+        initialView.editGuarderiaButton.setEnabled(true);
+        initialView.deleteGuarderiaButton.setEnabled(true);
     }
     
     public void showDatosGuarderia(int index) {
@@ -83,6 +99,12 @@ public class GuarderiaController {
             initialView.ciudadLabel1.setText(lugar.getCiudad());
             initialView.estadoLabel.setText(lugar.getEstado());
         }
+    }
+    
+    public void editGuarderia() {
+        EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
+        editGuarderiaView.setVisible(true);
+        editGuarderiaView.setLocationRelativeTo(null);
     }
     
 }
