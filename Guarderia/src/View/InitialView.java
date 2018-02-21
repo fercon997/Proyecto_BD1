@@ -19,7 +19,11 @@ public class InitialView extends javax.swing.JFrame {
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
 
     public InitialView() {
-       
+       initComponents();
+       this.setTitle("Guarderías");
+       this.setResizable(false);
+       this.setLocationRelativeTo(null);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias);
     }
 
     /**
@@ -48,7 +52,6 @@ public class InitialView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboGuarderias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboGuarderias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboGuarderiasActionPerformed(evt);

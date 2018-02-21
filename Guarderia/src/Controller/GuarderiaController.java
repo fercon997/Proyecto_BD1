@@ -23,16 +23,16 @@ public class GuarderiaController {
     public GuarderiaController(InitialView initialView, GuarderiaDAO modeloGuarderia) {
         this.initialView = initialView;
         this.modeloGuarderia = modeloGuarderia;
-        this.llenarComboBoxGuarderias(initialView.jComboGuarderias);
     }
     
     public void llenarComboBoxGuarderias(JComboBox cb) {
+        System.out.println("ComboBox1: " + cb);
         ArrayList<Guarderia> guarderias = new ArrayList();
         guarderias = modeloGuarderia.loadGuarderias();
         int size = guarderias.size();
         for (int i = 0; i < size; i++) {
             System.out.println(guarderias.get(i).getComboText());
-            //cb.addItem(guarderias.get(i).getComboText());
+            cb.addItem(guarderias.get(i).getComboText());
         }
     }
 }
