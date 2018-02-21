@@ -178,7 +178,8 @@ CREATE TABLE Asistencia_4(
   Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino),
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI),
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),
-  Constraint Comio_valid Check(Comio IN ('SI', 'NO'))
+  Constraint Comio_valid Check(Comio IN ('SI', 'NO')),
+  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
 CREATE TABLE Pediatra_4(
@@ -348,22 +349,24 @@ CREATE TABLE menu_4(
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
-  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif)
+  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
+  CONSTRAINT fecha_semana_valid Check( Extract(DOW FROM fecha) != 6 AND Extract(DOW FROM fecha) != 0)
 );
 
 CREATE TABLE factura_menu_4(
   fecha DATE,
   cons_inscripcion NUMERIC(10),
   ano_inscripcion NUMERIC(4),
-  letra_nino CHAR(1),
   ci_representante varchar(10),
+  letra_nino CHAR(1),
   numero_menu NUMERIC(8),
   fecha_menu DATE,
   numero_trans NUMERIC(20) NOT NULL,
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
   CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),
-  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha)
+  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
 CREATE TABLE menu_semanal_4(
