@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,9 +19,9 @@ import java.util.ArrayList;
  */
 public class GuarderiaDAO {
     DBConnection con = new DBConnection();
-    Connection connection = con.connectToPostgres();
     
     public ArrayList<Guarderia> loadGuarderias() {
+        Connection connection = con.connectToPostgres();
         ArrayList listaGuarderias = new ArrayList();
         Guarderia guarderia;
         String sql = "SELECT g.rif, l.nombre " + 
@@ -34,11 +36,13 @@ public class GuarderiaDAO {
                 guarderia.setComboText(rs.getString(2) + " (" + rs.getString(1) + ")");
                 listaGuarderias.add(guarderia);
             }
+            rs.close();
+            st.close();
+            connection.close();
         } catch(SQLException e) {
             System.out.println("Error");
             e.getStackTrace();
         }
-        
         return listaGuarderias;
     }
 }
