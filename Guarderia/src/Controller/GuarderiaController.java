@@ -102,9 +102,11 @@ public class GuarderiaController {
     }
     
     public void editGuarderia() {
-        EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
-        editGuarderiaView.setVisible(true);
-        editGuarderiaView.setLocationRelativeTo(null);
+        if (initialView.editGuarderiaButton.isEnabled()) {
+            EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
+            editGuarderiaView.setVisible(true);
+            editGuarderiaView.setLocationRelativeTo(null);
+        }
     }
     
 }
