@@ -6,6 +6,10 @@
 package View;
 
 import Controller.AddGuarderiaController;
+import java.sql.Date;
+import java.util.Calendar;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 
 /**
  *
@@ -54,6 +58,12 @@ public class AddGuarderiaView extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         calleComboBox = new javax.swing.JComboBox<>();
         casaComboBox = new javax.swing.JComboBox<>();
+        Date date = new Date(0);
+        SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+        horaEntradaSpinner = new javax.swing.JSpinner(sm);
+        Date date2 = new Date(1);
+        SpinnerDateModel sm2 = new SpinnerDateModel(date2, null, null, Calendar.HOUR_OF_DAY);
+        horaSalidaSpinner = new javax.swing.JSpinner(sm2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -106,6 +116,12 @@ public class AddGuarderiaView extends javax.swing.JDialog {
 
         casaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Edificio" }));
 
+        JSpinner.DateEditor de = new JSpinner.DateEditor(horaEntradaSpinner, "HH:mm");
+        horaEntradaSpinner.setEditor(de);
+
+        JSpinner.DateEditor de2 = new JSpinner.DateEditor(horaSalidaSpinner, "HH:mm");
+        horaSalidaSpinner.setEditor(de2);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -123,11 +139,15 @@ public class AddGuarderiaView extends javax.swing.JDialog {
                                 .addGap(107, 107, 107)
                                 .addComponent(rifTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(76, 76, 76)
-                                .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(horaSalidaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(horaEntradaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(12, 12, 12)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,10 +199,14 @@ public class AddGuarderiaView extends javax.swing.JDialog {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel2))
                             .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel3)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel4))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(horaEntradaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(horaSalidaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -190,8 +214,7 @@ public class AddGuarderiaView extends javax.swing.JDialog {
                         .addGap(29, 29, 29)
                         .addComponent(jLabel7)
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel8)
-                        .addGap(53, 53, 53))
+                        .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel5)
@@ -247,6 +270,8 @@ public class AddGuarderiaView extends javax.swing.JDialog {
     public javax.swing.JTextField casaTextField;
     public javax.swing.JComboBox<String> ciudadComboBox;
     public javax.swing.JComboBox<String> estadoComboBox;
+    public javax.swing.JSpinner horaEntradaSpinner;
+    public javax.swing.JSpinner horaSalidaSpinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

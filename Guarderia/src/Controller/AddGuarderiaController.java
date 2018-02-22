@@ -10,6 +10,7 @@ import Model.GuarderiaDAOImpl;
 import Model.Lugar;
 import Model.LugarDAOImpl;
 import View.AddGuarderiaView;
+import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -73,6 +74,13 @@ public class AddGuarderiaController {
         guarderia.setConstoTransporte(0);
         guarderia.setCostoAgoDic(0);
         guarderia.setCostoHoraExtra(0);
-        //modeloGuarderia.saveGuarderia(guarderia);
+        java.util.Date utilDate = (java.util.Date) addGuarderiaView.horaEntradaSpinner.getValue();
+        java.sql.Time sqlTime = new java.sql.Time(utilDate.getTime());
+        guarderia.setHoraEntrada(sqlTime);
+        utilDate = (java.util.Date) addGuarderiaView.horaSalidaSpinner.getValue();
+        sqlTime = new java.sql.Time(utilDate.getTime());
+        guarderia.setHoraSalida(sqlTime);
+        guarderia.setCodDireccion(codigo);
+        modeloGuarderia.saveGuarderia(guarderia);
     }
 }
