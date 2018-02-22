@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import View.AddGuarderiaView;
 import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
@@ -106,6 +107,11 @@ public class GuarderiaController {
             EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
             editGuarderiaView.setVisible(true);
         }
+    }
+    
+    public void addGuarderia() {
+        AddGuarderiaView addGuarderiaView = new AddGuarderiaView(initialView, true);
+        addGuarderiaView.setVisible(true);
     }
     
 }

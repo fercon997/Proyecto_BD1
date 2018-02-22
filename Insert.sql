@@ -27,11 +27,11 @@ insert into Lugar_4 values(nextval('Lugar_sequence'), 'Juventus', 'Edificio', 19
 insert into Lugar_4 values(nextval('Lugar_sequence'), 'Las candelitas', 'Edificio', 8); --24
 
 --Guarderias
-insert into Guarderia_4 values ('J298754541-5',1200, 500, 400, 1400, 250, '08:00', '18:00', 7);
-insert into Guarderia_4 values ('J764219187-2', 1250, 450, 500, 1500, 285, '08:30', '18:00', 9);
-insert into Guarderia_4 values ('J128487902-9', 1400, 500,  500, 1500, 400, '08:00', '17:00', 12);
-insert into Guarderia_4 values ('J516782778-4', 1100, 400, 400, 1200, 200, '07:00', '19:00', 16);
-insert into Guarderia_4 values ('J279154667-2', 1200, 500, 400, 1400, 250, '08:00', '18:00', 20);
+insert into Guarderia_4 values ('J298754541-5', 'Los niñitos de mami', 1200, 500, 400, 1400, 250, '08:00', '18:00', 7);
+insert into Guarderia_4 values ('J764219187-2', 'Bebés como en casa', 1250, 450, 500, 1500, 285, '08:30', '18:00', 9);
+insert into Guarderia_4 values ('J128487902-9', 'Amamos a su bebé como en casa', 1400, 500,  500, 1500, 400, '08:00', '17:00', 12);
+insert into Guarderia_4 values ('J516782778-4', 'Los columpios', 1100, 400, 400, 1200, 200, '07:00', '19:00', 16);
+insert into Guarderia_4 values ('J279154667-2', 'Casa grande', 1200, 500, 400, 1400, 250, '08:00', '18:00', 20);
 
 --Personal
 insert into Personal_4 values ('V9214662' , 'Juan', 'Pollizschter', 04167198427, 'Universitario', 200, 1, '2017-12-02', 7, 'J128487902-9' );

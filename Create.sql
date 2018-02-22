@@ -61,6 +61,7 @@ CREATE TABLE Lugar_4(
 
 CREATE TABLE Guarderia_4(
   RIF varchar(12),
+  nombre varchar(50) NOT NULL,
   Costo_mensualidad numeric(15) NOT NULL,
   Costo_multa numeric(10) NOT NULL,
   Costo_transporte numeric(10) NOT NULL,

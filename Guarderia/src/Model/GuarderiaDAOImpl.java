@@ -43,24 +43,22 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
         Connection connection = con.connectToPostgres();
         ArrayList listaGuarderias = new ArrayList();
         Guarderia guarderia;
-        String sql = "SELECT g.rif, l.nombre " + 
-                "FROM guarderia_4 g, lugar_4 l, lugar_4 ll " +
-                "where g.cod_direccion = ll.codigo and ll.cod_superior = l.codigo;";
+        String sql = "SELECT nombre " + 
+                "FROM guarderia_4;";
         try {
             Statement st;
             st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 guarderia = new Guarderia();
-                guarderia.setComboText(rs.getString(2) + " (" + rs.getString(1) + ")");
+                guarderia.setComboText(rs.getString(1));
                 listaGuarderias.add(guarderia);
             }
             rs.close();
             st.close();
             connection.close();
         } catch(SQLException e) {
-            System.out.println("Error");
-            e.getStackTrace();
+            System.out.println("Error: " + e);
         }
         return listaGuarderias;
     }
