@@ -141,7 +141,7 @@ public class LugarDAOImpl implements LugarDAO {
             st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
-                codigo = rs.getInt(codigo);
+                codigo = rs.getInt(1);
             }
             rs.close();
             st.close();
