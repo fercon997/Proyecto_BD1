@@ -58,6 +58,7 @@ public class AddGuarderiaController {
         calle.setTipo(String.valueOf(addGuarderiaView.calleComboBox.getSelectedItem()));
         System.out.println("Hola 2 " + municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         calle.setCodigo_superior(municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
-        modeloLugar.addDireccion(casa, calle);
+        int codigo = modeloLugar.addDireccion(casa, calle);
+        
     }
 }

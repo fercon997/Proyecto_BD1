@@ -9,6 +9,15 @@ public class Guarderia {
     private String costoMensualidad;
     private Time horaEntrada;
     private Time horaSalida;
+    private int codDireccion;
+
+    public int getCodDireccion() {
+        return codDireccion;
+    }
+
+    public void setCodDireccion(int codDireccion) {
+        this.codDireccion = codDireccion;
+    }
 
     public String getRif() {
         return rif;

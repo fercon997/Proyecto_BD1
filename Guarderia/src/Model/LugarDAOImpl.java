@@ -152,7 +152,7 @@ public class LugarDAOImpl implements LugarDAO {
         return codigo;
     }
     
-    public void addDireccion(Lugar casa, Lugar calle) {
+    public int addDireccion(Lugar casa, Lugar calle) {
         Connection connection = con.connectToPostgres();
         String sql = "INSERT INTO lugar_4 (codigo, nombre, tipo, cod_superior) values (nextval('Lugar_sequence'), ?, ?, ?)";
         try {
@@ -162,6 +162,7 @@ public class LugarDAOImpl implements LugarDAO {
             pps.setInt(3, calle.getCodigo_superior());
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+            pps.close();
         } catch (SQLException ex) {
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -175,9 +176,25 @@ public class LugarDAOImpl implements LugarDAO {
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
-            connection.close();
          } catch (SQLException ex) {
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        sql = "SELECT codigo FROM lugar_4 WHERE tipo IN ('Casa', 'Edificio');";
+        int codigo = 0;
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                codigo = rs.getInt(1);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return codigo;
     }
 }
