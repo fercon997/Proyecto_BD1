@@ -186,7 +186,6 @@ public class LugarDAOImpl implements LugarDAO {
             while(rs.next()) {
                 codigo = rs.getInt(1);
             }
-            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             rs.close();
             st.close();
             connection.close();

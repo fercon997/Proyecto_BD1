@@ -71,7 +71,7 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
     public Guarderia getDatosGuarderia(String rif) {
         Connection connection = con.connectToPostgres();
         Guarderia guarderia = new Guarderia();
-        String sql = "SELECT horario_entrada, horario_salida FROM Guarderia_4 WHERE RIF = '" + rif + "';";
+        String sql = "SELECT horario_entrada, horario_salida, cod_direccion FROM Guarderia_4 WHERE RIF = '" + rif + "';";
         try {
             Statement st;
             st = connection.createStatement();
@@ -79,6 +79,7 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
             while(rs.next()) {
                 guarderia.setHoraEntrada(rs.getTime(1));
                 guarderia.setHoraSalida(rs.getTime(2));
+                guarderia.setCodDireccion(rs.getInt(3));
             }
             rs.close();
             st.close();
@@ -100,11 +101,28 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
             pps.setInt(3, guarderia.getCostoMensualidad());
             pps.setInt(4, guarderia.getCostoMulta());
             pps.setInt(5, guarderia.getConstoTransporte());
-            pps.setInt(6, guarderia.getConstoTransporte());
-            pps.setInt(7, guarderia.getCostoAgoDic());
-            pps.setInt(8, guarderia.getCostoHoraExtra());
-            pps.setTime(9, null);
-            pps.setTime(10, null);
+            pps.setInt(6, guarderia.getCostoAgoDic());
+            pps.setInt(7, guarderia.getCostoHoraExtra());
+            pps.setTime(8, guarderia.getHoraEntrada());
+            pps.setTime(9, guarderia.getHoraSalida());
+            pps.setInt(10, guarderia.getCodDireccion());
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+            pps.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updateGuarderia(Guarderia guarderia) {
+        Connection connection = con.connectToPostgres();
+        String sql = "UPDATE guarderia_4 SET rif = '" + guarderia.getRif() + "', "+
+                    "nombre = '" + guarderia.getNombre() + "', Horario_entrada = '" + guarderia.getHoraEntrada() + "', " +
+                    "horario_salida = '" + guarderia.getHoraSalida() + "', cod_direccion = " + guarderia.getCodDireccion() +
+                " WHERE rif = '" + guarderia.getRif() + "';";
+        try {
+            PreparedStatement pps = connection.prepareStatement(sql);
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
