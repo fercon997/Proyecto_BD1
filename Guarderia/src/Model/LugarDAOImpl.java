@@ -25,10 +25,11 @@ public class LugarDAOImpl implements LugarDAO {
             pps.setInt(3, lugar.getCodigo_superior());
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+            pps.close();
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     @Override
@@ -62,5 +63,121 @@ public class LugarDAOImpl implements LugarDAO {
             e.getStackTrace();
         }
         return lugar;
-    }  
+    }
+    
+    public ArrayList<Lugar> getCiudades() {
+        Connection connection = con.connectToPostgres();
+        ArrayList lugares = new ArrayList();
+        String sql = "SELECT nombre FROM lugar_4 WHERE tipo = 'Ciudad';";
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                Lugar lugar = new Lugar();
+                lugar.setNombre(rs.getString(1));
+                lugares.add(lugar);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return lugares;
+    }
+    
+    public ArrayList<Lugar> getEstados() {
+        Connection connection = con.connectToPostgres();
+        ArrayList lugares = new ArrayList();
+        String sql = "SELECT nombre FROM lugar_4 WHERE tipo = 'Estado';";
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                Lugar lugar = new Lugar();
+                lugar.setNombre(rs.getString(1));
+                lugares.add(lugar);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return lugares;
+    }
+    
+    public ArrayList<Lugar> getMunicipios() {
+        Connection connection = con.connectToPostgres();
+        ArrayList lugares = new ArrayList();
+        String sql = "SELECT codigo, nombre FROM lugar_4 WHERE tipo = 'Municipio';";
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                Lugar lugar = new Lugar();
+                lugar.setCodigo(rs.getInt(1));
+                lugar.setNombre(rs.getString(2));
+                lugares.add(lugar);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return lugares;
+    }
+    
+    public int getCodigoCalle() {
+        Connection connection = con.connectToPostgres();
+        String sql = "SELECT codigo FROM lugar_4 WHERE tipo IN ('Calle', 'Avenida');";
+        int codigo = 0;
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                codigo = rs.getInt(codigo);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return codigo;
+    }
+    
+    public void addDireccion(Lugar casa, Lugar calle) {
+        Connection connection = con.connectToPostgres();
+        String sql = "INSERT INTO lugar_4 (codigo, nombre, tipo, cod_superior) values (nextval('Lugar_sequence'), ?, ?, ?)";
+        try {
+            PreparedStatement pps = connection.prepareCall(sql);
+            pps.setString(1, calle.getNombre());
+            pps.setString(2, calle.getTipo());
+            pps.setInt(3, calle.getCodigo_superior());
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+        } catch (SQLException ex) {
+            Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        sql = "INSERT INTO lugar_4 (codigo, nombre, tipo, cod_superior) values (nextval('Lugar_sequence'), ?, ?, ?)";
+        try {
+            PreparedStatement pps = connection.prepareCall(sql);
+            pps.setString(1, casa.getNombre());
+            pps.setString(2, casa.getTipo());
+            pps.setInt(3, getCodigoCalle());
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+            pps.close();
+            connection.close();
+         } catch (SQLException ex) {
+            Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
