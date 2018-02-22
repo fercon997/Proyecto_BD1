@@ -8,4 +8,6 @@ public interface LugarDAO {
     public ArrayList<Lugar> getCiudades();
     public ArrayList<Lugar> getEstados();
     public ArrayList<Lugar> getMunicipios();
+    public int getCodigoCalle();
+    public int addDireccion(Lugar casa, Lugar calle);
 }

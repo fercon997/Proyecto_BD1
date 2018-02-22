@@ -161,7 +161,6 @@ public class LugarDAOImpl implements LugarDAO {
             pps.setString(2, calle.getTipo());
             pps.setInt(3, calle.getCodigo_superior());
             pps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
         } catch (SQLException ex) {
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,7 +173,6 @@ public class LugarDAOImpl implements LugarDAO {
             pps.setString(2, casa.getTipo());
             pps.setInt(3, getCodigoCalle());
             pps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
          } catch (SQLException ex) {
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -189,6 +187,7 @@ public class LugarDAOImpl implements LugarDAO {
             while(rs.next()) {
                 codigo = rs.getInt(1);
             }
+            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             rs.close();
             st.close();
             connection.close();

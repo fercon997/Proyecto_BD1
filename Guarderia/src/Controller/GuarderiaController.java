@@ -61,7 +61,7 @@ public class GuarderiaController {
             showDireccion(numGuard - 1);
         }
         if (cb == initialView.jComboGuarderias6){
-            Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1)); 
+            Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard - 1)); 
             initialView.LlenarActividades(Actividad.getactividades());
         }
     }

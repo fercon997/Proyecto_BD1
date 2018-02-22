@@ -59,6 +59,5 @@ public class AddGuarderiaController {
         System.out.println("Hola 2 " + municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         calle.setCodigo_superior(municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         int codigo = modeloLugar.addDireccion(casa, calle);
-        
     }
 }
