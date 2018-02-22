@@ -6,11 +6,12 @@ import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 public class GuarderiaController {
     
     InitialView initialView;
-    GuarderiaDAOImpl modeloGuarderia; 
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
     
     public boolean changing = false;
@@ -60,6 +61,19 @@ public class GuarderiaController {
             showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
+        if (cb == initialView.jComboGuarderias6){
+            if (numGuard == 0) {
+               DefaultTableModel modelo = (DefaultTableModel)initialView.Tabla_actividades.getModel();
+               int rowCount = modelo.getRowCount();
+               for (int i = rowCount - 1; i >= 0; i--) {
+                 modelo.removeRow(i);
+               }       
+            }
+            else{
+              Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1)); 
+              initialView.LlenarActividades(Actividad.getactividades());
+            }
+        }
     }
     
     private void disableButtons() {
@@ -75,8 +89,8 @@ public class GuarderiaController {
     public void showDatosGuarderia(int index) {
         if (index == -1) {
             initialView.rifLabel.setText("");
-            initialView.horaEntradaLabel.setText("");
-            initialView.horaSalidaLabel.setText("");
+        initialView.horaEntradaLabel.setText("");
+        initialView.horaSalidaLabel.setText("");
         } else {
             Guarderia guarderia = modeloGuarderia.getDatosGuarderia(rifs.get(index));
             initialView.rifLabel.setText(rifs.get(index).toString());
