@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 public class GuarderiaController {
     
     InitialView initialView;
-    GuarderiaDAOImpl modeloGuarderia; 
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
     
     public boolean changing = false;
@@ -60,6 +60,10 @@ public class GuarderiaController {
             showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
+        if (cb == initialView.jComboGuarderias6){
+            Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1)); 
+            initialView.LlenarActividades(Actividad.getactividades());
+        }
     }
     
     private void disableButtons() {
@@ -75,8 +79,8 @@ public class GuarderiaController {
     public void showDatosGuarderia(int index) {
         if (index == -1) {
             initialView.rifLabel.setText("");
-            initialView.horaEntradaLabel.setText("");
-            initialView.horaSalidaLabel.setText("");
+        initialView.horaEntradaLabel.setText("");
+        initialView.horaSalidaLabel.setText("");
         } else {
             Guarderia guarderia = modeloGuarderia.getDatosGuarderia(rifs.get(index));
             initialView.rifLabel.setText(rifs.get(index).toString());
