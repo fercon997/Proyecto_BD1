@@ -103,8 +103,8 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
             pps.setInt(6, guarderia.getConstoTransporte());
             pps.setInt(7, guarderia.getCostoAgoDic());
             pps.setInt(8, guarderia.getCostoHoraExtra());
-            pps.setTime(9, guarderia.getHoraEntrada());
-            pps.setTime(10, guarderia.getHoraSalida());
+            pps.setTime(9, null);
+            pps.setTime(10, null);
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();

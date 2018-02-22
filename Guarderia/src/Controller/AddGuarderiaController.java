@@ -5,10 +5,14 @@
  */
 package Controller;
 
+import Model.Guarderia;
+import Model.GuarderiaDAOImpl;
 import Model.Lugar;
 import Model.LugarDAOImpl;
 import View.AddGuarderiaView;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -18,6 +22,7 @@ public class AddGuarderiaController {
     
     AddGuarderiaView addGuarderiaView;
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
     ArrayList<Lugar> municipios = new ArrayList();
     
     public AddGuarderiaController(AddGuarderiaView addGuarderiaView) {
@@ -59,5 +64,15 @@ public class AddGuarderiaController {
         System.out.println("Hola 2 " + municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         calle.setCodigo_superior(municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         int codigo = modeloLugar.addDireccion(casa, calle);
+        
+        Guarderia guarderia = new Guarderia();
+        guarderia.setRif(addGuarderiaView.rifTextField.getText());
+        guarderia.setNombre(addGuarderiaView.nombreTextField.getText());
+        guarderia.setCostoMensualidad(0);
+        guarderia.setCostoMulta(0);
+        guarderia.setConstoTransporte(0);
+        guarderia.setCostoAgoDic(0);
+        guarderia.setCostoHoraExtra(0);
+        //modeloGuarderia.saveGuarderia(guarderia);
     }
 }

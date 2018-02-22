@@ -66,6 +66,11 @@ public class AddGuarderiaView extends javax.swing.JDialog {
         jLabel4.setText("Hora de Salida:");
 
         cancelarButton.setText("Cancelar");
+        cancelarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelarButtonMouseClicked(evt);
+            }
+        });
 
         aceptarButton.setText("Aceptar");
         aceptarButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,6 +233,10 @@ public class AddGuarderiaView extends javax.swing.JDialog {
     private void aceptarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aceptarButtonMouseClicked
         addGuarderiaController.saveGuarderia();
     }//GEN-LAST:event_aceptarButtonMouseClicked
+
+    private void cancelarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarButtonMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton aceptarButton;
