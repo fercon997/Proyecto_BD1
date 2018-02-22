@@ -6,9 +6,22 @@ public class Guarderia {
     private String rif;
     private String comboText;
     private String nombre;
-    private String costoMensualidad;
+    private int costoMensualidad;
+    private int costoMulta;
+    private int constoTransporte;
+    private int costoAgoDic;
+    private int costoHoraExtra;
     private Time horaEntrada;
     private Time horaSalida;
+    private int codDireccion;
+
+    public int getCodDireccion() {
+        return codDireccion;
+    }
+
+    public void setCodDireccion(int codDireccion) {
+        this.codDireccion = codDireccion;
+    }
 
     public String getRif() {
         return rif;
@@ -34,11 +47,11 @@ public class Guarderia {
         this.nombre = nombre;
     }
 
-    public String getCostoMensualidad() {
+    public int getCostoMensualidad() {
         return costoMensualidad;
     }
 
-    public void setCostoMensualidad(String costoMensualidad) {
+    public void setCostoMensualidad(int costoMensualidad) {
         this.costoMensualidad = costoMensualidad;
     }
 
@@ -56,5 +69,39 @@ public class Guarderia {
 
     public void setHoraSalida(Time horaSalida) {
         this.horaSalida = horaSalida;
-    }    
+    }  
+
+    public int getCostoMulta() {
+        return costoMulta;
+    }
+
+    public void setCostoMulta(int costoMulta) {
+        this.costoMulta = costoMulta;
+    }
+
+    public int getConstoTransporte() {
+        return constoTransporte;
+    }
+
+    public void setConstoTransporte(int constoTransporte) {
+        this.constoTransporte = constoTransporte;
+    }
+
+    public int getCostoAgoDic() {
+        return costoAgoDic;
+    }
+
+    public void setCostoAgoDic(int costoAgoDic) {
+        this.costoAgoDic = costoAgoDic;
+    }
+
+    public int getCostoHoraExtra() {
+        return costoHoraExtra;
+    }
+
+    public void setCostoHoraExtra(int costoHoraExtra) {
+        this.costoHoraExtra = costoHoraExtra;
+    }
+    
+    
 }

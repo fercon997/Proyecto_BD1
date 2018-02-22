@@ -67,8 +67,8 @@ CREATE TABLE Guarderia_4(
   Costo_transporte numeric(10) NOT NULL,
   Costo_agodic numeric(10) NOT NULL,
   Costo_hora_extra numeric(10) NOT NULL,
-  Horario_entrada time NOT NULL,
-  Horario_salida  time NOT NULL,
+  Horario_entrada time,
+  Horario_salida  time,
   Cod_direccion numeric(10),
   Constraint rif_guard_pk Primary Key(Rif),
   Constraint cod_dir_guard_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo)
