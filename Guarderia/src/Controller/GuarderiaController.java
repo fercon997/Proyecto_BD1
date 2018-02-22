@@ -11,11 +11,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 public class GuarderiaController {
-    
+
     InitialView initialView;
-    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl(); 
+    GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
-    
+
     public boolean changing = false;
     private ArrayList<String> rifs;
 
@@ -24,11 +24,11 @@ public class GuarderiaController {
         this.modeloGuarderia = modeloGuarderia;
         loadRifs();
     }
-    
+
     private void loadRifs() {
         rifs = modeloGuarderia.getRifs();
     }
-    
+
     public void llenarComboBoxGuarderias(JComboBox cb) {
         ArrayList<Guarderia> guarderias = new ArrayList();
         guarderias = modeloGuarderia.loadGuarderias();
@@ -38,12 +38,12 @@ public class GuarderiaController {
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
-    
+
     public void guarderiaChanged(JComboBox cb) {
         changing = true;
         int numGuard = cb.getSelectedIndex();
         if (numGuard == 0) {
-            disableButtons(); 
+            disableButtons();
         } else {
             enableButtons();
         }
@@ -63,18 +63,31 @@ public class GuarderiaController {
             showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
+        if (cb == initialView.jComboGuarderias6){
+            if (numGuard == 0) {
+               DefaultTableModel modelo = (DefaultTableModel)initialView.Tabla_actividades.getModel();
+               int rowCount = modelo.getRowCount();
+               for (int i = rowCount - 1; i >= 0; i--) {
+                 modelo.removeRow(i);
+               }
+            }
+            else{
+              Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1));
+              initialView.LlenarActividades(Actividad.getactividades());
+            }
+        }
     }
-    
+
     private void disableButtons() {
         initialView.editGuarderiaButton.setEnabled(false);
         initialView.deleteGuarderiaButton.setEnabled(false);
     }
-    
+
     private void enableButtons() {
         initialView.editGuarderiaButton.setEnabled(true);
         initialView.deleteGuarderiaButton.setEnabled(true);
     }
-    
+
     public void showDatosGuarderia(int index) {
         if (index == -1) {
             initialView.rifLabel.setText("");
@@ -84,10 +97,10 @@ public class GuarderiaController {
             Guarderia guarderia = modeloGuarderia.getDatosGuarderia(rifs.get(index));
             initialView.rifLabel.setText(rifs.get(index).toString());
             initialView.horaEntradaLabel.setText(guarderia.getHoraEntrada().toString());
-            initialView.horaSalidaLabel.setText(guarderia.getHoraSalida().toString());  
+            initialView.horaSalidaLabel.setText(guarderia.getHoraSalida().toString());
         }
     }
-    
+
     public void showDireccion(int index) {
         if (index == -1) {
             initialView.casaLabel.setText("");
@@ -104,19 +117,19 @@ public class GuarderiaController {
             initialView.estadoLabel.setText(lugar.getEstado());
         }
     }
-    
+
     public void editGuarderia() {
         if (initialView.editGuarderiaButton.isEnabled()) {
             EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
             editGuarderiaView.setVisible(true);
         }
     }
-    
+
     public void addGuarderia() {
         AddGuarderiaView addGuarderiaView = new AddGuarderiaView(initialView, true);
         addGuarderiaView.setVisible(true);
     }
-    
+
     public void llenarRepresentantes(JComboBox cb, JTable tabla){
         DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
         int numGuard = cb.getSelectedIndex();
@@ -137,8 +150,8 @@ public class GuarderiaController {
             for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
               modeloTabla.removeRow(i);
         }
-        
+
     }
-            
-    
+
+
 }

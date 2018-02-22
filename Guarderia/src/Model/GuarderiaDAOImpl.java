@@ -1,10 +1,14 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class GuarderiaDAOImpl implements GuarderiaDAO {
     DBConnection con = new DBConnection();
@@ -84,5 +88,29 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
             e.getStackTrace();
         }
         return guarderia;
+    }
+    
+    public void saveGuarderia(Guarderia guarderia) {
+        Connection connection = con.connectToPostgres();
+        String sql = "INSERT INTO guarderia_4 values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pps = connection.prepareCall(sql);
+            pps.setString(1, guarderia.getRif());
+            pps.setString(2, guarderia.getNombre());
+            pps.setInt(3, guarderia.getCostoMensualidad());
+            pps.setInt(4, guarderia.getCostoMulta());
+            pps.setInt(5, guarderia.getConstoTransporte());
+            pps.setInt(6, guarderia.getConstoTransporte());
+            pps.setInt(7, guarderia.getCostoAgoDic());
+            pps.setInt(8, guarderia.getCostoHoraExtra());
+            pps.setTime(9, null);
+            pps.setTime(10, null);
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
+            pps.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
