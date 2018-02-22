@@ -6,6 +6,7 @@ import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 public class GuarderiaController {
     
@@ -61,8 +62,17 @@ public class GuarderiaController {
             showDireccion(numGuard - 1);
         }
         if (cb == initialView.jComboGuarderias6){
-            Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard - 1)); 
-            initialView.LlenarActividades(Actividad.getactividades());
+            if (numGuard == 0) {
+               DefaultTableModel modelo = (DefaultTableModel)initialView.Tabla_actividades.getModel();
+               int rowCount = modelo.getRowCount();
+               for (int i = rowCount - 1; i >= 0; i--) {
+                 modelo.removeRow(i);
+               }       
+            }
+            else{
+              Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1)); 
+              initialView.LlenarActividades(Actividad.getactividades());
+            }
         }
     }
     
