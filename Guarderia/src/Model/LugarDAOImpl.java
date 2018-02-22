@@ -33,13 +33,12 @@ public class LugarDAOImpl implements LugarDAO {
     }
     
     @Override
-    public Lugar getDatosLugar(String codigo, String tipoCodigo) {
+    public Lugar getDatosLugar(String query) {
         Connection connection = con.connectToPostgres();
         Lugar lugar = new Lugar();
         String sql = "SELECT casa.nombre as casa, calle.nombre as calle, mun.nombre as municipio, " + 
                 "ciudad.nombre as ciudad, edo.nombre as estado FROM lugar_4 casa, lugar_4 calle, " + 
-                "lugar_4 mun, lugar_4 ciudad, lugar_4 edo WHERE casa.codigo = (SELECT cod_direccion " + 
-                " FROM guarderia_4, lugar_4 WHERE " + tipoCodigo + " = '" + codigo + "' AND cod_direccion = codigo) AND " + 
+                "lugar_4 mun, lugar_4 ciudad, lugar_4 edo WHERE casa.codigo = ("+query+") AND " + 
                 "casa.tipo IN ('Casa', 'Edificio') AND casa.cod_superior = calle.codigo AND " + 
                 "calle.tipo IN ('Calle', 'Avenida') AND calle.cod_superior = mun.codigo AND " + 
                 "mun.tipo IN ('Municipio', 'Urbanizacion') AND mun.cod_superior = ciudad.codigo " + 

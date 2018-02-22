@@ -49,6 +49,7 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         }
     }
     
+    @Override
     public ArrayList<Representante> loadRepresentantes(String rif){
         Connection cn = con.connectToPostgres();
         
@@ -76,4 +77,34 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         return parents;
         
     }
+    
+    @Override
+    public Representante showDatosRepresentante(String ci){
+        Connection cn = con.connectToPostgres();
+        Representante parent = new Representante();
+        String sql = "SELECT * FROM representante_4 WHERE ci = '"+ci+"'";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                parent.setApellido(rs.getString("apellido"));
+                parent.setCelular(rs.getLong("celular"));
+                parent.setCi(rs.getString("ci"));
+                parent.setCod_direccion(rs.getInt("cod_direccion"));
+                parent.setEdo_civil(rs.getString("estado_civil").charAt(0));
+                parent.setEmail(rs.getString("email"));
+                parent.setNombre(rs.getString("nombre"));
+                parent.setPrincipal(rs.getInt("principal"));
+                parent.setProfesion(rs.getString("Profesion"));
+                parent.setTlf_casa(rs.getLong("tlf_casa"));
+                parent.setTlf_oficina(rs.getLong("tlf_oficina"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(parent.ci);
+        return parent;
+    }
+    
+    
 }
