@@ -6,6 +6,9 @@ import View.EditGuarderiaView;
 import View.InitialView;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class GuarderiaController {
     
@@ -113,5 +116,29 @@ public class GuarderiaController {
         AddGuarderiaView addGuarderiaView = new AddGuarderiaView(initialView, true);
         addGuarderiaView.setVisible(true);
     }
+    
+    public void llenarRepresentantes(JComboBox cb, JTable tabla){
+        DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
+        int numGuard = cb.getSelectedIndex();
+        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+        Object[] columna = new Object[4];
+        try{
+            RepresentanteDAOImpl bdParents = new RepresentanteDAOImpl();
+            ArrayList<Representante> parents = bdParents.loadRepresentantes(rifs.get(numGuard-1));
+            for(int i = 0; i<parents.size(); i++){
+                columna[0] = parents.get(i).getCi();
+                columna[1] = parents.get(i).getNombre();
+                columna[2] = parents.get(i).getApellido();
+                columna[3] = parents.get(i).getPrincipal();
+                modeloTabla.addRow(columna);
+            }
+        } catch(Exception e){
+            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+              modeloTabla.removeRow(i);
+        }
+        
+    }
+            
     
 }

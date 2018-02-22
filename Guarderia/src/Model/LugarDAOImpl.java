@@ -19,10 +19,10 @@ public class LugarDAOImpl implements LugarDAO {
         try {
             Connection cn = con.connectToPostgres();
             PreparedStatement pps = cn.prepareCall("INSERT INTO lugar_4 VALUES " +
-                    "(nextval(lugar_sequence),?,?,?");
-            pps.setString(1, lugar.getNombre());
-            pps.setString(2, lugar.getTipo());
-            pps.setInt(3, lugar.getCodigo_superior());
+                    "(nextval(lugar_sequence),?,?,?)");
+            pps.setString(2, lugar.getNombre());
+            pps.setString(3, lugar.getTipo());
+            pps.setInt(4, lugar.getCodigo_superior());
             pps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
         } catch (SQLException ex) {
