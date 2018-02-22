@@ -37,12 +37,14 @@ public class GuarderiaController {
         int size = guarderias.size();
         cb.addItem("Guarderías");
         for (int i = 0; i < size; i++) {
+            //System.out.println(guarderias.get(i).getComboText());
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
 
-    public void guarderiaChanged(JComboBox cb) {
+    public int guarderiaChanged(JComboBox cb) {
         changing = true;
+        int codigo = 0;
         int numGuard = cb.getSelectedIndex();
         if (numGuard == 0) {
             disableButtons();
@@ -62,7 +64,7 @@ public class GuarderiaController {
         initialView.jComboGuarderias10.setSelectedIndex(numGuard);
         changing = false;
         if (cb == initialView.jComboGuarderias) {
-            showDatosGuarderia(numGuard - 1);
+            codigo = showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
         if (cb == initialView.jComboGuarderias6){
@@ -78,6 +80,7 @@ public class GuarderiaController {
               initialView.LlenarActividades(Actividad.getactividades());
             }
         }
+        return codigo;
     }
 
     private void disableButtons() {
@@ -90,7 +93,7 @@ public class GuarderiaController {
         initialView.deleteGuarderiaButton.setEnabled(true);
     }
 
-    public void showDatosGuarderia(int index) {
+    public int showDatosGuarderia(int index) {
         if (index == -1) {
             initialView.rifLabel.setText("");
         initialView.horaEntradaLabel.setText("");
@@ -100,7 +103,9 @@ public class GuarderiaController {
             initialView.rifLabel.setText(rifs.get(index).toString());
             initialView.horaEntradaLabel.setText(guarderia.getHoraEntrada().toString());
             initialView.horaSalidaLabel.setText(guarderia.getHoraSalida().toString());
+            return guarderia.getCodDireccion();
         }
+        return 0;
     }
 
     public void showDireccion(int index) {
@@ -122,9 +127,9 @@ public class GuarderiaController {
         }
     }
 
-    public void editGuarderia() {
+    public void editGuarderia(int codDireccion) {
         if (initialView.editGuarderiaButton.isEnabled()) {
-            EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
+            EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true, codDireccion);
             editGuarderiaView.setVisible(true);
         }
     }
