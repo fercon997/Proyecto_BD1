@@ -1348,7 +1348,6 @@ public class InitialView extends javax.swing.JFrame {
 
     private void deleteGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonMouseClicked
         controladorGuarderia.deleteGuarderia(jComboGuarderias.getSelectedIndex() - 1);
-        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias);
     }//GEN-LAST:event_deleteGuarderiaButtonMouseClicked
 
     /**
