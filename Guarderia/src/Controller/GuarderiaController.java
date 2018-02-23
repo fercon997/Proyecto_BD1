@@ -18,6 +18,7 @@ public class GuarderiaController {
     InitialView initialView;
     GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
     LugarDAOImpl modeloLugar = new LugarDAOImpl();
+    NinosController controladorNino;
 
     public boolean changing = false;
     private ArrayList<String> rifs;
@@ -26,6 +27,7 @@ public class GuarderiaController {
         this.initialView = initialView;
         this.modeloGuarderia = modeloGuarderia;
         loadRifs();
+        controladorNino = new NinosController(initialView, rifs);
     }
 
     private void loadRifs() {
@@ -41,6 +43,12 @@ public class GuarderiaController {
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
+    
+    public void tabbedPaneTouched() {
+        if (initialView.jTabbedPane1.getSelectedIndex() == 2) {
+            controladorNino.llenarNino(initialView.jComboGuarderiasNinos, initialView.tablaNinos);
+        }
+    }
 
     public void guarderiaChanged(JComboBox cb) {
         changing = true;
@@ -52,7 +60,7 @@ public class GuarderiaController {
         }
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
         initialView.jComboGuarderias1.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias2.setSelectedIndex(numGuard);
+        initialView.jComboGuarderiasNinos.setSelectedIndex(numGuard);
         initialView.jComboGuarderias3.setSelectedIndex(numGuard);
         initialView.jComboGuarderias4.setSelectedIndex(numGuard);
         initialView.jComboGuarderias5.setSelectedIndex(numGuard);
@@ -135,7 +143,13 @@ public class GuarderiaController {
         addGuarderiaView.setVisible(true);
     }
 
+    public void mostrarNinos(JTable tabla) {
+        controladorNino.mostrarNinos(tabla);
+    }
     
+    public void addNino() {
+        controladorNino.addNino();
+    }
 
 
 }

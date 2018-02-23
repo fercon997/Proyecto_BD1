@@ -28,7 +28,7 @@ public class InitialView extends javax.swing.JFrame {
        this.setLocationRelativeTo(null);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias1);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias2);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias3);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias5);
@@ -98,8 +98,8 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInscripcion = new javax.swing.JPanel();
         jComboGuarderias1 = new javax.swing.JComboBox<>();
         jPanelNinos = new javax.swing.JPanel();
-        jComboGuarderias2 = new javax.swing.JComboBox<>();
-        editGuarderiaButton1 = new javax.swing.JButton();
+        jComboGuarderiasNinos = new javax.swing.JComboBox<>();
+        editNinoButton = new javax.swing.JButton();
         jPanelInfoNino = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -107,18 +107,15 @@ public class InitialView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        rifLabel1 = new javax.swing.JLabel();
-        casaLabel1 = new javax.swing.JLabel();
-        calleLabel1 = new javax.swing.JLabel();
-        municipioLabel1 = new javax.swing.JLabel();
-        estadoLabel1 = new javax.swing.JLabel();
-        ciudadLabel2 = new javax.swing.JLabel();
-        horaEntradaLabel1 = new javax.swing.JLabel();
-        horaSalidaLabel1 = new javax.swing.JLabel();
-        addGuarderiaButton1 = new javax.swing.JButton();
-        deleteGuarderiaButton1 = new javax.swing.JButton();
+        nombreNino = new javax.swing.JLabel();
+        sexoNino = new javax.swing.JLabel();
+        fechaNacNino = new javax.swing.JLabel();
+        edadNino = new javax.swing.JLabel();
+        apellidoNino = new javax.swing.JLabel();
+        addNinoButton = new javax.swing.JButton();
+        deleteNinoButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaNinos = new javax.swing.JTable();
         buscarNinoTextField = new javax.swing.JTextField();
         buscarNinoButton = new javax.swing.JButton();
         jPanelInfMedica = new javax.swing.JPanel();
@@ -381,17 +378,17 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
 
-        jComboGuarderias2.addActionListener(new java.awt.event.ActionListener() {
+        jComboGuarderiasNinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias2ActionPerformed(evt);
+                jComboGuarderiasNinosActionPerformed(evt);
             }
         });
 
-        editGuarderiaButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
-        editGuarderiaButton1.setToolTipText("");
-        editGuarderiaButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        editNinoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editNinoButton.setToolTipText("");
+        editNinoButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editGuarderiaButton1MouseClicked(evt);
+                editNinoButtonMouseClicked(evt);
             }
         });
 
@@ -417,40 +414,31 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
                         .addGap(59, 131, Short.MAX_VALUE)
-                        .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(26, 26, 26)
-                                .addComponent(ciudadLabel2))
-                            .addComponent(estadoLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(horaEntradaLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(horaSalidaLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jLabel15)
+                        .addGap(46, 46, 46))
                     .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(municipioLabel1))
-                            .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(casaLabel1))
-                            .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rifLabel1))
-                            .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(nombreNino))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
+                                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(calleLabel1)))))
-                .addGap(107, 107, 107))
+                                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(apellidoNino)
+                                    .addComponent(sexoNino)
+                                    .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(edadNino)
+                                        .addComponent(fechaNacNino)))))))
+                .addGap(87, 87, 87))
         );
         jPanelInfoNinoLayout.setVerticalGroup(
             jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,39 +446,38 @@ public class InitialView extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(rifLabel1))
+                    .addComponent(nombreNino))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(apellidoNino))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(casaLabel1))
+                    .addComponent(sexoNino))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(calleLabel1))
+                    .addComponent(fechaNacNino))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(municipioLabel1))
+                    .addComponent(edadNino))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(ciudadLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(estadoLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(horaEntradaLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(horaSalidaLabel1)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addComponent(jLabel15)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
-        addGuarderiaButton1.setText("Agregar");
+        addNinoButton.setText("Agregar");
+        addNinoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addNinoButtonMouseClicked(evt);
+            }
+        });
 
-        deleteGuarderiaButton1.setText("Eliminar");
+        deleteNinoButton.setText("Eliminar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaNinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -516,13 +503,10 @@ public class InitialView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Edad");
-        }
+        tablaNinos.setColumnSelectionAllowed(true);
+        tablaNinos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaNinos);
+        tablaNinos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         buscarNinoButton.setText("Buscar");
 
@@ -534,9 +518,9 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addGuarderiaButton1)
+                        .addComponent(addNinoButton)
                         .addGap(64, 64, 64)
-                        .addComponent(deleteGuarderiaButton1)
+                        .addComponent(deleteNinoButton)
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelNinosLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
@@ -546,14 +530,14 @@ public class InitialView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(buscarNinoButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboGuarderias2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboGuarderiasNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelNinosLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanelInfoNino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNinosLayout.createSequentialGroup()
-                                        .addComponent(editGuarderiaButton1)
+                                        .addComponent(editNinoButton)
                                         .addGap(10, 10, 10)))))))
                 .addGap(24, 24, 24))
         );
@@ -562,20 +546,20 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelNinosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboGuarderias2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboGuarderiasNinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarNinoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarNinoButton))
                 .addGap(35, 35, 35)
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
-                        .addComponent(editGuarderiaButton1)
+                        .addComponent(editNinoButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelInfoNino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addGuarderiaButton1)
-                    .addComponent(deleteGuarderiaButton1))
+                    .addComponent(addNinoButton)
+                    .addComponent(deleteNinoButton))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
 
@@ -1116,12 +1100,12 @@ public class InitialView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboGuarderias1ActionPerformed
 
-    private void jComboGuarderias2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias2ActionPerformed
+    private void jComboGuarderiasNinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasNinosActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias2);
+            controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos);
         }
         
-    }//GEN-LAST:event_jComboGuarderias2ActionPerformed
+    }//GEN-LAST:event_jComboGuarderiasNinosActionPerformed
 
     private void jComboGuarderias3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias3ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -1176,9 +1160,9 @@ public class InitialView extends javax.swing.JFrame {
         controladorGuarderia.editGuarderia();;
     }//GEN-LAST:event_editGuarderiaButtonMouseClicked
 
-    private void editGuarderiaButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editGuarderiaButton1MouseClicked
+    private void editNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editNinoButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_editGuarderiaButton1MouseClicked
+    }//GEN-LAST:event_editNinoButtonMouseClicked
 
     private void addGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGuarderiaButtonMouseClicked
         controladorGuarderia.addGuarderia();
@@ -1203,7 +1187,8 @@ public class InitialView extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreTextActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        controladorRepresentante.bloquear();      // TODO add your handling code here:
+        controladorRepresentante.bloquear(); 
+        controladorGuarderia.tabbedPaneTouched();// TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void editRepresentanteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRepresentanteBtnActionPerformed
@@ -1213,6 +1198,10 @@ public class InitialView extends javax.swing.JFrame {
     private void saveRepresentanteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveRepresentanteBtnActionPerformed
         controladorRepresentante.editarRepresentante();        // TODO add your handling code here:
     }//GEN-LAST:event_saveRepresentanteBtnActionPerformed
+
+    private void addNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNinoButtonMouseClicked
+        controladorGuarderia.addNino();
+    }//GEN-LAST:event_addNinoButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1252,42 +1241,38 @@ public class InitialView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tabla_actividades;
     public javax.swing.JButton addGuarderiaButton;
-    public javax.swing.JButton addGuarderiaButton1;
+    public javax.swing.JButton addNinoButton;
+    public javax.swing.JLabel apellidoNino;
     public javax.swing.JTextField apellidoText;
     private javax.swing.JButton buscarNinoButton;
     private javax.swing.JButton buscarNinoButton1;
     private javax.swing.JTextField buscarNinoTextField;
     private javax.swing.JTextField buscarNinoTextField1;
     public javax.swing.JLabel calleLabel;
-    public javax.swing.JLabel calleLabel1;
     public javax.swing.JLabel calleLabel3;
     public javax.swing.JLabel casaLabel;
-    public javax.swing.JLabel casaLabel1;
     public javax.swing.JLabel casaLabel3;
     public javax.swing.JTextField celularText;
     public javax.swing.JLabel ciLabel;
     public javax.swing.JLabel ciudadLabel;
     public javax.swing.JLabel ciudadLabel1;
-    public javax.swing.JLabel ciudadLabel2;
     public javax.swing.JButton deleteGuarderiaButton;
-    public javax.swing.JButton deleteGuarderiaButton1;
+    public javax.swing.JButton deleteNinoButton;
     public javax.swing.JButton deleteRepresentanteButton;
+    public javax.swing.JLabel edadNino;
     public javax.swing.JButton editGuarderiaButton;
-    public javax.swing.JButton editGuarderiaButton1;
+    public javax.swing.JButton editNinoButton;
     public javax.swing.JButton editRepresentanteBtn;
     public javax.swing.JTextField edoCivilText;
     public javax.swing.JTextField emailText;
     public javax.swing.JLabel estadoLabel;
-    public javax.swing.JLabel estadoLabel1;
+    public javax.swing.JLabel fechaNacNino;
     public javax.swing.JLabel horaEntradaLabel;
-    public javax.swing.JLabel horaEntradaLabel1;
     public javax.swing.JLabel horaSalidaLabel;
-    public javax.swing.JLabel horaSalidaLabel1;
     private javax.swing.JButton jButton1;
     public javax.swing.JComboBox<String> jComboGuarderias;
     public javax.swing.JComboBox<String> jComboGuarderias1;
     public javax.swing.JComboBox<String> jComboGuarderias10;
-    public javax.swing.JComboBox<String> jComboGuarderias2;
     public javax.swing.JComboBox<String> jComboGuarderias3;
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
@@ -1295,6 +1280,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderias9;
+    public javax.swing.JComboBox<String> jComboGuarderiasNinos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1342,17 +1328,17 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel municipioLabel;
-    public javax.swing.JLabel municipioLabel1;
     public javax.swing.JLabel municipioLabel3;
     public javax.swing.JLabel ninosLabel;
+    public javax.swing.JLabel nombreNino;
     public javax.swing.JTextField nombreText;
     public javax.swing.JTextField profesionText;
     public javax.swing.JLabel rifLabel;
-    public javax.swing.JLabel rifLabel1;
     public javax.swing.JButton saveRepresentanteBtn;
+    public javax.swing.JLabel sexoNino;
+    public javax.swing.JTable tablaNinos;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;
     public javax.swing.JTextField tlfOficinaText;
