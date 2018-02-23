@@ -98,7 +98,7 @@ public class JuegoController {
     public void eliminarJuego(){
         try{
             int codigo = Integer.parseInt(initialView.codigoLabel.getText());
-            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Representante?"+
+            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Juego?"+
                     "(Se borraran todos los datos relacionados a el)", "Borrar Juego", 
                     JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (confirmacion == JOptionPane.YES_OPTION){
