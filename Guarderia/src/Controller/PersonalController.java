@@ -12,6 +12,7 @@ import Model.Personal;
 import Model.PersonalDAOImpl;
 import View.InitialView;
 import View.JDAddPersonal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,7 +61,7 @@ public class PersonalController {
                 columna[1] = personal.get(i).getNombre();
                 columna[2] = personal.get(i).getApellido();
                 columna[3] = personal.get(i).getCelular();
-                columna[4] = personal.get(i).getSueldo() + "Bs.";
+                columna[4] = personal.get(i).getSueldo();
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
@@ -70,7 +71,7 @@ public class PersonalController {
                 columna[1] = personal.get(i).getNombre();
                 columna[2] = personal.get(i).getApellido();
                 columna[3] = personal.get(i).getCelular();
-                columna[4] = personal.get(i).getSueldo() + "Bs.";
+                columna[4] = personal.get(i).getSueldo();
                 modeloTabla.addRow(columna);
             }
         }
@@ -89,8 +90,8 @@ public class PersonalController {
             initialView.nombrePersonalText.setText(personal.getNombre());
             initialView.apellidoPersonalText.setText(personal.getApellido());
             initialView.celularPersonalText.setText(String.valueOf(personal.getCelular()));
-            initialView.nivelEstudioPersonalText.setText(personal.getNivelEstudio());
-            initialView.sueldoPersonalText.setText(String.valueOf(personal.getSueldo() + "Bs."));
+            initialView.nivelEstudio.setSelectedItem(personal.getNivelEstudio());
+            initialView.sueldoPersonalText.setText(String.valueOf(personal.getSueldo()));
             if (personal.getEncargada() == 1) {
                 initialView.encargadaCheckBox.setSelected(true);
             } else {
@@ -127,47 +128,56 @@ public class PersonalController {
         }
     }
     
-//    public void eliminarRepresentante(){
-//        try{
-//            String ci = initialView.ciLabel.getText();
-//            System.out.println(ci);
-//            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Representante?"+
-//                    "(Se borraran todos los datos relacionados a el)", "Borrar Representante", 
-//                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-//            if (confirmacion == JOptionPane.YES_OPTION){
-//                RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
-//                bdParent.deleteRepresentante(ci);
-//                JOptionPane.showMessageDialog(initialView, "Borrado");
-//            }
-//        } catch(Exception e){
-//            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
-//            JOptionPane.showMessageDialog(initialView, "No se puede borrar");
-//        }
-//    }
-//    
-//    public void editarRepresentante(){
-//        Representante parent = new Representante();
-//        try {
-//            parent.setCi(initialView.ciLabel.getText());
-//            parent.setApellido(initialView.apellidoText.getText());
-//            parent.setCelular(Long.parseLong(initialView.celularText.getText()));
-//            parent.setEdo_civil(initialView.edoCivilText.getText().charAt(0));
-//            parent.setEmail(initialView.emailText.getText());
-//            parent.setNombre(initialView.nombreText.getText());
-//            parent.setProfesion(initialView.profesionText.getText());
-//            parent.setTlf_casa(Long.parseLong(initialView.tlfCasaText.getText()));
-//            parent.setTlf_oficina(Long.parseLong(initialView.tlfOficinaText.getText()));
-//            RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
-//            bdParent.updateRepresentante(parent);
-//            JOptionPane.showMessageDialog(initialView, "Datos cargados satisfactoriamente");
-//        } catch(Exception e){
-//            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
-//            JOptionPane.showMessageDialog(initialView, "No se puede actualizar");
-//        }
-//        bloquear();
-//        limpiarDatos();
-//        llenarRepresentantes(initialView.jComboGuarderias4, initialView.tablaRepresentantes);
-//    }
+    public void eliminarPersonal(){
+        try{
+            String ci = initialView.ciPersonalLabel.getText();
+            System.out.println(ci);
+            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Representante?"+
+                    "(Se borraran todos los datos relacionados a el)", "Borrar Representante", 
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (confirmacion == JOptionPane.YES_OPTION){
+                modeloPersonal.deletePersonal(ci);
+                JOptionPane.showMessageDialog(initialView, "Borrado");
+            }
+        } catch(Exception e){
+            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(initialView, "No se puede borrar");
+        }
+    }
+    
+    public void editarPersonal(){
+        Personal personal = new Personal();
+        try {
+            personal.setCi(initialView.ciPersonalLabel.getText());
+            personal.setApellido(initialView.apellidoPersonalText.getText());
+            personal.setCelular(initialView.celularPersonalText.getText());
+            personal.setNombre(initialView.nombrePersonalText.getText());
+            if (initialView.encargadaCheckBox.isSelected()) {
+                personal.setEncargada(1);
+            } else {
+                personal.setEncargada(0);
+            }
+            String fecha = initialView.fechaEncargadaText.getText();
+            if (fecha == "") {
+                personal.setFechaResponsable(null);
+            } else {
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date date = sdf1.parse(fecha);
+                java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+                personal.setFechaResponsable(sqlStartDate);
+            }
+            personal.setNivelEstudio(String.valueOf(initialView.nivelEstudio.getSelectedItem()));
+            personal.setSueldo(Integer.parseInt(initialView.sueldoPersonalText.getText()));
+            modeloPersonal.updatePersonal(personal);
+            JOptionPane.showMessageDialog(initialView, "Datos cargados satisfactoriamente");
+        } catch(Exception e){
+            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(initialView, "No se puede actualizar");
+        }
+        bloquear();
+        limpiarDatos();
+        llenarPersonal(initialView.jComboGuarderias4, initialView.tablaRepresentantes);
+    }
     
     public void bloquear(){
         initialView.nombrePersonalText.setEnabled(false);
@@ -181,7 +191,7 @@ public class PersonalController {
         initialView.experienciaTextArea.setEnabled(false);
         initialView.encargadaCheckBox.setEnabled(false);
         initialView.fechaEncargadaText.setEnabled(false);
-        initialView.nivelEstudioPersonalText.setEnabled(false);
+        initialView.nivelEstudio.setEnabled(false);
         initialView.sueldoPersonalText.setEnabled(false);
     }
 
@@ -194,10 +204,9 @@ public class PersonalController {
         initialView.municipioPersonalLabel.setEnabled(true);
         initialView.callePersonalLabel.setEnabled(true);
         initialView.casaPersonalLabel.setEnabled(true);
-        initialView.experienciaTextArea.setEnabled(true);
         initialView.encargadaCheckBox.setEnabled(true);
         initialView.fechaEncargadaText.setEnabled(true);
-        initialView.nivelEstudioPersonalText.setEnabled(true);
+        initialView.nivelEstudio.setEnabled(true);
         initialView.sueldoPersonalText.setEnabled(true);
     }
     
@@ -213,7 +222,7 @@ public class PersonalController {
         initialView.experienciaTextArea.setText("");
         initialView.encargadaCheckBox.setSelected(false);
         initialView.fechaEncargadaText.setText("aaaa-mm-dd");
-        initialView.nivelEstudioPersonalText.setText("");
+        initialView.nivelEstudio.setSelectedIndex(0);
         initialView.sueldoPersonalText.setText("");
     }
     
