@@ -111,7 +111,7 @@ public class PersonalDAOImpl implements PersonalDAO {
         Personal personal = new Personal();
         String paramCons = "R.apellido, R.celular, R.ci, R.cod_direccion, R.rif_guarderia, "+
                 "R.nombre, R.nivel_estudio, R.sueldo, R.senalEncargada, R.fecha_responsable, r.cod_direccion, e.nombre ";
-        String sql = "SELECT "+paramCons+" FROM personal_4 R, experiencia_4 e WHERE ci = '"+ci+"' AND e.ci_personal = r.ci;";
+        String sql = "SELECT "+paramCons+" FROM personal_4 r left join experiencia_4 e on r.ci = e.ci_personal WHERE ci = '"+ci+"';";
         ArrayList<String> experiencia = new ArrayList();
         try {
             Statement st = cn.createStatement();
