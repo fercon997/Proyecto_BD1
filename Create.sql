@@ -81,14 +81,14 @@ CREATE TABLE Personal_4(
   Celular numeric(11) NOT NULL,
   Nivel_estudio varchar(15) NOT NULL,
   Sueldo numeric(10) NOT NULL,
-  SenalEncargada numeric(1) NOT NULL Default 0,
+  SeñalEncargada numeric(1) NOT NULL Default 0,
   Fecha_responsable Date Default NULL,
   Cod_direccion numeric(10),
   RIF_guarderia varchar(12),
   Constraint CI_per_pk Primary Key(CI),
   Constraint RIF_guard_per_fk Foreign Key(Rif_guarderia) references Guarderia_4 (Rif),
   Constraint Cod_dir_per_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo),
-  Constraint encargada_bool Check(SenalEncargada IN (0,1)),
+  Constraint encargada_bool Check(SeñalEncargada IN (0,1)),
   Constraint tipos_estudio Check(Nivel_estudio IN ('Bachillerato', 'TSU', 'Universitario', 'Postgrado'))
 );
 

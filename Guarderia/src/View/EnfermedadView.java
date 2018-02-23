@@ -32,6 +32,15 @@ public class EnfermedadView extends javax.swing.JDialog {
 
         jScrollPane5 = new javax.swing.JScrollPane();
         Tabla_Enfermedades = new javax.swing.JTable();
+        jPanelInfoEnfermedad = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        nombreText1 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        saveEnfermedadBtn = new javax.swing.JButton();
+        deleteEnfermedadBtn = new javax.swing.JButton();
+        addEnfermedadBtn = new javax.swing.JButton();
+        editEnfermedadBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -40,14 +49,14 @@ public class EnfermedadView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Descripcion"
+                "Codigo", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -58,7 +67,88 @@ public class EnfermedadView extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        Tabla_Enfermedades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_EnfermedadesMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(Tabla_Enfermedades);
+
+        jPanelInfoEnfermedad.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion de la Enfermedad"));
+
+        jLabel31.setText("Descripcion");
+
+        nombreText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreText1ActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("CI");
+
+        javax.swing.GroupLayout jPanelInfoEnfermedadLayout = new javax.swing.GroupLayout(jPanelInfoEnfermedad);
+        jPanelInfoEnfermedad.setLayout(jPanelInfoEnfermedadLayout);
+        jPanelInfoEnfermedadLayout.setHorizontalGroup(
+            jPanelInfoEnfermedadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoEnfermedadLayout.createSequentialGroup()
+                .addGroup(jPanelInfoEnfermedadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel32)
+                    .addGroup(jPanelInfoEnfermedadLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(codigoLabel))
+        );
+        jPanelInfoEnfermedadLayout.setVerticalGroup(
+            jPanelInfoEnfermedadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoEnfermedadLayout.createSequentialGroup()
+                .addComponent(jLabel32)
+                .addGroup(jPanelInfoEnfermedadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoEnfermedadLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(codigoLabel))
+                    .addGroup(jPanelInfoEnfermedadLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelInfoEnfermedadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+
+        saveEnfermedadBtn.setText("Guardar");
+        saveEnfermedadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveEnfermedadBtnActionPerformed(evt);
+            }
+        });
+
+        deleteEnfermedadBtn.setText("Eliminar");
+        deleteEnfermedadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEnfermedadBtnActionPerformed(evt);
+            }
+        });
+
+        addEnfermedadBtn.setText("Agregar Enfermedad");
+        addEnfermedadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEnfermedadBtnActionPerformed(evt);
+            }
+        });
+
+        editEnfermedadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editEnfermedadBtn.setToolTipText("");
+        editEnfermedadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editEnfermedadBtnMouseClicked(evt);
+            }
+        });
+        editEnfermedadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editEnfermedadBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,19 +156,78 @@ public class EnfermedadView extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addEnfermedadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(editEnfermedadBtn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(saveEnfermedadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(deleteEnfermedadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanelInfoEnfermedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(144, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(addEnfermedadBtn)
+                .addGap(0, 54, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editEnfermedadBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelInfoEnfermedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveEnfermedadBtn)
+                    .addComponent(deleteEnfermedadBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombreText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreText1ActionPerformed
+
+    private void saveEnfermedadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveEnfermedadBtnActionPerformed
+        EnfermedadController.editarEnfermedad();// TODO add your handling code here:
+    }//GEN-LAST:event_saveEnfermedadBtnActionPerformed
+
+    private void deleteEnfermedadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEnfermedadBtnActionPerformed
+        EnfermedadController.eliminarEnfermedad();
+        EnfermedadController.llenarTablaEnfermedades();       // TODO add your handling code here:
+    }//GEN-LAST:event_deleteEnfermedadBtnActionPerformed
+
+    private void addEnfermedadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEnfermedadBtnActionPerformed
+        //AlergiaController.agregarAlergias();
+        //AlergiaController.llenarTablaAlergias();// TODO add your handling code here:
+    }//GEN-LAST:event_addEnfermedadBtnActionPerformed
+
+    private void editEnfermedadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEnfermedadBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editEnfermedadBtnMouseClicked
+
+    private void editEnfermedadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEnfermedadBtnActionPerformed
+        EnfermedadController.habilitar();        // TODO add your handling code here:
+    }//GEN-LAST:event_editEnfermedadBtnActionPerformed
+
+    private void Tabla_EnfermedadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EnfermedadesMouseClicked
+        EnfermedadController.datosEnfermedad();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tabla_EnfermedadesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,6 +273,15 @@ public class EnfermedadView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tabla_Enfermedades;
+    public javax.swing.JButton addEnfermedadBtn;
+    public javax.swing.JLabel codigoLabel;
+    public javax.swing.JButton deleteEnfermedadBtn;
+    public javax.swing.JButton editEnfermedadBtn;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JPanel jPanelInfoEnfermedad;
     private javax.swing.JScrollPane jScrollPane5;
+    public javax.swing.JTextField nombreText1;
+    public javax.swing.JButton saveEnfermedadBtn;
     // End of variables declaration//GEN-END:variables
 }
