@@ -15,4 +15,6 @@ public interface RepresentanteDAO {
     public void insertRepresentante(Representante parent);
     public ArrayList<Representante> loadRepresentantes(String rif);
     public Representante showDatosRepresentante(String ci);
+    public void deleteRepresentante(String ci);
+    public void updateRepresentante(Representante parent);
 }

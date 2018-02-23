@@ -106,5 +106,45 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         return parent;
     }
     
+    @Override
+    public void deleteRepresentante(String ci){
+        try {
+            Connection cn = con.connectToPostgres();
+            PreparedStatement pps = cn.prepareCall("DELETE FROM representante_4 WHERE ci = ?");
+            pps.setString(1, ci);
+            pps.executeUpdate();
+            pps.close();
+            cn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede borrar");
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updateRepresentante(Representante parent){
+        try {
+            Connection cn = con.connectToPostgres();
+            String sql= "UPDATE representante_4 SET apellido = ?, celular = ?, "+
+                    "estado_civil = ?, email = ?, nombre = ?, " +
+                    "Profesion = ?, tlf_casa = ?, tlf_oficina = ? WHERE ci = ?";
+            PreparedStatement pps = cn.prepareCall(sql);
+            pps.setString(1, parent.getApellido());
+            pps.setLong(2, parent.getCelular());
+            pps.setString(3, Character.toString(parent.getEdo_civil()));
+            pps.setString(4, parent.getEmail());
+            pps.setString(5, parent.getNombre());
+            pps.setString(6, parent.getProfesion());
+            pps.setLong(7, parent.getTlf_casa());
+            pps.setLong(8, parent.getTlf_oficina());
+            pps.setString(9, parent.getCi());
+            pps.executeUpdate();
+            pps.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error en los datos");
+        }
+    }
+    
     
 }

@@ -169,7 +169,7 @@ CREATE TABLE Nino_4(
   Fecha_nacimiento Date NOT NULL,
   Sexo char(1) NOT NULL,
   Constraint CI_rep_Letra_nino_pk Primary Key(CI_representante, Letra),
-  Constraint CI_rep_nino_fk Foreign Key(CI_representante) references Representante_4(CI),
+  Constraint CI_rep_nino_fk Foreign Key(CI_representante) references Representante_4(CI) ON DELETE CASCADE,
   Constraint letra_nino_valid Check (Letra IN ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')),
   Constraint sexo_valid Check(Sexo IN ('M', 'F')),
   Constraint nino_edad_valid Check( (CURRENT_DATE - Fecha_nacimiento) < 2550 AND (CURRENT_DATE - Fecha_nacimiento) >365)
@@ -186,7 +186,7 @@ CREATE TABLE inscripcion_4(
   hora_hasta time NOT NULL,
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
-  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante),
+  CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante) ON DELETE CASCADE,
   Constraint tiempo_total_valid Check( (EXTRACT(HOUR FROM hora_hasta)  - Extract(HOUR FROM hora_desde) ) <= 10)
 );
 
@@ -196,8 +196,8 @@ CREATE TABLE Parentesco_Padre_4(
   CI_representante varchar(10),
   Parentesco varchar(5),
   Constraint Letra_nino_CI_ppal_CI_rep_Parentesco_pk Primary Key(Letra_nino,CI_principal,CI_representante,Parentesco),
-  Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
-  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI),
+  Constraint Letra_nino_CI_ppal_parent_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante) ON DELETE CASCADE,
+  Constraint CI_rep_parent_fk Foreign Key (CI_representante) references Representante_4(CI) ON DELETE CASCADE,
   Constraint parent_valid Check(Parentesco IN ('Padre', 'Madre'))
 );
 
@@ -208,8 +208,8 @@ CREATE TABLE Parentesco_nino_4(
   CI_pariente_principal varchar(10),
   Parentesco varchar(10) NOT NULL,
   Constraint Letra_nino_CI_ppal_parent_nino1_y_nino2_pk Primary Key(Letra_nino, CI_principal, Letra_pariente, CI_pariente_principal),
-  Constraint Letra_nino_CI_ppal_parent_nino1_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante),
-  Constraint Letra_nino_CI_ppal_parent_nino2_fk Foreign Key(Letra_pariente, CI_pariente_principal) references Nino_4(Letra, CI_representante)
+  Constraint Letra_nino_CI_ppal_parent_nino1_fk Foreign Key(Letra_nino, CI_principal) references Nino_4(Letra, CI_representante) ON DELETE CASCADE,
+  Constraint Letra_nino_CI_ppal_parent_nino2_fk Foreign Key(Letra_pariente, CI_pariente_principal) references Nino_4(Letra, CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE Asistencia_4(
@@ -224,8 +224,8 @@ CREATE TABLE Asistencia_4(
   Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
   Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino),
-  Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino),
-  Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI),
+  Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
+  Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI) ON DELETE CASCADE,
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),
   Constraint Comio_valid Check(Comio IN ('SI', 'NO')),
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
@@ -245,7 +245,7 @@ CREATE TABLE Atencion_4(
   CI_ppal varchar(10),
   Constraint Atencion_pk Primary Key(Codigo_pediatra,Letra_nino,CI_ppal),
   Constraint Pediatra_atencion_fk Foreign Key(Codigo_pediatra) references Pediatra_4(Codigo),
-  Constraint Nino_atencion_fk Foreign Key(Letra_nino,CI_ppal) references Nino_4(Letra,CI_representante)
+  Constraint Nino_atencion_fk Foreign Key(Letra_nino,CI_ppal) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE Juego_4(
@@ -260,7 +260,7 @@ CREATE TABLE Gusto_4(
   CI_representante varchar(10),
   Constraint Gusto_pk Primary Key(Codigo_juego,Letra_nino,CI_representante),
   Constraint Juego_gusto_fk Foreign Key(Codigo_juego) references Juego_4(Codigo),
-  Constraint Nino_gusto_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
+  Constraint Nino_gusto_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE Sintoma_4(
@@ -284,7 +284,7 @@ CREATE TABLE Tratamiento_4(
   Constraint Tratamiento_pk Primary Key(Codigo_sintoma,Codigo_medicamento,Letra_nino,CI_representante,Cantidad),
   Constraint Sintoma_tratamiento_fk Foreign Key(Codigo_sintoma) references Sintoma_4(Codigo),
   Constraint Medicamento_tratamiento_fk Foreign Key(Codigo_medicamento) references Medicamento_4(Codigo),
-  Constraint Nino_tratamiento_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
+  Constraint Nino_tratamiento_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE Alergia_4(
@@ -306,7 +306,7 @@ CREATE TABLE Padecimiento_enfermedad_4(
   Fecha date,
   Constraint Padecimiento_enfermedad_pk Primary Key(Codigo_enfermedad,Letra_nino,CI_representante,Fecha),
   Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo),
-  Constraint Nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
+  Constraint Nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE Padecimiento_alergia_4(
@@ -315,7 +315,7 @@ CREATE TABLE Padecimiento_alergia_4(
   CI_representante varchar(10),
   Constraint Padecimiento_alergia_pk Primary Key(Codigo_alergia,Letra_nino,CI_representante),
   Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo),
-  Constraint Nino_padecimiento_alergia_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante)
+  Constraint Nino_padecimiento_alergia_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE autorizado_buscar_4(
@@ -324,7 +324,7 @@ CREATE TABLE autorizado_buscar_4(
   ci_representante varchar(10),
   CONSTRAINT auth_buscar_pk PRIMARY KEY (ci_autorizado, ci_representante, letra_nino),
   CONSTRAINT ci_auth_buscar_fk FOREIGN KEY (ci_autorizado) REFERENCES Autorizado_4(ci),
-  CONSTRAINT letra_nino_buscar_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES  Nino_4(letra, ci_representante)
+  CONSTRAINT letra_nino_buscar_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES  Nino_4(letra, ci_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE act_inscripcion_4(
@@ -338,7 +338,7 @@ CREATE TABLE act_inscripcion_4(
   hora_inicio_act time,
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
-  CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),
+  CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
   CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
 );
 
@@ -353,7 +353,7 @@ CREATE TABLE pago_mensual_4(
   fecha DATE NOT NULL,
   forma_pago VARCHAR(17) NOT NULL,
   CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo),
-  CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino),
+  CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito'))
 );
 
@@ -367,7 +367,7 @@ CREATE TABLE multa_4(
   monto NUMERIC(10, 2),
   num_transferencia NUMERIC(20),
   CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
-  CONSTRAINT asistencia_multa_fk FOREIGN KEY (fecha_asistencia, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia_4(fecha, Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante)
+  CONSTRAINT asistencia_multa_fk FOREIGN KEY (fecha_asistencia, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia_4(fecha, Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante) ON DELETE CASCADE
 );
 
 CREATE TABLE plato_4(
@@ -413,7 +413,7 @@ CREATE TABLE factura_menu_4(
   numero_trans NUMERIC(20) NOT NULL,
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
-  CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante),
+  CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
   CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );

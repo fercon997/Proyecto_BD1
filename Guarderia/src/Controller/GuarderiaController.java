@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -134,72 +135,7 @@ public class GuarderiaController {
         addGuarderiaView.setVisible(true);
     }
 
-    public void llenarRepresentantes(JComboBox cb, JTable tabla){
-        DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
-        int numGuard = cb.getSelectedIndex();
-        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
-          modeloTabla.removeRow(i);
-        Object[] columna = new Object[4];
-        try{
-            RepresentanteDAOImpl bdParents = new RepresentanteDAOImpl();
-            ArrayList<Representante> parents = bdParents.loadRepresentantes(rifs.get(numGuard-1));
-            for(int i = 0; i<parents.size(); i++){
-                columna[0] = parents.get(i).getCi();
-                columna[1] = parents.get(i).getNombre();
-                columna[2] = parents.get(i).getApellido();
-                columna[3] = parents.get(i).getPrincipal();
-                modeloTabla.addRow(columna);
-            }
-        } catch(Exception e){
-            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
-              modeloTabla.removeRow(i);
-        }
-    }  
     
-    public void mostrarRepresentante(JTable tabla){
-        try{
-            RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
-            String ci = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
-  
-            Representante parent = bdParent.showDatosRepresentante(ci);
-            Lugar lugar = modeloLugar.getDatosLugar("SELECT cod_direccion " + 
-                    " FROM representante_4, lugar_4 WHERE ci = '" + parent.getCi() + 
-                    "' AND cod_direccion = codigo");
-            initialView.ciLabel.setText(String.valueOf(parent.getCi()));
-            initialView.nombreLabel.setText(parent.getNombre());
-            initialView.apellidoLabel.setText(parent.getApellido());
-            initialView.celularLabel.setText(String.valueOf(parent.getCelular()));
-            initialView.tlfcasaLabel.setText(String.valueOf(parent.getTlf_casa()));
-            initialView.tlfoficinaLabel.setText(String.valueOf(parent.getTlf_oficina()));
-            initialView.emailLabel.setText(parent.getEmail());
-            initialView.ciudadLabel.setText(lugar.getCiudad());
-            initialView.municipioLabel3.setText(lugar.getMunicipio());
-            initialView.calleLabel3.setText(lugar.getCalle());
-            initialView.casaLabel3.setText(lugar.getCasa());
-            initialView.profesionLabel.setText(parent.getProfesion());
-            if (parent.getEdo_civil() == 'C')
-              initialView.edoCivilLabel.setText("Casado/a");
-            else
-                initialView.edoCivilLabel.setText("Soltera/o");
-        } catch(Exception e){
-            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
-            initialView.ciLabel.setText("");
-            initialView.nombreLabel.setText("");
-            initialView.apellidoLabel.setText("");
-            initialView.celularLabel.setText("");
-            initialView.tlfcasaLabel.setText("");
-            initialView.tlfoficinaLabel.setText("");
-            initialView.emailLabel.setText("");
-            initialView.ciudadLabel.setText("");
-            initialView.municipioLabel3.setText("");
-            initialView.calleLabel3.setText("");
-            initialView.casaLabel3.setText("");
-            initialView.profesionLabel.setText("");
-            initialView.edoCivilLabel.setText("");
-
-        }
-    }
-
 
 
 }
