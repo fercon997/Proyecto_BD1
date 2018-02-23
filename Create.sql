@@ -339,7 +339,7 @@ CREATE TABLE act_inscripcion_4(
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
+  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio) ON DELETE CASCADE
 );
 
 CREATE TABLE pago_mensual_4(
@@ -398,7 +398,7 @@ CREATE TABLE menu_4(
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
-  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
+  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif) ON DELETE CASCADE,
   CONSTRAINT fecha_semana_valid Check( Extract(DOW FROM fecha) != 6 AND Extract(DOW FROM fecha) != 0)
 );
 

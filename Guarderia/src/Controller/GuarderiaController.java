@@ -62,7 +62,7 @@ public class GuarderiaController {
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
         initialView.jComboGuarderias1.setSelectedIndex(numGuard);
         initialView.jComboGuarderiasNinos.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
+//        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
         initialView.jComboGuarderias4.setSelectedIndex(numGuard);
         initialView.jComboGuarderias5.setSelectedIndex(numGuard);
         initialView.jComboGuarderias6.setSelectedIndex(numGuard);
