@@ -82,7 +82,11 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
     public Representante showDatosRepresentante(String ci){
         Connection cn = con.connectToPostgres();
         Representante parent = new Representante();
-        String sql = "SELECT * FROM representante_4 WHERE ci = '"+ci+"'";
+        String paramCons = "R.apellido, R.celular, R.ci, R.cod_direccion, R.estado_civil,"+
+                "R.email, R.nombre, R.principal, R.profesion, R.tlf_casa, R.tlf_oficina, N.nombre";
+        String sql = "SELECT "+paramCons+" FROM representante_4 R, nino_4 N  WHERE ci = '"+ci+"' AND "+
+                "R.ci = N.ci_representante";
+        ArrayList<String> ninos = new ArrayList();
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -98,11 +102,14 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
                 parent.setProfesion(rs.getString("Profesion"));
                 parent.setTlf_casa(rs.getLong("tlf_casa"));
                 parent.setTlf_oficina(rs.getLong("tlf_oficina"));
+                ninos.add(rs.getString(12));
             }
+            rs.close();
+            st.close();
         } catch (SQLException ex) {
             Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(parent.ci);
+        parent.setNinos(ninos);
         return parent;
     }
     

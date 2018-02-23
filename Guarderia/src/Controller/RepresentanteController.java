@@ -81,6 +81,12 @@ public class RepresentanteController {
               initialView.edoCivilText.setText("Casado/a");
             else
                 initialView.edoCivilText.setText("Soltera/o");
+            String ninos = new String();
+            for (int i = 0; i<parent.getNinos().size(); i++){
+                String aux = parent.getNinos().get(i)+" ";
+                ninos = ninos + aux;
+            }
+            initialView.ninosLabel.setText(ninos);
         } catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
             initialView.ciLabel.setText("");
@@ -96,6 +102,7 @@ public class RepresentanteController {
             initialView.casaLabel3.setText("");
             initialView.profesionText.setText("");
             initialView.edoCivilText.setText("");
+            initialView.ninosLabel.setText("");
 
         }
     }
@@ -180,6 +187,7 @@ public class RepresentanteController {
         initialView.municipioLabel3.setText("");
         initialView.calleLabel3.setText("");
         initialView.casaLabel3.setText("");
+        initialView.ninosLabel.setText("");
         
     }
     

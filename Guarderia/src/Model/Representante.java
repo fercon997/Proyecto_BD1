@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fercon997
@@ -21,8 +23,9 @@ public class Representante {
     char edo_civil;
     int principal;
     int cod_direccion;
+    ArrayList<String> ninos;
 
-    public Representante(String ci, String nombre, String apellido, long celular, long tlf_casa, long tlf_oficina, String email, String profesion, char edo_civil, int principal, int cod_direccion) {
+    public Representante(String ci, String nombre, String apellido, long celular, long tlf_casa, long tlf_oficina, String email, String profesion, char edo_civil, int principal, int cod_direccion, ArrayList<String> ninos) {
         this.ci = ci;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,9 +37,18 @@ public class Representante {
         this.edo_civil = edo_civil;
         this.principal = principal;
         this.cod_direccion = cod_direccion;
+        this.ninos = ninos;
     }
 
     public Representante() {
+    }
+
+    public ArrayList<String> getNinos() {
+        return ninos;
+    }
+
+    public void setNinos(ArrayList<String> ninos) {
+        this.ninos = ninos;
     }
 
     public String getCi() {
