@@ -50,8 +50,9 @@ public class GuarderiaController {
         }
     }
 
-    public void guarderiaChanged(JComboBox cb) {
+    public int guarderiaChanged(JComboBox cb) {
         changing = true;
+        int codigo = 0;
         int numGuard = cb.getSelectedIndex();
         if (numGuard == 0) {
             disableButtons();
@@ -61,7 +62,7 @@ public class GuarderiaController {
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
         initialView.jComboGuarderias1.setSelectedIndex(numGuard);
         initialView.jComboGuarderiasNinos.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
+//        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
         initialView.jComboGuarderias4.setSelectedIndex(numGuard);
         initialView.jComboGuarderias5.setSelectedIndex(numGuard);
         initialView.jComboGuarderias6.setSelectedIndex(numGuard);
@@ -71,7 +72,7 @@ public class GuarderiaController {
         initialView.jComboGuarderias10.setSelectedIndex(numGuard);
         changing = false;
         if (cb == initialView.jComboGuarderias) {
-            showDatosGuarderia(numGuard - 1);
+            codigo = showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
         if (cb == initialView.jComboGuarderias6){
@@ -87,6 +88,7 @@ public class GuarderiaController {
               initialView.LlenarActividades(Actividad.getactividades());
             }
         }
+        return codigo;
     }
 
     private void disableButtons() {
@@ -99,7 +101,7 @@ public class GuarderiaController {
         initialView.deleteGuarderiaButton.setEnabled(true);
     }
 
-    public void showDatosGuarderia(int index) {
+    public int showDatosGuarderia(int index) {
         if (index == -1) {
             initialView.rifLabel.setText("");
         initialView.horaEntradaLabel.setText("");
@@ -109,7 +111,9 @@ public class GuarderiaController {
             initialView.rifLabel.setText(rifs.get(index).toString());
             initialView.horaEntradaLabel.setText(guarderia.getHoraEntrada().toString());
             initialView.horaSalidaLabel.setText(guarderia.getHoraSalida().toString());
+            return guarderia.getCodDireccion();
         }
+        return 0;
     }
 
     public void showDireccion(int index) {
@@ -131,9 +135,9 @@ public class GuarderiaController {
         }
     }
 
-    public void editGuarderia() {
+    public void editGuarderia(int codDireccion) {
         if (initialView.editGuarderiaButton.isEnabled()) {
-            EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true);
+            EditGuarderiaView editGuarderiaView = new EditGuarderiaView(initialView, true, codDireccion);
             editGuarderiaView.setVisible(true);
         }
     }
@@ -141,6 +145,10 @@ public class GuarderiaController {
     public void addGuarderia() {
         AddGuarderiaView addGuarderiaView = new AddGuarderiaView(initialView, true);
         addGuarderiaView.setVisible(true);
+    }
+    
+    public void deleteGuarderia(int index) {
+        modeloGuarderia.deleteGuarderia(rifs.get(index));
     }
 
     public void mostrarNinos(JTable tabla) {

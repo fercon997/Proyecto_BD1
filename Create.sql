@@ -86,7 +86,7 @@ CREATE TABLE Personal_4(
   Cod_direccion numeric(10),
   RIF_guarderia varchar(12),
   Constraint CI_per_pk Primary Key(CI),
-  Constraint RIF_guard_per_fk Foreign Key(Rif_guarderia) references Guarderia_4 (Rif),
+  Constraint RIF_guard_per_fk Foreign Key(Rif_guarderia) references Guarderia_4 (Rif) ON DELETE CASCADE,
   Constraint Cod_dir_per_fk Foreign Key(Cod_direccion) references Lugar_4 (Codigo),
   Constraint encargada_bool Check(SeñalEncargada IN (0,1)),
   Constraint tipos_estudio Check(Nivel_estudio IN ('Bachillerato', 'TSU', 'Universitario', 'Postgrado'))
@@ -96,7 +96,7 @@ CREATE TABLE Experiencia_4(
   CI_personal varchar(10),
   Nombre varchar(50),
   Constraint CINom_per_exp_pk Primary Key(CI_personal, Nombre),
-  Constraint CI_per_exp_fk Foreign Key(CI_personal) references Personal_4(CI)
+  Constraint CI_per_exp_fk Foreign Key(CI_personal) references Personal_4(CI) ON DELETE CASCADE
 );
 
 CREATE TABLE Representante_4(
@@ -146,7 +146,7 @@ CREATE TABLE Act_Guarderia_4(
   CupoMax numeric(3) NOT NULL,
   CI_encargada varchar(10),
   Constraint RIF_guard_Cod_act_pk Primary Key(RIF_guarderia, Cod_actividad),
-  Constraint RIF_guard_act_fk Foreign Key(RIF_guarderia) references Guarderia_4(RIF),
+  Constraint RIF_guard_act_fk Foreign Key(RIF_guarderia) references Guarderia_4(RIF) ON DELETE CASCADE,
   Constraint Cod_act_guard_fk Foreign Key(Cod_actividad) references Actividad_4(Codigo),
   Constraint CI_enc_act_fk Foreign Key(CI_encargada) references Personal_4(CI)
 );
@@ -158,7 +158,7 @@ CREATE TABLE Horario_Act_Guarderia_4(
   Hora_inicio time,
   Hora_fin time NOT NULL,
   Constraint RIF_guard_Cod_act_hora_Fecha_Hora_init_pk Primary Key(RIF_guarderia, Cod_actividad, Fecha, Hora_inicio),
-  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad)
+  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad) ON DELETE CASCADE
 );
 
 CREATE TABLE Nino_4(
@@ -185,7 +185,7 @@ CREATE TABLE inscripcion_4(
   hora_desde time NOT NULL,
   hora_hasta time NOT NULL,
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
-  CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
+  CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif) ON DELETE CASCADE,
   CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante) ON DELETE CASCADE,
   Constraint tiempo_total_valid Check( (EXTRACT(HOUR FROM hora_hasta)  - Extract(HOUR FROM hora_desde) ) <= 10)
 );
@@ -339,7 +339,7 @@ CREATE TABLE act_inscripcion_4(
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
+  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio) ON DELETE CASCADE
 );
 
 CREATE TABLE pago_mensual_4(
@@ -398,7 +398,7 @@ CREATE TABLE menu_4(
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
-  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
+  CONSTRAINT rif_menu_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif) ON DELETE CASCADE,
   CONSTRAINT fecha_semana_valid Check( Extract(DOW FROM fecha) != 6 AND Extract(DOW FROM fecha) != 0)
 );
 

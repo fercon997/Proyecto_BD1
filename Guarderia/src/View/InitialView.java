@@ -21,6 +21,7 @@ public class InitialView extends javax.swing.JFrame {
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
      private RepresentanteController controladorRepresentante = new RepresentanteController(this);
      boolean comboBoxCreado = false;
+     int codDireccion = 0;
 
     public InitialView() {
        initComponents();
@@ -314,6 +315,11 @@ public class InitialView extends javax.swing.JFrame {
         });
 
         deleteGuarderiaButton.setText("Eliminar");
+        deleteGuarderiaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteGuarderiaButtonMouseClicked(evt);
+            }
+        });
 
         editGuarderiaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
         editGuarderiaButton.setToolTipText("");
@@ -485,6 +491,11 @@ public class InitialView extends javax.swing.JFrame {
         });
 
         deleteNinoButton.setText("Eliminar");
+        deleteNinoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteNinoButtonMouseClicked(evt);
+            }
+        });
 
         tablaNinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1214,74 +1225,74 @@ public class InitialView extends javax.swing.JFrame {
 
     private void jComboGuarderiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias);
         }
     }//GEN-LAST:event_jComboGuarderiasActionPerformed
 
     private void jComboGuarderias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias1ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias1);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias1);
         }
     }//GEN-LAST:event_jComboGuarderias1ActionPerformed
 
     private void jComboGuarderiasNinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasNinosActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos);
         }
         
     }//GEN-LAST:event_jComboGuarderiasNinosActionPerformed
 
     private void jComboNinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboNinosActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-             controladorNino_medico.nino_medicoChanged(jComboNinos);
+            controladorNino_medico.nino_medicoChanged(jComboNinos);
         }
     }//GEN-LAST:event_jComboNinosActionPerformed
 
     private void jComboGuarderias4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias4ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias4);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias4);
         }
         controladorRepresentante.llenarRepresentantes(jComboGuarderias4, tablaRepresentantes);
     }//GEN-LAST:event_jComboGuarderias4ActionPerformed
 
     private void jComboGuarderias5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias5ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias5);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias5);
         }
     }//GEN-LAST:event_jComboGuarderias5ActionPerformed
 
     private void jComboGuarderias6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias6ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias6);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias6);
         }
     }//GEN-LAST:event_jComboGuarderias6ActionPerformed
 
     private void jComboGuarderias7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias7ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias7);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias7);
         }
     }//GEN-LAST:event_jComboGuarderias7ActionPerformed
 
     private void jComboGuarderias8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias8ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias8);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias8);
         }
     }//GEN-LAST:event_jComboGuarderias8ActionPerformed
 
     private void jComboGuarderias9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias9ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias9);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias9);
         }
     }//GEN-LAST:event_jComboGuarderias9ActionPerformed
 
     private void jComboGuarderias10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias10ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorGuarderia.guarderiaChanged(jComboGuarderias10);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias10);
         }
     }//GEN-LAST:event_jComboGuarderias10ActionPerformed
 
     private void editGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editGuarderiaButtonMouseClicked
-        controladorGuarderia.editGuarderia();;
+        controladorGuarderia.editGuarderia(codDireccion);
     }//GEN-LAST:event_editGuarderiaButtonMouseClicked
 
     private void editNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editNinoButtonMouseClicked
@@ -1330,6 +1341,15 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaNinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinosMouseClicked
         controladorGuarderia.mostrarNinos(tablaNinos);
     }//GEN-LAST:event_tablaNinosMouseClicked
+
+    private void deleteNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteNinoButtonMouseClicked
+
+    }//GEN-LAST:event_deleteNinoButtonMouseClicked
+
+    private void deleteGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonMouseClicked
+        controladorGuarderia.deleteGuarderia(jComboGuarderias.getSelectedIndex() - 1);
+        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias);
+    }//GEN-LAST:event_deleteGuarderiaButtonMouseClicked
 
     /**
      * @param args the command line arguments
