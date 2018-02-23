@@ -89,14 +89,17 @@ public class LugarDAOImpl implements LugarDAO {
     public ArrayList<Lugar> getEstados() {
         Connection connection = con.connectToPostgres();
         ArrayList lugares = new ArrayList();
-        String sql = "SELECT nombre FROM lugar_4 WHERE tipo = 'Estado';";
+        String sql = "SELECT * FROM lugar_4 WHERE tipo = 'Estado';";
         try {
             Statement st;
             st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
                 Lugar lugar = new Lugar();
-                lugar.setNombre(rs.getString(1));
+                lugar.setNombre(rs.getString("nombre"));
+                lugar.setCodigo(rs.getInt("codigo"));
+                lugar.setTipo(rs.getString("tipo"));
+                
                 lugares.add(lugar);
             }
             rs.close();
@@ -195,4 +198,31 @@ public class LugarDAOImpl implements LugarDAO {
         }
         return codigo;
     }
+    
+    public ArrayList<Lugar> getAbajo(int cod_superior){
+        ArrayList<Lugar> lugares = new ArrayList();
+        
+        Connection cn = con.connectToPostgres();
+        String sql = "SELECT * FROM lugar_4 WHERE cod_superior = "+cod_superior+";";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Lugar lugar = new Lugar();
+               
+                lugar.setCodigo(rs.getInt("codigo"));
+                lugar.setNombre(rs.getString("nombre"));
+                lugar.setTipo(rs.getString("tipo"));
+                lugares.add(lugar);
+            }
+            rs.close();
+            st.close();
+            cn.close();  
+        } catch (SQLException ex) {
+            Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lugares;
+    }
+    
 }

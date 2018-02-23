@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.*;
-import View.InitialView;
+import View.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -189,7 +189,13 @@ public class RepresentanteController {
         initialView.casaLabel3.setText("");
         initialView.ninosLabel.setText("");
         
+        
     }
     
+    public void agregarRepresentante(){
+        JDAddRepresentante vistaAR = new JDAddRepresentante(initialView, true);
+        vistaAR.setVisible(true);
+        
+    }
 
 }

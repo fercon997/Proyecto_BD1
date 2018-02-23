@@ -41,10 +41,10 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
             pps.setInt(10, parent.getPrincipal());
             pps.setInt(11, parent.getCod_direccion());
             pps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
             cn.close();
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en los datos");
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

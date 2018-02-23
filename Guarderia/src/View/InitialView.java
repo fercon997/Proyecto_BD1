@@ -703,11 +703,13 @@ public class InitialView extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNino1Layout.createSequentialGroup()
                                     .addComponent(jLabel29)
                                     .addGap(61, 61, 61)))
-                            .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ninosLabel)
-                                .addComponent(edoCivilText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(profesionText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                            .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
+                                    .addComponent(ninosLabel)
+                                    .addGap(155, 155, 155))
+                                .addComponent(edoCivilText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(profesionText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanelInfoNino1Layout.setVerticalGroup(
             jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -827,6 +829,11 @@ public class InitialView extends javax.swing.JFrame {
         buscarNinoButton1.setText("Buscar");
 
         jButton1.setText("Agregar Representante");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelRepresentantesLayout = new javax.swing.GroupLayout(jPanelRepresentantes);
         jPanelRepresentantes.setLayout(jPanelRepresentantesLayout);
@@ -845,13 +852,15 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(deleteRepresentanteButton)
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(editRepresentanteBtn)
+                        .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(401, 401, 401))
+                            .addComponent(editRepresentanteBtn))
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
                         .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(24, 24, 24))))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                     .addGap(34, 34, 34)
@@ -1213,6 +1222,10 @@ public class InitialView extends javax.swing.JFrame {
     private void saveRepresentanteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveRepresentanteBtnActionPerformed
         controladorRepresentante.editarRepresentante();        // TODO add your handling code here:
     }//GEN-LAST:event_saveRepresentanteBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         controladorRepresentante.agregarRepresentante();       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
