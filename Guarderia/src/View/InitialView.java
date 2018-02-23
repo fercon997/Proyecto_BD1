@@ -503,10 +503,13 @@ public class InitialView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaNinos.setColumnSelectionAllowed(true);
         tablaNinos.getTableHeader().setReorderingAllowed(false);
+        tablaNinos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaNinosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaNinos);
-        tablaNinos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         buscarNinoButton.setText("Buscar");
 
@@ -1202,6 +1205,10 @@ public class InitialView extends javax.swing.JFrame {
     private void addNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNinoButtonMouseClicked
         controladorGuarderia.addNino();
     }//GEN-LAST:event_addNinoButtonMouseClicked
+
+    private void tablaNinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinosMouseClicked
+        controladorGuarderia.mostrarNinos(tablaNinos);
+    }//GEN-LAST:event_tablaNinosMouseClicked
 
     /**
      * @param args the command line arguments
