@@ -43,10 +43,17 @@ public class Nino_MedicoController {
         int numninos = cb.getSelectedIndex();
         initialView.jComboNinos.setSelectedIndex(numninos);
         if (numninos == 0) {
+<<<<<<< HEAD
 //            DefaultTableModel modelopediatras = (DefaultTableModel)initialView.Tabla_Pediatras.getModel();
 //            DefaultTableModel modeloenfermedades = (DefaultTableModel)initialView.Tabla_Enfermedades.getModel();
 //            DefaultTableModel modeloalergias = (DefaultTableModel)initialView.Tabla_Alergias.getModel();
 //            DefaultTableModel modelotratamientos = (DefaultTableModel)initialView.Tabla_Tratamientos.getModel();
+=======
+            DefaultTableModel modelopediatras = (DefaultTableModel)initialView.Tabla_Enfermedades.getModel();
+            DefaultTableModel modeloenfermedades = (DefaultTableModel)initialView.Tabla_Enfermedades.getModel();
+            DefaultTableModel modeloalergias = (DefaultTableModel)initialView.Tabla_Enfermedades.getModel();
+            DefaultTableModel modelotratamientos = (DefaultTableModel)initialView.Tabla_Tratamientos.getModel();
+>>>>>>> 141aedde00a4d71dcc364e24d9a516f19c35690d
                int rowCount = modelopediatras.getRowCount();
             for (int i = rowCount - 1; i >= 0; i--) {
                 modelopediatras.removeRow(i);
