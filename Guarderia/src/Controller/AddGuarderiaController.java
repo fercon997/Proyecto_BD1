@@ -56,12 +56,10 @@ public class AddGuarderiaController {
     public void saveGuarderia() {
         Lugar casa = new Lugar();
         Lugar calle = new Lugar();
-        System.out.println("Hola: " + addGuarderiaView.municipioComboBox.getSelectedIndex());
         casa.setNombre(addGuarderiaView.casaTextField.getText());
         casa.setTipo(String.valueOf(addGuarderiaView.casaComboBox.getSelectedItem()));
         calle.setNombre(addGuarderiaView.calleTextField.getText());
         calle.setTipo(String.valueOf(addGuarderiaView.calleComboBox.getSelectedItem()));
-        System.out.println("Hola 2 " + municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         calle.setCodigo_superior(municipios.get(addGuarderiaView.municipioComboBox.getSelectedIndex()).getCodigo());
         int codigo = modeloLugar.addDireccion(casa, calle);
         
@@ -73,6 +71,14 @@ public class AddGuarderiaController {
         guarderia.setConstoTransporte(0);
         guarderia.setCostoAgoDic(0);
         guarderia.setCostoHoraExtra(0);
-        //modeloGuarderia.saveGuarderia(guarderia);
+        java.util.Date utilDate = (java.util.Date) addGuarderiaView.horaEntradaSpinner.getValue();
+        java.sql.Time sqlTime = new java.sql.Time(utilDate.getTime());
+        guarderia.setHoraEntrada(sqlTime);
+        utilDate = (java.util.Date) addGuarderiaView.horaSalidaSpinner.getValue();
+        sqlTime = new java.sql.Time(utilDate.getTime());
+        guarderia.setHoraSalida(sqlTime);
+        guarderia.setCodDireccion(codigo);
+        modeloGuarderia.saveGuarderia(guarderia);
+        addGuarderiaView.dispose();
     }
 }
