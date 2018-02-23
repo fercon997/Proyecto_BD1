@@ -16,12 +16,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InitialView extends javax.swing.JFrame {
      private Nino_MedicoDAOImpl Nino_Medico = new Nino_MedicoDAOImpl();
-     private Nino_MedicoController controladorNino_medico = new Nino_MedicoController(this,Nino_Medico);
+     //private Nino_MedicoController controladorNino_medico = new Nino_MedicoController(this,Nino_Medico);
      private GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
      private RepresentanteController controladorRepresentante = new RepresentanteController(this);
      boolean comboBoxCreado = false;
      int codDireccion = 0;
+     private JuegoController controladorJuego = new JuegoController(this);
 
     public InitialView() {
        initComponents();
@@ -31,7 +32,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias1);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos);
-       controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
+       //controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias5);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
@@ -120,6 +121,8 @@ public class InitialView extends javax.swing.JFrame {
         tablaNinos = new javax.swing.JTable();
         buscarNinoTextField = new javax.swing.JTextField();
         buscarNinoButton = new javax.swing.JButton();
+        jPanelInfMedica = new javax.swing.JPanel();
+        jComboGuarderias3 = new javax.swing.JComboBox<>();
         jPanelRepresentantes = new javax.swing.JPanel();
         jComboGuarderias4 = new javax.swing.JComboBox<>();
         deleteRepresentanteButton = new javax.swing.JButton();
@@ -173,22 +176,29 @@ public class InitialView extends javax.swing.JFrame {
         jComboGuarderias9 = new javax.swing.JComboBox<>();
         jPanelTarifas = new javax.swing.JPanel();
         jComboGuarderias10 = new javax.swing.JComboBox<>();
-        jPanelInfMedica = new javax.swing.JPanel();
-        jComboNinos = new javax.swing.JComboBox<>();
+        jPanelJuegos = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        Tabla_Enfermedades = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        Tabla_Pediatras = new javax.swing.JTable();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        Tabla_Alergias = new javax.swing.JTable();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        Tabla_Tratamientos = new javax.swing.JTable();
+        tablaJuegos = new javax.swing.JTable();
+        jPanelInfoJuego = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        nombreText1 = new javax.swing.JTextField();
+        saveJuegoBtn = new javax.swing.JButton();
+        deleteJuegoBtn = new javax.swing.JButton();
+        editJuegoBtn = new javax.swing.JButton();
+        addJuegoBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
+            }
+        });
+        jTabbedPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTabbedPane1KeyPressed(evt);
             }
         });
 
@@ -334,7 +344,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(669, Short.MAX_VALUE)
+                .addContainerGap(682, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                         .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +373,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addGuarderiaButton)
                     .addComponent(deleteGuarderiaButton))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
@@ -388,7 +398,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
@@ -556,7 +566,7 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(jComboGuarderiasNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelNinosLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanelInfoNino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNinosLayout.createSequentialGroup()
@@ -583,10 +593,29 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNinoButton)
                     .addComponent(deleteNinoButton))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
+
+        javax.swing.GroupLayout jPanelInfMedicaLayout = new javax.swing.GroupLayout(jPanelInfMedica);
+        jPanelInfMedica.setLayout(jPanelInfMedicaLayout);
+        jPanelInfMedicaLayout.setHorizontalGroup(
+            jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfMedicaLayout.createSequentialGroup()
+                .addContainerGap(761, Short.MAX_VALUE)
+                .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        jPanelInfMedicaLayout.setVerticalGroup(
+            jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(677, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
 
         jComboGuarderias4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -822,7 +851,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelRepresentantesLayout.setHorizontalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                .addContainerGap(408, Short.MAX_VALUE)
+                .addContainerGap(421, Short.MAX_VALUE)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
@@ -852,7 +881,7 @@ public class InitialView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(buscarNinoButton1))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 509, Short.MAX_VALUE)))
+                    .addGap(0, 522, Short.MAX_VALUE)))
         );
         jPanelRepresentantesLayout.setVerticalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -881,7 +910,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(buscarNinoButton1))
                     .addGap(35, 35, 35)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(210, Short.MAX_VALUE)))
+                    .addContainerGap(186, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Representantes", jPanelRepresentantes);
@@ -906,7 +935,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPersonalLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jComboGuarderias5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(695, Short.MAX_VALUE))
+                .addContainerGap(671, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
@@ -944,14 +973,6 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(Tabla_actividades);
-        if (Tabla_actividades.getColumnModel().getColumnCount() > 0) {
-            Tabla_actividades.getColumnModel().getColumn(0).setHeaderValue("Nombre");
-            Tabla_actividades.getColumnModel().getColumn(1).setHeaderValue("Descripción");
-            Tabla_actividades.getColumnModel().getColumn(2).setHeaderValue("Edad Mínima");
-            Tabla_actividades.getColumnModel().getColumn(3).setHeaderValue("Cupo Máximo");
-            Tabla_actividades.getColumnModel().getColumn(4).setHeaderValue("Cupo Mínimo");
-            Tabla_actividades.getColumnModel().getColumn(5).setHeaderValue("Costo");
-        }
 
         javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
         jPanelActividades.setLayout(jPanelActividadesLayout);
@@ -973,7 +994,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -998,7 +1019,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelComidaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -1023,7 +1044,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -1048,7 +1069,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelMultasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -1073,161 +1094,176 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelTarifasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tarifas", jPanelTarifas);
 
-        jComboNinos.addActionListener(new java.awt.event.ActionListener() {
+        tablaJuegos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaJuegos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaJuegosMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tablaJuegos);
+
+        jPanelInfoJuego.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion del juego"));
+
+        jLabel30.setText("CI");
+
+        jLabel31.setText("Nombre");
+
+        nombreText1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboNinosActionPerformed(evt);
+                nombreText1ActionPerformed(evt);
             }
         });
 
-        Tabla_Enfermedades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Enfermedades"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(Tabla_Enfermedades);
-
-        Tabla_Pediatras.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Pediatras"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(Tabla_Pediatras);
-
-        Tabla_Alergias.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Alergias"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(Tabla_Alergias);
-
-        Tabla_Tratamientos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "SIntoma", "Medicamento", "Dosis Medica"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane7.setViewportView(Tabla_Tratamientos);
-
-        javax.swing.GroupLayout jPanelInfMedicaLayout = new javax.swing.GroupLayout(jPanelInfMedica);
-        jPanelInfMedica.setLayout(jPanelInfMedicaLayout);
-        jPanelInfMedicaLayout.setHorizontalGroup(
-            jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfMedicaLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelInfoJuegoLayout = new javax.swing.GroupLayout(jPanelInfoJuego);
+        jPanelInfoJuego.setLayout(jPanelInfoJuegoLayout);
+        jPanelInfoJuegoLayout.setHorizontalGroup(
+            jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoJuegoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoJuegoLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(codigoLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoJuegoLayout.createSequentialGroup()
+                            .addGroup(jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGap(204, 204, 204))))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanelInfoJuegoLayout.setVerticalGroup(
+            jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoJuegoLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(codigoLabel))
                 .addGap(18, 18, 18)
-                .addComponent(jComboNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelInfoJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        saveJuegoBtn.setText("Guardar");
+        saveJuegoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveJuegoBtnActionPerformed(evt);
+            }
+        });
+
+        deleteJuegoBtn.setText("Eliminar");
+        deleteJuegoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteJuegoBtnActionPerformed(evt);
+            }
+        });
+
+        editJuegoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editJuegoBtn.setToolTipText("");
+        editJuegoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editJuegoBtnMouseClicked(evt);
+            }
+        });
+        editJuegoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editJuegoBtnActionPerformed(evt);
+            }
+        });
+
+        addJuegoBtn.setText("Agregar Juego");
+        addJuegoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addJuegoBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelJuegosLayout = new javax.swing.GroupLayout(jPanelJuegos);
+        jPanelJuegos.setLayout(jPanelJuegosLayout);
+        jPanelJuegosLayout.setHorizontalGroup(
+            jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(addJuegoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143)
+                .addComponent(saveJuegoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(deleteJuegoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
+                .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelJuegosLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editJuegoBtn))
+                    .addGroup(jPanelJuegosLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addComponent(jPanelInfoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
-        jPanelInfMedicaLayout.setVerticalGroup(
-            jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
-                .addGroup(jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jComboNinos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(292, Short.MAX_VALUE))
+        jPanelJuegosLayout.setVerticalGroup(
+            jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelJuegosLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(editJuegoBtn)
+                .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelJuegosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4)
+                            .addComponent(jPanelInfoJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveJuegoBtn)
+                            .addComponent(deleteJuegoBtn))
+                        .addContainerGap(185, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addJuegoBtn)
+                        .addGap(164, 164, 164))))
         );
 
-        jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
+        jTabbedPane1.addTab("Juegos", jPanelJuegos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1269,7 +1305,7 @@ public class InitialView extends javax.swing.JFrame {
 
     private void jComboNinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboNinosActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            controladorNino_medico.nino_medicoChanged(jComboNinos);
+            //controladorNino_medico.nino_medicoChanged(jComboNinos);
         }
     }//GEN-LAST:event_jComboNinosActionPerformed
 
@@ -1348,7 +1384,9 @@ public class InitialView extends javax.swing.JFrame {
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         controladorRepresentante.bloquear();
-        controladorGuarderia.tabbedPaneTouched();// TODO add your handling code here:
+        controladorGuarderia.tabbedPaneTouched();
+        controladorJuego.mostrarTabla(tablaJuegos);
+        controladorJuego.bloquear();// TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void editRepresentanteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRepresentanteBtnActionPerformed
@@ -1377,6 +1415,40 @@ public class InitialView extends javax.swing.JFrame {
     private void deleteGuarderiaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonMouseClicked
         controladorGuarderia.deleteGuarderia(jComboGuarderias.getSelectedIndex() - 1);
     }//GEN-LAST:event_deleteGuarderiaButtonMouseClicked
+
+    private void nombreText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreText1ActionPerformed
+
+    private void jTabbedPane1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1KeyPressed
+
+    private void tablaJuegosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuegosMouseClicked
+        controladorJuego.datosJuego(tablaJuegos);// TODO add your handling code here:
+    }//GEN-LAST:event_tablaJuegosMouseClicked
+
+    private void saveJuegoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJuegoBtnActionPerformed
+        controladorJuego.editarJuego();// TODO add your handling code here:
+    }//GEN-LAST:event_saveJuegoBtnActionPerformed
+
+    private void editJuegoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editJuegoBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editJuegoBtnMouseClicked
+
+    private void editJuegoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJuegoBtnActionPerformed
+        controladorJuego.habilitar();        // TODO add your handling code here:
+    }//GEN-LAST:event_editJuegoBtnActionPerformed
+
+    private void deleteJuegoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJuegoBtnActionPerformed
+        controladorJuego.eliminarJuego();
+        controladorJuego.mostrarTabla(tablaJuegos);        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteJuegoBtnActionPerformed
+
+    private void addJuegoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJuegoBtnActionPerformed
+        controladorJuego.agregarJuego();
+        controladorJuego.mostrarTabla(tablaJuegos);// TODO add your handling code here:
+    }//GEN-LAST:event_addJuegoBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1414,12 +1486,9 @@ public class InitialView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable Tabla_Alergias;
-    public javax.swing.JTable Tabla_Enfermedades;
-    public javax.swing.JTable Tabla_Pediatras;
-    public javax.swing.JTable Tabla_Tratamientos;
     public javax.swing.JTable Tabla_actividades;
     public javax.swing.JButton addGuarderiaButton;
+    public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addNinoButton;
     public javax.swing.JLabel apellidoNino;
     public javax.swing.JTextField apellidoText;
@@ -1435,11 +1504,14 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel ciLabel;
     public javax.swing.JLabel ciudadLabel;
     public javax.swing.JLabel ciudadLabel1;
+    public javax.swing.JLabel codigoLabel;
     public javax.swing.JButton deleteGuarderiaButton;
+    public javax.swing.JButton deleteJuegoBtn;
     public javax.swing.JButton deleteNinoButton;
     public javax.swing.JButton deleteRepresentanteButton;
     public javax.swing.JLabel edadNino;
     public javax.swing.JButton editGuarderiaButton;
+    public javax.swing.JButton editJuegoBtn;
     public javax.swing.JButton editNinoButton;
     public javax.swing.JButton editRepresentanteBtn;
     public javax.swing.JTextField edoCivilText;
@@ -1452,6 +1524,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias;
     public javax.swing.JComboBox<String> jComboGuarderias1;
     public javax.swing.JComboBox<String> jComboGuarderias10;
+    public javax.swing.JComboBox<String> jComboGuarderias3;
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
     public javax.swing.JComboBox<String> jComboGuarderias6;
@@ -1459,7 +1532,6 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderias9;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
-    public javax.swing.JComboBox<String> jComboNinos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1483,6 +1555,8 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1494,10 +1568,12 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelComida;
     private javax.swing.JPanel jPanelInfMedica;
     private javax.swing.JPanel jPanelInfoGuarderia;
+    private javax.swing.JPanel jPanelInfoJuego;
     private javax.swing.JPanel jPanelInfoNino;
     private javax.swing.JPanel jPanelInfoNino1;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelInscripcion;
+    private javax.swing.JPanel jPanelJuegos;
     private javax.swing.JPanel jPanelMultas;
     private javax.swing.JPanel jPanelNinos;
     private javax.swing.JPanel jPanelPagos;
@@ -1508,19 +1584,19 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel municipioLabel;
     public javax.swing.JLabel municipioLabel3;
     public javax.swing.JLabel ninosLabel;
     public javax.swing.JLabel nombreNino;
     public javax.swing.JTextField nombreText;
+    public javax.swing.JTextField nombreText1;
     public javax.swing.JTextField profesionText;
     public javax.swing.JLabel rifLabel;
+    public javax.swing.JButton saveJuegoBtn;
     public javax.swing.JButton saveRepresentanteBtn;
     public javax.swing.JLabel sexoNino;
+    public javax.swing.JTable tablaJuegos;
     public javax.swing.JTable tablaNinos;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;

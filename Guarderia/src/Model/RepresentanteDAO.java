@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author fercon997
  */
 public interface RepresentanteDAO {
-    public void insertRepresentante(Representante parent);
+    public void insertRepresentante(Representante parent) throws SQLException;
     public ArrayList<Representante> loadRepresentantes(String rif);
     public Representante showDatosRepresentante(String ci);
     public void deleteRepresentante(String ci);

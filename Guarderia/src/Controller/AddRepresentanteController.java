@@ -96,7 +96,7 @@ public class AddRepresentanteController {
             vistaAG.dispose();
         }catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(vistaAG, "No se puede guardar");
+            JOptionPane.showMessageDialog(vistaAG, "Error en los datos");
         }
     }
     

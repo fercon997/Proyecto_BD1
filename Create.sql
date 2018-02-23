@@ -259,7 +259,7 @@ CREATE TABLE Gusto_4(
   Letra_nino char(1),
   CI_representante varchar(10),
   Constraint Gusto_pk Primary Key(Codigo_juego,Letra_nino,CI_representante),
-  Constraint Juego_gusto_fk Foreign Key(Codigo_juego) references Juego_4(Codigo),
+  Constraint Juego_gusto_fk Foreign Key(Codigo_juego) references Juego_4(Codigo) ON DELETE CASCADE,
   Constraint Nino_gusto_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 

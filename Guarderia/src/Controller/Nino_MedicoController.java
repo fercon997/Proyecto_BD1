@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+/*package Controller;
 
 import Model.*;
 import View.AddGuarderiaView;
@@ -18,7 +18,7 @@ import javax.swing.table.TableModel;
  *
  * @author gabrielbaron
  */
-public class Nino_MedicoController {
+ /* public class Nino_MedicoController {
      private InitialView initialView;
      private Nino_MedicoDAOImpl modeloNino_Medico;
      private ArrayList<String> codigos;
@@ -124,4 +124,4 @@ public class Nino_MedicoController {
         }
 
     }
-}
+}*/

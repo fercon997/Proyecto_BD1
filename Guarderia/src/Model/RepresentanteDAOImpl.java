@@ -24,8 +24,8 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
     }
    
     @Override
-    public void insertRepresentante(Representante parent) {
-        try {
+    public void insertRepresentante(Representante parent) throws SQLException {
+        //try {
             Connection cn = con.connectToPostgres();
             PreparedStatement pps = cn.prepareCall("INSERT INTO representante_4 VALUES " +
                     "(?,?,?,?,?,?,?,?,?,?,?)");
@@ -44,10 +44,10 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             pps.close();
             cn.close();
-        } catch (SQLException ex) {
+        /*} catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en los datos");
             Logger.getLogger(LugarDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
     @Override
