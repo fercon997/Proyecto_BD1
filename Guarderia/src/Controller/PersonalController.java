@@ -128,24 +128,23 @@ public class PersonalController {
         }
     }
     
-//    public void eliminarRepresentante(){
-//        try{
-//            String ci = initialView.ciLabel.getText();
-//            System.out.println(ci);
-//            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Representante?"+
-//                    "(Se borraran todos los datos relacionados a el)", "Borrar Representante", 
-//                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-//            if (confirmacion == JOptionPane.YES_OPTION){
-//                RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
-//                bdParent.deleteRepresentante(ci);
-//                JOptionPane.showMessageDialog(initialView, "Borrado");
-//            }
-//        } catch(Exception e){
-//            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
-//            JOptionPane.showMessageDialog(initialView, "No se puede borrar");
-//        }
-//    }
-//    
+    public void eliminarPersonal(){
+        try{
+            String ci = initialView.ciPersonalLabel.getText();
+            System.out.println(ci);
+            int confirmacion = JOptionPane.showConfirmDialog(initialView, "Está seguro que quiere borrar este Representante?"+
+                    "(Se borraran todos los datos relacionados a el)", "Borrar Representante", 
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (confirmacion == JOptionPane.YES_OPTION){
+                modeloPersonal.deletePersonal(ci);
+                JOptionPane.showMessageDialog(initialView, "Borrado");
+            }
+        } catch(Exception e){
+            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(initialView, "No se puede borrar");
+        }
+    }
+    
     public void editarPersonal(){
         Personal personal = new Personal();
         try {

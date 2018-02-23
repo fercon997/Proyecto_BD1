@@ -139,7 +139,7 @@ public class PersonalDAOImpl implements PersonalDAO {
         return personal;
     }
     
-    public void deleteRepresentante(String ci){
+    public void deletePersonal(String ci){
         try {
             Connection cn = con.connectToPostgres();
             PreparedStatement pps = cn.prepareCall("DELETE FROM personal_4 WHERE ci = ?");

@@ -1182,6 +1182,11 @@ public class InitialView extends javax.swing.JFrame {
         });
 
         deleteRepresentanteButton1.setText("Eliminar");
+        deleteRepresentanteButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteRepresentanteButton1MouseClicked(evt);
+            }
+        });
         deleteRepresentanteButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteRepresentanteButton1ActionPerformed(evt);
@@ -1814,6 +1819,10 @@ public class InitialView extends javax.swing.JFrame {
     private void saveRepresentanteBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveRepresentanteBtn1MouseClicked
         controladorPersonal.editarPersonal();
     }//GEN-LAST:event_saveRepresentanteBtn1MouseClicked
+
+    private void deleteRepresentanteButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteRepresentanteButton1MouseClicked
+        controladorPersonal.eliminarPersonal();
+    }//GEN-LAST:event_deleteRepresentanteButton1MouseClicked
 
     /**
      * @param args the command line arguments
