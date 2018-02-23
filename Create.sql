@@ -305,7 +305,7 @@ CREATE TABLE Padecimiento_enfermedad_4(
   CI_representante varchar(10),
   Fecha date,
   Constraint Padecimiento_enfermedad_pk Primary Key(Codigo_enfermedad,Letra_nino,CI_representante,Fecha),
-  Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo),
+  Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo) ON DELETE CASCADE,
   Constraint Nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
@@ -314,7 +314,7 @@ CREATE TABLE Padecimiento_alergia_4(
   Letra_nino char(1),
   CI_representante varchar(10),
   Constraint Padecimiento_alergia_pk Primary Key(Codigo_alergia,Letra_nino,CI_representante),
-  Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo),
+  Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo) ON DELETE CASCADE,
   Constraint Nino_padecimiento_alergia_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
