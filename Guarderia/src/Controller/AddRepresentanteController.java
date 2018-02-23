@@ -93,8 +93,7 @@ public class AddRepresentanteController {
             parent.setTlf_oficina(Long.parseLong(vistaAG.tlfOficina.getText()));
             RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
             bdParent.insertRepresentante(parent);
-            JOptionPane.showMessageDialog(vistaAG, "Datos cargados satisfactoriamente");
-            
+            vistaAG.dispose();
         }catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(vistaAG, "No se puede guardar");
