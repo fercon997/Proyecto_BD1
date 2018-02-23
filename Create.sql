@@ -414,7 +414,7 @@ CREATE TABLE factura_menu_4(
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
   CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
@@ -423,6 +423,6 @@ CREATE TABLE menu_semanal_4(
   fecha_menu DATE,
   cod_plato NUMERIC(10),
   CONSTRAINT menu_semanal_pk PRIMARY KEY (numero_menu, fecha_menu, cod_plato),
-  CONSTRAINT menu_semanal_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  CONSTRAINT menu_semanal_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   CONSTRAINT plato_menu_semanal_fk FOREIGN KEY (cod_plato) REFERENCES plato_4(codigo)
 );
