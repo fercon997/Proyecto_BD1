@@ -20,9 +20,11 @@ public class InitialView extends javax.swing.JFrame {
      private GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
      private GuarderiaController controladorGuarderia = new GuarderiaController(this, modeloGuarderia);
      private RepresentanteController controladorRepresentante = new RepresentanteController(this);
+     private PersonalController controladorPersonal = new PersonalController(this);
      boolean comboBoxCreado = false;
      int codDireccion = 0;
      private JuegoController controladorJuego = new JuegoController(this);
+     boolean personalHabilitado = false;
 
     public InitialView() {
        initComponents();
@@ -34,7 +36,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos);
        //controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias5);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
@@ -59,7 +61,7 @@ public class InitialView extends javax.swing.JFrame {
             columna[2] = actividades.get(i).getEdad_minima();
             columna[3] = actividades.get(i).getCupo_Maximo();
             columna[4] = actividades.get(i).getCupo_Minimo();
-            columna[5] = actividades.get(i).getCosto() + "Bolivares";
+            columna[5] = actividades.get(i).getCosto() + " Bolivares";
             modelo.addRow(columna);
         }
 
@@ -163,7 +165,42 @@ public class InitialView extends javax.swing.JFrame {
         buscarNinoButton1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanelPersonal = new javax.swing.JPanel();
-        jComboGuarderias5 = new javax.swing.JComboBox<>();
+        jComboPersonal = new javax.swing.JComboBox<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tablaPersonal = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jPanelInfoNino2 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        ciPersonalLabel = new javax.swing.JLabel();
+        ciudadPersonalLabel = new javax.swing.JLabel();
+        municipioPersonalLabel = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        callePersonalLabel = new javax.swing.JLabel();
+        casaPersonalLabel = new javax.swing.JLabel();
+        nombrePersonalText = new javax.swing.JTextField();
+        apellidoPersonalText = new javax.swing.JTextField();
+        celularPersonalText = new javax.swing.JTextField();
+        nivelEstudioPersonalText = new javax.swing.JTextField();
+        sueldoPersonalText = new javax.swing.JTextField();
+        fechaEncargadaText = new javax.swing.JTextField();
+        ninosLabel1 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        encargadaCheckBox = new javax.swing.JCheckBox();
+        jLabel44 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        experienciaTextArea = new javax.swing.JTextArea();
+        editRepresentanteBtn1 = new javax.swing.JButton();
+        deleteRepresentanteButton1 = new javax.swing.JButton();
+        saveRepresentanteBtn1 = new javax.swing.JButton();
         jPanelActividades = new javax.swing.JPanel();
         jComboGuarderias6 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -373,7 +410,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addGuarderiaButton)
                     .addComponent(deleteGuarderiaButton))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
@@ -398,7 +435,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
@@ -593,7 +630,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNinoButton)
                     .addComponent(deleteNinoButton))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
@@ -612,7 +649,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
@@ -851,7 +888,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelRepresentantesLayout.setHorizontalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                .addContainerGap(421, Short.MAX_VALUE)
+                .addContainerGap(427, Short.MAX_VALUE)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
@@ -910,14 +947,242 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(buscarNinoButton1))
                     .addGap(35, 35, 35)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(186, Short.MAX_VALUE)))
+                    .addContainerGap(199, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Representantes", jPanelRepresentantes);
 
-        jComboGuarderias5.addActionListener(new java.awt.event.ActionListener() {
+        jComboPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias5ActionPerformed(evt);
+                jComboPersonalActionPerformed(evt);
+            }
+        });
+
+        tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "CI", "Nombre", "Apellido", "Celular", "Sueldo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPersonal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPersonalMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tablaPersonal);
+
+        jButton2.setText("Agregar Personal");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jPanelInfoNino2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion del personal"));
+        jPanelInfoNino2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelInfoNino2MouseClicked(evt);
+            }
+        });
+
+        jLabel32.setText("CI");
+
+        jLabel33.setText("Nombre");
+
+        jLabel34.setText("Apellido:");
+
+        jLabel35.setText("Celular");
+
+        jLabel36.setText("Nivel Estudio");
+
+        jLabel37.setText("Sueldo");
+
+        jLabel38.setText("Encargada");
+
+        jLabel39.setText("Municipio:");
+
+        jLabel40.setText("Ciudad");
+
+        jLabel41.setText("Calle/Av:");
+
+        jLabel42.setText("Casa/Edf:");
+
+        nombrePersonalText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombrePersonalTextActionPerformed(evt);
+            }
+        });
+
+        jLabel43.setText("Fecha Encargada");
+
+        jLabel44.setText("Experiencia");
+
+        experienciaTextArea.setColumns(20);
+        experienciaTextArea.setRows(5);
+        jScrollPane8.setViewportView(experienciaTextArea);
+
+        javax.swing.GroupLayout jPanelInfoNino2Layout = new javax.swing.GroupLayout(jPanelInfoNino2);
+        jPanelInfoNino2.setLayout(jPanelInfoNino2Layout);
+        jPanelInfoNino2Layout.setHorizontalGroup(
+            jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                        .addComponent(jLabel40)
+                        .addGap(80, 80, 80)
+                        .addComponent(ciudadPersonalLabel))
+                    .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(municipioPersonalLabel)
+                            .addComponent(callePersonalLabel)
+                            .addComponent(casaPersonalLabel)))
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42)
+                    .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(80, 80, 80)
+                        .addComponent(ciPersonalLabel))
+                    .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(nombrePersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(apellidoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(celularPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nivelEstudioPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino2Layout.createSequentialGroup()
+                            .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(ninosLabel1)
+                                    .addGap(155, 155, 155))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNino2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sueldoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fechaEncargadaText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(encargadaCheckBox)
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        jPanelInfoNino2Layout.setVerticalGroup(
+            jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(ciPersonalLabel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(nombrePersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(apellidoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(celularPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(nivelEstudioPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(sueldoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(encargadaCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(fechaEncargadaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(ciudadPersonalLabel))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(municipioPersonalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(callePersonalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(casaPersonalLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ninosLabel1)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        editRepresentanteBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editRepresentanteBtn1.setToolTipText("");
+        editRepresentanteBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editRepresentanteBtn1MouseClicked(evt);
+            }
+        });
+        editRepresentanteBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editRepresentanteBtn1ActionPerformed(evt);
+            }
+        });
+
+        deleteRepresentanteButton1.setText("Eliminar");
+        deleteRepresentanteButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRepresentanteButton1ActionPerformed(evt);
+            }
+        });
+
+        saveRepresentanteBtn1.setText("Guardar");
+        saveRepresentanteBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveRepresentanteBtn1ActionPerformed(evt);
             }
         });
 
@@ -926,16 +1191,52 @@ public class InitialView extends javax.swing.JFrame {
         jPanelPersonalLayout.setHorizontalGroup(
             jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonalLayout.createSequentialGroup()
-                .addContainerGap(762, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias5, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPersonalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(saveRepresentanteBtn1)
+                        .addGap(110, 110, 110)
+                        .addComponent(deleteRepresentanteButton1)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelPersonalLayout.createSequentialGroup()
+                        .addGroup(jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPersonalLayout.createSequentialGroup()
+                                .addGap(162, 162, 162)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelInfoNino2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonalLayout.createSequentialGroup()
+                                .addComponent(editRepresentanteBtn1)
+                                .addGap(9, 9, 9))))
+                    .addGroup(jPanelPersonalLayout.createSequentialGroup()
+                        .addGap(0, 775, Short.MAX_VALUE)
+                        .addComponent(jComboPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
         jPanelPersonalLayout.setVerticalGroup(
             jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPersonalLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jComboGuarderias5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(671, Short.MAX_VALUE))
+                .addComponent(jComboPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonalLayout.createSequentialGroup()
+                        .addComponent(editRepresentanteBtn1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelInfoNino2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanelPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteRepresentanteButton1)
+                            .addComponent(saveRepresentanteBtn1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonalLayout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(48, 48, 48)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
@@ -994,7 +1295,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -1019,7 +1320,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelComidaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -1044,7 +1345,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -1069,7 +1370,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelMultasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -1094,7 +1395,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelTarifasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tarifas", jPanelTarifas);
@@ -1250,7 +1551,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveJuegoBtn)
                             .addComponent(deleteJuegoBtn))
-                        .addContainerGap(185, Short.MAX_VALUE))
+                        .addContainerGap(205, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addJuegoBtn)
@@ -1316,11 +1617,12 @@ public class InitialView extends javax.swing.JFrame {
         controladorRepresentante.llenarRepresentantes(jComboGuarderias4, tablaRepresentantes);
     }//GEN-LAST:event_jComboGuarderias4ActionPerformed
 
-    private void jComboGuarderias5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias5ActionPerformed
+    private void jComboPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboPersonalActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias5);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboPersonal);
         }
-    }//GEN-LAST:event_jComboGuarderias5ActionPerformed
+        controladorPersonal.llenarPersonal(jComboPersonal, tablaPersonal);
+    }//GEN-LAST:event_jComboPersonalActionPerformed
 
     private void jComboGuarderias6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias6ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -1385,6 +1687,7 @@ public class InitialView extends javax.swing.JFrame {
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         controladorRepresentante.bloquear();
         controladorGuarderia.tabbedPaneTouched();
+        controladorPersonal.tabbedPaneTouched();
         controladorJuego.mostrarTabla(tablaJuegos);
         controladorJuego.bloquear();// TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
@@ -1450,6 +1753,46 @@ public class InitialView extends javax.swing.JFrame {
         controladorJuego.mostrarTabla(tablaJuegos);// TODO add your handling code here:
     }//GEN-LAST:event_addJuegoBtnActionPerformed
 
+    private void tablaPersonalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPersonalMouseClicked
+        controladorPersonal.mostrarPersonal(tablaPersonal);
+        controladorPersonal.bloquear();
+    }//GEN-LAST:event_tablaPersonalMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nombrePersonalTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePersonalTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrePersonalTextActionPerformed
+
+    private void editRepresentanteBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editRepresentanteBtn1MouseClicked
+        if (jComboPersonal.getSelectedIndex() > 0 && tablaPersonal.getSelectedRow() > -1) {
+            controladorPersonal.habilitar();
+            personalHabilitado = true;
+        }
+    }//GEN-LAST:event_editRepresentanteBtn1MouseClicked
+
+    private void editRepresentanteBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRepresentanteBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editRepresentanteBtn1ActionPerformed
+
+    private void deleteRepresentanteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRepresentanteButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteRepresentanteButton1ActionPerformed
+
+    private void saveRepresentanteBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveRepresentanteBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveRepresentanteBtn1ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        controladorPersonal.agregarPersonal();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jPanelInfoNino2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelInfoNino2MouseClicked
+
+    }//GEN-LAST:event_jPanelInfoNino2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1491,6 +1834,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addNinoButton;
     public javax.swing.JLabel apellidoNino;
+    public javax.swing.JTextField apellidoPersonalText;
     public javax.swing.JTextField apellidoText;
     private javax.swing.JButton buscarNinoButton;
     private javax.swing.JButton buscarNinoButton1;
@@ -1498,40 +1842,51 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JTextField buscarNinoTextField1;
     public javax.swing.JLabel calleLabel;
     public javax.swing.JLabel calleLabel3;
+    public javax.swing.JLabel callePersonalLabel;
     public javax.swing.JLabel casaLabel;
     public javax.swing.JLabel casaLabel3;
+    public javax.swing.JLabel casaPersonalLabel;
+    public javax.swing.JTextField celularPersonalText;
     public javax.swing.JTextField celularText;
     public javax.swing.JLabel ciLabel;
+    public javax.swing.JLabel ciPersonalLabel;
     public javax.swing.JLabel ciudadLabel;
     public javax.swing.JLabel ciudadLabel1;
+    public javax.swing.JLabel ciudadPersonalLabel;
     public javax.swing.JLabel codigoLabel;
     public javax.swing.JButton deleteGuarderiaButton;
     public javax.swing.JButton deleteJuegoBtn;
     public javax.swing.JButton deleteNinoButton;
     public javax.swing.JButton deleteRepresentanteButton;
+    public javax.swing.JButton deleteRepresentanteButton1;
     public javax.swing.JLabel edadNino;
     public javax.swing.JButton editGuarderiaButton;
     public javax.swing.JButton editJuegoBtn;
     public javax.swing.JButton editNinoButton;
     public javax.swing.JButton editRepresentanteBtn;
+    public javax.swing.JButton editRepresentanteBtn1;
     public javax.swing.JTextField edoCivilText;
     public javax.swing.JTextField emailText;
+    public javax.swing.JCheckBox encargadaCheckBox;
     public javax.swing.JLabel estadoLabel;
+    public javax.swing.JTextArea experienciaTextArea;
+    public javax.swing.JTextField fechaEncargadaText;
     public javax.swing.JLabel fechaNacNino;
     public javax.swing.JLabel horaEntradaLabel;
     public javax.swing.JLabel horaSalidaLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     public javax.swing.JComboBox<String> jComboGuarderias;
     public javax.swing.JComboBox<String> jComboGuarderias1;
     public javax.swing.JComboBox<String> jComboGuarderias10;
     public javax.swing.JComboBox<String> jComboGuarderias3;
     public javax.swing.JComboBox<String> jComboGuarderias4;
-    public javax.swing.JComboBox<String> jComboGuarderias5;
     public javax.swing.JComboBox<String> jComboGuarderias6;
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderias9;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
+    public javax.swing.JComboBox<String> jComboPersonal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1557,7 +1912,20 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1571,6 +1939,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInfoJuego;
     private javax.swing.JPanel jPanelInfoNino;
     private javax.swing.JPanel jPanelInfoNino1;
+    private javax.swing.JPanel jPanelInfoNino2;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelInscripcion;
     private javax.swing.JPanel jPanelJuegos;
@@ -1584,20 +1953,29 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel municipioLabel;
     public javax.swing.JLabel municipioLabel3;
+    public javax.swing.JLabel municipioPersonalLabel;
     public javax.swing.JLabel ninosLabel;
+    public javax.swing.JLabel ninosLabel1;
+    public javax.swing.JTextField nivelEstudioPersonalText;
     public javax.swing.JLabel nombreNino;
+    public javax.swing.JTextField nombrePersonalText;
     public javax.swing.JTextField nombreText;
     public javax.swing.JTextField nombreText1;
     public javax.swing.JTextField profesionText;
     public javax.swing.JLabel rifLabel;
     public javax.swing.JButton saveJuegoBtn;
     public javax.swing.JButton saveRepresentanteBtn;
+    public javax.swing.JButton saveRepresentanteBtn1;
     public javax.swing.JLabel sexoNino;
+    public javax.swing.JTextField sueldoPersonalText;
     public javax.swing.JTable tablaJuegos;
     public javax.swing.JTable tablaNinos;
+    public javax.swing.JTable tablaPersonal;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;
     public javax.swing.JTextField tlfOficinaText;
