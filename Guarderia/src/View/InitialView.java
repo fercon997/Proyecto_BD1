@@ -189,7 +189,6 @@ public class InitialView extends javax.swing.JFrame {
         nombrePersonalText = new javax.swing.JTextField();
         apellidoPersonalText = new javax.swing.JTextField();
         celularPersonalText = new javax.swing.JTextField();
-        nivelEstudioPersonalText = new javax.swing.JTextField();
         sueldoPersonalText = new javax.swing.JTextField();
         fechaEncargadaText = new javax.swing.JTextField();
         ninosLabel1 = new javax.swing.JLabel();
@@ -198,6 +197,7 @@ public class InitialView extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         experienciaTextArea = new javax.swing.JTextArea();
+        nivelEstudio = new javax.swing.JComboBox<>();
         editRepresentanteBtn1 = new javax.swing.JButton();
         deleteRepresentanteButton1 = new javax.swing.JButton();
         saveRepresentanteBtn1 = new javax.swing.JButton();
@@ -410,7 +410,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addGuarderiaButton)
                     .addComponent(deleteGuarderiaButton))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
@@ -435,7 +435,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
@@ -630,7 +630,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNinoButton)
                     .addComponent(deleteNinoButton))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
@@ -649,7 +649,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
@@ -947,7 +947,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(buscarNinoButton1))
                     .addGap(35, 35, 35)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(199, Short.MAX_VALUE)))
+                    .addContainerGap(200, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Representantes", jPanelRepresentantes);
@@ -1046,6 +1046,13 @@ public class InitialView extends javax.swing.JFrame {
         experienciaTextArea.setRows(5);
         jScrollPane8.setViewportView(experienciaTextArea);
 
+        nivelEstudio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachillerato", "TSU", "Universitario", "Postgrado" }));
+        nivelEstudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nivelEstudioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelInfoNino2Layout = new javax.swing.GroupLayout(jPanelInfoNino2);
         jPanelInfoNino2.setLayout(jPanelInfoNino2Layout);
         jPanelInfoNino2Layout.setHorizontalGroup(
@@ -1074,7 +1081,6 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(nombrePersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(apellidoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(celularPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nivelEstudioPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino2Layout.createSequentialGroup()
                             .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1084,17 +1090,20 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
-                                    .addGap(24, 24, 24)
-                                    .addComponent(ninosLabel1)
-                                    .addGap(155, 155, 155))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNino2Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(sueldoPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fechaEncargadaText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(encargadaCheckBox)
-                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelInfoNino2Layout.createSequentialGroup()
+                                            .addComponent(ninosLabel1)
+                                            .addGap(155, 155, 155))
+                                        .addComponent(nivelEstudio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addComponent(jLabel43)
                     .addComponent(jLabel44))
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -1121,7 +1130,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(nivelEstudioPersonalText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nivelEstudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelInfoNino2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
@@ -1180,6 +1189,11 @@ public class InitialView extends javax.swing.JFrame {
         });
 
         saveRepresentanteBtn1.setText("Guardar");
+        saveRepresentanteBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveRepresentanteBtn1MouseClicked(evt);
+            }
+        });
         saveRepresentanteBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveRepresentanteBtn1ActionPerformed(evt);
@@ -1295,7 +1309,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -1320,7 +1334,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelComidaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -1345,7 +1359,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -1370,7 +1384,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelMultasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -1395,7 +1409,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelTarifasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tarifas", jPanelTarifas);
@@ -1551,7 +1565,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveJuegoBtn)
                             .addComponent(deleteJuegoBtn))
-                        .addContainerGap(205, Short.MAX_VALUE))
+                        .addContainerGap(206, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addJuegoBtn)
@@ -1568,7 +1582,7 @@ public class InitialView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1767,7 +1781,7 @@ public class InitialView extends javax.swing.JFrame {
     }//GEN-LAST:event_nombrePersonalTextActionPerformed
 
     private void editRepresentanteBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editRepresentanteBtn1MouseClicked
-        if (jComboPersonal.getSelectedIndex() > 0 && tablaPersonal.getSelectedRow() > -1) {
+        if (tablaPersonal.getSelectedRow() > -1) {
             controladorPersonal.habilitar();
             personalHabilitado = true;
         }
@@ -1792,6 +1806,14 @@ public class InitialView extends javax.swing.JFrame {
     private void jPanelInfoNino2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelInfoNino2MouseClicked
 
     }//GEN-LAST:event_jPanelInfoNino2MouseClicked
+
+    private void nivelEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivelEstudioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nivelEstudioActionPerformed
+
+    private void saveRepresentanteBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveRepresentanteBtn1MouseClicked
+        controladorPersonal.editarPersonal();
+    }//GEN-LAST:event_saveRepresentanteBtn1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1961,7 +1983,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel municipioPersonalLabel;
     public javax.swing.JLabel ninosLabel;
     public javax.swing.JLabel ninosLabel1;
-    public javax.swing.JTextField nivelEstudioPersonalText;
+    public javax.swing.JComboBox<String> nivelEstudio;
     public javax.swing.JLabel nombreNino;
     public javax.swing.JTextField nombrePersonalText;
     public javax.swing.JTextField nombreText;
