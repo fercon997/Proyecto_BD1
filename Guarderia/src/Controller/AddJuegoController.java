@@ -31,7 +31,7 @@ public class AddJuegoController {
             JOptionPane.showMessageDialog(vistaAJ, "Datos cargados satisfactoriamente");
             vistaAJ.dispose();
         }catch(Exception e){
-            Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(AddJuegoController.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(vistaAJ, "Error en los datos");
         }
     }

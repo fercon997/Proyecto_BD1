@@ -10,6 +10,7 @@ import Model.Nino;
 import Model.NinoDAOImpl;
 import View.AddNinoView;
 import View.InitialView;
+import View.JDAddJuegoNino;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class NinosController {
         int numGuard = cb.getSelectedIndex();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);
-        Object[] columna = new Object[4];
+        Object[] columna = new Object[5];
         try{
             ninos = modeloNino.loadNino(rifs.get(numGuard-1));
             for(int i = 0; i<ninos.size(); i++){
@@ -50,6 +51,7 @@ public class NinosController {
                 columna[1] = ninos.get(i).getNombre();
                 columna[2] = ninos.get(i).getApellido();
                 columna[3] = ninos.get(i).getEdad();
+                columna[4] = ninos.get(i).getLetra();
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
@@ -59,6 +61,7 @@ public class NinosController {
                 columna[1] = ninos.get(i).getNombre();
                 columna[2] = ninos.get(i).getApellido();
                 columna[3] = ninos.get(i).getEdad();
+                columna[4] = ninos.get(i).getLetra();
                 modeloTabla.addRow(columna);
             }
         }
@@ -86,6 +89,18 @@ public class NinosController {
     public void addNino() {
         AddNinoView anv = new AddNinoView(initialView, true);
         anv.setVisible(true);
+    }
+    
+    public void addJuego(JTable tabla){
+        String ci = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+        String letra = tabla.getValueAt(tabla.getSelectedRow(), 4).toString();
+        String nombre = tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
+        Nino kid = new Nino();
+        kid.setCiRepresentante(ci);
+        kid.setLetra(letra.charAt(0));
+        kid.setNombre(nombre);
+        JDAddJuegoNino ajn = new JDAddJuegoNino(initialView,true, kid);
+        ajn.setVisible(true);
     }
 
 }

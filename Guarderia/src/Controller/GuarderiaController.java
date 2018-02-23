@@ -158,6 +158,10 @@ public class GuarderiaController {
     public void addNino() {
         controladorNino.addNino();
     }
+    
+    public void addJuegoNino(JTable tabla){
+        controladorNino.addJuego(tabla);
+    }
 
 
 }

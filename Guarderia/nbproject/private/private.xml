@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/GuarderiaDAOImpl.java</file>
+            <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/View/JDAddJuego.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/NinoDAOImpl.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/LugarDAOImpl.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Controller/Nino_MedicoController.java</file>
+            <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Controller/AddJuegoController.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/Representante.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/Guarderia_ActividadDAOImpl.java</file>
             <file>file:/home/fercon997/Proyecto_BD1/Guarderia/src/Model/RepresentanteDAO.java</file>
