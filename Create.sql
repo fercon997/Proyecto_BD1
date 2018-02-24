@@ -78,7 +78,7 @@ CREATE TABLE Personal_4(
   CI varchar(10),
   Nombre varchar(20) NOT NULL,
   Apellido varchar(20) NOT NULL,
-  Celular numeric(11) NOT NULL,
+  Celular numeric(10) NOT NULL,
   Nivel_estudio varchar(15) NOT NULL,
   Sueldo numeric(10) NOT NULL,
   SeñalEncargada numeric(1) NOT NULL Default 0,
@@ -96,7 +96,7 @@ CREATE TABLE Experiencia_4(
   CI_personal varchar(10),
   Nombre varchar(50),
   Constraint CINom_per_exp_pk Primary Key(CI_personal, Nombre),
-  Constraint CI_per_exp_fk Foreign Key(CI_personal) references Personal_4(CI) ON DELETE CASCADE
+  Constraint CI_per_exp_fk Foreign Key(CI_personal) references Personal_4(CI)
 );
 
 CREATE TABLE Representante_4(
@@ -148,7 +148,7 @@ CREATE TABLE Act_Guarderia_4(
   Constraint RIF_guard_Cod_act_pk Primary Key(RIF_guarderia, Cod_actividad),
   Constraint RIF_guard_act_fk Foreign Key(RIF_guarderia) references Guarderia_4(RIF),
   Constraint Cod_act_guard_fk Foreign Key(Cod_actividad) references Actividad_4(Codigo),
-  Constraint CI_enc_act_fk Foreign Key(CI_encargada) references Personal_4(CI) ON DELETE CASCADE
+  Constraint CI_enc_act_fk Foreign Key(CI_encargada) references Personal_4(CI)
 );
 
 CREATE TABLE Horario_Act_Guarderia_4(
@@ -158,7 +158,7 @@ CREATE TABLE Horario_Act_Guarderia_4(
   Hora_inicio time,
   Hora_fin time NOT NULL,
   Constraint RIF_guard_Cod_act_hora_Fecha_Hora_init_pk Primary Key(RIF_guarderia, Cod_actividad, Fecha, Hora_inicio),
-  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad) ON DELETE CASCADE
+  Constraint RIF_guard_Cod_act_hora_fk Foreign Key(RIF_guarderia, Cod_actividad) references Act_Guarderia_4(RIF_guarderia, Cod_actividad)
 );
 
 CREATE TABLE Nino_4(
@@ -305,7 +305,7 @@ CREATE TABLE Padecimiento_enfermedad_4(
   CI_representante varchar(10),
   Fecha date,
   Constraint Padecimiento_enfermedad_pk Primary Key(Codigo_enfermedad,Letra_nino,CI_representante,Fecha),
-  Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo),
+  Constraint Enfermedad_padecimiento_enfermedad_fk Foreign Key(Codigo_enfermedad) references Enfermedad_4(Codigo) ON DELETE CASCADE,
   Constraint Nino_padecimiento_enfermedad_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
 
@@ -314,9 +314,10 @@ CREATE TABLE Padecimiento_alergia_4(
   Letra_nino char(1),
   CI_representante varchar(10),
   Constraint Padecimiento_alergia_pk Primary Key(Codigo_alergia,Letra_nino,CI_representante),
-  Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo),
+  Constraint Alergia_padecimiento_alergia_fk Foreign Key(Codigo_alergia) references Alergia_4(Codigo) ON DELETE CASCADE,
   Constraint Nino_padecimiento_alergia_fk Foreign Key(Letra_nino,CI_representante) references Nino_4(Letra,CI_representante) ON DELETE CASCADE
 );
+
 
 CREATE TABLE autorizado_buscar_4(
   ci_autorizado varchar(10),
@@ -339,7 +340,7 @@ CREATE TABLE act_inscripcion_4(
   consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio) ON DELETE CASCADE
+  CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
 );
 
 CREATE TABLE pago_mensual_4(

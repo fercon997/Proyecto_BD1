@@ -78,14 +78,14 @@ public class JDAddJuegoNino extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tablaJuegos);
 
-        agregarBtn.setText("jButton1");
+        agregarBtn.setText("Agregar");
         agregarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
