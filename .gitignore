@@ -1,3 +1,4 @@
-Guarderia/build/
+Guarderia/build
 /dist/
-/Guarderia/dist/
+Guarderia/dist
+Guarderia/nbproject/private

@@ -125,7 +125,7 @@ public class PersonalDAOImpl implements PersonalDAO {
                 personal.setRifGuarderia(rs.getString("rif_guarderia"));
                 personal.setNivelEstudio(rs.getString("nivel_estudio"));
                 personal.setSueldo(rs.getInt("sueldo"));
-                personal.setEncargada(rs.getInt("senalEncargada"));
+                personal.setEncargada(rs.getInt("señalEncargada"));
                 personal.setFechaResponsable(rs.getDate("fecha_responsable"));
                 experiencia.add(rs.getString(12));
             }
@@ -139,10 +139,10 @@ public class PersonalDAOImpl implements PersonalDAO {
         return personal;
     }
     
-    public void deleteRepresentante(String ci){
+    public void deletePersonal(String ci){
         try {
             Connection cn = con.connectToPostgres();
-            PreparedStatement pps = cn.prepareCall("DELETE FROM representante_4 WHERE ci = ?");
+            PreparedStatement pps = cn.prepareCall("DELETE FROM personal_4 WHERE ci = ?");
             pps.setString(1, ci);
             pps.executeUpdate();
             pps.close();
@@ -153,22 +153,21 @@ public class PersonalDAOImpl implements PersonalDAO {
         }
     }
     
-    public void updateRepresentante(Representante parent){
+    public void updatePersonal(Personal personal){
         try {
             Connection cn = con.connectToPostgres();
-            String sql= "UPDATE representante_4 SET apellido = ?, celular = ?, "+
-                    "estado_civil = ?, email = ?, nombre = ?, " +
-                    "Profesion = ?, tlf_casa = ?, tlf_oficina = ? WHERE ci = ?";
+            String sql= "UPDATE personal_4 SET apellido = ?, celular = ?, "+
+                    "nombre = ?, senalencargada = ?, fecha_responsable = ?, " +
+                    "sueldo = ?, nivel_Estudio = ? WHERE ci = ?";
             PreparedStatement pps = cn.prepareCall(sql);
-            pps.setString(1, parent.getApellido());
-            pps.setLong(2, parent.getCelular());
-            pps.setString(3, Character.toString(parent.getEdo_civil()));
-            pps.setString(4, parent.getEmail());
-            pps.setString(5, parent.getNombre());
-            pps.setString(6, parent.getProfesion());
-            pps.setLong(7, parent.getTlf_casa());
-            pps.setLong(8, parent.getTlf_oficina());
-            pps.setString(9, parent.getCi());
+            pps.setString(1, personal.getApellido());
+            pps.setLong(2, Long.parseLong(personal.getCelular()));
+            pps.setString(3, personal.getNombre());
+            pps.setInt(4, personal.getEncargada());
+            pps.setDate(5, personal.getFechaResponsable());
+            pps.setInt(6, personal.getSueldo());
+            pps.setString(7, personal.getNivelEstudio());
+            pps.setString(8, personal.getCi());
             pps.executeUpdate();
             pps.close();
             cn.close();

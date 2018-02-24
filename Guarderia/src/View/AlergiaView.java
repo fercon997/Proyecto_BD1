@@ -31,8 +31,20 @@ public class AlergiaView extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel30 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         Tabla_Alergias = new javax.swing.JTable();
+        jPanelInfoAlergia = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        nombreText1 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        editAlergiaBtn = new javax.swing.JButton();
+        saveAlergiaBtn = new javax.swing.JButton();
+        deleteAlergiaBtn = new javax.swing.JButton();
+        addAlergiaBtn = new javax.swing.JButton();
+
+        jLabel30.setText("CI");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,14 +53,14 @@ public class AlergiaView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Descripcion"
+                "Codigo", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,10 +71,89 @@ public class AlergiaView extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        Tabla_Alergias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_AlergiasMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(Tabla_Alergias);
-        if (Tabla_Alergias.getColumnModel().getColumnCount() > 0) {
-            Tabla_Alergias.getColumnModel().getColumn(0).setResizable(false);
-        }
+
+        jPanelInfoAlergia.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion de la Alergia"));
+
+        jLabel31.setText("Descripcion");
+
+        nombreText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreText1ActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("CI");
+
+        javax.swing.GroupLayout jPanelInfoAlergiaLayout = new javax.swing.GroupLayout(jPanelInfoAlergia);
+        jPanelInfoAlergia.setLayout(jPanelInfoAlergiaLayout);
+        jPanelInfoAlergiaLayout.setHorizontalGroup(
+            jPanelInfoAlergiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoAlergiaLayout.createSequentialGroup()
+                .addGroup(jPanelInfoAlergiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel32)
+                    .addGroup(jPanelInfoAlergiaLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(codigoLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelInfoAlergiaLayout.setVerticalGroup(
+            jPanelInfoAlergiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoAlergiaLayout.createSequentialGroup()
+                .addComponent(jLabel32)
+                .addGroup(jPanelInfoAlergiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoAlergiaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(codigoLabel))
+                    .addGroup(jPanelInfoAlergiaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelInfoAlergiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+
+        editAlergiaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editAlergiaBtn.setToolTipText("");
+        editAlergiaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editAlergiaBtnMouseClicked(evt);
+            }
+        });
+        editAlergiaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAlergiaBtnActionPerformed(evt);
+            }
+        });
+
+        saveAlergiaBtn.setText("Guardar");
+        saveAlergiaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAlergiaBtnActionPerformed(evt);
+            }
+        });
+
+        deleteAlergiaBtn.setText("Eliminar");
+        deleteAlergiaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAlergiaBtnActionPerformed(evt);
+            }
+        });
+
+        addAlergiaBtn.setText("Agregar Alergia");
+        addAlergiaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAlergiaBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,19 +161,79 @@ public class AlergiaView extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(addAlergiaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
+                        .addComponent(editAlergiaBtn)
+                        .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(saveAlergiaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(deleteAlergiaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelInfoAlergia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(editAlergiaBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelInfoAlergia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveAlergiaBtn)
+                            .addComponent(deleteAlergiaBtn))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addAlergiaBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombreText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreText1ActionPerformed
+
+    private void editAlergiaBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editAlergiaBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editAlergiaBtnMouseClicked
+
+    private void editAlergiaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAlergiaBtnActionPerformed
+        AlergiaController.habilitar();        // TODO add your handling code here:
+    }//GEN-LAST:event_editAlergiaBtnActionPerformed
+
+    private void saveAlergiaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAlergiaBtnActionPerformed
+        AlergiaController.editarAlergia();// TODO add your handling code here:
+    }//GEN-LAST:event_saveAlergiaBtnActionPerformed
+
+    private void deleteAlergiaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAlergiaBtnActionPerformed
+        AlergiaController.eliminarAlergia();
+        AlergiaController.llenarTablaAlergias();       // TODO add your handling code here:
+    }//GEN-LAST:event_deleteAlergiaBtnActionPerformed
+
+    private void addAlergiaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAlergiaBtnActionPerformed
+        //AlergiaController.agregarAlergias();
+        //AlergiaController.llenarTablaAlergias();// TODO add your handling code here:
+    }//GEN-LAST:event_addAlergiaBtnActionPerformed
+
+    private void Tabla_AlergiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_AlergiasMouseClicked
+        // TODO add your handling code here:
+        AlergiaController.datosAlergia();
+    }//GEN-LAST:event_Tabla_AlergiasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -128,6 +279,16 @@ public class AlergiaView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tabla_Alergias;
+    public javax.swing.JButton addAlergiaBtn;
+    public javax.swing.JLabel codigoLabel;
+    public javax.swing.JButton deleteAlergiaBtn;
+    public javax.swing.JButton editAlergiaBtn;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JPanel jPanelInfoAlergia;
     private javax.swing.JScrollPane jScrollPane5;
+    public javax.swing.JTextField nombreText1;
+    public javax.swing.JButton saveAlergiaBtn;
     // End of variables declaration//GEN-END:variables
 }
