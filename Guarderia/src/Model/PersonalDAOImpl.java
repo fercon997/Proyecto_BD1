@@ -157,7 +157,7 @@ public class PersonalDAOImpl implements PersonalDAO {
         try {
             Connection cn = con.connectToPostgres();
             String sql= "UPDATE personal_4 SET apellido = ?, celular = ?, "+
-                    "nombre = ?, senalencargada = ?, fecha_responsable = ?, " +
+                    "nombre = ?, señalencargada = ?, fecha_responsable = ?, " +
                     "sueldo = ?, nivel_Estudio = ? WHERE ci = ?";
             PreparedStatement pps = cn.prepareCall(sql);
             pps.setString(1, personal.getApellido());

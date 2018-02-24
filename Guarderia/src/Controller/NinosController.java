@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Model.Juego;
+import Model.Juego_NinoDAOImpl;
 import Model.Lugar;
 import Model.Nino;
 import Model.NinoDAOImpl;
@@ -43,7 +45,7 @@ public class NinosController {
         int numGuard = cb.getSelectedIndex();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);
-        Object[] columna = new Object[5];
+        Object[] columna = new Object[4];
         try{
             ninos = modeloNino.loadNino(rifs.get(numGuard-1));
             for(int i = 0; i<ninos.size(); i++){
@@ -51,7 +53,6 @@ public class NinosController {
                 columna[1] = ninos.get(i).getNombre();
                 columna[2] = ninos.get(i).getApellido();
                 columna[3] = ninos.get(i).getEdad();
-                columna[4] = ninos.get(i).getLetra();
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
@@ -61,7 +62,6 @@ public class NinosController {
                 columna[1] = ninos.get(i).getNombre();
                 columna[2] = ninos.get(i).getApellido();
                 columna[3] = ninos.get(i).getEdad();
-                columna[4] = ninos.get(i).getLetra();
                 modeloTabla.addRow(columna);
             }
         }
@@ -75,6 +75,14 @@ public class NinosController {
             initialView.sexoNino.setText(String.valueOf(ninos.get(index).getSexo()));
             initialView.fechaNacNino.setText(ninos.get(index).getFechaNacimiento().toString());
             initialView.edadNino.setText(String.valueOf(ninos.get(index).getEdad()));
+            Juego_NinoDAOImpl bdGameKid = new Juego_NinoDAOImpl();
+            ArrayList<Juego> games = bdGameKid.getJuegosNino(ninos.get(index));
+            String juegos = new String();
+            System.out.println(games.size());
+            for (int i=0; i<games.size(); i++){
+                juegos = juegos + games.get(i).getNombre() + "\n";
+            }
+            initialView.ninoJuegosTxt.setText(juegos);
         } catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
             initialView.nombreNino.setText("");
@@ -82,6 +90,7 @@ public class NinosController {
             initialView.sexoNino.setText("");
             initialView.fechaNacNino.setText("");
             initialView.edadNino.setText("");
+            initialView.ninoJuegosTxt.setText("");
 
         }
     }
@@ -92,12 +101,13 @@ public class NinosController {
     }
     
     public void addJuego(JTable tabla){
-        String ci = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
-        String letra = tabla.getValueAt(tabla.getSelectedRow(), 4).toString();
-        String nombre = tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
+        int index = tabla.getSelectedRow();
+        String ci = ninos.get(index).getCiRepresentante();
+        char letra = ninos.get(index).getLetra();
+        String nombre = ninos.get(index).getNombre();
         Nino kid = new Nino();
         kid.setCiRepresentante(ci);
-        kid.setLetra(letra.charAt(0));
+        kid.setLetra(letra);
         kid.setNombre(nombre);
         JDAddJuegoNino ajn = new JDAddJuegoNino(initialView,true, kid);
         ajn.setVisible(true);

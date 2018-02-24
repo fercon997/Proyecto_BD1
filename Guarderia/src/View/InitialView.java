@@ -45,6 +45,7 @@ public class InitialView extends javax.swing.JFrame {
        comboBoxCreado = true;
        editGuarderiaButton.setEnabled(false);
        deleteGuarderiaButton.setEnabled(false);
+       ninoJuegosTxt.setEditable(false);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -117,6 +118,8 @@ public class InitialView extends javax.swing.JFrame {
         fechaNacNino = new javax.swing.JLabel();
         edadNino = new javax.swing.JLabel();
         apellidoNino = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ninoJuegosTxt = new javax.swing.JTextArea();
         addNinoButton = new javax.swing.JButton();
         deleteNinoButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -382,7 +385,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(693, Short.MAX_VALUE)
+                .addContainerGap(656, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                         .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +430,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInscripcionLayout.setHorizontalGroup(
             jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInscripcionLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -467,28 +470,22 @@ public class InitialView extends javax.swing.JFrame {
 
         jLabel14.setText("Edad:");
 
-        jLabel15.setText("Prentesco");
+        jLabel15.setText("Juegos:");
+
+        ninoJuegosTxt.setEditable(false);
+        ninoJuegosTxt.setColumns(1);
+        ninoJuegosTxt.setRows(5);
+        jScrollPane5.setViewportView(ninoJuegosTxt);
 
         javax.swing.GroupLayout jPanelInfoNinoLayout = new javax.swing.GroupLayout(jPanelInfoNino);
         jPanelInfoNino.setLayout(jPanelInfoNinoLayout);
         jPanelInfoNinoLayout.setHorizontalGroup(
             jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                        .addGap(59, 131, Short.MAX_VALUE)
-                        .addComponent(jLabel15)
-                        .addGap(46, 46, 46))
-                    .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nombreNino))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
                                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
@@ -500,8 +497,20 @@ public class InitialView extends javax.swing.JFrame {
                                     .addComponent(sexoNino)
                                     .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(edadNino)
-                                        .addComponent(fechaNacNino)))))))
-                .addGap(87, 87, 87))
+                                        .addComponent(fechaNacNino))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombreNino)
+                                .addGap(49, 49, 49)))
+                        .addGap(38, 38, 38))
+                    .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
+                        .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(55, Short.MAX_VALUE))))
         );
         jPanelInfoNinoLayout.setVerticalGroup(
             jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,17 +527,23 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(sexoNino))
-                .addGap(18, 18, 18)
                 .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(fechaNacNino))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(edadNino))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel15)
-                .addContainerGap(120, Short.MAX_VALUE))
+                    .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(fechaNacNino))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelInfoNinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(edadNino))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNinoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))))
         );
 
         addNinoButton.setText("Agregar");
@@ -547,20 +562,20 @@ public class InitialView extends javax.swing.JFrame {
 
         tablaNinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "CI Representante", "Nombre", "Apellido", "Edad", "Letra"
+                "CI Representante", "Nombre", "Apellido", "Edad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -581,7 +596,7 @@ public class InitialView extends javax.swing.JFrame {
 
         buscarNinoButton.setText("Buscar");
 
-        addJuegoNinoBtn.setText("Agregar Juego");
+        addJuegoNinoBtn.setText("Modificar Juegos");
         addJuegoNinoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addJuegoNinoBtnActionPerformed(evt);
@@ -613,12 +628,12 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(jComboGuarderiasNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelNinosLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanelInfoNino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNinosLayout.createSequentialGroup()
                                         .addComponent(editNinoButton)
-                                        .addGap(10, 10, 10)))))))
+                                        .addGap(10, 10, 10))
+                                    .addComponent(jPanelInfoNino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(24, 24, 24))
         );
         jPanelNinosLayout.setVerticalGroup(
@@ -639,13 +654,9 @@ public class InitialView extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNinoButton)
-//<<<<<<< HEAD
-//                    .addComponent(deleteNinoButton))
-//                .addContainerGap(174, Short.MAX_VALUE))
-//=======
                     .addComponent(deleteNinoButton)
                     .addComponent(addJuegoNinoBtn))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
@@ -655,7 +666,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInfMedicaLayout.setHorizontalGroup(
             jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfMedicaLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -724,55 +735,48 @@ public class InitialView extends javax.swing.JFrame {
             jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino1Layout.createSequentialGroup()
+                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
                         .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
                             .addComponent(jLabel24))
-                        .addGap(80, 80, 80)
                         .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ciudadLabel)
-                            .addComponent(ciLabel)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                            .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(ciLabel))
+                            .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(municipioLabel3)
+                                    .addComponent(ciudadLabel)
+                                    .addComponent(calleLabel3)))))
+                    .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
                         .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(municipioLabel3)
-                            .addComponent(calleLabel3)
-                            .addComponent(casaLabel3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(apellidoText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(celularText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tlfCasaText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                            .addComponent(tlfOficinaText, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInfoNino1Layout.createSequentialGroup()
-                            .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
-                                    .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(24, 24, 24))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoNino1Layout.createSequentialGroup()
-                                    .addComponent(jLabel29)
-                                    .addGap(61, 61, 61)))
-                            .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanelInfoNino1Layout.createSequentialGroup()
-                                    .addComponent(ninosLabel)
-                                    .addGap(155, 155, 155))
-                                .addComponent(edoCivilText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(profesionText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel29))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ninosLabel)
+                            .addComponent(edoCivilText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profesionText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlfOficinaText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tlfCasaText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(celularText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(apellidoText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(casaLabel3))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanelInfoNino1Layout.setVerticalGroup(
             jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -802,11 +806,11 @@ public class InitialView extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(tlfOficinaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(ciudadLabel))
                 .addGap(15, 15, 15)
@@ -903,7 +907,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelRepresentantesLayout.setHorizontalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                .addContainerGap(432, Short.MAX_VALUE)
+                .addContainerGap(422, Short.MAX_VALUE)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
@@ -916,13 +920,11 @@ public class InitialView extends javax.swing.JFrame {
                             .addContainerGap()))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
                         .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(editRepresentanteBtn)
                             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(401, 401, 401))
-                            .addComponent(editRepresentanteBtn))
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(24, 24, 24))))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
@@ -933,7 +935,7 @@ public class InitialView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(buscarNinoButton1))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 533, Short.MAX_VALUE)))
+                    .addGap(0, 496, Short.MAX_VALUE)))
         );
         jPanelRepresentantesLayout.setVerticalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -945,7 +947,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -1246,7 +1248,7 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(editRepresentanteBtn1)
                                 .addGap(9, 9, 9))))
                     .addGroup(jPanelPersonalLayout.createSequentialGroup()
-                        .addGap(0, 775, Short.MAX_VALUE)
+                        .addGap(0, 737, Short.MAX_VALUE)
                         .addComponent(jComboPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
@@ -1314,7 +1316,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelActividadesLayout.setHorizontalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
@@ -1345,7 +1347,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelComidaLayout.setHorizontalGroup(
             jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelComidaLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1370,7 +1372,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelPagosLayout.setHorizontalGroup(
             jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagosLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1395,7 +1397,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelMultasLayout.setHorizontalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultasLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1420,7 +1422,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelTarifasLayout.setHorizontalGroup(
             jPanelTarifasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarifasLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(748, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1566,7 +1568,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addGroup(jPanelJuegosLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addComponent(jPanelInfoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
@@ -1745,6 +1747,7 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaNinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinosMouseClicked
         controladorGuarderia.mostrarNinos(tablaNinos);
         addJuegoNinoBtn.setEnabled(true);
+        
     }//GEN-LAST:event_tablaNinosMouseClicked
 
     private void deleteNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteNinoButtonMouseClicked
@@ -2005,12 +2008,14 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JLabel municipioLabel;
     public javax.swing.JLabel municipioLabel3;
     public javax.swing.JLabel municipioPersonalLabel;
+    public javax.swing.JTextArea ninoJuegosTxt;
     public javax.swing.JLabel ninosLabel;
     public javax.swing.JLabel ninosLabel1;
     public javax.swing.JComboBox<String> nivelEstudio;

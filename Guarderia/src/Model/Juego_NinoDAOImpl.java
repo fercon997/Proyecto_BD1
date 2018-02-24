@@ -7,6 +7,9 @@ package Model;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,5 +34,41 @@ public class Juego_NinoDAOImpl {
         cn.close();
     }
     
+    public ArrayList<Juego> getJuegosNino(Nino kid){
+        ArrayList<Juego> games = new ArrayList();
+        String sql = "select j.nombre, j.codigo from juego_4 j, gusto_4 g"+
+            " where j.codigo = g.codigo_juego and g.ci_representante = '"
+            +kid.getCiRepresentante()+"' and g.letra_nino = '"+kid.getLetra()+"';";
+        Connection cn = con.connectToPostgres();
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()){
+                Juego game = new Juego();
+                game.setCodigo(rs.getInt("codigo"));
+                game.setNombre(rs.getString("nombre"));
+                games.add(game);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Juego_NinoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return games;
+    }
     
+    public void deleteJuego(Nino kid, int codigo){
+        try {
+            Connection cn = con.connectToPostgres();
+            PreparedStatement pps = cn.prepareCall("DELETE FROM gusto_4 WHERE ci_representante = ? "+
+                    "AND letra_nino = ? AND codigo_juego = ?");
+            pps.setString(1, kid.getCiRepresentante());
+            pps.setString(2, String.valueOf(kid.getLetra()));
+            pps.setInt(3, codigo);
+            pps.executeUpdate();
+            pps.close();
+            cn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede borrar");
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
