@@ -867,12 +867,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonMedicamentos)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-//=======
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfMedicaLayout.createSequentialGroup()
-                .addContainerGap(748, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-//>>>>>>> f7b5cd33a318fae23c29a5c14e5ebc0e805eab91
+
         );
         jPanelInfMedicaLayout.setVerticalGroup(
             jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1975,7 +1970,7 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaNinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinosMouseClicked
         controladorGuarderia.mostrarNinos(tablaNinos);
         addJuegoNinoBtn.setEnabled(true);
-        
+
     }//GEN-LAST:event_tablaNinosMouseClicked
 
     private void deleteNinoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteNinoButtonMouseClicked

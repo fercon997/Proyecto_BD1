@@ -814,7 +814,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
+
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -854,12 +854,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
-=======
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="748" max="32767" attributes="0"/>
-                          <Component id="jComboGuarderias3" min="-2" pref="258" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
->>>>>>> f7b5cd33a318fae23c29a5c14e5ebc0e805eab91
+
                       </Group>
                   </Group>
                 </DimensionLayout>
