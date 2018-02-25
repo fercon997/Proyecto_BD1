@@ -33,6 +33,15 @@ public class SintomaView extends javax.swing.JDialog {
 
         jScrollPane5 = new javax.swing.JScrollPane();
         Tabla_Sintomas = new javax.swing.JTable();
+        jPanelInfoSintoma = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        codigoLabel = new javax.swing.JLabel();
+        nombreText1 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        saveSintomaBtn = new javax.swing.JButton();
+        deleteSintomaBtn = new javax.swing.JButton();
+        ediSintomaBtn = new javax.swing.JButton();
+        addSintomaBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,14 +50,14 @@ public class SintomaView extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Descripcion"
+                "Codigo", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,27 +68,168 @@ public class SintomaView extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        Tabla_Sintomas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_SintomasMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(Tabla_Sintomas);
+
+        jPanelInfoSintoma.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion del Síntoma"));
+
+        jLabel31.setText("Descripcion");
+
+        nombreText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreText1ActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setText("CI");
+
+        javax.swing.GroupLayout jPanelInfoSintomaLayout = new javax.swing.GroupLayout(jPanelInfoSintoma);
+        jPanelInfoSintoma.setLayout(jPanelInfoSintomaLayout);
+        jPanelInfoSintomaLayout.setHorizontalGroup(
+            jPanelInfoSintomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoSintomaLayout.createSequentialGroup()
+                .addGroup(jPanelInfoSintomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel32)
+                    .addGroup(jPanelInfoSintomaLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(codigoLabel))
+        );
+        jPanelInfoSintomaLayout.setVerticalGroup(
+            jPanelInfoSintomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoSintomaLayout.createSequentialGroup()
+                .addComponent(jLabel32)
+                .addGroup(jPanelInfoSintomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoSintomaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(codigoLabel))
+                    .addGroup(jPanelInfoSintomaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelInfoSintomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(nombreText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+
+        saveSintomaBtn.setText("Guardar");
+        saveSintomaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveSintomaBtnActionPerformed(evt);
+            }
+        });
+
+        deleteSintomaBtn.setText("Eliminar");
+        deleteSintomaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteSintomaBtnActionPerformed(evt);
+            }
+        });
+
+        ediSintomaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        ediSintomaBtn.setToolTipText("");
+        ediSintomaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ediSintomaBtnMouseClicked(evt);
+            }
+        });
+        ediSintomaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ediSintomaBtnActionPerformed(evt);
+            }
+        });
+
+        addSintomaBtn.setText("Agregar Sintoma");
+        addSintomaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSintomaBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(addSintomaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanelInfoSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(saveSintomaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteSintomaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ediSintomaBtn)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ediSintomaBtn)
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanelInfoSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(saveSintomaBtn)
+                        .addComponent(addSintomaBtn))
+                    .addComponent(deleteSintomaBtn))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombreText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreText1ActionPerformed
+
+    private void saveSintomaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSintomaBtnActionPerformed
+        SintomaController.editarSintoma();// TODO add your handling code here:
+    }//GEN-LAST:event_saveSintomaBtnActionPerformed
+
+    private void deleteSintomaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSintomaBtnActionPerformed
+        SintomaController.eliminarSintoma();
+        SintomaController.llenarTablaSintomas();       // TODO add your handling code here:
+    }//GEN-LAST:event_deleteSintomaBtnActionPerformed
+
+    private void ediSintomaBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ediSintomaBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ediSintomaBtnMouseClicked
+
+    private void ediSintomaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ediSintomaBtnActionPerformed
+        SintomaController.habilitar();        // TODO add your handling code here:
+    }//GEN-LAST:event_ediSintomaBtnActionPerformed
+
+    private void addSintomaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSintomaBtnActionPerformed
+        //AlergiaController.agregarAlergias();
+        //AlergiaController.llenarTablaAlergias();// TODO add your handling code here:
+    }//GEN-LAST:event_addSintomaBtnActionPerformed
+
+    private void Tabla_SintomasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_SintomasMouseClicked
+        // TODO add your handling code here:
+        SintomaController.datosSintoma();
+    }//GEN-LAST:event_Tabla_SintomasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,6 +275,15 @@ public class SintomaView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tabla_Sintomas;
+    public javax.swing.JButton addSintomaBtn;
+    public javax.swing.JLabel codigoLabel;
+    public javax.swing.JButton deleteSintomaBtn;
+    public javax.swing.JButton ediSintomaBtn;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JPanel jPanelInfoSintoma;
     private javax.swing.JScrollPane jScrollPane5;
+    public javax.swing.JTextField nombreText1;
+    public javax.swing.JButton saveSintomaBtn;
     // End of variables declaration//GEN-END:variables
 }
