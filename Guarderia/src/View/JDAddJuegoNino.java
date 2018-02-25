@@ -13,8 +13,8 @@ import Model.*;
  * @author fercon997
  */
 public class JDAddJuegoNino extends javax.swing.JDialog {
-    public Nino kid;
-    JuegoNinoController vistaNJ = new JuegoNinoController(this);
+    private Nino kid;
+    private JuegoNinoController controladorJN = new JuegoNinoController(this);
     /**
      * Creates new form JDAddJuegoNino
      */
@@ -25,8 +25,10 @@ public class JDAddJuegoNino extends javax.swing.JDialog {
         this.setResizable(false);
         this.kid = kid;
         this.setTitle("Agregar Juego a "+kid.getNombre());
-        vistaNJ.loadJuegos(tablaJuegos);
+        controladorJN.loadJuegos(tablaJuegos);
+        controladorJN.loadJuegosNino(tablaJuegosNino, kid);
         agregarBtn.setEnabled(false);
+        eliminarBtn.setEnabled(false);
     }
 
     /**
@@ -39,11 +41,58 @@ public class JDAddJuegoNino extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaJuegos = new javax.swing.JTable();
+        tablaJuegosNino = new javax.swing.JTable();
         agregarBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaJuegos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        eliminarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        tablaJuegosNino.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaJuegosNino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaJuegosNinoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaJuegosNino);
+
+        agregarBtn.setText("Agregar");
+        agregarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarBtnActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Cancelar");
 
         tablaJuegos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,55 +125,84 @@ public class JDAddJuegoNino extends javax.swing.JDialog {
                 tablaJuegosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaJuegos);
+        jScrollPane2.setViewportView(tablaJuegos);
 
-        agregarBtn.setText("Agregar");
-        agregarBtn.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Juegos del niño:");
+
+        jLabel2.setText("Juegos disponibles:");
+
+        eliminarBtn.setText("Eliminar");
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarBtnActionPerformed(evt);
+                eliminarBtnActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(eliminarBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(agregarBtn)
+                .addGap(43, 43, 43)
+                .addComponent(jButton2)
+                .addGap(204, 204, 204))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(agregarBtn)
-                        .addGap(73, 73, 73)
-                        .addComponent(jButton2)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
                     .addComponent(agregarBtn)
-                    .addComponent(jButton2))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(eliminarBtn))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
-        vistaNJ.agregarJuego(tablaJuegos);        // TODO add your handling code here:
+        controladorJN.agregarJuego(tablaJuegos, kid);
+        controladorJN.loadJuegosNino(tablaJuegosNino, kid);
+       // TODO add your handling code here:
     }//GEN-LAST:event_agregarBtnActionPerformed
 
+    private void tablaJuegosNinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuegosNinoMouseClicked
+        agregarBtn.setEnabled(false); 
+        eliminarBtn.setEnabled(true);// TODO add your handling code here:
+    }//GEN-LAST:event_tablaJuegosNinoMouseClicked
+
     private void tablaJuegosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuegosMouseClicked
-        agregarBtn.setEnabled(true);        // TODO add your handling code here:
+        eliminarBtn.setEnabled(false);
+        agregarBtn.setEnabled(true);// TODO add your handling code here:
     }//GEN-LAST:event_tablaJuegosMouseClicked
+
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        controladorJN.deleteJuegoNino(tablaJuegosNino, kid);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,8 +248,13 @@ public class JDAddJuegoNino extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton agregarBtn;
+    public javax.swing.JButton eliminarBtn;
     public javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tablaJuegos;
+    public javax.swing.JTable tablaJuegosNino;
     // End of variables declaration//GEN-END:variables
 }

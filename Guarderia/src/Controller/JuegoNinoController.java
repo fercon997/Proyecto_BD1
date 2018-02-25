@@ -25,19 +25,19 @@ public class JuegoNinoController {
         this.vistaJN = vistaJN;
     }
     
-    public void agregarJuego(JTable tabla){
+    public void agregarJuego(JTable tabla, Nino kid){
         try{
             int codigoJuego = Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
             Juego_Nino gamesKid = new Juego_Nino();
             gamesKid.setCodigoJuego(codigoJuego);
-            gamesKid.setCiRepresentante(vistaJN.kid.getCiRepresentante());
-            gamesKid.setLetraNino(vistaJN.kid.getLetra());
+            gamesKid.setCiRepresentante(kid.getCiRepresentante());
+            gamesKid.setLetraNino(kid.getLetra());
             Juego_NinoDAOImpl bdGamesKid = new Juego_NinoDAOImpl();
             bdGamesKid.insertarJuegoNino(gamesKid);
             JOptionPane.showMessageDialog(vistaJN, "Datos cargados satisfactoriamente");
         } catch(Exception e){
             Logger.getLogger(JuegoNinoController.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(vistaJN, "Error en los datos");
+            JOptionPane.showMessageDialog(vistaJN, "Error");
         }
          vistaJN.agregarBtn.setEnabled(false);
     }
@@ -62,6 +62,43 @@ public class JuegoNinoController {
         }
     }
     
+    public void loadJuegosNino(JTable tabla, Nino kid){
+        DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
+        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+        Juego_NinoDAOImpl bdGamesKid = new Juego_NinoDAOImpl();
+        ArrayList<Juego> gamesKid = bdGamesKid.getJuegosNino(kid);
+        Object[] columna = new Object[2];
+        try{
+            for(int i = 0; i<gamesKid.size(); i++){
+                columna[0] = gamesKid.get(i).getCodigo();
+                columna[1] = gamesKid.get(i).getNombre();
+                modeloTabla.addRow(columna);
+            }
+        } catch(Exception e) {
+            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+
+        }
+    }
+    
+    public void deleteJuegoNino(JTable tabla, Nino kid){
+        int codigo = Integer.parseInt(String.valueOf(tabla.getValueAt(tabla.getSelectedRow(), 0)) );
+        int confirmacion = JOptionPane.showConfirmDialog(vistaJN, "Está seguro que quiere borrar este Juego?","Borrar Juego", 
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (confirmacion == JOptionPane.YES_OPTION){
+                try{
+                    Juego_NinoDAOImpl bdGameKid = new Juego_NinoDAOImpl();
+                    bdGameKid.deleteJuego(kid, codigo);
+                    JOptionPane.showMessageDialog(vistaJN, "Borrado");
+                    loadJuegosNino(tabla, kid);
+                } catch(Exception e){
+                    Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
+                    JOptionPane.showMessageDialog(vistaJN, "No se puede borrar");
+                }
+            }
+            vistaJN.eliminarBtn.setEnabled(false);
+    }
     
     
 }

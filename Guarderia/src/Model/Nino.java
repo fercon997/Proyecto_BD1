@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Nino {
@@ -10,19 +11,31 @@ public class Nino {
     String apellido;
     Date fechaNacimiento;
     char sexo;
+    ArrayList<Juego> juegos;
 
-    public Nino(char letra, String ciRepresentante, String nombre, String apellido, Date fechaNacimiento, char sexo) {
+    public Nino(char letra, String ciRepresentante, String nombre, String apellido, Date fechaNacimiento, char sexo, ArrayList<Juego> juegos) {
         this.letra = letra;
         this.ciRepresentante = ciRepresentante;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
+        this.juegos = juegos;
     }
 
     public Nino() {
         
     }
+
+    public ArrayList<Juego> getJuegos() {
+        return juegos;
+    }
+
+    public void setJuegos(ArrayList<Juego> juegos) {
+        this.juegos = juegos;
+    }
+    
+    
 
     public char getLetra() {
         return letra;

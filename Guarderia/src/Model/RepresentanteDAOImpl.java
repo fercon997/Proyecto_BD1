@@ -111,8 +111,8 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         Representante parent = new Representante();
         String paramCons = "R.apellido, R.celular, R.ci, R.cod_direccion, R.estado_civil,"+
                 "R.email, R.nombre, R.principal, R.profesion, R.tlf_casa, R.tlf_oficina, N.nombre";
-        String sql = "SELECT "+paramCons+" FROM representante_4 R, nino_4 N  WHERE ci = '"+ci+"' AND "+
-                "R.ci = N.ci_representante";
+        String sql = "SELECT "+paramCons+" FROM representante_4 R LEFT JOIN nino_4 N ON R.ci = N.ci_representante" +
+                "  WHERE ci = '"+ci+"';";
         ArrayList<String> ninos = new ArrayList();
         try {
             Statement st = cn.createStatement();
@@ -155,6 +155,7 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         }
     }
     
+    @Override
     public void updateRepresentante(Representante parent){
         try {
             Connection cn = con.connectToPostgres();
