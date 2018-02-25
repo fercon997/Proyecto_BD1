@@ -128,6 +128,8 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
+<<<<<<< HEAD
+=======
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -178,6 +180,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Juegos del ni&#xf1;o:"/>
+>>>>>>> f7b5cd33a318fae23c29a5c14e5ebc0e805eab91
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
