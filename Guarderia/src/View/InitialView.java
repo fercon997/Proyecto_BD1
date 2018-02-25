@@ -438,7 +438,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInicioLayout.setHorizontalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addContainerGap(693, Short.MAX_VALUE)
+                .addContainerGap(721, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                         .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,7 +467,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addGuarderiaButton)
                     .addComponent(deleteGuarderiaButton))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanelInicio);
@@ -483,7 +483,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelInscripcionLayout.setHorizontalGroup(
             jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInscripcionLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -492,7 +492,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(691, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscripción", jPanelInscripcion);
@@ -681,7 +681,7 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(jComboGuarderiasNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelNinosLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNinosLayout.createSequentialGroup()
                                         .addComponent(editNinoButton)
@@ -709,7 +709,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addComponent(addNinoButton)
                     .addComponent(deleteNinoButton)
                     .addComponent(addJuegoNinoBtn))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Niños", jPanelNinos);
@@ -898,7 +898,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInfMedicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(jComboNinos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(jPanelInfMedicaLayout.createSequentialGroup()
@@ -929,7 +929,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(jButtonAlergias1)
                         .addComponent(jButtonSintomas)
                         .addComponent(jButtonMedicamentos)))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inf. Médica", jPanelInfMedica);
@@ -1091,7 +1091,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelInfoNino1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(ninosLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         tablaRepresentantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -1161,7 +1161,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelRepresentantesLayout.setHorizontalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                .addContainerGap(459, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
@@ -1177,9 +1177,9 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(editRepresentanteBtn)
                             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
                                 .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24))))
+                        .addGap(40, 40, 40))))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                     .addGap(34, 34, 34)
@@ -1189,7 +1189,7 @@ public class InitialView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(buscarNinoButton1))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 533, Short.MAX_VALUE)))
+                    .addGap(0, 561, Short.MAX_VALUE)))
         );
         jPanelRepresentantesLayout.setVerticalGroup(
             jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1199,17 +1199,14 @@ public class InitialView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editRepresentanteBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(30, 30, 30)))
+                .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(12, 12, 12)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveRepresentanteBtn)
                     .addComponent(deleteRepresentanteButton))
-                .addContainerGap())
+                .addGap(0, 0, 0))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                     .addGap(37, 37, 37)
@@ -1218,7 +1215,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(buscarNinoButton1))
                     .addGap(35, 35, 35)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(200, Short.MAX_VALUE)))
+                    .addContainerGap(186, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Representantes", jPanelRepresentantes);
@@ -1450,7 +1447,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelAutorizadosLayout.setHorizontalGroup(
             jPanelAutorizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutorizadosLayout.createSequentialGroup()
-                .addContainerGap(459, Short.MAX_VALUE)
+                .addContainerGap(487, Short.MAX_VALUE)
                 .addGroup(jPanelAutorizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutorizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutorizadosLayout.createSequentialGroup()
@@ -1478,7 +1475,7 @@ public class InitialView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(buscarNinoButton2))
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 533, Short.MAX_VALUE)))
+                    .addGap(0, 561, Short.MAX_VALUE)))
         );
         jPanelAutorizadosLayout.setVerticalGroup(
             jPanelAutorizadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1507,7 +1504,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(buscarNinoButton2))
                     .addGap(35, 35, 35)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(210, Short.MAX_VALUE)))
+                    .addContainerGap(186, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Autorizados", jPanelAutorizados);
@@ -1791,7 +1788,7 @@ public class InitialView extends javax.swing.JFrame {
                                 .addComponent(editRepresentanteBtn1)
                                 .addGap(9, 9, 9))))
                     .addGroup(jPanelPersonalLayout.createSequentialGroup()
-                        .addGap(0, 774, Short.MAX_VALUE)
+                        .addGap(0, 802, Short.MAX_VALUE)
                         .addComponent(jComboPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
@@ -1815,7 +1812,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(48, 48, 48)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
@@ -1866,7 +1863,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelActividadesLayout.setHorizontalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
@@ -1881,7 +1878,7 @@ public class InitialView extends javax.swing.JFrame {
                 .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -1897,7 +1894,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelComidaLayout.setHorizontalGroup(
             jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelComidaLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1906,7 +1903,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelComidaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(691, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -1922,7 +1919,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelPagosLayout.setHorizontalGroup(
             jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagosLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1931,7 +1928,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(691, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -1947,7 +1944,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelMultasLayout.setHorizontalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultasLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1956,7 +1953,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelMultasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(691, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -1972,7 +1969,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelTarifasLayout.setHorizontalGroup(
             jPanelTarifasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarifasLayout.createSequentialGroup()
-                .addContainerGap(785, Short.MAX_VALUE)
+                .addContainerGap(813, Short.MAX_VALUE)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1981,7 +1978,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelTarifasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jComboGuarderias10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(691, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tarifas", jPanelTarifas);
@@ -2118,7 +2115,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addGroup(jPanelJuegosLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                         .addComponent(jPanelInfoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
@@ -2137,7 +2134,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addGroup(jPanelJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveJuegoBtn)
                             .addComponent(deleteJuegoBtn))
-                        .addContainerGap(206, Short.MAX_VALUE))
+                        .addContainerGap(185, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJuegosLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addJuegoBtn)
@@ -2154,7 +2151,9 @@ public class InitialView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
