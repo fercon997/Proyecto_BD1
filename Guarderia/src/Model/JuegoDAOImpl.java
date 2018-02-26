@@ -25,21 +25,14 @@ public class JuegoDAOImpl implements JuegoDAO{
     
     @Override
     public void insertarJuego(Juego game) throws SQLException{
-            Connection cn = con.connectToPostgres();
-            PreparedStatement pps;
-            pps = cn.prepareCall("INSERT INTO juego_4 values(nextval('Juego_sequence'), ?)"); 
-            pps.setString(1, game.getNombre());
-            pps.executeUpdate();
-            pps.close();
-            cn.close();
+        String sql = "INSERT INTO juego_4 values(nextval('Juego_sequence'), '"+game.getNombre()+"')";    
+        con.insertDatos(sql);
     }
     
     public ArrayList<Juego> getJuegos(){
-        Connection cn = con.connectToPostgres();
         ArrayList<Juego> games = new ArrayList();
         try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM juego_4");
+            ResultSet rs = con.selectAll("SELECT * FROM juego_4");
             while(rs.next()){
                 Juego game = new Juego();
                 game.setCodigo(rs.getInt("codigo"));
@@ -47,8 +40,6 @@ public class JuegoDAOImpl implements JuegoDAO{
                 games.add(game);
             }
             rs.close();
-            st.close();
-            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(JuegoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
