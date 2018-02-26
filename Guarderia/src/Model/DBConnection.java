@@ -2,6 +2,7 @@ package Model;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,5 +38,21 @@ public class DBConnection {
             System.out.println("No se pudo conectar a Postgres");
         }
         return connection;
+    }
+    
+    public void insertDatos(String sql) throws SQLException{
+        Connection cn = connectToPostgres();
+            PreparedStatement pps;
+            pps = cn.prepareCall(sql); 
+            pps.executeUpdate();
+            pps.close();
+            cn.close();
+    }
+    
+    public ResultSet selectAll(String sql) throws SQLException{
+        Connection cn = connectToPostgres();
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        return rs;
     }
 }
