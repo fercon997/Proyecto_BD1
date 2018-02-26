@@ -46,7 +46,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane1" min="-2" pref="763" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -75,7 +78,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="721" max="32767" attributes="0"/>
+                          <EmptySpace pref="761" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -112,7 +115,7 @@
                               <Component id="addGuarderiaButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deleteGuarderiaButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <EmptySpace pref="163" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -394,8 +397,32 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
-                          <Component id="jComboGuarderias1" min="-2" pref="258" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane13" min="-2" pref="692" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace pref="65" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jPanelInfoInscripcion" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="editInscripcionButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="guardarInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="deleteInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jComboInscripcion" min="-2" pref="258" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -404,24 +431,296 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jComboGuarderias1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="677" max="32767" attributes="0"/>
+                          <Component id="jComboInscripcion" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane13" min="-2" pref="519" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="editInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jPanelInfoInscripcion" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="guardarInscripcionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deleteInscripcionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="124" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboGuarderias1">
+                <Component class="javax.swing.JComboBox" name="jComboInscripcion">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboGuarderias1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboInscripcionActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane13">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tablaInscripcion">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="false" title="CI Representante" type="java.lang.String"/>
+                            <Column editable="false" title="Nombre del Ni&#xf1;o" type="java.lang.String"/>
+                            <Column editable="false" title="Hora de Llegada" type="java.lang.String"/>
+                            <Column editable="false" title="Hora de Salida" type="java.lang.String"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaInscripcionMouseClicked"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanelInfoInscripcion">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Informaci&#xf3;n de la inscripci&#xf3;n"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="nombreNinoInscripcion" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="ciRepresentanteInsc" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="33" pref="61" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel63" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel62" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="horaEntradaInscripcion" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="horaSalidaInscripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="fechaInscripción" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="apellidoNinoInscripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ciRepresentanteInsc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nombreNinoInscripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="apellidoNinoInscripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fechaInscripción" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="horaEntradaInscripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="horaSalidaInscripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel59">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="CI Representante:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel60">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Nombre del Ni&#xf1;o:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel61">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Apellido del Ni&#xf1;o:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel62">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Hora de Entrada:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel63">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Hora de Salida:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="ciRepresentanteInsc">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="nombreNinoInscripcion">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="apellidoNinoInscripcion">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JSpinner" name="horaEntradaInscripcion">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm)"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date = new Date(0);&#xa;SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(horaEntradaInscripcion, &quot;HH:mm&quot;);&#xa;horaEntradaInscripcion.setEditor(de);"/>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JSpinner" name="horaSalidaInscripcion">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm2)"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date2 = new Date(0);&#xa;SpinnerDateModel sm2 = new SpinnerDateModel(date2, null, null, Calendar.HOUR_OF_DAY);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de2 = new JSpinner.DateEditor(horaSalidaInscripcion, &quot;HH:mm&quot;);&#xa;horaSalidaInscripcion.setEditor(de2);"/>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel64">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Fecha de Inscripci&#xf3;n:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="fechaInscripci&#xf3;n">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="editInscripcionButton">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/edit.png"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editInscripcionButtonMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="guardarInscripcionButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Guardar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarInscripcionButtonMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="deleteInscripcionButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteInscripcionButtonMouseClicked"/>
+                  </Events>
+                  <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
@@ -462,7 +761,7 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
-                                          <EmptySpace pref="215" max="32767" attributes="0"/>
+                                          <EmptySpace pref="251" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="editNinoButton" min="-2" max="-2" attributes="0"/>
@@ -845,7 +1144,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane10" min="-2" pref="348" max="-2" attributes="0"/>
-                                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                                  <EmptySpace pref="109" max="32767" attributes="0"/>
                                   <Component id="jComboNinos" min="-2" pref="258" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
@@ -887,7 +1186,7 @@
                                   <Component id="jButtonMedicamentos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="227" max="32767" attributes="0"/>
+                          <EmptySpace pref="234" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1126,7 +1425,7 @@
                                       <Component id="editRepresentanteBtn" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jButton1" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace pref="495" max="32767" attributes="0"/>
+                                          <EmptySpace pref="526" max="32767" attributes="0"/>
                                           <Component id="jPanelInfoNino1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1145,7 +1444,7 @@
                                   </Group>
                                   <Component id="jScrollPane2" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="561" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1538,7 +1837,7 @@
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="Principal"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
@@ -1613,7 +1912,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="487" max="32767" attributes="0"/>
+                          <EmptySpace pref="518" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
@@ -1651,7 +1950,7 @@
                                   </Group>
                                   <Component id="jScrollPane12" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="561" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1666,7 +1965,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanelInfoNino3" min="-2" pref="570" max="-2" attributes="0"/>
+                                  <Component id="jPanelInfoNino3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1725,7 +2024,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Informacion del representante"/>
+                        <TitledBorder title="Informacion del autorizado"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -1863,7 +2162,7 @@
                                   <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="ninosLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2151,7 +2450,7 @@
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="835" max="32767" attributes="0"/>
                                   <Component id="jComboPersonal" min="-2" pref="258" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2622,7 +2921,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="840" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias6" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2640,7 +2939,7 @@
                           <Component id="jComboGuarderias6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="205" max="32767" attributes="0"/>
+                          <EmptySpace pref="212" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2738,7 +3037,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="840" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias7" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2784,7 +3083,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="840" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias8" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2830,7 +3129,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="840" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias9" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2876,7 +3175,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="840" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias10" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2939,7 +3238,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="179" max="32767" attributes="0"/>
+                                  <EmptySpace pref="211" max="32767" attributes="0"/>
                                   <Component id="jPanelInfoJuego" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2964,7 +3263,7 @@
                                       <Component id="saveJuegoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="deleteJuegoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="185" max="32767" attributes="0"/>
+                                  <EmptySpace pref="192" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
