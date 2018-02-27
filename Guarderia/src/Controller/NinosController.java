@@ -13,6 +13,7 @@ import Model.NinoDAOImpl;
 import View.AddNinoView;
 import View.InitialView;
 import View.JDAddJuegoNino;
+import View.JDAsistencia;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -112,5 +113,13 @@ public class NinosController {
         JDAddJuegoNino ajn = new JDAddJuegoNino(initialView,true, kid);
         ajn.setVisible(true);
     }
+    
+    public void verAsistencia(JTable tabla){
+        int index = tabla.getSelectedRow();
+        System.out.println(ninos.get(index).getLetra());
+        JDAsistencia asist = new JDAsistencia(initialView, true, ninos.get(index));
+        asist.setVisible(true);
+    }
+    
 
 }

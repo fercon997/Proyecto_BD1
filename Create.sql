@@ -49,6 +49,7 @@ CREATE SEQUENCE Menu_sequence
   start 1
   increment 1;
 
+
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
   Nombre varchar(50) NOT NULL,
@@ -218,8 +219,8 @@ CREATE TABLE Asistencia_4(
   Ano_inscripcion numeric(4),
   CI_representante varchar(10),
   Letra_nino char(1),
-  CI_Padre_busco varchar(10),
-  CI_auth_busco varchar(10),
+  CI_Padre_busco varchar(10) NULL,
+  CI_auth_busco varchar(10) NULL,
   Hora_entrada time NOT NULL,
   Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
@@ -360,12 +361,12 @@ CREATE TABLE pago_mensual_4(
 
 CREATE TABLE multa_4(
   fecha DATE,
-  fecha_asistencia DATE,
-  cons_inscripcion NUMERIC(10),
-  ano_inscripcion NUMERIC(10),
-  letra_nino CHAR(1),
-  ci_representante varchar(10),
-  monto NUMERIC(10, 2),
+  fecha_asistencia DATE NOT NULL,
+  cons_inscripcion NUMERIC(10) NOT NULL,
+  ano_inscripcion NUMERIC(10) NOT NULL,
+  letra_nino CHAR(1) NOT NULL,
+  ci_representante varchar(10) NOT NULL,
+  monto NUMERIC(10, 2) NOT NULL,
   num_transferencia NUMERIC(20),
   CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
   CONSTRAINT asistencia_multa_fk FOREIGN KEY (fecha_asistencia, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia_4(fecha, Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante) ON DELETE CASCADE

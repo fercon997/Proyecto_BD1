@@ -162,6 +162,10 @@ public class GuarderiaController {
     public void addJuegoNino(JTable tabla){
         controladorNino.addJuego(tabla);
     }
+    
+    public void verAsistencia(JTable tabla){
+        controladorNino.verAsistencia(tabla);
+    }
 
 
 }

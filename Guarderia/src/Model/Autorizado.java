@@ -14,10 +14,21 @@ public class Autorizado {
     String nombre;
     String apellido;
     long celular;
+    String tipo;
 
     public Autorizado() {
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
+    
     public String getCi() {
         return ci;
     }

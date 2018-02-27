@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -41,12 +41,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="1135" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane1" min="-2" pref="763" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" alignment="1" min="-2" pref="763" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -75,7 +79,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="721" max="32767" attributes="0"/>
+                          <EmptySpace pref="753" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -394,7 +398,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias1" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -440,37 +444,34 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="asistenciaBtn" min="-2" pref="129" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="addJuegoNinoBtn" min="-2" pref="147" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                   <Component id="addNinoButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                   <Component id="deleteNinoButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="buscarNinoTextField" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="buscarNinoButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jComboGuarderiasNinos" min="-2" pref="258" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
+                                  <EmptySpace pref="247" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="buscarNinoTextField" min="-2" pref="245" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="buscarNinoButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jComboGuarderiasNinos" min="-2" pref="258" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="editNinoButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
-                                          <EmptySpace pref="215" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="editNinoButton" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="jPanelInfoNino" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="jPanelInfoNino" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -496,13 +497,21 @@
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="439" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="addNinoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="deleteNinoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="addJuegoNinoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="addNinoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="deleteNinoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addJuegoNinoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="asistenciaBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="160" max="32767" attributes="0"/>
+                          <EmptySpace pref="155" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -803,6 +812,14 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JButton" name="asistenciaBtn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ver Asistencias"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asistenciaBtnActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanelInfMedica">
@@ -845,7 +862,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane10" min="-2" pref="348" max="-2" attributes="0"/>
-                                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jComboNinos" min="-2" pref="258" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
@@ -1126,7 +1143,7 @@
                                       <Component id="editRepresentanteBtn" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jButton1" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace pref="495" max="32767" attributes="0"/>
+                                          <EmptySpace pref="527" max="32767" attributes="0"/>
                                           <Component id="jPanelInfoNino1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1145,7 +1162,7 @@
                                   </Group>
                                   <Component id="jScrollPane2" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="561" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="593" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1613,7 +1630,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="487" max="32767" attributes="0"/>
+                          <EmptySpace pref="519" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
@@ -1651,7 +1668,7 @@
                                   </Group>
                                   <Component id="jScrollPane12" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="561" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="593" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -2151,7 +2168,7 @@
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="802" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="834" max="32767" attributes="0"/>
                                   <Component id="jComboPersonal" min="-2" pref="258" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2622,7 +2639,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias6" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2738,7 +2755,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias7" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2784,7 +2801,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias8" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2830,7 +2847,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias9" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2876,7 +2893,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="813" max="32767" attributes="0"/>
+                          <EmptySpace pref="845" max="32767" attributes="0"/>
                           <Component id="jComboGuarderias10" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2939,7 +2956,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="179" max="32767" attributes="0"/>
+                                  <EmptySpace pref="211" max="32767" attributes="0"/>
                                   <Component id="jPanelInfoJuego" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
