@@ -176,19 +176,36 @@ insert into Actividad_4 values(nextval('Actividad_sequence'), 'Baby gym', 'Activ
 insert into Actividad_4 values(nextval('ACtividad_sequence'), 'Matematica', 'Se les enseña lo básico de matematicas que requieren para entrar al colegio', 3, 0);
 insert into Actividad_4 values(nextval('Actividad_sequence'), 'Siesta', 'Los niños duermen, ¡Es importante descansar!', 1, 0);
 
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Piscina', 'Prueba', 4, 1);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Hola', 'Prueba', 4, 1);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Hay', 'Prueba', 4, 1);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'ffsdfs', 'Prueba', 4, 1);
+
 --Actividad-guarderia
-insert into Act_Guarderia_4 values('J298754541-5', 1, 200, 6, 30, 'V24718965');
+--insert into Act_Guarderia_4 values('J298754541-5', 1, 200, 6, 30, 'V24718965');
 insert into Act_Guarderia_4 values('J764219187-2', 2, 200, 10, 40, 'V17958047');
 insert into Act_Guarderia_4 values ('J128487902-9', 3, 200, 3, 25, 'V9214662');
 insert into Act_Guarderia_4 values ('J516782778-4', 4, 200, 2, 40, 'V8176220');
 insert into Act_Guarderia_4 values ('J279154667-2', 5, 200, 1, 100, 'E25978194');
 
+insert into Act_Guarderia_4 values('J298754541-5', 1, 200, 6, 30, 'V24718965');
+insert into Act_Guarderia_4 values('J298754541-5', 6, 200, 6, 30, 'V24718965');
+insert into Act_Guarderia_4 values('J298754541-5', 7, 200, 6, 30, 'V24718965');
+insert into Act_Guarderia_4 values('J298754541-5', 8, 200, 6, 30, 'V24718965');
+insert into Act_Guarderia_4 values('J298754541-5', 9, 200, 6, 30, 'V24718965');
+
 --Horario-actividad-guardería
-insert into Horario_Act_Guarderia_4 values('J298754541-5', 1, '2018-03-04', '11:15', '12:45');
+--insert into Horario_Act_Guarderia_4 values('J298754541-5', 1, '2018-03-04', '11:00', '12:00');
 insert into Horario_Act_Guarderia_4 values('J764219187-2', 2, '2018-04-05', '09:00', '11:00');
-insert into Horario_Act_Guarderia_4 values('J128487902-9', 3, '2018-04-04', '09:00', '10:40');
+insert into Horario_Act_Guarderia_4 values('J128487902-9', 3, '2018-04-04', '09:00', '11:00');
 insert into Horario_Act_Guarderia_4 values('J516782778-4', 4, '2018-05-03', '10:00', '11:00');
 insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:00', '16:00');
+
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 1, '2018-02-26', '11:00', '12:00');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 6, '2018-02-27', '09:00', '11:00');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 7, '2018-02-28', '09:00', '10:40');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 8, '2018-03-01', '10:00', '11:00');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 9, '2018-03-02', '14:00', '16:00');
 
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, nextval('Insc_sequence'), 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
@@ -223,11 +240,17 @@ insert into act_inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', 
 insert into act_inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', 2, '2018-04-05', '09:00', 200);
 insert into act_inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', 2, '2018-04-05', '09:00', 200);
 insert into act_inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 1, '2018-03-04', '11:15', 200);
-insert into act_inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', 1, '2018-03-04', '11:15', 200);
-insert into act_inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', 1, '2018-03-04', '11:15', 200);
-insert into act_inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', 1, '2018-03-04', '11:15', 200);
-insert into act_inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', 1, '2018-03-04', '11:15', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 1, '2018-02-26', '11:00', 200);
+
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 6, '2018-02-27', '09:00', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 7, '2018-02-28', '09:00', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 8, '2018-03-01', '10:00', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 9, '2018-03-02', '14:00', 200);
+
+insert into act_inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', 1, '2018-02-26', '11:00', 200);
+insert into act_inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', 1, '2018-02-26', '11:00', 200);
+insert into act_inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', 1, '2018-02-26', '11:00', 200);
+insert into act_inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', 1, '2018-02-26', '11:00', 200);
 insert into act_inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', 3, '2018-04-04', '09:00', 200);
 insert into act_inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', 3, '2018-04-04', '09:00', 200);
 insert into act_inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', 3, '2018-04-04', '09:00', 200);

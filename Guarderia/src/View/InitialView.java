@@ -36,6 +36,7 @@ public class InitialView extends javax.swing.JFrame {
      boolean personalHabilitado = false;
      private AutorizadoController controladorAutorizado = new AutorizadoController(this);
      private InscripcionController controladorInscripcion = new InscripcionController(this);
+     private HorarioInscripcionController controladorHI = new HorarioInscripcionController(this);
 
     public InitialView() {
        initComponents();
@@ -58,10 +59,11 @@ public class InitialView extends javax.swing.JFrame {
        deleteGuarderiaButton.setEnabled(false);
        ninoJuegosTxt.setEditable(false);
        deleteRepresentanteButton.setEnabled(false);
+       controladorHI.llenarTabla(this.tablaHorarioNino);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
-        DefaultTableModel modelo = (DefaultTableModel)Tabla_actividades.getModel();
+        DefaultTableModel modelo = (DefaultTableModel)tablaHorarioNino.getModel();
         int rowCount = modelo.getRowCount();
         for (int i = rowCount - 1; i >= 0; i--) {
             modelo.removeRow(i);
@@ -296,7 +298,7 @@ public class InitialView extends javax.swing.JFrame {
         jPanelActividades = new javax.swing.JPanel();
         jComboGuarderias6 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        Tabla_actividades = new javax.swing.JTable();
+        tablaHorarioNino = new javax.swing.JTable();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
@@ -823,12 +825,9 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(edadNino))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))))
+                        .addComponent(jLabel15))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         addNinoButton.setText("Agregar");
@@ -2068,7 +2067,7 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
-        Tabla_actividades.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHorarioNino.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -2076,7 +2075,7 @@ public class InitialView extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Descripción", "Edad Mínima", "Cupo Máximo", "Cupo Mínimo", "Costo"
+                "Horario", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes"
             }
         ) {
             Class[] types = new Class [] {
@@ -2094,14 +2093,9 @@ public class InitialView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(Tabla_actividades);
-        if (Tabla_actividades.getColumnModel().getColumnCount() > 0) {
-            Tabla_actividades.getColumnModel().getColumn(1).setHeaderValue("Descripción");
-            Tabla_actividades.getColumnModel().getColumn(2).setHeaderValue("Edad Mínima");
-            Tabla_actividades.getColumnModel().getColumn(3).setHeaderValue("Cupo Máximo");
-            Tabla_actividades.getColumnModel().getColumn(4).setHeaderValue("Cupo Mínimo");
-            Tabla_actividades.getColumnModel().getColumn(5).setHeaderValue("Costo");
-        }
+        tablaHorarioNino.setColumnSelectionAllowed(true);
+        jScrollPane3.setViewportView(tablaHorarioNino);
+        tablaHorarioNino.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
         jPanelActividades.setLayout(jPanelActividadesLayout);
@@ -2783,7 +2777,6 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable Tabla_Enfermedades;
     public javax.swing.JTable Tabla_Pediatras;
     public javax.swing.JTable Tabla_Tratamientos;
-    public javax.swing.JTable Tabla_actividades;
     public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
@@ -2995,6 +2988,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel sexoNino;
     public javax.swing.JTextField sueldoPersonalText;
     public javax.swing.JTable tablaAutorizados;
+    public javax.swing.JTable tablaHorarioNino;
     public javax.swing.JTable tablaInscripcion;
     public javax.swing.JTable tablaJuegos;
     public javax.swing.JTable tablaNinos;

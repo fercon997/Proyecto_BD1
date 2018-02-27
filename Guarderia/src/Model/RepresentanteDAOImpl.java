@@ -181,5 +181,30 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         }
     }
     
+    public ArrayList<Representante> getRepresentantesNuevos() {
+        Connection cn = con.connectToPostgres();
+        
+        ArrayList<Representante> parents = new ArrayList();
+        String sql= "SELECT distinct R.ci, R.nombre, R.apellido FROM representante_4 R where " + 
+                "NOT EXISTS (Select ci_representante from inscripcion_4 where r.ci = ci_representante);";
+        try {    
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Representante parent = new Representante();
+                parent.setNombre(rs.getString("nombre"));
+                parent.setApellido(rs.getString("apellido"));
+                parent.setCi(rs.getString("ci"));
+                parents.add(parent);
+            }
+            rs.close();
+            st.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return parents;
+    }
+    
     
 }
