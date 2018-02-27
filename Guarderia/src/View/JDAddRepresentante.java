@@ -24,6 +24,15 @@ public class JDAddRepresentante extends javax.swing.JDialog {
         this.setTitle("AgregarRepresentante");
         this.Agregar.setEnabled(false);
     }
+    
+    public JDAddRepresentante(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("AgregarRepresentante");
+        this.Agregar.setEnabled(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -9,7 +9,7 @@ CREATE SEQUENCE Actividad_sequence
   start 1
   increment 1;
 
-CREATE SEQUENCE Inscripcion_sequence
+CREATE SEQUENCE Insc_sequence
   start 1
   increment 1;
 

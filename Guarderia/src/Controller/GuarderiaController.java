@@ -60,7 +60,7 @@ public class GuarderiaController {
             enableButtons();
         }
         initialView.jComboGuarderias.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias1.setSelectedIndex(numGuard);
+        initialView.jComboInscripcion.setSelectedIndex(numGuard);
         initialView.jComboGuarderiasNinos.setSelectedIndex(numGuard);
 //        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
         initialView.jComboGuarderias4.setSelectedIndex(numGuard);
