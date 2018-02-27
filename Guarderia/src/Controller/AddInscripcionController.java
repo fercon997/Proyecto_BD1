@@ -60,20 +60,20 @@ public class AddInscripcionController {
     public void clearFields() {
         vistaAG.ciTxt.setText("");
         vistaAG.letraNinoTxt.setText("");
-        if (vistaAG.guarderias.getSelectedIndex() == 0) {
-            vistaAG.ninoExistente.setEnabled(false);
-            vistaAG.nuevoNino.setEnabled(false);
-            vistaAG.representanteExistente.setEnabled(false);
-            vistaAG.nuevoRepresentante.setEnabled(false);
-            vistaAG.tabla.setEnabled(false);
-        } else {
+//        if (vistaAG.guarderias.getSelectedIndex() == 0) {
+//            vistaAG.ninoExistente.setEnabled(false);
+//            vistaAG.nuevoNino.setEnabled(false);
+//            vistaAG.representanteExistente.setEnabled(false);
+//            vistaAG.nuevoRepresentante.setEnabled(false);
+//            vistaAG.tabla.setEnabled(false);
+//        } else {
             if (vistaAG.representanteExistente.isEnabled()) {
                 mostrarTabla(vistaAG.tabla, "representante");
             }
             vistaAG.representanteExistente.setEnabled(true);
             vistaAG.nuevoRepresentante.setEnabled(true);
             vistaAG.tabla.setEnabled(true);
-        }
+//        }
     }
     
     public void mostrarTabla(JTable tabla, String tipo){
@@ -94,7 +94,7 @@ public class AddInscripcionController {
                 RepresentanteDAOImpl modeloRepresentante = new RepresentanteDAOImpl();
                 ArrayList<Representante> representantes;
                 if (vistaAG.guarderias.getSelectedIndex() - 1 < 0) {
-                    representantes = modeloRepresentante.loadRepresentantes("");
+                    representantes = modeloRepresentante.getRepresentantesNuevos();
                 } else {
                     representantes = modeloRepresentante.loadRepresentantes(rifs.get(vistaAG.guarderias.getSelectedIndex() - 1));
                 }
@@ -187,10 +187,5 @@ public class AddInscripcionController {
         JDAddRepresentante ar = new JDAddRepresentante(vistaAG, true);
         ar.setVisible(true);
     }
-    
-//    public void agregarNino() {
-//        JDAddNino ar = new JDAddRepresentante(vistaAG, true);
-//        ar.setVisible(true);
-//    }
     
 }
