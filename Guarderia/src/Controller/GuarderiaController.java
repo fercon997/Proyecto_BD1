@@ -77,7 +77,7 @@ public class GuarderiaController {
         }
         if (cb == initialView.jComboGuarderias6){
             if (numGuard == 0) {
-               DefaultTableModel modelo = (DefaultTableModel)initialView.Tabla_actividades.getModel();
+               DefaultTableModel modelo = (DefaultTableModel)initialView.tablaHorarioNino.getModel();
                int rowCount = modelo.getRowCount();
                for (int i = rowCount - 1; i >= 0; i--) {
                  modelo.removeRow(i);
