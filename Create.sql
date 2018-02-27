@@ -9,7 +9,7 @@ CREATE SEQUENCE Actividad_sequence
   start 1
   increment 1;
 
-CREATE SEQUENCE Inscripcion_sequence
+CREATE SEQUENCE Insc_sequence
   start 1
   increment 1;
 
@@ -223,7 +223,7 @@ CREATE TABLE Asistencia_4(
   Hora_entrada time NOT NULL,
   Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
-  Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino) ON DELETE CASCADE,
+  Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino),
   Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI) ON DELETE CASCADE,
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),

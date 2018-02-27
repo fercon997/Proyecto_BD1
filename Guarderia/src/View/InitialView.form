@@ -402,18 +402,23 @@
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Component id="jScrollPane13" min="-2" pref="692" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace pref="65" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jPanelInfoInscripcion" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="editInscripcionButton" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="guardarInscripcionButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="deleteInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="agregarInscripcionButton" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="guardarInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="deleteInscripcionButton" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -447,6 +452,8 @@
                                       <Component id="guardarInscripcionButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="deleteInscripcionButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="agregarInscripcionButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="124" max="32767" attributes="0"/>
@@ -664,7 +671,7 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm)"/>
                         <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date = new Date(0);&#xa;SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);"/>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(horaEntradaInscripcion, &quot;HH:mm&quot;);&#xa;horaEntradaInscripcion.setEditor(de);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(horaEntradaInscripcion, &quot;HH:mm&quot;);&#xa;horaEntradaInscripcion.setEditor(de);&#xa;DateFormat formatter = new SimpleDateFormat(&quot;HH:mm&quot;);&#xa;try {&#xa;    java.util.Date horaEntrada = (java.util.Date) formatter.parse(&quot;00:00&quot;);&#xa;    horaEntradaInscripcion.setValue(horaEntrada);&#xa;} catch (ParseException ex) {&#xa;    Logger.getLogger(EditGuarderiaController.class.getName()).log(Level.SEVERE, null, ex);&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -672,7 +679,7 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm2)"/>
                         <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date2 = new Date(0);&#xa;SpinnerDateModel sm2 = new SpinnerDateModel(date2, null, null, Calendar.HOUR_OF_DAY);"/>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de2 = new JSpinner.DateEditor(horaSalidaInscripcion, &quot;HH:mm&quot;);&#xa;horaSalidaInscripcion.setEditor(de2);"/>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de2 = new JSpinner.DateEditor(horaSalidaInscripcion, &quot;HH:mm&quot;);&#xa;horaSalidaInscripcion.setEditor(de2);&#xa;try {&#xa;    java.util.Date horaSalida = (java.util.Date) formatter.parse(&quot;00:00&quot;);&#xa;    horaSalidaInscripcion.setValue(horaSalida);&#xa;} catch (ParseException ex) {&#xa;    Logger.getLogger(InitialView.class.getName()).log(Level.SEVERE, null, ex);&#xa;}"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
                     </Component>
@@ -719,6 +726,17 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteInscripcionButtonMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="agregarInscripcionButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar Inscripci&#xf3;n"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregarInscripcionButtonMouseClicked"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

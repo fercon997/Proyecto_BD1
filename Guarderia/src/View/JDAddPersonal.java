@@ -22,7 +22,7 @@ public class JDAddPersonal extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.setTitle("AgregarRepresentante");
+        this.setTitle("Agregar Personal");
         this.Agregar.setEnabled(false);
         controladorAG.llenarComboBoxGuarderias(guarderiaCombo);
     }
