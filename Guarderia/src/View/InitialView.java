@@ -51,7 +51,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias9);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos1);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias10);
        comboBoxCreado = true;
        editGuarderiaButton.setEnabled(false);
@@ -293,16 +293,21 @@ public class InitialView extends javax.swing.JFrame {
         editRepresentanteBtn1 = new javax.swing.JButton();
         deleteRepresentanteButton1 = new javax.swing.JButton();
         saveRepresentanteBtn1 = new javax.swing.JButton();
-        jPanelActividades = new javax.swing.JPanel();
-        jComboGuarderias6 = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Tabla_actividades = new javax.swing.JTable();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
         jComboGuarderias8 = new javax.swing.JComboBox<>();
         jPanelMultas = new javax.swing.JPanel();
-        jComboGuarderias9 = new javax.swing.JComboBox<>();
+        jComboGuarderiasNinos1 = new javax.swing.JComboBox<>();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        tablaNinos1 = new javax.swing.JTable();
+        buscarNinoTextField3 = new javax.swing.JTextField();
+        buscarNinoButton3 = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tablaMultas = new javax.swing.JTable();
+        jLabel65 = new javax.swing.JLabel();
+        transferenciaMultaBtn = new javax.swing.JTextField();
+        pagarMultaBtn = new javax.swing.JButton();
         jPanelTarifas = new javax.swing.JPanel();
         jComboGuarderias10 = new javax.swing.JComboBox<>();
         jPanelJuegos = new javax.swing.JPanel();
@@ -317,6 +322,10 @@ public class InitialView extends javax.swing.JFrame {
         deleteJuegoBtn = new javax.swing.JButton();
         editJuegoBtn = new javax.swing.JButton();
         addJuegoBtn = new javax.swing.JButton();
+        jPanelActividades = new javax.swing.JPanel();
+        jComboGuarderias6 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Tabla_actividades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -826,7 +835,6 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(97, 97, 97))))
         );
@@ -2062,72 +2070,6 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
 
-        jComboGuarderias6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias6ActionPerformed(evt);
-            }
-        });
-
-        Tabla_actividades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Descripción", "Edad Mínima", "Cupo Máximo", "Cupo Mínimo", "Costo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(Tabla_actividades);
-        if (Tabla_actividades.getColumnModel().getColumnCount() > 0) {
-            Tabla_actividades.getColumnModel().getColumn(1).setHeaderValue("Descripción");
-            Tabla_actividades.getColumnModel().getColumn(2).setHeaderValue("Edad Mínima");
-            Tabla_actividades.getColumnModel().getColumn(3).setHeaderValue("Cupo Máximo");
-            Tabla_actividades.getColumnModel().getColumn(4).setHeaderValue("Cupo Mínimo");
-            Tabla_actividades.getColumnModel().getColumn(5).setHeaderValue("Costo");
-        }
-
-        javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
-        jPanelActividades.setLayout(jPanelActividadesLayout);
-        jPanelActividadesLayout.setHorizontalGroup(
-            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(840, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-            .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelActividadesLayout.setVerticalGroup(
-            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Actividades", jPanelActividades);
-
         jComboGuarderias7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboGuarderias7ActionPerformed(evt);
@@ -2178,9 +2120,100 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
 
-        jComboGuarderias9.addActionListener(new java.awt.event.ActionListener() {
+        jComboGuarderiasNinos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias9ActionPerformed(evt);
+                jComboGuarderiasNinos1ActionPerformed(evt);
+            }
+        });
+
+        tablaNinos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "CI Representante", "Nombre", "Apellido", "Edad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaNinos1.getTableHeader().setReorderingAllowed(false);
+        tablaNinos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaNinos1MouseClicked(evt);
+            }
+        });
+        jScrollPane15.setViewportView(tablaNinos1);
+
+        buscarNinoButton3.setText("Buscar");
+
+        tablaMultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Fecha", "Monto", "Pagado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaMultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMultasMouseClicked(evt);
+            }
+        });
+        jScrollPane14.setViewportView(tablaMultas);
+
+        jLabel65.setText("Nro de transferencia:");
+
+        transferenciaMultaBtn.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                transferenciaMultaBtnCaretUpdate(evt);
+            }
+        });
+        transferenciaMultaBtn.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                transferenciaMultaBtnCaretPositionChanged(evt);
+            }
+        });
+
+        pagarMultaBtn.setText("Pagar Multa");
+        pagarMultaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarMultaBtnActionPerformed(evt);
             }
         });
 
@@ -2189,16 +2222,48 @@ public class InitialView extends javax.swing.JFrame {
         jPanelMultasLayout.setHorizontalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultasLayout.createSequentialGroup()
-                .addContainerGap(840, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMultasLayout.createSequentialGroup()
+                        .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarNinoButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
+                        .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMultasLayout.createSequentialGroup()
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pagarMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelMultasLayout.createSequentialGroup()
+                                .addComponent(jLabel65)
+                                .addGap(18, 18, 18)
+                                .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(24, 24, 24))
         );
         jPanelMultasLayout.setVerticalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMultasLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(677, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarNinoButton3))
+                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMultasLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMultasLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel65)
+                            .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(pagarMultaBtn)))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
@@ -2388,6 +2453,72 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Juegos", jPanelJuegos);
 
+        jComboGuarderias6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboGuarderias6ActionPerformed(evt);
+            }
+        });
+
+        Tabla_actividades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Descripción", "Edad Mínima", "Cupo Máximo", "Cupo Mínimo", "Costo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(Tabla_actividades);
+        if (Tabla_actividades.getColumnModel().getColumnCount() > 0) {
+            Tabla_actividades.getColumnModel().getColumn(1).setHeaderValue("Descripción");
+            Tabla_actividades.getColumnModel().getColumn(2).setHeaderValue("Edad Mínima");
+            Tabla_actividades.getColumnModel().getColumn(3).setHeaderValue("Cupo Máximo");
+            Tabla_actividades.getColumnModel().getColumn(4).setHeaderValue("Cupo Mínimo");
+            Tabla_actividades.getColumnModel().getColumn(5).setHeaderValue("Costo");
+        }
+
+        javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
+        jPanelActividades.setLayout(jPanelActividadesLayout);
+        jPanelActividadesLayout.setHorizontalGroup(
+            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                .addContainerGap(840, Short.MAX_VALUE)
+                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelActividadesLayout.setVerticalGroup(
+            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Actividades", jPanelActividades);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -2437,7 +2568,7 @@ public class InitialView extends javax.swing.JFrame {
         if (comboBoxCreado && !controladorGuarderia.changing) {
             codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos);
         }
-
+        controladorGuarderia.tabbedPaneTouched();
     }//GEN-LAST:event_jComboGuarderiasNinosActionPerformed
 
     private void jComboNinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboNinosActionPerformed
@@ -2477,12 +2608,6 @@ public class InitialView extends javax.swing.JFrame {
             codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias8);
         }
     }//GEN-LAST:event_jComboGuarderias8ActionPerformed
-
-    private void jComboGuarderias9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias9ActionPerformed
-        if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias9);
-        }
-    }//GEN-LAST:event_jComboGuarderias9ActionPerformed
 
     private void jComboGuarderias10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias10ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -2743,6 +2868,34 @@ public class InitialView extends javax.swing.JFrame {
         controladorInscripcion.addInscripcion();
     }//GEN-LAST:event_agregarInscripcionButtonMouseClicked
 
+    private void jComboGuarderiasNinos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasNinos1ActionPerformed
+        if (comboBoxCreado && !controladorGuarderia.changing) {
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos1);
+        }
+        controladorGuarderia.tabbedPaneTouched();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboGuarderiasNinos1ActionPerformed
+
+    private void tablaNinos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinos1MouseClicked
+        controladorGuarderia.llenarMultas(tablaNinos1);        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaNinos1MouseClicked
+
+    private void tablaMultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMultasMouseClicked
+        this.transferenciaMultaBtn.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMultasMouseClicked
+
+    private void pagarMultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarMultaBtnActionPerformed
+         controladorGuarderia.pagarMulta(tablaMultas);   // TODO add your handling code here:
+    }//GEN-LAST:event_pagarMultaBtnActionPerformed
+
+    private void transferenciaMultaBtnCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_transferenciaMultaBtnCaretPositionChanged
+        pagarMultaBtn.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_transferenciaMultaBtnCaretPositionChanged
+
+    private void transferenciaMultaBtnCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_transferenciaMultaBtnCaretUpdate
+        pagarMultaBtn.setEnabled(true); // TODO add your handling code here:
+    }//GEN-LAST:event_transferenciaMultaBtnCaretUpdate
+
     /**
      * @param args the command line arguments
      */
@@ -2798,9 +2951,11 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JButton buscarNinoButton;
     private javax.swing.JButton buscarNinoButton1;
     private javax.swing.JButton buscarNinoButton2;
+    private javax.swing.JButton buscarNinoButton3;
     private javax.swing.JTextField buscarNinoTextField;
     private javax.swing.JTextField buscarNinoTextField1;
     private javax.swing.JTextField buscarNinoTextField2;
+    private javax.swing.JTextField buscarNinoTextField3;
     public javax.swing.JLabel calleLabel;
     public javax.swing.JLabel calleLabel3;
     public javax.swing.JLabel calleLabel4;
@@ -2866,8 +3021,8 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias6;
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
-    public javax.swing.JComboBox<String> jComboGuarderias9;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
+    public javax.swing.JComboBox<String> jComboGuarderiasNinos1;
     public javax.swing.JComboBox<String> jComboInscripcion;
     public javax.swing.JComboBox<String> jComboNinos;
     public javax.swing.JComboBox<String> jComboPersonal;
@@ -2932,6 +3087,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2961,6 +3117,8 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2985,6 +3143,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTextField nombreText;
     public javax.swing.JTextField nombreText1;
     public javax.swing.JTextField nombreText2;
+    public javax.swing.JButton pagarMultaBtn;
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
     public javax.swing.JLabel rifLabel;
@@ -2997,12 +3156,15 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable tablaAutorizados;
     public javax.swing.JTable tablaInscripcion;
     public javax.swing.JTable tablaJuegos;
+    public javax.swing.JTable tablaMultas;
     public javax.swing.JTable tablaNinos;
+    public javax.swing.JTable tablaNinos1;
     public javax.swing.JTable tablaPersonal;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;
     public javax.swing.JTextField tlfCasaText1;
     public javax.swing.JTextField tlfOficinaText;
     public javax.swing.JTextField tlfOficinaText1;
+    public javax.swing.JTextField transferenciaMultaBtn;
     // End of variables declaration//GEN-END:variables
 }

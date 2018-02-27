@@ -109,10 +109,54 @@ public class AsistenciaDAOImpl {
             while (rs.next()){
                 rif = rs.getString(1);
             }
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rif;
     }
     
+    public void ponerMulta(Asistencia assist){
+        String sql = "Update asistencia_4 set monto_multa = "
+        + assist.getCostoMulta()+" WHERE fecha = '"
+        + String.valueOf(assist.getFecha())+"' AND consecutivo_ins = "
+        +assist.getConsecutivo_inscripcion()+"";
+        try {
+            con.insertDatos(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Asistencia> getMultas(Nino kid){
+        ArrayList<Asistencia> assists = new ArrayList();
+        String sql = "Select fecha, monto_multa, num_transferencia, consecutivo_ins from asistencia_4 WHERE "+
+                "letra_nino = '"+kid.getLetra()+"' AND ci_representante = '"+
+                  kid.getCiRepresentante()+"' AND monto_multa IS NOT NULL "
+                + "order by fecha;";
+        try {
+            ResultSet rs = con.selectAll(sql);
+            while(rs.next()){
+                Asistencia assist = new Asistencia();
+                assist.setFecha(rs.getDate(1));
+                assist.setCostoMulta(rs.getInt(2));
+                assist.setNumTransferencia(rs.getLong(3));
+                assist.setConsecutivo_inscripcion(rs.getInt(4));
+                assists.add(assist);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return assists;
+    }
+    
+    public void pagarMulta(Asistencia assist) throws SQLException{
+        String sql = "UPDATE asistencia_4 set num_transferencia = "
+                + assist.getNumTransferencia()+" WHERE fecha = '"
+                + String.valueOf(assist.getFecha())+"' and consecutivo_ins = "
+                + assist.getConsecutivo_inscripcion()+";";
+        System.out.println(String.valueOf(assist.getFecha()));
+        con.insertDatos(sql);
+    }
 }

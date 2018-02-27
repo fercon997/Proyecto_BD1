@@ -224,6 +224,8 @@ CREATE TABLE Asistencia_4(
   Hora_entrada time NOT NULL,
   Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
+  Monto_multa numeric(6) NULL,
+  num_transferencia numeric(10) NULL,
   Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino),
   Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI) ON DELETE CASCADE,
@@ -360,18 +362,6 @@ CREATE TABLE pago_mensual_4(
   CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito'))
 );
 
-CREATE TABLE multa_4(
-  fecha DATE,
-  fecha_asistencia DATE NOT NULL,
-  cons_inscripcion NUMERIC(10) NOT NULL,
-  ano_inscripcion NUMERIC(10) NOT NULL,
-  letra_nino CHAR(1) NOT NULL,
-  ci_representante varchar(10) NOT NULL,
-  monto NUMERIC(10, 2) NOT NULL,
-  num_transferencia NUMERIC(20),
-  CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
-  CONSTRAINT asistencia_multa_fk FOREIGN KEY (fecha_asistencia, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia_4(fecha, Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante) ON DELETE CASCADE
-);
 
 CREATE TABLE plato_4(
   codigo NUMERIC(10),

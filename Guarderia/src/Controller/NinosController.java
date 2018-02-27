@@ -32,6 +32,7 @@ public class NinosController {
     InitialView initialView;
     AddNinoView anv;
     NinoDAOImpl modeloNino = new NinoDAOImpl();
+    MultaController controladorMulta;
     
     ArrayList<String> rifs;
     ArrayList<Nino> ninos;
@@ -121,5 +122,14 @@ public class NinosController {
         asist.setVisible(true);
     }
     
+    public void llenarMultas(JTable tabla){
+        int index = tabla.getSelectedRow();
+        controladorMulta = new MultaController(initialView, ninos.get(index));
+        controladorMulta.loadMultas(initialView.tablaMultas);
+    }
+    
+    public void pagarMulta(JTable tabla){
+        controladorMulta.pagarMulta(tabla);
+    }
 
 }

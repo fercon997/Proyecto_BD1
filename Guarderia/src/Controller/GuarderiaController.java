@@ -48,6 +48,12 @@ public class GuarderiaController {
         if (initialView.jTabbedPane1.getSelectedIndex() == 2) {
             controladorNino.llenarNino(initialView.jComboGuarderiasNinos, initialView.tablaNinos);
         }
+        if (initialView.jTabbedPane1.getSelectedIndex() == 9){
+            controladorNino.llenarNino(initialView.jComboGuarderiasNinos1, initialView.tablaNinos1);
+            initialView.transferenciaMultaBtn.setEnabled(false);
+            initialView.pagarMultaBtn.setEnabled(false);
+        }
+        
     }
 
     public int guarderiaChanged(JComboBox cb) {
@@ -68,7 +74,7 @@ public class GuarderiaController {
         initialView.jComboGuarderias6.setSelectedIndex(numGuard);
         initialView.jComboGuarderias7.setSelectedIndex(numGuard);
         initialView.jComboGuarderias8.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias9.setSelectedIndex(numGuard);
+        initialView.jComboGuarderiasNinos1.setSelectedIndex(numGuard);
         initialView.jComboGuarderias10.setSelectedIndex(numGuard);
         changing = false;
         if (cb == initialView.jComboGuarderias) {
@@ -165,6 +171,14 @@ public class GuarderiaController {
     
     public void verAsistencia(JTable tabla){
         controladorNino.verAsistencia(tabla);
+    }
+    
+    public void llenarMultas(JTable tabla){
+        controladorNino.llenarMultas(tabla);
+    }
+    
+    public void pagarMulta(JTable tabla){
+        controladorNino.pagarMulta(tabla);
     }
 
 
