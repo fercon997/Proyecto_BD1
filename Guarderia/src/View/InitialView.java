@@ -8,8 +8,13 @@ package View;
 import Controller.*;
 import Model.*;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
@@ -132,6 +137,7 @@ public class InitialView extends javax.swing.JFrame {
         editInscripcionButton = new javax.swing.JButton();
         guardarInscripcionButton = new javax.swing.JButton();
         deleteInscripcionButton = new javax.swing.JButton();
+        agregarInscripcionButton = new javax.swing.JButton();
         jPanelNinos = new javax.swing.JPanel();
         jComboGuarderiasNinos = new javax.swing.JComboBox<>();
         editNinoButton = new javax.swing.JButton();
@@ -553,9 +559,22 @@ public class InitialView extends javax.swing.JFrame {
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(horaEntradaInscripcion, "HH:mm");
         horaEntradaInscripcion.setEditor(de);
+        DateFormat formatter = new SimpleDateFormat("HH:mm");
+        try {
+            java.util.Date horaEntrada = (java.util.Date) formatter.parse("00:00");
+            horaEntradaInscripcion.setValue(horaEntrada);
+        } catch (ParseException ex) {
+            Logger.getLogger(EditGuarderiaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         JSpinner.DateEditor de2 = new JSpinner.DateEditor(horaSalidaInscripcion, "HH:mm");
         horaSalidaInscripcion.setEditor(de2);
+        try {
+            java.util.Date horaSalida = (java.util.Date) formatter.parse("00:00");
+            horaSalidaInscripcion.setValue(horaSalida);
+        } catch (ParseException ex) {
+            Logger.getLogger(InitialView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         jLabel64.setText("Fecha de Inscripción:");
 
@@ -648,6 +667,13 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
+        agregarInscripcionButton.setText("Agregar Inscripción");
+        agregarInscripcionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarInscripcionButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelInscripcionLayout = new javax.swing.GroupLayout(jPanelInscripcion);
         jPanelInscripcion.setLayout(jPanelInscripcionLayout);
         jPanelInscripcionLayout.setHorizontalGroup(
@@ -658,16 +684,19 @@ public class InitialView extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelInscripcionLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInscripcionLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                 .addGroup(jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanelInfoInscripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(editInscripcionButton, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanelInscripcionLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInscripcionLayout.createSequentialGroup()
                                 .addGap(81, 81, 81)
-                                .addComponent(guardarInscripcionButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deleteInscripcionButton)
+                                .addGroup(jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(agregarInscripcionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanelInscripcionLayout.createSequentialGroup()
+                                        .addComponent(guardarInscripcionButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(deleteInscripcionButton)))
                                 .addGap(28, 28, 28))))
                     .addGroup(jPanelInscripcionLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -691,7 +720,9 @@ public class InitialView extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jPanelInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(guardarInscripcionButton)
-                            .addComponent(deleteInscripcionButton))))
+                            .addComponent(deleteInscripcionButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(agregarInscripcionButton)))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
 
@@ -2689,6 +2720,10 @@ public class InitialView extends javax.swing.JFrame {
         controladorInscripcion.eliminarInscripcion();
     }//GEN-LAST:event_deleteInscripcionButtonMouseClicked
 
+    private void agregarInscripcionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarInscripcionButtonMouseClicked
+        controladorInscripcion.addInscripcion();
+    }//GEN-LAST:event_agregarInscripcionButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2734,6 +2769,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
     public javax.swing.JButton addNinoButton;
+    public javax.swing.JButton agregarInscripcionButton;
     public javax.swing.JLabel apellidoNino;
     public javax.swing.JLabel apellidoNinoInscripcion;
     public javax.swing.JTextField apellidoPersonalText;

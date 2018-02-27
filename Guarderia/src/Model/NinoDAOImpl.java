@@ -58,7 +58,38 @@ public class NinoDAOImpl {
             Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ninos;
+    }
+    
+    public ArrayList<Nino> loadNinosDelPadre(String ci) {
+        Connection cn = con.connectToPostgres();
+        String sql;
         
+        ArrayList<Nino> ninos = new ArrayList();
+        sql= "SELECT distinct n.letra, n.ci_representante, n.nombre, n.apellido, n.fecha_nacimiento, n.sexo FROM "+
+                    "nino_4 N, representante_4 r WHERE " +
+                    "n.ci_representante = r.ci AND r.ci = '"+ci+"' ORDER BY n.apellido, n.nombre ASC;";
+
+        try {    
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Nino nino = new Nino();
+                nino.setLetra(rs.getString("letra").charAt(0));
+                nino.setNombre(rs.getString("nombre"));
+                nino.setApellido(rs.getString("apellido"));
+                nino.setCiRepresentante(rs.getString("ci_representante"));
+                nino.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                nino.setSexo(rs.getString("sexo").charAt(0));
+                ninos.add(nino);
+                System.out.println(rs.getString("nombre"));
+            }
+            rs.close();
+            st.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ninos;
     }
     
     public char getSiblings(String ci) {
