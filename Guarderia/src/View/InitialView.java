@@ -49,6 +49,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos1);
