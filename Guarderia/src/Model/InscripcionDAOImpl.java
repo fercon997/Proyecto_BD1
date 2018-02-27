@@ -144,4 +144,23 @@ public class InscripcionDAOImpl {
             Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Inscripcion getInsNino(Nino kid){
+        String sql = "Select * FROM inscripcion_4 WHERE letra_nino = '"
+                + kid.getLetra()+"' AND ci_representante = '"+kid.getCiRepresentante()+"';";
+        Inscripcion ins = new Inscripcion();
+        try {
+            ResultSet rs = con.selectAll(sql);
+            while(rs.next()){
+                ins.setConsecutivo(rs.getInt("consecutivo"));
+                ins.setAno(rs.getInt("ano"));
+                ins.setFechaInscripcion(rs.getDate("fecha_inscripcion"));
+                ins.setHoraLlegada(rs.getTime("hora_desde"));
+                ins.setHoraSalida(rs.getTime("hora_hasta"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ins;
+    }
 }

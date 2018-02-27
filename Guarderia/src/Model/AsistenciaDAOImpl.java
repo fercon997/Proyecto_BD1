@@ -100,20 +100,19 @@ public class AsistenciaDAOImpl {
        
     }
     
-    public InscripcionA getConsIns(Nino kid){
-        String sql = "Select consecutivo, ano FROM inscripcion_4 WHERE letra_nino = '"
+    public String getRif(Nino kid){
+        String sql = "Select rif_guarderia FROM inscripcion_4 WHERE letra_nino = '"
                 + kid.getLetra()+"' AND ci_representante = '"+kid.getCiRepresentante()+"';";
-        InscripcionA ins = new InscripcionA();
+        String rif = new String();
         try {
             ResultSet rs = con.selectAll(sql);
-            while(rs.next()){
-                ins.setConsecutivo(rs.getInt(1));
-                ins.setFecha(rs.getInt(2));
+            while (rs.next()){
+                rif = rs.getString(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ins;
+        return rif;
     }
     
 }
