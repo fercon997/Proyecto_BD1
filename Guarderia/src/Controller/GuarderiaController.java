@@ -71,7 +71,6 @@ public class GuarderiaController {
 //        initialView.jComboGuarderias3.setSelectedIndex(numGuard);
         initialView.jComboGuarderias4.setSelectedIndex(numGuard);
         initialView.jComboPersonal.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias6.setSelectedIndex(numGuard);
         initialView.jComboGuarderias7.setSelectedIndex(numGuard);
         initialView.jComboGuarderias8.setSelectedIndex(numGuard);
         initialView.jComboGuarderiasNinos1.setSelectedIndex(numGuard);
@@ -81,19 +80,7 @@ public class GuarderiaController {
             codigo = showDatosGuarderia(numGuard - 1);
             showDireccion(numGuard - 1);
         }
-        if (cb == initialView.jComboGuarderias6){
-            if (numGuard == 0) {
-               DefaultTableModel modelo = (DefaultTableModel)initialView.Tabla_actividades.getModel();
-               int rowCount = modelo.getRowCount();
-               for (int i = rowCount - 1; i >= 0; i--) {
-                 modelo.removeRow(i);
-               }
-            }
-            else{
-              Guarderia_ActividadDAO Actividad = new Guarderia_ActividadDAOImpl(rifs.get(numGuard-1));
-              initialView.LlenarActividades(Actividad.getactividades());
-            }
-        }
+        
         return codigo;
     }
 

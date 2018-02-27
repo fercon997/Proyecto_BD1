@@ -48,7 +48,6 @@ public class InitialView extends javax.swing.JFrame {
        controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos1);
@@ -60,25 +59,6 @@ public class InitialView extends javax.swing.JFrame {
        deleteRepresentanteButton.setEnabled(false);
     }
 
-    public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
-        DefaultTableModel modelo = (DefaultTableModel)Tabla_actividades.getModel();
-        int rowCount = modelo.getRowCount();
-        for (int i = rowCount - 1; i >= 0; i--) {
-            modelo.removeRow(i);
-        }
-        Object[] columna = new Object[6];
-        int size = actividades.size();
-        for (int i=0; i<size; i++){
-            columna[0] = actividades.get(i).getNombre();
-            columna[1] = actividades.get(i).getDescripcion();
-            columna[2] = actividades.get(i).getEdad_minima();
-            columna[3] = actividades.get(i).getCupo_Maximo();
-            columna[4] = actividades.get(i).getCupo_Minimo();
-            columna[5] = actividades.get(i).getCosto() + " Bolivares";
-            modelo.addRow(columna);
-        }
-
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -322,10 +302,6 @@ public class InitialView extends javax.swing.JFrame {
         deleteJuegoBtn = new javax.swing.JButton();
         editJuegoBtn = new javax.swing.JButton();
         addJuegoBtn = new javax.swing.JButton();
-        jPanelActividades = new javax.swing.JPanel();
-        jComboGuarderias6 = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Tabla_actividades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -832,11 +808,9 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(edadNino))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelInfoNinoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))))
+                        .addComponent(jLabel15))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         addNinoButton.setText("Agregar");
@@ -947,7 +921,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
                         .addComponent(editNinoButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanelInfoNino, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelInfoNino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
@@ -2453,72 +2427,6 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Juegos", jPanelJuegos);
 
-        jComboGuarderias6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias6ActionPerformed(evt);
-            }
-        });
-
-        Tabla_actividades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Descripción", "Edad Mínima", "Cupo Máximo", "Cupo Mínimo", "Costo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(Tabla_actividades);
-        if (Tabla_actividades.getColumnModel().getColumnCount() > 0) {
-            Tabla_actividades.getColumnModel().getColumn(1).setHeaderValue("Descripción");
-            Tabla_actividades.getColumnModel().getColumn(2).setHeaderValue("Edad Mínima");
-            Tabla_actividades.getColumnModel().getColumn(3).setHeaderValue("Cupo Máximo");
-            Tabla_actividades.getColumnModel().getColumn(4).setHeaderValue("Cupo Mínimo");
-            Tabla_actividades.getColumnModel().getColumn(5).setHeaderValue("Costo");
-        }
-
-        javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
-        jPanelActividades.setLayout(jPanelActividadesLayout);
-        jPanelActividadesLayout.setHorizontalGroup(
-            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(840, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-            .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelActividadesLayout.setVerticalGroup(
-            jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Actividades", jPanelActividades);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -2590,12 +2498,6 @@ public class InitialView extends javax.swing.JFrame {
         }
         controladorPersonal.llenarPersonal(jComboPersonal, tablaPersonal);
     }//GEN-LAST:event_jComboPersonalActionPerformed
-
-    private void jComboGuarderias6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias6ActionPerformed
-        if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias6);
-        }
-    }//GEN-LAST:event_jComboGuarderias6ActionPerformed
 
     private void jComboGuarderias7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias7ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -2936,7 +2838,6 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable Tabla_Enfermedades;
     public javax.swing.JTable Tabla_Pediatras;
     public javax.swing.JTable Tabla_Tratamientos;
-    public javax.swing.JTable Tabla_actividades;
     public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
@@ -3018,7 +2919,6 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias10;
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
-    public javax.swing.JComboBox<String> jComboGuarderias6;
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
@@ -3092,7 +2992,6 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelActividades;
     private javax.swing.JPanel jPanelAutorizados;
     private javax.swing.JPanel jPanelComida;
     private javax.swing.JPanel jPanelInfMedica;
@@ -3120,7 +3019,6 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
