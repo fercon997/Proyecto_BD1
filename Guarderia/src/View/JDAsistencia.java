@@ -124,7 +124,7 @@ public class JDAsistencia extends javax.swing.JDialog {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Información de Asistencia");
+        jLabel1.setText("Información de Asistencias:");
 
         jLabel2.setText("Agregar Asistencia de Hoy:");
 

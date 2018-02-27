@@ -225,7 +225,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de Asistencia"/>
+            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de Asistencias:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

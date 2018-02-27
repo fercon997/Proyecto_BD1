@@ -8,13 +8,17 @@ package Controller;
 import Model.Asistencia;
 import Model.AsistenciaDAOImpl;
 import Model.Autorizado;
-import Model.InscripcionA;
+import Model.Guarderia;
+import Model.GuarderiaDAOImpl;
+import Model.Inscripcion;
+import Model.InscripcionDAOImpl;
 import Model.Juego;
 import Model.Juego_NinoDAOImpl;
 import Model.Nino;
 import View.JDAsistencia;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -37,6 +41,7 @@ public class AsistenciaController {
     ArrayList<Asistencia> asistencias;
     JDAsistencia vistaAsistencias;
     ArrayList<Autorizado> auths;
+    Inscripcion inscripcion;
 
     public AsistenciaController(JDAsistencia vistaAsistencias, Nino nino) {
         this.nino = nino;
@@ -88,30 +93,32 @@ public class AsistenciaController {
     }
     
     public void insertAsistencia(JComboBox cb, JTable tabla){
-        AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
-        InscripcionA ins = bdAssist.getConsIns(nino);
-        Asistencia assist = new Asistencia();
-        int index = tabla.getSelectedRow();
-        if (auths.get(index).getTipo().equals("Representante"))
-            assist.setCi_representante_busco("'"+auths.get(index).getCi()+"'");
-        else
-            assist.setCi_auth_busco("'"+auths.get(index).getCi()+"'");
-        assist.setAno_inscripcion(ins.getFecha());
-        assist.setConsecutivo_inscripcion(ins.getConsecutivo());
-        assist.setCi_representante(nino.getCiRepresentante());
-        assist.setLetra(nino.getLetra());
-        assist.setComio(String.valueOf(cb.getSelectedItem()));
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate localDate = LocalDate.now();
+        try{
+            AsistenciaDAOImpl  bdAssist = new AsistenciaDAOImpl();
+            InscripcionDAOImpl bdIns = new InscripcionDAOImpl();
+            inscripcion = bdIns.getInsNino(nino);
+            Asistencia assist = new Asistencia();
+            int index = tabla.getSelectedRow();
+            if (auths.get(index).getTipo().equals("Representante"))
+                assist.setCi_representante_busco("'"+auths.get(index).getCi()+"'");
+            else
+                assist.setCi_auth_busco("'"+auths.get(index).getCi()+"'");
+            assist.setAno_inscripcion(inscripcion.getAno());
+            assist.setConsecutivo_inscripcion(inscripcion.getConsecutivo());
+            assist.setCi_representante(nino.getCiRepresentante());
+            assist.setLetra(nino.getLetra());
+            assist.setComio(String.valueOf(cb.getSelectedItem()));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate localDate = LocalDate.now();
         //System.out.println(Date.valueOf(localDate));
-        assist.setFecha(Date.valueOf(localDate));
-        java.util.Date utilDate = (java.util.Date) vistaAsistencias.horaEntradaSpinner.getValue();
-        java.sql.Time sqlTime = new java.sql.Time(utilDate.getTime());
-        assist.setHora_entrada(sqlTime);
-        utilDate = (java.util.Date) vistaAsistencias.horaSalidaSpinner.getValue();
-        sqlTime = new java.sql.Time(utilDate.getTime());
-        assist.setHora_salida(sqlTime);
-        try {
+            assist.setFecha(Date.valueOf(localDate));
+            java.util.Date utilDate= (java.util.Date) vistaAsistencias.horaEntradaSpinner.getValue();
+            java.sql.Time horaEntrada = new java.sql.Time(utilDate.getTime());
+            utilDate = (java.util.Date) vistaAsistencias.horaSalidaSpinner.getValue();
+            java.sql.Time horaSalida = new java.sql.Time(utilDate.getTime());
+            validarHoras(horaEntrada, horaSalida);
+            assist.setHora_entrada(horaEntrada);
+            assist.setHora_salida(horaSalida);
             bdAssist.insertAsistencia(assist);
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             vistaAsistencias.dispose();
@@ -135,6 +142,46 @@ public class AsistenciaController {
             }
     }
     
+    
+    public void validarHoras(Time horaEntrada, Time horaSalida) throws Exception{
+        AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
+        String rif = bdAssist.getRif(nino);
+        GuarderiaDAOImpl bdGuard = new GuarderiaDAOImpl();
+        Guarderia guard = bdGuard.getDatosGuarderia(rif);
+        SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+        if ( (horaEntrada.before(guard.getHoraEntrada())) || (horaSalida.after(guard.getHoraSalida())) )
+            throw new Exception("El nino no puede ser llevado antes de las "
+                    + String.valueOf(guard.getHoraEntrada())+" ni buscado despues "
+                    + "de las "+String.valueOf(guard.getHoraSalida()));
+        else {
+            if ( (horaSalida.after(inscripcion.getHoraSalida())) ){
+                int recargo = recargoMultas(horaSalida, inscripcion.getHoraSalida());
+                JOptionPane.showMessageDialog(vistaAsistencias, "Se le cobrara una multa de recargo de "
+                        + String.valueOf(recargo)+" horas");
+            }
+        }
+    }
+    
+    public int recargoMultas(Time horaSalida, Time horaSalidaIns){
+        String horaS = String.valueOf(horaSalida);
+        String horaSIn = String.valueOf(horaSalidaIns);
+        System.out.println(horaS+" "+horaSIn);
+        char[] horaSC = horaS.toCharArray();
+        char[] horaSInC = horaSIn.toCharArray();
+        horaS = new String();
+        horaSIn = new String();
+        for (int i=0; i<2; i++){
+            horaS = horaS+horaSC[i];
+            horaSIn = horaSIn + horaSInC[i];
+        }
+        int horaSInt = Integer.valueOf(horaS);
+        int horaSInInt = Integer.valueOf(horaSIn);
+        if (Integer.valueOf(String.valueOf(horaSC[3])) >= 3 )
+          horaSInt++;
+        System.out.println(horaSInt+ " "+horaSInInt);
+        return horaSInt-horaSInInt;
+        
+    }
     
     
 }

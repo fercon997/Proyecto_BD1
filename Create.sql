@@ -229,7 +229,8 @@ CREATE TABLE Asistencia_4(
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI) ON DELETE CASCADE,
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),
   Constraint Comio_valid Check(Comio IN ('SI', 'NO')),
-  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
+  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0),
+  Constraint Horas_valid Check(hora_entrada<Hora_salida)
 );
 
 CREATE TABLE Pediatra_4(
