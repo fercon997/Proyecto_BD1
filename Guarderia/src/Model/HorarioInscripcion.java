@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -17,6 +18,7 @@ public class HorarioInscripcion {
     Time horaInicioAct;
     Time horaFinAct;
     String nombreAct;
+    Date fechaActividad;
 
     public HorarioInscripcion() {
     }
@@ -59,6 +61,14 @@ public class HorarioInscripcion {
 
     public void setNombreAct(String nombreAct) {
         this.nombreAct = nombreAct;
+    }
+
+    public Date getFechaActividad() {
+        return fechaActividad;
+    }
+
+    public void setFechaActividad(Date fechaActividad) {
+        this.fechaActividad = fechaActividad;
     }
     
     

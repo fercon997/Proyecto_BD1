@@ -12,7 +12,7 @@ import java.sql.Time;
  * @author Ignacio
  */
 public class Horario {
-    Time hora;
+    String hora;
     String lunes;
     String martes;
     String miercoles;
@@ -23,11 +23,11 @@ public class Horario {
         
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

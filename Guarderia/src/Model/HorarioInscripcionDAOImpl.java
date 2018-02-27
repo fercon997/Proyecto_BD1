@@ -26,11 +26,11 @@ public class HorarioInscripcionDAOImpl {
     public ArrayList<HorarioInscripcion> getHorario(String ci, char letra) {
         Connection connection = con.connectToPostgres();
         ArrayList<HorarioInscripcion> horario = new ArrayList();
-        String sql = "SELECT g.hora_entrada, g.hora_salida, hag.hora_inicio, hag.hora_fin, a.nombre" + 
+        String sql = "SELECT g.horario_entrada, g.horario_salida, hag.hora_inicio, hag.hora_fin, a.nombre, ai.fecha_actividad " + 
                 "FROM guarderia_4 g, act_inscripcion_4 ai, horario_act_guarderia_4 hag, actividad_4 a " +
                 "WHERE ai.ci_representante = '" + ci + "' and ai.letra_nino = '" + letra + "' and " + 
                 "ai.rif_guarderia = g.rif and ai.cod_actividad = a.codigo and ai.fecha_actividad = hag.fecha " + 
-                "and hag.hora_inicio = ai.hora_inicio_act;";
+                "and hag.hora_inicio = ai.hora_inicio_act ORDER BY hag.hora_inicio;";
         try {
             Statement st;
             st = connection.createStatement();
@@ -42,6 +42,7 @@ public class HorarioInscripcionDAOImpl {
                 horas.setHoraInicioAct(rs.getTime(3));
                 horas.setHoraFinAct(rs.getTime(4));
                 horas.setNombreAct(rs.getString(5));
+                horas.setFechaActividad(rs.getDate(6));
                 horario.add(horas);
             }
             rs.close();
@@ -49,7 +50,7 @@ public class HorarioInscripcionDAOImpl {
             connection.close();
         } catch(SQLException e) {
             System.out.println("Error");
-            e.getStackTrace();
+            System.out.println(e);
         }
         return horario;
     }
