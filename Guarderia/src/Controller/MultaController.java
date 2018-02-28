@@ -55,16 +55,16 @@ public class MultaController {
     }
    
     public void pagarMulta(JTable tabla){
-        int index = tabla.getSelectedRow();
-        System.out.println(asistencias.size());
-        Asistencia assist = asistencias.get(index);
-        assist.setNumTransferencia(Long.parseLong(initialView.transferenciaMultaBtn.getText()));
-        AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
-       try {
-           bdAssist.pagarMulta(assist);
-           JOptionPane.showMessageDialog(initialView, "Datos cargads satisfactoriamente");
-           loadMultas(tabla);
-       } catch (SQLException ex) {
+        try{
+            int index = tabla.getSelectedRow();
+            System.out.println(asistencias.size());
+            Asistencia assist = asistencias.get(index);
+            assist.setNumTransferencia(Long.parseLong(initialView.transferenciaMultaBtn.getText()));
+            AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
+            bdAssist.pagarMulta(assist);
+            JOptionPane.showMessageDialog(initialView, "Datos cargads satisfactoriamente");
+            loadMultas(tabla);
+       } catch (Exception ex) {
            Logger.getLogger(MultaController.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(initialView, "Error en los datos");
        }
