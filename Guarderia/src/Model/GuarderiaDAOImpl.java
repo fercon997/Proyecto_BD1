@@ -71,7 +71,7 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
     public Guarderia getDatosGuarderia(String rif) {
         Connection connection = con.connectToPostgres();
         Guarderia guarderia = new Guarderia();
-        String sql = "SELECT horario_entrada, horario_salida FROM Guarderia_4 WHERE RIF = '" + rif + "';";
+        String sql = "SELECT horario_entrada, horario_salida, costo_multa FROM Guarderia_4 WHERE RIF = '" + rif + "';";
         try {
             Statement st;
             st = connection.createStatement();
@@ -79,6 +79,7 @@ public class GuarderiaDAOImpl implements GuarderiaDAO {
             while(rs.next()) {
                 guarderia.setHoraEntrada(rs.getTime(1));
                 guarderia.setHoraSalida(rs.getTime(2));
+                guarderia.setCostoMulta(rs.getInt(3));
             }
             rs.close();
             st.close();

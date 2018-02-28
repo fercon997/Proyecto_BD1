@@ -23,10 +23,30 @@ public class Asistencia {
     Time hora_entrada;
     Time hora_salida;
     String comio;
+    int costoMulta;
+    long numTransferencia;
 
     public Asistencia() {
     }
 
+    public int getCostoMulta() {
+        return costoMulta;
+    }
+
+    public void setCostoMulta(int costoMulta) {
+        this.costoMulta = costoMulta;
+    }
+
+    public long getNumTransferencia() {
+        return numTransferencia;
+    }
+
+    public void setNumTransferencia(long numTransferencia) {
+        this.numTransferencia = numTransferencia;
+    }
+
+    
+    
     public Date getFecha() {
         return fecha;
     }

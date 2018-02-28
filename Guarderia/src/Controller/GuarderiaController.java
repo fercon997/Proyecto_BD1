@@ -43,11 +43,17 @@ public class GuarderiaController {
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
-    
+
     public void tabbedPaneTouched() {
         if (initialView.jTabbedPane1.getSelectedIndex() == 2) {
             controladorNino.llenarNino(initialView.jComboGuarderiasNinos, initialView.tablaNinos);
         }
+        if (initialView.jTabbedPane1.getSelectedIndex() == 10){
+            controladorNino.llenarNino(initialView.jComboGuarderiasNinos1, initialView.tablaNinos1);
+            initialView.transferenciaMultaBtn.setEnabled(false);
+            initialView.pagarMultaBtn.setEnabled(false);
+        }
+
     }
 
     public int guarderiaChanged(JComboBox cb) {
@@ -67,8 +73,9 @@ public class GuarderiaController {
         initialView.jComboPersonal.setSelectedIndex(numGuard);
         initialView.jComboActNino.setSelectedIndex(numGuard);
         initialView.jComboGuarderias7.setSelectedIndex(numGuard);
+//        initialView.jComboGuarderias6.setSelectedIndex(numGuard);
         initialView.jComboGuarderias8.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias9.setSelectedIndex(numGuard);
+        initialView.jComboGuarderiasNinos1.setSelectedIndex(numGuard);
         initialView.jComboGuarderias10.setSelectedIndex(numGuard);
         changing = false;
         if (cb == initialView.jComboGuarderias) {
@@ -124,8 +131,8 @@ public class GuarderiaController {
             initialView.ciudadLabel1.setText("");
             initialView.estadoLabel.setText("");
         } else {
-            Lugar lugar = modeloLugar.getDatosLugar("SELECT cod_direccion " + 
-                    " FROM guarderia_4, lugar_4 WHERE rif = '" + rifs.get(index) + 
+            Lugar lugar = modeloLugar.getDatosLugar("SELECT cod_direccion " +
+                    " FROM guarderia_4, lugar_4 WHERE rif = '" + rifs.get(index) +
                     "' AND cod_direccion = codigo");
             initialView.casaLabel.setText(lugar.getCasa());
             initialView.calleLabel.setText(lugar.getCalle());
@@ -146,7 +153,7 @@ public class GuarderiaController {
         AddGuarderiaView addGuarderiaView = new AddGuarderiaView(initialView, true);
         addGuarderiaView.setVisible(true);
     }
-    
+
     public void deleteGuarderia(int index) {
         modeloGuarderia.deleteGuarderia(rifs.get(index));
     }
@@ -154,17 +161,25 @@ public class GuarderiaController {
     public void mostrarNinos(JTable tabla) {
         controladorNino.mostrarNinos(tabla);
     }
-    
+
     public void addNino() {
         controladorNino.addNino();
     }
-    
+
     public void addJuegoNino(JTable tabla){
         controladorNino.addJuego(tabla);
     }
-    
+
     public void verAsistencia(JTable tabla){
         controladorNino.verAsistencia(tabla);
+    }
+
+    public void llenarMultas(JTable tabla){
+        controladorNino.llenarMultas(tabla);
+    }
+
+    public void pagarMulta(JTable tabla){
+        controladorNino.pagarMulta(tabla);
     }
 
 

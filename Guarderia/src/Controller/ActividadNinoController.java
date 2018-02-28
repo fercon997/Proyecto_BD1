@@ -2,11 +2,11 @@
 package Controller;
 
 import Model.Actividad;
-import Model.ActividadDAOImpl;
+import Model.ActividadNinoDAOImpl;
 import Model.GuarderiaDAOImpl;
 import Model.Horario;
 import Model.HorarioInscripcion;
-import Model.HorarioInscripcionDAOImpl;
+import Model.ActividadNinoDAOImpl;
 import Model.Nino;
 import Model.NinoDAOImpl;
 import View.InitialView;
@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class ActividadNinoController {
     
     InitialView initialView;
-    HorarioInscripcionDAOImpl modeloHI = new HorarioInscripcionDAOImpl();
+    ActividadNinoDAOImpl modeloAN = new ActividadNinoDAOImpl();
     ArrayList<Nino> ninos;
     ArrayList<String> rifs;
     ArrayList<Actividad> actividades;
@@ -88,7 +88,7 @@ public class ActividadNinoController {
             modeloTabla.addColumn("Hora inicio");
             modeloTabla.addColumn("Hora fin");
             tabla.setModel(modeloTabla);
-            ActividadDAOImpl modeloActividad = new ActividadDAOImpl();
+            ActividadNinoDAOImpl modeloActividad = new ActividadNinoDAOImpl();
 
             int numGuard = initialView.jComboActNino.getSelectedIndex();
             System.out.println(numGuard);
@@ -131,7 +131,7 @@ public class ActividadNinoController {
     public ArrayList<Horario> imprimir() {
         ArrayList<HorarioInscripcion> horario = new ArrayList();
         ArrayList<Horario> horarioActividades = new ArrayList();
-        horario = modeloHI.getHorario("V8108418", 'A');
+        horario = modeloAN.getHorario("V8108418", 'A');
         if (horario.size() > 0) {
             //for (int i = 0; i < horario.size(); i ++) {
                 horarioActividades = cargarLunes(horario);
