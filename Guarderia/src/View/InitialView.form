@@ -3430,6 +3430,10 @@
                 </Component>
               </SubComponents>
             </Container>
+
+
+
+
             <Container class="javax.swing.JPanel" name="jPanelTarifas">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
