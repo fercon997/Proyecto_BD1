@@ -59,6 +59,50 @@ public class ActividadNinoDAOImpl {
         return horario;
     }
     
+    public ArrayList<Actividad> loadAllActividades(String rif) {
+        System.out.println("Estoy aqui");
+        Connection connection = con.connectToPostgres();
+        ArrayList<Actividad> actividades2 = new ArrayList();
+        String sql;
+        if (rif == null) {
+            sql = "Select hag.rif_guarderia, a.nombre, a.edadminima, a.transporte, hag.hora_inicio, hag.hora_fin, extract(dow from hag.fecha), " + 
+                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.cod_actividad = a.codigo) cuposDsiponibles " + 
+                "from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag where hag.cod_actividad = a.codigo and " + 
+                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia order by hag.rif_guarderia;";
+        } else {
+               sql = "Select hag.rif_guarderia, a.nombre, a.edadminima, a.transporte, hag.hora_inicio, hag.hora_fin, extract(dow from hag.fecha), " + 
+                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = '" + rif + "' and ai.cod_actividad = a.codigo) cuposDsiponibles " + 
+                "from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag where hag.rif_guarderia = '" + rif + "' and hag.cod_actividad = a.codigo and " + 
+                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia;";
+        }
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                Actividad actividad = new Actividad();
+                actividad.setNombre(rs.getString(2));
+                actividad.setEdadMinima(rs.getInt(3));
+                actividad.setTransporte(rs.getInt(4));
+                actividad.setHoraInicio(rs.getTime(5));
+                actividad.setHoraFin(rs.getTime(6));
+                actividad.setDia(rs.getInt(7));
+                actividad.setCupoMax(rs.getInt(8));
+                actividad.setCuposDisponible(rs.getInt(9));
+                actividad.setRifGuarderia(rs.getString(1));
+                actividades2.add(actividad);
+                System.out.println(rs.getString(1));
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error");
+            System.out.println(e);
+        }
+        return actividades2;
+    }
+    
     public ArrayList<Actividad> loadAllowedActividades(String ci, char letra) {
         Connection connection = con.connectToPostgres();
         ArrayList<Actividad> actividades = new ArrayList();
@@ -182,5 +226,33 @@ public class ActividadNinoDAOImpl {
             JOptionPane.showMessageDialog(null, "Error en los datos");
             Logger.getLogger(ActividadNinoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    
+    public ArrayList<String> actividadMasMenosContratada(String rif, String tipo) {
+        Connection connection = con.connectToPostgres();
+        ArrayList<String> actividades = new ArrayList();
+        String sql = "select a.nombre from (select count(ai.*) as cantidad, " + 
+                "ai.cod_actividad as cod from act_inscripcion_4 ai where ai.rif_guarderia = '"+ rif +"' " + 
+                "group by ai.cod_actividad) contratadas, actividad_4 a where contratadas.cod = a.codigo and " + 
+                "contratadas.cantidad = (select "+ tipo +"(contratadas.cantidad) from (select count(ai.*) as cantidad, " + 
+                "a.nombre nombre, a.codigo cod from act_inscripcion_4 ai, actividad_4 a where ai.rif_guarderia = '"+ rif +"' " + 
+                "and ai.cod_actividad = a.codigo group by a.nombre, a.codigo) contratadas);";
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                actividades.add(rs.getString(1));
+                
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error");
+            System.out.println(e);
+        }
+        return actividades;
     }
 }
