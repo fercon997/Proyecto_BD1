@@ -48,7 +48,7 @@ public class GuarderiaController {
         if (initialView.jTabbedPane1.getSelectedIndex() == 2) {
             controladorNino.llenarNino(initialView.jComboGuarderiasNinos, initialView.tablaNinos);
         }
-        if (initialView.jTabbedPane1.getSelectedIndex() == 9){
+        if (initialView.jTabbedPane1.getSelectedIndex() == 10){
             controladorNino.llenarNino(initialView.jComboGuarderiasNinos1, initialView.tablaNinos1);
             initialView.transferenciaMultaBtn.setEnabled(false);
             initialView.pagarMultaBtn.setEnabled(false);
