@@ -86,6 +86,7 @@ public class ActividadNinoDAOImpl {
                 actividad.setCiRepresentante(ci);
                 actividad.setLetraNino(letra);
                 actividades.add(actividad);
+                
             }
             rs.close();
             st.close();
