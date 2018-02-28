@@ -31,11 +31,11 @@ public class NinoDAOImpl {
         ArrayList<Nino> ninos = new ArrayList();
         if (rif == null) {
             sql= "SELECT distinct n.letra, n.ci_representante, n.nombre, n.apellido, n.fecha_nacimiento, n.sexo FROM "+
-                    "nino_4 N ORDER BY n.ci_representante, n.letra ASC;";
+                    "nino_4 N ORDER BY n.apellido ASC;";
         } else {
             sql= "SELECT distinct n.letra, n.ci_representante, n.nombre, n.apellido, n.fecha_nacimiento, n.sexo FROM "+
                     "nino_4 N, inscripcion_4 I WHERE " +
-                    "n.ci_representante = I.ci_representante AND I.rif_guarderia = '"+rif+"' ORDER BY n.ci_representante, n.letra ASC;";
+                    "n.ci_representante = I.ci_representante AND I.rif_guarderia = '"+rif+"' ORDER BY n.apellido ASC;";
         }
         try {    
             Statement st = cn.createStatement();

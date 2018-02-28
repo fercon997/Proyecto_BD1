@@ -36,7 +36,7 @@ public class InitialView extends javax.swing.JFrame {
      boolean personalHabilitado = false;
      private AutorizadoController controladorAutorizado = new AutorizadoController(this);
      private InscripcionController controladorInscripcion = new InscripcionController(this);
-     private HorarioInscripcionController controladorHI = new HorarioInscripcionController(this);
+     private ActividadNinoController controladorAN = new ActividadNinoController(this);
 
     public InitialView() {
        initComponents();
@@ -49,7 +49,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboActNino);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos1);
@@ -59,7 +59,8 @@ public class InitialView extends javax.swing.JFrame {
        deleteGuarderiaButton.setEnabled(false);
        ninoJuegosTxt.setEditable(false);
        deleteRepresentanteButton.setEnabled(false);
-       controladorHI.llenarTabla(this.tablaHorarioNino);
+       this.codigoActividadTxt.setEnabled(false);
+       this.agregarActividadBtn.setEnabled(false);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -296,9 +297,17 @@ public class InitialView extends javax.swing.JFrame {
         deleteRepresentanteButton1 = new javax.swing.JButton();
         saveRepresentanteBtn1 = new javax.swing.JButton();
         jPanelActividades = new javax.swing.JPanel();
-        jComboGuarderias6 = new javax.swing.JComboBox<>();
+        jComboActNino = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaHorarioNino = new javax.swing.JTable();
+        codigoActividadTxt = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        actividadExistente = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tablaActividadNino = new javax.swing.JTable();
+        agregarActividadBtn = new javax.swing.JButton();
+        salirActividadBtn = new javax.swing.JButton();
+        eliminarActividadExistente = new javax.swing.JButton();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
@@ -309,9 +318,9 @@ public class InitialView extends javax.swing.JFrame {
         tablaNinos1 = new javax.swing.JTable();
         buscarNinoTextField3 = new javax.swing.JTextField();
         buscarNinoButton3 = new javax.swing.JButton();
-        jScrollPane14 = new javax.swing.JScrollPane();
+        jScrollPane16 = new javax.swing.JScrollPane();
         tablaMultas = new javax.swing.JTable();
-        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
         transferenciaMultaBtn = new javax.swing.JTextField();
         pagarMultaBtn = new javax.swing.JButton();
         jPanelTarifas = new javax.swing.JPanel();
@@ -836,7 +845,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         addNinoButton.setText("Agregar");
@@ -2070,9 +2079,9 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
 
-        jComboGuarderias6.addActionListener(new java.awt.event.ActionListener() {
+        jComboActNino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias6ActionPerformed(evt);
+                jComboActNinoActionPerformed(evt);
             }
         });
 
@@ -2105,28 +2114,123 @@ public class InitialView extends javax.swing.JFrame {
         tablaHorarioNino.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(tablaHorarioNino);
         tablaHorarioNino.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tablaHorarioNino.getColumnModel().getColumnCount() > 0) {
+            tablaHorarioNino.getColumnModel().getColumn(2).setHeaderValue("Martes");
+            tablaHorarioNino.getColumnModel().getColumn(3).setHeaderValue("Miércoles");
+            tablaHorarioNino.getColumnModel().getColumn(4).setHeaderValue("Jueves");
+            tablaHorarioNino.getColumnModel().getColumn(5).setHeaderValue("Viernes");
+        }
+
+        jLabel65.setText("Actividad");
+
+        actividadExistente.setText("+");
+        actividadExistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actividadExistenteMouseClicked(evt);
+            }
+        });
+        actividadExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actividadExistenteActionPerformed(evt);
+            }
+        });
+
+        tablaActividadNino.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaActividadNino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaActividadNinoMouseClicked(evt);
+            }
+        });
+        jScrollPane14.setViewportView(tablaActividadNino);
+
+        agregarActividadBtn.setText("Inscribir en Actividad");
+        agregarActividadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarActividadBtnMouseClicked(evt);
+            }
+        });
+
+        salirActividadBtn.setText("Sacar de Actividad");
+        salirActividadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirActividadBtnMouseClicked(evt);
+            }
+        });
+
+        eliminarActividadExistente.setText("-");
+        eliminarActividadExistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarActividadExistenteMouseClicked(evt);
+            }
+        });
+        eliminarActividadExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActividadExistenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
         jPanelActividades.setLayout(jPanelActividadesLayout);
         jPanelActividadesLayout.setHorizontalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(840, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                        .addComponent(jComboActNino, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                        .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                                .addComponent(agregarActividadBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(salirActividadBtn))
+                            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                                .addComponent(jLabel65)
+                                .addGap(18, 18, 18)
+                                .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(actividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eliminarActividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(80, 80, 80))))
         );
         jPanelActividadesLayout.setVerticalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addComponent(jComboActNino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel65)
+                    .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actividadExistente)
+                    .addComponent(eliminarActividadExistente))
+                .addGap(27, 27, 27)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salirActividadBtn)
+                    .addComponent(agregarActividadBtn))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -2186,6 +2290,7 @@ public class InitialView extends javax.swing.JFrame {
                 jComboGuarderiasNinos1ActionPerformed(evt);
             }
         });
+        jPanelMultas.add(jComboGuarderiasNinos1);
 
         tablaNinos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2221,7 +2326,11 @@ public class InitialView extends javax.swing.JFrame {
         });
         jScrollPane15.setViewportView(tablaNinos1);
 
+        jPanelMultas.add(jScrollPane15);
+        jPanelMultas.add(buscarNinoTextField3);
+
         buscarNinoButton3.setText("Buscar");
+        jPanelMultas.add(buscarNinoButton3);
 
         tablaMultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2254,9 +2363,12 @@ public class InitialView extends javax.swing.JFrame {
                 tablaMultasMouseClicked(evt);
             }
         });
-        jScrollPane14.setViewportView(tablaMultas);
+        jScrollPane16.setViewportView(tablaMultas);
 
-        jLabel65.setText("Nro de transferencia:");
+        jPanelMultas.add(jScrollPane16);
+
+        jLabel66.setText("Nro de transferencia:");
+        jPanelMultas.add(jLabel66);
 
         transferenciaMultaBtn.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -2270,6 +2382,7 @@ public class InitialView extends javax.swing.JFrame {
                 transferenciaMultaBtnCaretPositionChanged(evt);
             }
         });
+        jPanelMultas.add(transferenciaMultaBtn);
 
         pagarMultaBtn.setText("Pagar Multa");
         pagarMultaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -2277,55 +2390,7 @@ public class InitialView extends javax.swing.JFrame {
                 pagarMultaBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanelMultasLayout = new javax.swing.GroupLayout(jPanelMultas);
-        jPanelMultas.setLayout(jPanelMultasLayout);
-        jPanelMultasLayout.setHorizontalGroup(
-            jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultasLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMultasLayout.createSequentialGroup()
-                        .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscarNinoButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
-                        .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMultasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pagarMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelMultasLayout.createSequentialGroup()
-                                .addComponent(jLabel65)
-                                .addGap(18, 18, 18)
-                                .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(24, 24, 24))
-        );
-        jPanelMultasLayout.setVerticalGroup(
-            jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMultasLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarNinoButton3))
-                .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelMultasLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelMultasLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel65)
-                            .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(pagarMultaBtn)))
-                .addContainerGap(215, Short.MAX_VALUE))
-        );
+        jPanelMultas.add(pagarMultaBtn);
 
         jTabbedPane1.addTab("Multas", jPanelMultas);
 
@@ -2586,11 +2651,12 @@ public class InitialView extends javax.swing.JFrame {
         controladorPersonal.llenarPersonal(jComboPersonal, tablaPersonal);
     }//GEN-LAST:event_jComboPersonalActionPerformed
 
-    private void jComboGuarderias6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias6ActionPerformed
+    private void jComboActNinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActNinoActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias6);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboActNino);
         }
-    }//GEN-LAST:event_jComboGuarderias6ActionPerformed
+        controladorAN.llenarActNinos(tablaActividadNino, "nino");
+    }//GEN-LAST:event_jComboActNinoActionPerformed
 
     private void jComboGuarderias7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias7ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -2647,6 +2713,7 @@ public class InitialView extends javax.swing.JFrame {
         controladorGuarderia.tabbedPaneTouched();
         controladorPersonal.tabbedPaneTouched();
         controladorInscripcion.tabbedPaneTouched();
+        controladorAN.tabbedPaneTouched();
         controladorJuego.mostrarTabla(tablaJuegos);
         controladorJuego.bloquear();
         addJuegoNinoBtn.setEnabled(false);
@@ -2863,6 +2930,15 @@ public class InitialView extends javax.swing.JFrame {
         controladorInscripcion.addInscripcion();
     }//GEN-LAST:event_agregarInscripcionButtonMouseClicked
 
+    private void actividadExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actividadExistenteActionPerformed
+        //controladorAG.mostrarTabla(tabla, "nino");
+    }//GEN-LAST:event_actividadExistenteActionPerformed
+
+    private void actividadExistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actividadExistenteMouseClicked
+        controladorAN.llenarActNinos(tablaActividadNino, "actividad");
+        this.agregarActividadBtn.setEnabled(true);
+    }//GEN-LAST:event_actividadExistenteMouseClicked
+
     private void jComboGuarderiasNinos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasNinos1ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
             codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderiasNinos1);
@@ -2890,6 +2966,28 @@ public class InitialView extends javax.swing.JFrame {
     private void transferenciaMultaBtnCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_transferenciaMultaBtnCaretUpdate
         pagarMultaBtn.setEnabled(true); // TODO add your handling code here:
     }//GEN-LAST:event_transferenciaMultaBtnCaretUpdate
+
+    private void tablaActividadNinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaActividadNinoMouseClicked
+        eliminarActividadExistente.setEnabled(true);
+        actividadExistente.setEnabled(true);
+    }//GEN-LAST:event_tablaActividadNinoMouseClicked
+
+    private void agregarActividadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarActividadBtnMouseClicked
+        controladorAN.insertarActividad();
+    }//GEN-LAST:event_agregarActividadBtnMouseClicked
+
+    private void salirActividadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirActividadBtnMouseClicked
+        controladorAN.deleteActividad();
+    }//GEN-LAST:event_salirActividadBtnMouseClicked
+
+    private void eliminarActividadExistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarActividadExistenteMouseClicked
+        controladorAN.llenarActNinos(tablaActividadNino, "eliminarActividad");
+        salirActividadBtn.setEnabled(true);
+    }//GEN-LAST:event_eliminarActividadExistenteMouseClicked
+
+    private void eliminarActividadExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActividadExistenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarActividadExistenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2931,10 +3029,12 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable Tabla_Enfermedades;
     public javax.swing.JTable Tabla_Pediatras;
     public javax.swing.JTable Tabla_Tratamientos;
+    public javax.swing.JButton actividadExistente;
     public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
     public javax.swing.JButton addNinoButton;
+    public javax.swing.JButton agregarActividadBtn;
     public javax.swing.JButton agregarInscripcionButton;
     public javax.swing.JLabel apellidoNino;
     public javax.swing.JLabel apellidoNinoInscripcion;
@@ -2969,6 +3069,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel ciudadLabel1;
     public javax.swing.JLabel ciudadLabel2;
     public javax.swing.JLabel ciudadPersonalLabel;
+    public javax.swing.JTextField codigoActividadTxt;
     public javax.swing.JLabel codigoLabel;
     public javax.swing.JButton deleteGuarderiaButton;
     public javax.swing.JButton deleteInscripcionButton;
@@ -2987,6 +3088,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton editRepresentanteBtn2;
     public javax.swing.JTextField edoCivilText;
     public javax.swing.JTextField edoCivilText1;
+    public javax.swing.JButton eliminarActividadExistente;
     public javax.swing.JTextField emailText;
     public javax.swing.JTextField emailText1;
     public javax.swing.JCheckBox encargadaCheckBox;
@@ -3008,11 +3110,11 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMedicamentos;
     private javax.swing.JButton jButtonPediatras;
     private javax.swing.JButton jButtonSintomas;
+    public javax.swing.JComboBox<String> jComboActNino;
     public javax.swing.JComboBox<String> jComboGuarderias;
     public javax.swing.JComboBox<String> jComboGuarderias10;
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
-    public javax.swing.JComboBox<String> jComboGuarderias6;
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
@@ -3082,6 +3184,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -3113,6 +3216,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3141,12 +3245,14 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
     public javax.swing.JLabel rifLabel;
+    public javax.swing.JButton salirActividadBtn;
     public javax.swing.JButton saveJuegoBtn;
     public javax.swing.JButton saveRepresentanteBtn;
     public javax.swing.JButton saveRepresentanteBtn1;
     public javax.swing.JButton saveRepresentanteBtn2;
     public javax.swing.JLabel sexoNino;
     public javax.swing.JTextField sueldoPersonalText;
+    public javax.swing.JTable tablaActividadNino;
     public javax.swing.JTable tablaAutorizados;
     public javax.swing.JTable tablaHorarioNino;
     public javax.swing.JTable tablaInscripcion;
