@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,11 +31,13 @@ public class ActividadNinoController {
     ArrayList<Nino> ninos;
     ArrayList<String> rifs;
     ArrayList<Actividad> actividades = new ArrayList();
+    ArrayList<String> diaSemana;
     
     public ActividadNinoController(InitialView initialView) {
         this.initialView = initialView;
         GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
         rifs = modeloGuarderia.getRifs();
+        diaSemana = new ArrayList(Arrays.asList("Doingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")); 
     }
     
     public void tabbedPaneTouched() {
@@ -56,7 +59,7 @@ public class ActividadNinoController {
         DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);
-        Object[] columna = new Object[7];
+        Object[] columna = new Object[9];
         ArrayList<Actividad> actividades = new ArrayList();
             int numGuard = initialView.jComboActNino.getSelectedIndex();
             System.out.println("Gat "+ numGuard);
@@ -66,14 +69,21 @@ public class ActividadNinoController {
                 } else {
                     actividades = modeloAN.loadAllActividades(rifs.get(numGuard -1));
                 }
-                for(int i = 0; i< 5; i++){
+                for(int i = 0; i< actividades.size(); i++){
+                    System.out.println(i);
                     columna[0] = actividades.get(i).getRifGuarderia();
                     columna[1] = actividades.get(i).getNombre();
-                    columna[2] = actividades.get(i).getHoraInicio();
-                    columna[3] = actividades.get(i).getHoraFin();
-                    columna[4] = actividades.get(i).getCuposDisponible();
-                    columna[5] = actividades.get(i).getCupoMax();
-                    columna[6] = actividades.get(i).getTransporte();
+                    columna[2] = diaSemana.get(actividades.get(i).getDia());
+                    columna[3] = actividades.get(i).getHoraInicio();
+                    columna[4] = actividades.get(i).getHoraFin();
+                    columna[5] = actividades.get(i).getCuposDisponible();
+                    columna[6] = actividades.get(i).getCupoMax();
+                    if (actividades.get(i).getTransporte() == 1) {
+                        columna[7] = "Si";
+                    } else {
+                        columna[7] = "No";
+                    }
+                    columna[8] = actividades.get(i).getNombrePersonal();
                     modeloTabla.addRow(columna);
                 }
             } catch(Exception e){

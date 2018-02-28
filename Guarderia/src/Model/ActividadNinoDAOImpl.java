@@ -62,18 +62,18 @@ public class ActividadNinoDAOImpl {
     public ArrayList<Actividad> loadAllActividades(String rif) {
         System.out.println("Estoy aqui");
         Connection connection = con.connectToPostgres();
-        ArrayList<Actividad> actividades2 = new ArrayList();
+        ArrayList<Actividad> actividades = new ArrayList();
         String sql;
         if (rif == null) {
             sql = "Select hag.rif_guarderia, a.nombre, a.edadminima, a.transporte, hag.hora_inicio, hag.hora_fin, extract(dow from hag.fecha), " + 
-                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.cod_actividad = a.codigo) cuposDsiponibles " + 
-                "from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag where hag.cod_actividad = a.codigo and " + 
-                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia order by hag.rif_guarderia;";
+                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.cod_actividad = a.codigo) cuposDsiponibles, p.nombre " + 
+                "from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag, personal_4 p where hag.cod_actividad = a.codigo and " + 
+                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia and ag.CI_encargada = p.ci order by hag.rif_guarderia;";
         } else {
                sql = "Select hag.rif_guarderia, a.nombre, a.edadminima, a.transporte, hag.hora_inicio, hag.hora_fin, extract(dow from hag.fecha), " + 
-                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = '" + rif + "' and ai.cod_actividad = a.codigo) cuposDsiponibles " + 
-                "from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag where hag.rif_guarderia = '" + rif + "' and hag.cod_actividad = a.codigo and " + 
-                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia;";
+                "ag.cupoMax, ag.cupoMax - (select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = '" + rif + "' and ai.cod_actividad = a.codigo) cuposDsiponible, " + 
+                "p.nombre from actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag, personal_4 p where hag.rif_guarderia = '" + rif + "' and hag.cod_actividad = a.codigo and " + 
+                " ag.cod_actividad = a.codigo and ag.rif_guarderia = hag.rif_guarderia and ag.CI_encargada = p.ci;";
         }
         try {
             Statement st;
@@ -81,6 +81,7 @@ public class ActividadNinoDAOImpl {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
                 Actividad actividad = new Actividad();
+                actividad.setRifGuarderia(rs.getString(1));
                 actividad.setNombre(rs.getString(2));
                 actividad.setEdadMinima(rs.getInt(3));
                 actividad.setTransporte(rs.getInt(4));
@@ -89,9 +90,8 @@ public class ActividadNinoDAOImpl {
                 actividad.setDia(rs.getInt(7));
                 actividad.setCupoMax(rs.getInt(8));
                 actividad.setCuposDisponible(rs.getInt(9));
-                actividad.setRifGuarderia(rs.getString(1));
-                actividades2.add(actividad);
-                System.out.println(rs.getString(1));
+                actividad.setNombrePersonal(rs.getString(10));
+                actividades.add(actividad);
             }
             rs.close();
             st.close();
@@ -100,7 +100,7 @@ public class ActividadNinoDAOImpl {
             System.out.println("Error");
             System.out.println(e);
         }
-        return actividades2;
+        return actividades;
     }
     
     public ArrayList<Actividad> loadAllowedActividades(String ci, char letra) {

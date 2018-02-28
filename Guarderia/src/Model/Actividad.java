@@ -29,11 +29,10 @@ public class Actividad {
     String ciRepresentante;
     char letraNino;
     String rifGuarderia;
-    String dia;
-    ArrayList<String> diaSemana;
+    int dia;
+    String nombrePersonal;
 
-    public Actividad() {
-        diaSemana = new ArrayList(Arrays.asList("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")); 
+    public Actividad() {  
     }
 
     public int getCodigo() {
@@ -148,13 +147,20 @@ public class Actividad {
         this.cupoMax = cupoMax;
     }
 
-    public String getDia() {
+    public int getDia() {
         return dia;
     }
 
     public void setDia(int dia) {
-        this.dia = diaSemana.get(dia + 1);
+        this.dia = dia;
     }
-    
+
+    public String getNombrePersonal() {
+        return nombrePersonal;
+    }
+
+    public void setNombrePersonal(String nombrePersonal) {
+        this.nombrePersonal = nombrePersonal;
+    }
     
 }
