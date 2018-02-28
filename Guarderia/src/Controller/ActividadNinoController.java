@@ -42,6 +42,10 @@ public class ActividadNinoController {
             llenarActNinos(initialView.tablaActividadNino, "nino");
             //llenarHorario(initialView.tablaHorarioNino);
             initialView.actividadExistente.setEnabled(false);
+            initialView.agregarActividadBtn.setEnabled(false);
+            initialView.salirActividadBtn.setEnabled(false);
+            initialView.eliminarActividadExistente.setEnabled(false);
+            actividades.clear();
         }
     }
     
@@ -104,7 +108,44 @@ public class ActividadNinoController {
             } catch(Exception e){
                 System.out.println(e);
             }
+        } else {
+            Nino nino = ninos.get(initialView.tablaActividadNino.getSelectedRow());
+            System.out.println(ninos.get(initialView.tablaActividadNino.getSelectedRow()).getNombre());
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            modeloTabla.addColumn("Actividad");
+            tabla.setModel(modeloTabla);
+            ActividadNinoDAOImpl modeloActividad = new ActividadNinoDAOImpl();
+
+            int numGuard = initialView.jComboActNino.getSelectedIndex();
+            System.out.println(numGuard);
+            Object[] columna = new Object[1];
+            try{
+                actividades = modeloActividad.loadActividadesInscriptas(nino.getCiRepresentante(), nino.getLetra());
+                for(int i = 0; i< actividades.size(); i++){
+                    columna[0] = actividades.get(i).getNombre();
+                    modeloTabla.addRow(columna);
+                }
+            } catch(Exception e){
+                System.out.println(e);
+            }
         }
+    }
+    
+    public void insertarActividad() {
+        Actividad actividad = actividades.get(initialView.tablaActividadNino.getSelectedRow());
+        modeloAN.insertActividad(actividad);
+        tabbedPaneTouched();
+    }
+    
+    public void deleteActividad() {
+        Actividad actividad = actividades.get(initialView.tablaActividadNino.getSelectedRow());
+        modeloAN.deleteActividad(actividad);
+        tabbedPaneTouched();
     }
     
     public void llenarHorario(JTable tabla) {

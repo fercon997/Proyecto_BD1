@@ -60,6 +60,7 @@ public class InitialView extends javax.swing.JFrame {
        ninoJuegosTxt.setEditable(false);
        deleteRepresentanteButton.setEnabled(false);
        this.codigoActividadTxt.setEnabled(false);
+       this.agregarActividadBtn.setEnabled(false);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -304,6 +305,9 @@ public class InitialView extends javax.swing.JFrame {
         actividadExistente = new javax.swing.JButton();
         jScrollPane14 = new javax.swing.JScrollPane();
         tablaActividadNino = new javax.swing.JTable();
+        agregarActividadBtn = new javax.swing.JButton();
+        salirActividadBtn = new javax.swing.JButton();
+        eliminarActividadExistente = new javax.swing.JButton();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
@@ -2149,6 +2153,32 @@ public class InitialView extends javax.swing.JFrame {
         });
         jScrollPane14.setViewportView(tablaActividadNino);
 
+        agregarActividadBtn.setText("Inscribir en Actividad");
+        agregarActividadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarActividadBtnMouseClicked(evt);
+            }
+        });
+
+        salirActividadBtn.setText("Sacar de Actividad");
+        salirActividadBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirActividadBtnMouseClicked(evt);
+            }
+        });
+
+        eliminarActividadExistente.setText("-");
+        eliminarActividadExistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarActividadExistenteMouseClicked(evt);
+            }
+        });
+        eliminarActividadExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActividadExistenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
         jPanelActividades.setLayout(jPanelActividadesLayout);
         jPanelActividadesLayout.setHorizontalGroup(
@@ -2166,12 +2196,20 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(jComboActNino, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                        .addComponent(jLabel65)
-                        .addGap(18, 18, 18)
-                        .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(actividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126))))
+                        .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                                .addComponent(agregarActividadBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(salirActividadBtn))
+                            .addGroup(jPanelActividadesLayout.createSequentialGroup()
+                                .addComponent(jLabel65)
+                                .addGap(18, 18, 18)
+                                .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(actividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eliminarActividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(80, 80, 80))))
         );
         jPanelActividadesLayout.setVerticalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2186,8 +2224,13 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel65)
                     .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actividadExistente))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(actividadExistente)
+                    .addComponent(eliminarActividadExistente))
+                .addGap(27, 27, 27)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salirActividadBtn)
+                    .addComponent(agregarActividadBtn))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -2893,6 +2936,7 @@ public class InitialView extends javax.swing.JFrame {
 
     private void actividadExistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actividadExistenteMouseClicked
         controladorAN.llenarActNinos(tablaActividadNino, "actividad");
+        this.agregarActividadBtn.setEnabled(true);
     }//GEN-LAST:event_actividadExistenteMouseClicked
 
     private void jComboGuarderiasNinos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasNinos1ActionPerformed
@@ -2924,9 +2968,26 @@ public class InitialView extends javax.swing.JFrame {
     }//GEN-LAST:event_transferenciaMultaBtnCaretUpdate
 
     private void tablaActividadNinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaActividadNinoMouseClicked
-
+        eliminarActividadExistente.setEnabled(true);
         actividadExistente.setEnabled(true);
     }//GEN-LAST:event_tablaActividadNinoMouseClicked
+
+    private void agregarActividadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarActividadBtnMouseClicked
+        controladorAN.insertarActividad();
+    }//GEN-LAST:event_agregarActividadBtnMouseClicked
+
+    private void salirActividadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirActividadBtnMouseClicked
+        controladorAN.deleteActividad();
+    }//GEN-LAST:event_salirActividadBtnMouseClicked
+
+    private void eliminarActividadExistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarActividadExistenteMouseClicked
+        controladorAN.llenarActNinos(tablaActividadNino, "eliminarActividad");
+        salirActividadBtn.setEnabled(true);
+    }//GEN-LAST:event_eliminarActividadExistenteMouseClicked
+
+    private void eliminarActividadExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActividadExistenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarActividadExistenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2973,6 +3034,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
     public javax.swing.JButton addNinoButton;
+    public javax.swing.JButton agregarActividadBtn;
     public javax.swing.JButton agregarInscripcionButton;
     public javax.swing.JLabel apellidoNino;
     public javax.swing.JLabel apellidoNinoInscripcion;
@@ -3026,6 +3088,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton editRepresentanteBtn2;
     public javax.swing.JTextField edoCivilText;
     public javax.swing.JTextField edoCivilText1;
+    public javax.swing.JButton eliminarActividadExistente;
     public javax.swing.JTextField emailText;
     public javax.swing.JTextField emailText1;
     public javax.swing.JCheckBox encargadaCheckBox;
@@ -3182,6 +3245,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
     public javax.swing.JLabel rifLabel;
+    public javax.swing.JButton salirActividadBtn;
     public javax.swing.JButton saveJuegoBtn;
     public javax.swing.JButton saveRepresentanteBtn;
     public javax.swing.JButton saveRepresentanteBtn1;

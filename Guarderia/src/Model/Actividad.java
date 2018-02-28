@@ -24,6 +24,7 @@ public class Actividad {
     int transporte;
     String ciRepresentante;
     char letraNino;
+    String rifGuarderia;
 
     public Actividad() {
     }
@@ -114,6 +115,14 @@ public class Actividad {
 
     public void setLetraNino(char letraNino) {
         this.letraNino = letraNino;
+    }
+
+    public String getRifGuarderia() {
+        return rifGuarderia;
+    }
+
+    public void setRifGuarderia(String rifGuarderia) {
+        this.rifGuarderia = rifGuarderia;
     }
     
     
