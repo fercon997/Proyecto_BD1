@@ -2285,6 +2285,15 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
 
+// <<<<<<< HEAD
+//         jComboGuarderiasNinos1.addActionListener(new java.awt.event.ActionListener() {
+//             public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                 jComboGuarderiasNinos1ActionPerformed(evt);
+//             }
+//         });
+//
+// =======
+// >>>>>>> 0491dc0a2a7f0eff934dab8e7fde1e021f715b2a
         tablaNinos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -2387,6 +2396,25 @@ public class InitialView extends javax.swing.JFrame {
         jPanelMultasLayout.setHorizontalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMultasLayout.createSequentialGroup()
+// <<<<<<< HEAD
+            //     .addGap(19, 19, 19)
+            //     .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(buscarNinoButton3)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            // .addGroup(jPanelMultasLayout.createSequentialGroup()
+            //     .addGap(422, 422, 422)
+            //     .addComponent(jLabel66)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            //     .addGap(5, 5, 5)
+            //     .addComponent(pagarMultaBtn))
+// =======
                 .addGap(43, 43, 43)
                 .addGroup(jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelMultasLayout.createSequentialGroup()
@@ -2407,6 +2435,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addGap(490, 490, 490)
                         .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
+// >>>>>>> 0491dc0a2a7f0eff934dab8e7fde1e021f715b2a
         );
         jPanelMultasLayout.setVerticalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

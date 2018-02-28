@@ -29,7 +29,7 @@ public class ActividadNinoController {
     ActividadNinoDAOImpl modeloAN = new ActividadNinoDAOImpl();
     ArrayList<Nino> ninos;
     ArrayList<String> rifs;
-    ArrayList<Actividad> actividades;
+    ArrayList<Actividad> actividades = new ArrayList();
     
     public ActividadNinoController(InitialView initialView) {
         this.initialView = initialView;
@@ -45,7 +45,9 @@ public class ActividadNinoController {
             initialView.agregarActividadBtn.setEnabled(false);
             initialView.salirActividadBtn.setEnabled(false);
             initialView.eliminarActividadExistente.setEnabled(false);
-            actividades.clear();
+            if (actividades.size() > 0) {
+                actividades.clear();
+            }
         }
     }
     
