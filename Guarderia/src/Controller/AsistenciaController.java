@@ -118,8 +118,10 @@ public class AsistenciaController {
             java.sql.Time horaSalida = new java.sql.Time(utilDate.getTime());
             assist.setHora_entrada(horaEntrada);
             assist.setHora_salida(horaSalida);
+            assist = validarHoras(horaEntrada, horaSalida, assist);
             bdAssist.insertAsistencia(assist);
-            validarHoras(horaEntrada, horaSalida, assist);
+            if (assist.getCostoMulta()> 0 )
+              bdAssist.ponerMulta(assist);
             JOptionPane.showMessageDialog(null, "Datos cargados satisfactoriamente");
             vistaAsistencias.dispose();
         } catch (Exception ex) {
@@ -143,7 +145,7 @@ public class AsistenciaController {
     }
     
     
-    public void validarHoras(Time horaEntrada, Time horaSalida, Asistencia assist) throws Exception{
+    public Asistencia validarHoras(Time horaEntrada, Time horaSalida, Asistencia assist) throws Exception{
         AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
         String rif = bdAssist.getRif(nino);
         GuarderiaDAOImpl bdGuard = new GuarderiaDAOImpl();
@@ -160,11 +162,11 @@ public class AsistenciaController {
                     JOptionPane.showMessageDialog(vistaAsistencias, "Se le cobrara una multa de recargo de "
                         + String.valueOf(recargo)+" horas");
                     assist.setCostoMulta(guard.getCostoMulta()*recargo);
-                    bdAssist.ponerMulta(assist);
                 }
                 
             }
         }
+        return assist;
     }
     
     public int recargoMultas(Time horaSalida, Time horaSalidaIns){
