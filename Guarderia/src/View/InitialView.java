@@ -61,6 +61,8 @@ public class InitialView extends javax.swing.JFrame {
        deleteRepresentanteButton.setEnabled(false);
        this.codigoActividadTxt.setEnabled(false);
        this.agregarActividadBtn.setEnabled(false);
+       this.actMasContratadasText.setEnabled(false);
+       this.actMenosContratadasText.setEnabled(false);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -488,6 +490,11 @@ public class InitialView extends javax.swing.JFrame {
                 deleteGuarderiaButtonMouseClicked(evt);
             }
         });
+        deleteGuarderiaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteGuarderiaButtonActionPerformed(evt);
+            }
+        });
 
         editGuarderiaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
         editGuarderiaButton.setToolTipText("");
@@ -547,21 +554,23 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
-                        .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
                             .addComponent(jComboGuarderias, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelInicioLayout.createSequentialGroup()
+                            .addGap(24, 24, 24))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
+                            .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(editGuarderiaButton)
-                                .addGap(10, 10, 10))
-                            .addComponent(jPanelInfoGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
+                                .addComponent(jPanelInfoGuarderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(100, 100, 100)))
+                    .addGroup(jPanelInicioLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addComponent(addGuarderiaButton)
-                        .addGap(64, 64, 64)
+                        .addGap(63, 63, 63)
                         .addComponent(deleteGuarderiaButton)
-                        .addGap(57, 57, 57))))
+                        .addContainerGap())))
         );
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2231,20 +2240,20 @@ public class InitialView extends javax.swing.JFrame {
 
         tablaActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Guarderia", "Actividad", "Hora Inicio", "Hora Fin", "Cupos Disponibles", "Cupo Máximo", "Transporte"
+                "Guarderia", "Actividad", "Hora Inicio", "Hora Fin", "Cupos Disponibles", "Cupo Máximo", "Transporte", "Responsable"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2285,7 +2294,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addGroup(jPanelActividadesLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 977, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
@@ -3108,6 +3117,10 @@ public class InitialView extends javax.swing.JFrame {
     private void eliminarActividadExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActividadExistenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eliminarActividadExistenteActionPerformed
+
+    private void deleteGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteGuarderiaButtonActionPerformed
 
     /**
      * @param args the command line arguments

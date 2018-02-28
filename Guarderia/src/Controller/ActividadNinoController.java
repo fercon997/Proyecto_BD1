@@ -361,6 +361,9 @@ public class ActividadNinoController {
                 contratadas = contratadas + actividades.get(i) + "\n";
             }
             initialView.actMenosContratadasText.setText(contratadas);
+        } else {
+            initialView.actMasContratadasText.setText("");
+            initialView.actMenosContratadasText.setText("");
         }
     }
        
