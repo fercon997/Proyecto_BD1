@@ -39,6 +39,7 @@ public class ActividadNinoController {
     
     public void tabbedPaneTouched() {
         if (initialView.jTabbedPane1.getSelectedIndex() == 7) {
+            llenarActividades(initialView.tablaActividades);
             llenarActNinos(initialView.tablaActividadNino, "nino");
             //llenarHorario(initialView.tablaHorarioNino);
             initialView.actividadExistente.setEnabled(false);
@@ -49,6 +50,35 @@ public class ActividadNinoController {
                 actividades.clear();
             }
         }
+    }
+    
+    public void llenarActividades(JTable tabla) {
+        DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
+        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+        Object[] columna = new Object[7];
+        ArrayList<Actividad> actividades = new ArrayList();
+            int numGuard = initialView.jComboActNino.getSelectedIndex();
+            System.out.println("Gat "+ numGuard);
+            try{
+                if (numGuard == 0) {
+                    actividades = modeloAN.loadAllActividades(null);
+                } else {
+                    actividades = modeloAN.loadAllActividades(rifs.get(numGuard -1));
+                }
+                for(int i = 0; i< 5; i++){
+                    columna[0] = actividades.get(i).getRifGuarderia();
+                    columna[1] = actividades.get(i).getNombre();
+                    columna[2] = actividades.get(i).getHoraInicio();
+                    columna[3] = actividades.get(i).getHoraFin();
+                    columna[4] = actividades.get(i).getCuposDisponible();
+                    columna[5] = actividades.get(i).getCupoMax();
+                    columna[6] = actividades.get(i).getTransporte();
+                    modeloTabla.addRow(columna);
+                }
+            } catch(Exception e){
+                System.out.println(e);
+            }
     }
     
     public void llenarActNinos(JTable tabla, String tipo) {
@@ -314,6 +344,27 @@ public class ActividadNinoController {
     public String convertirHora(Time hora) {
         DateFormat date1 = new SimpleDateFormat("HH:mm");
         return date1.format(hora);
+    }
+    
+    public void masMenosContratada() {
+        ArrayList<String> actividades;
+        if (initialView.jComboGuarderias.getSelectedIndex() > 0) {
+            actividades = modeloAN.actividadMasMenosContratada(rifs.get(initialView.jComboGuarderias.getSelectedIndex() - 1), "max");
+            String contratadas = "";
+            for (int i = 0; i < actividades.size(); i ++) {
+                contratadas = contratadas + actividades.get(i) + "\n";
+            }
+            initialView.actMasContratadasText.setText(contratadas);
+            actividades = modeloAN.actividadMasMenosContratada(rifs.get(initialView.jComboGuarderias.getSelectedIndex() - 1), "min");
+            contratadas = "";
+            for (int i = 0; i < actividades.size(); i ++) {
+                contratadas = contratadas + actividades.get(i) + "\n";
+            }
+            initialView.actMenosContratadasText.setText(contratadas);
+        } else {
+            initialView.actMasContratadasText.setText("");
+            initialView.actMenosContratadasText.setText("");
+        }
     }
        
 }

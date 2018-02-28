@@ -7,6 +7,8 @@ package Model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -22,11 +24,16 @@ public class Actividad {
     int consInsc;
     int edadMinima;
     int transporte;
+    int cuposDisponible;
+    int cupoMax;
     String ciRepresentante;
     char letraNino;
     String rifGuarderia;
+    String dia;
+    ArrayList<String> diaSemana;
 
     public Actividad() {
+        diaSemana = new ArrayList(Arrays.asList("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")); 
     }
 
     public int getCodigo() {
@@ -123,6 +130,30 @@ public class Actividad {
 
     public void setRifGuarderia(String rifGuarderia) {
         this.rifGuarderia = rifGuarderia;
+    }
+
+    public int getCuposDisponible() {
+        return cuposDisponible;
+    }
+
+    public void setCuposDisponible(int cuposDisponible) {
+        this.cuposDisponible = cuposDisponible;
+    }
+
+    public int getCupoMax() {
+        return cupoMax;
+    }
+
+    public void setCupoMax(int cupoMax) {
+        this.cupoMax = cupoMax;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = diaSemana.get(dia + 1);
     }
     
     
