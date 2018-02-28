@@ -1,9 +1,14 @@
 
 package Controller;
 
+import Model.Actividad;
+import Model.ActividadDAOImpl;
+import Model.GuarderiaDAOImpl;
 import Model.Horario;
 import Model.HorarioInscripcion;
 import Model.HorarioInscripcionDAOImpl;
+import Model.Nino;
+import Model.NinoDAOImpl;
 import View.InitialView;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -18,16 +23,91 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-public class HorarioInscripcionController {
+public class ActividadNinoController {
     
     InitialView initialView;
     HorarioInscripcionDAOImpl modeloHI = new HorarioInscripcionDAOImpl();
+    ArrayList<Nino> ninos;
+    ArrayList<String> rifs;
+    ArrayList<Actividad> actividades;
     
-    public HorarioInscripcionController(InitialView initialView) {
+    public ActividadNinoController(InitialView initialView) {
         this.initialView = initialView;
+        GuarderiaDAOImpl modeloGuarderia = new GuarderiaDAOImpl();
+        rifs = modeloGuarderia.getRifs();
     }
     
-    public void llenarTabla(JTable tabla) {
+    public void tabbedPaneTouched() {
+        if (initialView.jTabbedPane1.getSelectedIndex() == 7) {
+            llenarActNinos(initialView.tablaActividadNino, "nino");
+            //llenarHorario(initialView.tablaHorarioNino);
+            initialView.actividadExistente.setEnabled(false);
+        }
+    }
+    
+    public void llenarActNinos(JTable tabla, String tipo) {
+        if (tipo == "nino") {
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            modeloTabla.addColumn("CI Representante");
+            modeloTabla.addColumn("Nombre");
+            tabla.setModel(modeloTabla);
+            NinoDAOImpl modeloNino = new NinoDAOImpl();
+
+            int numGuard = initialView.jComboActNino.getSelectedIndex();
+
+            Object[] columna = new Object[2];
+            try{
+                if (numGuard == 0) {
+                    ninos = modeloNino.loadNino(null);
+                } else {
+                    ninos = modeloNino.loadNino(rifs.get(numGuard -1 ));
+                }
+                for(int i = 0; i< ninos.size(); i++){
+                    columna[0] = ninos.get(i).getCiRepresentante();
+                    columna[1] = ninos.get(i).getApellido() + ", " + ninos.get(i).getNombre();
+                    modeloTabla.addRow(columna);
+                }
+            } catch(Exception e){
+                System.out.println(e);
+            }
+        } else if (tipo == "actividad") {
+            Nino nino = ninos.get(initialView.tablaActividadNino.getSelectedRow());
+            System.out.println(ninos.get(initialView.tablaActividadNino.getSelectedRow()).getNombre());
+            DefaultTableModel modeloTabla = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            modeloTabla.addColumn("Actividad");
+            modeloTabla.addColumn("Hora inicio");
+            modeloTabla.addColumn("Hora fin");
+            tabla.setModel(modeloTabla);
+            ActividadDAOImpl modeloActividad = new ActividadDAOImpl();
+
+            int numGuard = initialView.jComboActNino.getSelectedIndex();
+            System.out.println(numGuard);
+            Object[] columna = new Object[3];
+            try{
+                actividades = modeloActividad.loadAllowedActividades(nino.getCiRepresentante(), nino.getLetra());
+                for(int i = 0; i< actividades.size(); i++){
+                    columna[0] = actividades.get(i).getNombre();
+                    columna[1] = actividades.get(i).getHoraInicio();
+                    columna[2] = actividades.get(i).getHoraInicio();
+                    modeloTabla.addRow(columna);
+                }
+            } catch(Exception e){
+                System.out.println(e);
+            }
+        }
+    }
+    
+    public void llenarHorario(JTable tabla) {
         DefaultTableModel modeloTabla = (DefaultTableModel)tabla.getModel();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);

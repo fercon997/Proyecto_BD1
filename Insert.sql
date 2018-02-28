@@ -235,37 +235,37 @@ INSERT INTO inscripcion_4 values (2016, nextval('Insc_sequence'), 'J279154667-2'
 INSERT INTO inscripcion_4 values (2017, nextval('Insc_sequence'), 'J279154667-2', 'E10917655', 'C', '2017-01-12', '08:00', '17:00');
 
 --Actividad-Inscripción
-insert into act_inscripcion_4 values (2015, 3, 'J764219187-2', 'V9757397', 'A', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', 2, '2018-04-05', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 1, '2018-02-26', '11:00', 200);
+insert into act_inscripcion_4 values (2015, 3, 'J764219187-2', 'V9757397', 'A', 2, '2018-04-05', '09:00');
+insert into act_inscripcion_4 values (2015, 4, 'J764219187-2', 'V9757397', 'B', 2, '2018-04-05', '09:00');
+insert into act_inscripcion_4 values (2015, 5, 'J764219187-2', 'V9757397', 'C', 2, '2018-04-05', '09:00');
+insert into act_inscripcion_4 values (2016, 12, 'J764219187-2', 'V20145701', 'A', 2, '2018-04-05', '09:00');
+insert into act_inscripcion_4 values (2016, 13, 'J764219187-2', 'V20145701', 'B', 2, '2018-04-05', '09:00');
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 1, '2018-02-26', '11:00');
 
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 6, '2018-02-27', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 7, '2018-02-28', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 8, '2018-03-01', '10:00', 200);
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 9, '2018-03-02', '14:00', 200);
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 6, '2018-02-27', '09:00');
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 7, '2018-02-28', '09:00');
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 8, '2018-03-01', '10:00');
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 9, '2018-03-02', '14:00');
 
-insert into act_inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', 1, '2018-02-26', '11:00', 200);
-insert into act_inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', 1, '2018-02-26', '11:00', 200);
-insert into act_inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', 1, '2018-02-26', '11:00', 200);
-insert into act_inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', 1, '2018-02-26', '11:00', 200);
-insert into act_inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', 3, '2018-04-04', '09:00', 200);
-insert into act_inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', 3, '2018-04-04', '09:00', 200);
-insert into act_inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', 3, '2018-04-04', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', 3, '2018-04-04', '09:00', 200);
-insert into act_inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', 3, '2018-04-04', '09:00', 200);
-insert into act_inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', 4, '2018-05-03', '10:00', 200);
-insert into act_inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', 4, '2018-05-03', '10:00', 200);
-insert into act_inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', 4, '2018-05-03', '10:00', 200);
-insert into act_inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', 4, '2018-05-03', '10:00', 200);
-insert into act_inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', 4, '2018-05-03', '10:00', 200);
-insert into act_inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', 5, '2018-04-14', '14:00', 200);
-insert into act_inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', 5, '2018-04-14', '14:00', 200);
-insert into act_inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', 5, '2018-04-14', '14:00', 200);
-insert into act_inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', 5, '2018-04-14', '14:00', 200);
-insert into act_inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', 5, '2018-04-14', '14:00', 200);
+insert into act_inscripcion_4 values (2014, 2, 'J298754541-5', 'V8108418', 'B', 1, '2018-02-26', '11:00');
+insert into act_inscripcion_4 values (2013, 18, 'J298754541-5', 'V20775874', 'A', 1, '2018-02-26', '11:00');
+insert into act_inscripcion_4 values (2013, 19, 'J298754541-5', 'V20775874', 'B', 1, '2018-02-26', '11:00');
+insert into act_inscripcion_4 values (2016, 20, 'J298754541-5', 'V20775874', 'C', 1, '2018-02-26', '11:00');
+insert into act_inscripcion_4 values (2013, 9, 'J128487902-9', 'V12769574', 'A', 3, '2018-04-04', '09:00');
+insert into act_inscripcion_4 values (2014, 10, 'J128487902-9', 'V12769574', 'B', 3, '2018-04-04', '09:00');
+insert into act_inscripcion_4 values (2014, 11, 'J128487902-9', 'V12769574', 'C', 3, '2018-04-04', '09:00');
+insert into act_inscripcion_4 values (2013, 16, 'J128487902-9', 'V14910819', 'A', 3, '2018-04-04', '09:00');
+insert into act_inscripcion_4 values (2013, 17, 'J128487902-9', 'V14910819', 'B', 3, '2018-04-04', '09:00');
+insert into act_inscripcion_4 values (2014, 6, 'J516782778-4', 'V24871662', 'A', 4, '2018-05-03', '10:00');
+insert into act_inscripcion_4 values (2015, 7, 'J516782778-4', 'V24871662', 'B', 4, '2018-05-03', '10:00');
+insert into act_inscripcion_4 values (2018, 8, 'J516782778-4', 'V24871662', 'C', 4, '2018-05-03', '10:00');
+insert into act_inscripcion_4 values (2016, 14, 'J516782778-4', 'E21879397', 'A', 4, '2018-05-03', '10:00');
+insert into act_inscripcion_4 values (2018, 15, 'J516782778-4', 'E21879397', 'B', 4, '2018-05-03', '10:00');
+insert into act_inscripcion_4 values (2013, 21, 'J279154667-2', 'V15748739', 'A', 5, '2018-04-14', '14:00');
+insert into act_inscripcion_4 values (2015, 22, 'J279154667-2', 'V15748739', 'B', 5, '2018-04-14', '14:00');
+insert into act_inscripcion_4 values (2015, 23, 'J279154667-2', 'E10917655', 'A', 5, '2018-04-14', '14:00');
+insert into act_inscripcion_4 values (2016, 24, 'J279154667-2', 'E10917655', 'B', 5, '2018-04-14', '14:00');
+insert into act_inscripcion_4 values (2017, 25, 'J279154667-2', 'E10917655', 'C', 5, '2018-04-14', '14:00');
 
 --Asistencia
 INSERT INTO asistencia_4 values ('2016-01-07', 24, 2016, 'E10917655', 'B', NULL, 'V9187221', '08:15', '16:50', 'SI');
@@ -449,3 +449,8 @@ insert into menu_semanal_4 values(2, '2018-03-05', 3);
 insert into menu_semanal_4 values(3, '2018-03-05', 4);
 insert into menu_semanal_4 values(4, '2018-03-05', 5);
 insert into menu_semanal_4 values(5, '2018-03-05', 2);
+
+SELECT distinct a.codigo, a.nombre, a.edadMinima, a.transporte, hag.fecha, hag.hora_inicio, hag.hora_fin, i.ano, i.consecutivo FROM inscripcion_4 i, actividad_4 a, horario_act_guarderia_4 hag, act_guarderia_4 ag, nino_4 n WHERE i.ci_representante = 'V8108418' and i.letra_nino = 'B' and i.consecutivo = (SELECT MAX(consecutivo) from inscripcion_4 where ci_representante = 'V8108418' and letra_nino = 'B') and i.rif_guarderia = hag.rif_guarderia and hag.rif_guarderia = ag.rif_guarderia and hag.cod_actividad = ag.cod_actividad and ag.cod_actividad = a.codigo;
+
+
+SELECT A.codigo A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N WHERE I.CI_REPRESENTANTE = 'V8108418' AND I.LETRA_NINO = 'A' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = 'V8108418' AND LETRA_NINO = 'A') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = 'V8108418' AND N.LETRA = 'A' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = 'A' and ai.ci_representante = 'V8108418' and ai.cod_actividad = hag.cod_actividad) AND HAG.HORA_INICIO NOT IN (select hag.hora_inicio from horario_act_guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = 'A' and ai.ci_representante = 'V8108418' and ai.cod_actividad = hag.cod_actividad);

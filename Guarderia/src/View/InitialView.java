@@ -36,7 +36,7 @@ public class InitialView extends javax.swing.JFrame {
      boolean personalHabilitado = false;
      private AutorizadoController controladorAutorizado = new AutorizadoController(this);
      private InscripcionController controladorInscripcion = new InscripcionController(this);
-     private HorarioInscripcionController controladorHI = new HorarioInscripcionController(this);
+     private ActividadNinoController controladorAN = new ActividadNinoController(this);
 
     public InitialView() {
        initComponents();
@@ -49,7 +49,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorNino_medico.LlenarComboBoxNinos(jComboNinos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias4);
        controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias6);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboActNino);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias9);
@@ -59,7 +59,7 @@ public class InitialView extends javax.swing.JFrame {
        deleteGuarderiaButton.setEnabled(false);
        ninoJuegosTxt.setEditable(false);
        deleteRepresentanteButton.setEnabled(false);
-       controladorHI.llenarTabla(this.tablaHorarioNino);
+       this.codigoActividadTxt.setEnabled(false);
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -296,9 +296,14 @@ public class InitialView extends javax.swing.JFrame {
         deleteRepresentanteButton1 = new javax.swing.JButton();
         saveRepresentanteBtn1 = new javax.swing.JButton();
         jPanelActividades = new javax.swing.JPanel();
-        jComboGuarderias6 = new javax.swing.JComboBox<>();
+        jComboActNino = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaHorarioNino = new javax.swing.JTable();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tablaActividadNino = new javax.swing.JTable();
+        codigoActividadTxt = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        actividadExistente = new javax.swing.JButton();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
@@ -827,7 +832,7 @@ public class InitialView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         addNinoButton.setText("Agregar");
@@ -938,7 +943,7 @@ public class InitialView extends javax.swing.JFrame {
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
                         .addComponent(editNinoButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanelInfoNino, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelInfoNino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelNinosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelNinosLayout.createSequentialGroup()
@@ -2061,9 +2066,9 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Personal", jPanelPersonal);
 
-        jComboGuarderias6.addActionListener(new java.awt.event.ActionListener() {
+        jComboActNino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias6ActionPerformed(evt);
+                jComboActNinoActionPerformed(evt);
             }
         });
 
@@ -2096,28 +2101,84 @@ public class InitialView extends javax.swing.JFrame {
         tablaHorarioNino.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(tablaHorarioNino);
         tablaHorarioNino.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tablaHorarioNino.getColumnModel().getColumnCount() > 0) {
+            tablaHorarioNino.getColumnModel().getColumn(2).setHeaderValue("Martes");
+            tablaHorarioNino.getColumnModel().getColumn(3).setHeaderValue("Miércoles");
+            tablaHorarioNino.getColumnModel().getColumn(4).setHeaderValue("Jueves");
+            tablaHorarioNino.getColumnModel().getColumn(5).setHeaderValue("Viernes");
+        }
+
+        tablaActividadNino.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tablaActividadNino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaActividadNinoMouseClicked(evt);
+            }
+        });
+        jScrollPane14.setViewportView(tablaActividadNino);
+
+        jLabel65.setText("Actividad");
+
+        actividadExistente.setText("+");
+        actividadExistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actividadExistenteMouseClicked(evt);
+            }
+        });
+        actividadExistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actividadExistenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelActividadesLayout = new javax.swing.GroupLayout(jPanelActividades);
         jPanelActividades.setLayout(jPanelActividadesLayout);
         jPanelActividadesLayout.setHorizontalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
-                .addContainerGap(840, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                        .addComponent(jComboActNino, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelActividadesLayout.createSequentialGroup()
+                        .addComponent(jLabel65)
+                        .addGap(18, 18, 18)
+                        .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(actividadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126))))
         );
         jPanelActividadesLayout.setVerticalGroup(
             jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addComponent(jComboActNino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel65)
+                    .addComponent(codigoActividadTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actividadExistente))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actividades", jPanelActividades);
@@ -2454,11 +2515,12 @@ public class InitialView extends javax.swing.JFrame {
         controladorPersonal.llenarPersonal(jComboPersonal, tablaPersonal);
     }//GEN-LAST:event_jComboPersonalActionPerformed
 
-    private void jComboGuarderias6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias6ActionPerformed
+    private void jComboActNinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActNinoActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias6);
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboActNino);
         }
-    }//GEN-LAST:event_jComboGuarderias6ActionPerformed
+        controladorAN.llenarActNinos(tablaActividadNino, "nino");
+    }//GEN-LAST:event_jComboActNinoActionPerformed
 
     private void jComboGuarderias7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias7ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -2521,6 +2583,7 @@ public class InitialView extends javax.swing.JFrame {
         controladorGuarderia.tabbedPaneTouched();
         controladorPersonal.tabbedPaneTouched();
         controladorInscripcion.tabbedPaneTouched();
+        controladorAN.tabbedPaneTouched();
         controladorJuego.mostrarTabla(tablaJuegos);
         controladorJuego.bloquear();
         addJuegoNinoBtn.setEnabled(false);
@@ -2737,6 +2800,18 @@ public class InitialView extends javax.swing.JFrame {
         controladorInscripcion.addInscripcion();
     }//GEN-LAST:event_agregarInscripcionButtonMouseClicked
 
+    private void actividadExistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actividadExistenteActionPerformed
+        //controladorAG.mostrarTabla(tabla, "nino");
+    }//GEN-LAST:event_actividadExistenteActionPerformed
+
+    private void tablaActividadNinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaActividadNinoMouseClicked
+        this.actividadExistente.setEnabled(true);
+    }//GEN-LAST:event_tablaActividadNinoMouseClicked
+
+    private void actividadExistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actividadExistenteMouseClicked
+        controladorAN.llenarActNinos(tablaActividadNino, "actividad");
+    }//GEN-LAST:event_actividadExistenteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2777,6 +2852,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable Tabla_Enfermedades;
     public javax.swing.JTable Tabla_Pediatras;
     public javax.swing.JTable Tabla_Tratamientos;
+    public javax.swing.JButton actividadExistente;
     public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
@@ -2813,6 +2889,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel ciudadLabel1;
     public javax.swing.JLabel ciudadLabel2;
     public javax.swing.JLabel ciudadPersonalLabel;
+    public javax.swing.JTextField codigoActividadTxt;
     public javax.swing.JLabel codigoLabel;
     public javax.swing.JButton deleteGuarderiaButton;
     public javax.swing.JButton deleteInscripcionButton;
@@ -2852,11 +2929,11 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMedicamentos;
     private javax.swing.JButton jButtonPediatras;
     private javax.swing.JButton jButtonSintomas;
+    public javax.swing.JComboBox<String> jComboActNino;
     public javax.swing.JComboBox<String> jComboGuarderias;
     public javax.swing.JComboBox<String> jComboGuarderias10;
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
-    public javax.swing.JComboBox<String> jComboGuarderias6;
     public javax.swing.JComboBox<String> jComboGuarderias7;
     public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderias9;
@@ -2925,6 +3002,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2954,6 +3032,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2987,6 +3066,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton saveRepresentanteBtn2;
     public javax.swing.JLabel sexoNino;
     public javax.swing.JTextField sueldoPersonalText;
+    public javax.swing.JTable tablaActividadNino;
     public javax.swing.JTable tablaAutorizados;
     public javax.swing.JTable tablaHorarioNino;
     public javax.swing.JTable tablaInscripcion;
