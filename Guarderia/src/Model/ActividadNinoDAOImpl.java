@@ -183,7 +183,7 @@ public class ActividadNinoDAOImpl {
     public void insertActividad(Actividad actividad) {
         try {
             Connection cn = con.connectToPostgres();
-            PreparedStatement pps = cn.prepareCall("INSERT INTO act_inscripcion_4 VALUES " +
+            PreparedStatement pps = cn.prepareCall("INSERT INTO act_inscripcion_4  VALUES " +
                     "(?,?,?,?,?,?,?,?)");
             pps.setInt(1, actividad.getAnoInsc());
             pps.setInt(2, actividad.getConsInsc());
