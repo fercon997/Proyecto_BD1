@@ -103,33 +103,142 @@ public class ActividadNinoDAOImpl {
         return actividades;
     }
     
+    public int cantidadActividades(String ci, char letra) {
+        Connection connection = con.connectToPostgres();
+        ArrayList<Actividad> actividades = new ArrayList();
+        String sql = "select count(ai.*) from act_inscripcion_4 ai, inscripcion_4 i where ai.letra_nino = '"+letra+
+                "' and ai.ci_representante = '"+ci+"' and ai.consecutivo_inscripcion = (SELECT MAX(CONSECUTIVO) " + 
+                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ci+"' AND LETRA_NINO = '"+letra+"');";
+        int cantidad = 0;
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                cantidad = rs.getInt(1);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error");
+            System.out.println(e);
+        }
+        return cantidad;
+    }
+    
+    public ArrayList<Actividad> loadAllActividadesNino(String ci, char letra) {
+        Connection connection = con.connectToPostgres();
+        ArrayList<Actividad> actividades = new ArrayList();
+        String sql = "select distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
+                "I.ANO, I.CONSECUTIVO, i.rif_guarderia from inscripcion_4 i, " + 
+                "horario_act_guarderia_4 hag, actividad_4 a where i.ci_representante = '"+ ci + "' and i.letra_nino = '" + letra + "' "+ 
+                "and i.rif_guarderia = hag.rif_guarderia "+ 
+                "and a.codigo = hag.cod_actividad and i.consecutivo = (SELECT MAX(CONSECUTIVO)" + 
+                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ci+"' AND LETRA_NINO = '"+letra+"');";
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                Actividad actividad = new Actividad();
+                actividad.setCodigo(rs.getInt(1));
+                actividad.setNombre(rs.getString(2));
+                actividad.setEdadMinima(rs.getInt(3));
+                actividad.setTransporte(rs.getInt(4));
+                actividad.setFecha(rs.getDate(5));
+                actividad.setHoraInicio(rs.getTime(6));
+                actividad.setHoraFin(rs.getTime(7));
+                actividad.setAnoInsc(rs.getInt(8));
+                actividad.setConsInsc(rs.getInt(9));
+                actividad.setRifGuarderia(rs.getString(10));
+                actividad.setCiRepresentante(ci);
+                actividad.setLetraNino(letra);
+                actividades.add(actividad);
+                
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error");
+            System.out.println(e);
+        }
+        return actividades;
+    } 
+    
     public ArrayList<Actividad> loadAllowedActividades(String ci, char letra) {
         Connection connection = con.connectToPostgres();
         ArrayList<Actividad> actividades = new ArrayList();
-        String sql = "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
-                "I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, " + 
-                "NINO_4 N, horario_act_guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) " + 
-                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA " + 
-                "AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and " + 
-                "N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and " + 
-                "extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai " +  
-                "where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad) AND " + 
-                "hag2.rif_guarderia = hag.rif_guarderia and HAG.HORA_INICIO not between hag2.hora_inicio and hag2.hora_fin and hag.hora_fin " + 
-                "not between hag2.hora_inicio and hag2.hora_fin and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where " + 
-                "ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad) union " + 
-                "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
-                "I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, " + 
-                "NINO_4 N, horario_act_guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) " + 
-                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA " + 
-                "AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and " + 
-                "N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and " + 
-                "extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai " +  
-                "where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad) AND " + 
-                "hag2.rif_guarderia = hag.rif_guarderia and a.transporte = 1 and HAG.HORA_INICIO not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min'and hag.hora_fin " + 
-                "not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where " + 
-                "ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad);";
-//                "NOT IN (select hag.hora_inicio from horario_act_guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and " + 
-//                "ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad);";
+        String sql = "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM " +
+                "ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N,  (select ai.consecutivo_inscripcion consecutivo, " +
+"hag.cod_actividad cod_actividad, hag.hora_inicio hora_inicio, hag.hora_fin hora_fin, ai.rif_guarderia rif_guarderia, a.transporte transporte from "+
+"act_inscripcion_4 ai, horario_act_guarderia_4 hag, actividad_4 a where ai.letra_nino = '" + letra + "' and ai.ci_representante = '"+ ci +"' and "+
+"ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad and ai.fecha_actividad = hag.fecha and "+
+"ai.hora_inicio_act = hag.hora_inicio and a.codigo = hag.cod_actividad) hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND "+
+"I.LETRA_NINO = '" + letra + "' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND "+
+"LETRA_NINO = '" + letra + "') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND a.transporte = 0 and AG.COD_ACTIVIDAD = A.CODIGO AND "+
+"HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND "+
+"(current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) "+
+"from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and "+
+"ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and hag2.transporte = 0 and "+
+"HAG.HORA_INICIO not between hag2.hora_inicio + interval '1 min' and hag2.hora_fin - interval '1 min' and hag.hora_fin not between hag2.hora_inicio + interval '1 min' "+
+"and hag2.hora_fin - interval '1 min' and HAG2.HORA_INICIO not between hag.hora_inicio + interval '1 min' and hag.hora_fin - interval '1 min' and hag2.hora_fin "+
+"not between hag.hora_inicio + interval '1 min' and hag.hora_fin - interval '1 min' and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia "+
+"and ai.cod_actividad = hag.cod_actividad) union " +
+"SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM "+
+"ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N,  (select ai.consecutivo_inscripcion consecutivo, "+
+"hag.cod_actividad cod_actividad, hag.hora_inicio hora_inicio, hag.hora_fin hora_fin, ai.rif_guarderia rif_guarderia, a.transporte transporte "+
+"from act_inscripcion_4 ai, horario_act_guarderia_4 hag, actividad_4 a where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and "+
+"ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad and ai.fecha_actividad = hag.fecha "+
+"and ai.hora_inicio_act = hag.hora_inicio and a.codigo = hag.cod_actividad) hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' "+
+"AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') "+
+"AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND a.transporte = 1 and AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA "+
+"AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND "+
+"(current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) "+
+"from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' "+
+"and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and hag2.transporte = 0 "+
+"and HAG.HORA_INICIO - interval '30 min' not between hag2.hora_inicio and hag2.hora_fin "+
+"and hag.hora_fin + interval '30 min' not between hag2.hora_inicio and hag2.hora_fin "+
+"and HAG2.HORA_INICIO not between hag.hora_inicio - interval '30 min' and hag.hora_fin + interval '30 min' "+
+"and hag2.hora_fin not between hag.hora_inicio - interval '30 min' and hag.hora_fin + interval '30 min' "+
+"and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia "+
+"and ai.cod_actividad = hag.cod_actividad) union " +
+"SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia "+
+"FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N,  (select ai.consecutivo_inscripcion consecutivo,"+
+"hag.cod_actividad cod_actividad, hag.hora_inicio hora_inicio, hag.hora_fin hora_fin, ai.rif_guarderia rif_guarderia, a.transporte transporte "+
+"from act_inscripcion_4 ai, horario_act_guarderia_4 hag, actividad_4 a where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' "+
+"and ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad and ai.fecha_actividad = hag.fecha "+
+"and ai.hora_inicio_act = hag.hora_inicio and a.codigo = hag.cod_actividad) hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' "+
+"AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') "+
+"AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND a.transporte = 0 and AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA "+
+"AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND "+
+"(current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) "+
+"from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' "+
+"and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and hag2.transporte = 1 "+
+"and HAG.HORA_INICIO not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' "+
+"and hag.hora_fin not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' "+
+"and HAG2.HORA_INICIO - interval '30 min' not between hag.hora_inicio and hag.hora_fin  "+
+"and hag2.hora_fin + interval '30 min' not between hag.hora_inicio and hag.hora_fin "+
+"and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad) union " +
+        "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia "+
+"FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N,  (select ai.consecutivo_inscripcion consecutivo, "+
+"hag.cod_actividad cod_actividad, hag.hora_inicio hora_inicio, hag.hora_fin hora_fin, ai.rif_guarderia rif_guarderia, a.transporte transporte "+
+"from act_inscripcion_4 ai, horario_act_guarderia_4 hag, actividad_4 a where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' "+
+"and ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad and ai.fecha_actividad = hag.fecha "+
+"and ai.hora_inicio_act = hag.hora_inicio and a.codigo = hag.cod_actividad) hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' "+
+"AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') "+
+"AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND a.transporte = 1 and AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA "+
+"AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND "+
+"(current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) "+
+"from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' "+
+"and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and hag2.transporte = 1 "+
+"and HAG.HORA_INICIO - interval '30 min' not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' "+
+"and hag.hora_fin + interval '30 min' not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' "+
+"and HAG2.HORA_INICIO - interval '30 min' not between hag.hora_inicio - interval '30 min' and hag.hora_fin + interval '30 min' "+
+"and hag2.hora_fin + interval '30 min' not between hag.hora_inicio - interval '30 min' and hag.hora_fin + interval '30 min' "+
+"and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia "+
+"and ai.cod_actividad = hag.cod_actividad);";
         try {
             Statement st;
             st = connection.createStatement();
