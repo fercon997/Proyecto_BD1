@@ -210,7 +210,7 @@ insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 7, '2018-02-28', '09:00', '10:40');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 8, '2018-03-01', '10:00', '11:00');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 9, '2018-03-02', '14:00', '16:00');
-  insert into Horario_Act_Guarderia_4 values('J298754541-5', 10, '2018-03-02', '13:00', '16:00');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 10, '2018-03-02', '13:00', '13:50');
 
 --Inscripción
 INSERT INTO inscripcion_4 values (2013, nextval('Insc_sequence'), 'J298754541-5', 'V8108418', 'A', '2013-09-02', '07:00', '17:00');
