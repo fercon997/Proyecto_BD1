@@ -157,6 +157,7 @@ public class InscripcionDAOImpl {
                 ins.setFechaInscripcion(rs.getDate("fecha_inscripcion"));
                 ins.setHoraLlegada(rs.getTime("hora_desde"));
                 ins.setHoraSalida(rs.getTime("hora_hasta"));
+                ins.setRifGuarderia(rs.getString("rif_guarderia"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

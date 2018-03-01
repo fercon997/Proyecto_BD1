@@ -49,7 +49,6 @@ public class NinoDAOImpl {
                 nino.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
                 nino.setSexo(rs.getString("sexo").charAt(0));
                 ninos.add(nino);
-                System.out.println(rs.getString("nombre"));
             }
             rs.close();
             st.close();

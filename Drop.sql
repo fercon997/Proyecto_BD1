@@ -18,7 +18,6 @@ DROP TABLE menu_4;
 DROP TABLE comida_plato_4;
 DROP TABLE comida_4;
 DROP TABLE plato_4;
-DROP TABLE multa_4;
 DROP TABLE Asistencia_4;
 DROP TABLE act_inscripcion_4;
 DROP TABLE pago_mensual_4;
