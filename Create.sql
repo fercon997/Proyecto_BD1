@@ -49,10 +49,6 @@ CREATE SEQUENCE Menu_sequence
   start 1
   increment 1;
 
-CREATE SEQUENCE Mensualidad_sequence
-  start 1
-  increment 1;
-
 
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
@@ -356,12 +352,12 @@ CREATE TABLE pago_mensual_4(
   ano_inscripcion NUMERIC(4),
   ci_representante varchar(10),
   letra_nino CHAR(1),
-  mes  numeric(2),
+  mes numeric(2),
   concepto VARCHAR(50) NOT NULL,
   monto NUMERIC(10, 2),
   fecha DATE,
   forma_pago VARCHAR(20),
-  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo, cons_inscripcion),
+  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo),
   CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito')),
   CONSTRAINT check_mes_mensualidad CHECK ((mes between 1 and 12) OR mes IS NULL)
@@ -424,3 +420,5 @@ CREATE TABLE menu_semanal_4(
   CONSTRAINT menu_semanal_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   CONSTRAINT plato_menu_semanal_fk FOREIGN KEY (cod_plato) REFERENCES plato_4(codigo)
 );
+
+--SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N, Horario_Act_Guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = 'V8108418' AND I.LETRA_NINO = 'B' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = 'V8108418' AND LETRA_NINO = 'B') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = 'V8108418' AND N.LETRA = 'B' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = 'B' and ai.ci_representante = 'V8108418' and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and HAG.HORA_INICIO not between hag2.hora_inicio and hag2.hora_fin and hag.hora_fin not between hag2.hora_inicio and hag2.hora_fin;
