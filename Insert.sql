@@ -178,11 +178,11 @@ insert into Actividad_4 values(nextval('Actividad_sequence'), 'Baby gym', 'Activ
 insert into Actividad_4 values(nextval('ACtividad_sequence'), 'Matematica', 'Se les enseña lo básico de matematicas que requieren para entrar al colegio', 4, 0);
 insert into Actividad_4 values(nextval('Actividad_sequence'), 'Siesta', 'Los niños duermen, ¡Es importante descansar!', 1, 0);
 
-  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Música', 'Los niños eschan música y se les instruye sobre ella', 1, 1);
-  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Pintura', 'Prueba', 1, 1);
-  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Baile', 'Prueba', 1, 1);
-  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Des. Motriz', 'Prueba', 4, 1);
-  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Lectura', 'Prueba', 4, 1);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Música', 'Los niños eschan música y se les instruye sobre ella', 1, 0);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Pintura', 'Prueba', 1, 0);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Baile', 'Prueba', 1, 0);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Des. Motriz', 'Prueba', 4, 0);
+  insert into Actividad_4 values(nextval('Actividad_sequence'), 'Lectura', 'Prueba', 4, 0);
 
 --Actividad-guarderia
 --insert into Act_Guarderia_4 values('J298754541-5', 1, 200, 6, 30, 'V24718965');
@@ -208,7 +208,7 @@ insert into Horario_Act_Guarderia_4 values('J279154667-2', 5, '2018-04-14', '14:
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 1, '2018-02-26', '11:00', '12:00');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 6, '2018-02-27', '09:00', '11:00');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 7, '2018-02-28', '09:00', '10:40');
-  insert into Horario_Act_Guarderia_4 values('J298754541-5', 8, '2018-03-01', '10:00', '11:00');
+  insert into Horario_Act_Guarderia_4 values('J298754541-5', 8, '2018-03-01', '11:00', '12:00');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 9, '2018-03-02', '14:00', '16:00');
   insert into Horario_Act_Guarderia_4 values('J298754541-5', 10, '2018-03-02', '13:00', '13:50');
 
@@ -249,7 +249,7 @@ insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 
 
 insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 6, '2018-02-27', '09:00');
 insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 7, '2018-02-28', '09:00');
-insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 8, '2018-03-01', '10:00');
+insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 8, '2018-03-01', '11:00');
 insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 9, '2018-03-02', '14:00');
 insert into act_inscripcion_4 values (2013, 1, 'J298754541-5', 'V8108418', 'A', 10, '2018-03-02', '13:00');
 
@@ -455,7 +455,3 @@ insert into menu_semanal_4 values(2, '2018-03-05', 3);
 insert into menu_semanal_4 values(3, '2018-03-05', 4);
 insert into menu_semanal_4 values(4, '2018-03-05', 5);
 insert into menu_semanal_4 values(5, '2018-03-05', 2);
-
---select a.codigo, a.nombre, hag.hora_inicio, hag.hora_fin from horario_act_guarderia_4 hag, horario_act_guarderia_4 hag2, act_inscripcion_4 ai, Act_Guarderia_4 ag, actividad_4 a where a.codigo = hag.cod_actividad and ai.ano_inscripcion = 2014 and hag.rif_guarderia = 'J298754541-5' and ai.rif_guarderia = hag.rif_guarderia and hag.cod_actividad = 1 and ai.cod_actividad = hag.cod_actividad and ai.letra_nino = 'A' and ai.ci_representante = 'V8108418' and hag.rif_guarderia = hag2.rif_guarderia and hag.hora_inicio between hag2.hora_inicio and hag2.hora_fin and hag.hora_fin between hag2.hora_inicio and hag2.hora_fin and hag.rif_guarderia = ag.rif_guarderia and hag.cod_actividad = ag.cod_actividad and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = 'J298754541-5' and ai.cod_actividad = 1)
---union
---select hag.cod_actividad, a.nombre, hag.hora_inicio, hag.hora_fin from horario_act_guarderia_4 hag, horario_act_guarderia_4 hag2, act_inscripcion_4 ai, Act_Guarderia_4 ag, actividad_4 a where a.codigo = hag.cod_actividad and a.transporte = 1 and ai.ano_inscripcion = 2014 and hag.rif_guarderia = 'J298754541-5' and ai.rif_guarderia = hag.rif_guarderia and hag.cod_actividad = 1 and ai.cod_actividad = hag.cod_actividad and ai.letra_nino = 'A' and ai.ci_representante = 'V8108418' and hag.rif_guarderia = hag2.rif_guarderia and hag.hora_inicio between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and hag.hora_fin between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and hag.rif_guarderia = ag.rif_guarderia and hag.cod_actividad = ag.cod_actividad and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = 'J298754541-5' and ai.cod_actividad = 1);

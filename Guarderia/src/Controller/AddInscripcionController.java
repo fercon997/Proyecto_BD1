@@ -94,9 +94,9 @@ public class AddInscripcionController {
                 RepresentanteDAOImpl modeloRepresentante = new RepresentanteDAOImpl();
                 ArrayList<Representante> representantes;
                 if (vistaAG.guarderias.getSelectedIndex() - 1 < 0) {
-                    representantes = modeloRepresentante.getRepresentantesNuevos();
+                    representantes = modeloRepresentante.getRepresentantesNuevos("");
                 } else {
-                    representantes = modeloRepresentante.loadRepresentantes(rifs.get(vistaAG.guarderias.getSelectedIndex() - 1));
+                    representantes = modeloRepresentante.getRepresentantesNuevos(rifs.get(vistaAG.guarderias.getSelectedIndex() - 1));
                 }
                 for(int i = 0; i < representantes.size(); i++){
                     columna[0] = representantes.get(i).getCi();
