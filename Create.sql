@@ -9,7 +9,7 @@ CREATE SEQUENCE Actividad_sequence
   start 1
   increment 1;
 
-CREATE SEQUENCE Insc_sequence
+CREATE SEQUENCE Inscripcion_sequence
   start 1
   increment 1;
 
@@ -48,7 +48,6 @@ CREATE SEQUENCE Plato_sequence
 CREATE SEQUENCE Menu_sequence
   start 1
   increment 1;
-
 
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
@@ -219,20 +218,17 @@ CREATE TABLE Asistencia_4(
   Ano_inscripcion numeric(4),
   CI_representante varchar(10),
   Letra_nino char(1),
-  CI_Padre_busco varchar(10) NULL,
-  CI_auth_busco varchar(10) NULL,
+  CI_Padre_busco varchar(10),
+  CI_auth_busco varchar(10),
   Hora_entrada time NOT NULL,
   Hora_salida time (5) NOT NULL,
   Comio char(2) NOT NULL,
-  Monto_multa numeric(6) NULL,
-  num_transferencia numeric(10) NULL,
   Constraint Asistencia_pk Primary Key(Fecha,Consecutivo_Ins,Ano_inscripcion,CI_representante,Letra_nino),
   Constraint Inscripcion_asistencia_fk Foreign Key(Consecutivo_Ins,Ano_inscripcion,CI_representante, letra_nino) references Inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   Constraint Representante_asistencia_fk Foreign Key(CI_Padre_busco) references Representante_4(CI) ON DELETE CASCADE,
   Constraint Autorizado_asistencia_fk Foreign Key(CI_auth_busco) references Autorizado_4(CI),
   Constraint Comio_valid Check(Comio IN ('SI', 'NO')),
-  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0),
-  Constraint Horas_valid Check(hora_entrada<Hora_salida)
+  Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
 CREATE TABLE Pediatra_4(
@@ -341,6 +337,7 @@ CREATE TABLE act_inscripcion_4(
   cod_actividad NUMERIC(10),
   fecha_actividad DATE,
   hora_inicio_act time,
+  consto_actividad NUMERIC(8, 2) NOT NULL,
   CONSTRAINT act_inscripcion_pk PRIMARY KEY (consecutivo_inscripcion, ano_inscripcion, rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act, letra_nino, ci_representante),
   CONSTRAINT cons_act_ins_fk FOREIGN KEY (consecutivo_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
   CONSTRAINT guard_act_ins_fk FOREIGN KEY (rif_guarderia, cod_actividad, fecha_actividad, hora_inicio_act) REFERENCES Horario_Act_Guarderia_4(rif_guarderia, cod_actividad, fecha, hora_inicio)
@@ -352,17 +349,27 @@ CREATE TABLE pago_mensual_4(
   ano_inscripcion NUMERIC(4),
   ci_representante varchar(10),
   letra_nino CHAR(1),
-  mes numeric(2),
-  concepto VARCHAR(50) NOT NULL,
-  monto NUMERIC(10, 2),
-  fecha DATE,
-  forma_pago VARCHAR(20),
-  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo, cons_inscripcion),
+  concepto VARCHAR(20) NOT NULL,
+  monto NUMERIC(10, 2) NOT NULL,
+  fecha DATE NOT NULL,
+  forma_pago VARCHAR(17) NOT NULL,
+  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo),
   CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
-  CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito')),
-  CONSTRAINT check_mes_mensualidad CHECK ((mes between 1 and 12) OR mes IS NULL)
+  CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito'))
 );
 
+CREATE TABLE multa_4(
+  fecha DATE,
+  fecha_asistencia DATE,
+  cons_inscripcion NUMERIC(10),
+  ano_inscripcion NUMERIC(10),
+  letra_nino CHAR(1),
+  ci_representante varchar(10),
+  monto NUMERIC(10, 2),
+  num_transferencia NUMERIC(20),
+  CONSTRAINT fecha_multa_pk PRIMARY KEY (fecha),
+  CONSTRAINT asistencia_multa_fk FOREIGN KEY (fecha_asistencia, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES Asistencia_4(fecha, Consecutivo_Ins, ano_inscripcion, letra_nino, ci_representante) ON DELETE CASCADE
+);
 
 CREATE TABLE plato_4(
   codigo NUMERIC(10),
@@ -389,6 +396,7 @@ CREATE TABLE comida_plato_4(
 CREATE TABLE menu_4(
   numero NUMERIC(10),
   fecha DATE,
+  fecha_fin DATE NOT NULL,
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
@@ -408,7 +416,7 @@ CREATE TABLE factura_menu_4(
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
   CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
@@ -420,6 +428,3 @@ CREATE TABLE menu_semanal_4(
   CONSTRAINT menu_semanal_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   CONSTRAINT plato_menu_semanal_fk FOREIGN KEY (cod_plato) REFERENCES plato_4(codigo)
 );
-
----SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N, Horario_Act_Guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = 'V8108418' AND I.LETRA_NINO = 'B' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = 'V8108418' AND LETRA_NINO = 'B') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = 'V8108418' AND N.LETRA = 'B' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = 'B' and ai.ci_representante = 'V8108418' and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and HAG.HORA_INICIO not between hag2.hora_inicio and hag2.hora_fin and hag.hora_fin not between hag2.hora_inicio and hag2.hora_fin and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad) union 
---SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, NINO_4 N, Horario_Act_Guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = 'V8108418' AND I.LETRA_NINO = 'B' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = 'V8108418' AND LETRA_NINO = 'B') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and N.CI_REPRESENTANTE = 'V8108418' AND N.LETRA = 'B' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = 'B' and ai.ci_representante = 'V8108418' and ai.cod_actividad = hag.cod_actividad) AND hag2.rif_guarderia = hag.rif_guarderia and a.transporte = 1 and HAG.HORA_INICIO not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and hag.hora_fin not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad);
