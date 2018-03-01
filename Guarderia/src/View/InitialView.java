@@ -334,6 +334,7 @@ public class InitialView extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         pagarMensualidadBtn = new javax.swing.JButton();
         jComboTipoPago = new javax.swing.JComboBox<>();
+        reciboBtn = new javax.swing.JButton();
         jPanelMultas = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         tablaNinos1 = new javax.swing.JTable();
@@ -2453,6 +2454,13 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
+        reciboBtn.setText("Ver recibo");
+        reciboBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reciboBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPagosLayout = new javax.swing.GroupLayout(jPanelPagos);
         jPanelPagos.setLayout(jPanelPagosLayout);
         jPanelPagosLayout.setHorizontalGroup(
@@ -2468,14 +2476,17 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(jComboGuarderiasPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPagosLayout.createSequentialGroup()
                         .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                         .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelPagosLayout.createSequentialGroup()
                                 .addComponent(jLabel69)
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pagarMensualidadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanelPagosLayout.createSequentialGroup()
+                                .addComponent(pagarMensualidadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(reciboBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(24, 24, 24))
         );
         jPanelPagosLayout.setVerticalGroup(
@@ -2500,8 +2511,10 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(jLabel69)
                             .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(pagarMensualidadBtn)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                        .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pagarMensualidadBtn)
+                            .addComponent(reciboBtn))))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -3248,7 +3261,10 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaPagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPagosMouseClicked
         if (tablaPagos.getValueAt(tablaPagos.getSelectedRow(), 2).equals("No")){
                this.jComboTipoPago.setEnabled(true);
-        }       // TODO add your handling code here:
+        }
+        else if(tablaPagos.getValueAt(tablaPagos.getSelectedRow(), 2).equals("Si")){
+            this.reciboBtn.setEnabled(true);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_tablaPagosMouseClicked
 
     private void jComboGuarderiasPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasPagosActionPerformed
@@ -3269,6 +3285,10 @@ public class InitialView extends javax.swing.JFrame {
     private void deleteGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteGuarderiaButtonActionPerformed
+
+    private void reciboBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reciboBtnActionPerformed
+        controladorGuarderia.verRecibo(tablaPagos);        // TODO add your handling code here:
+    }//GEN-LAST:event_reciboBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3540,6 +3560,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton pagarMultaBtn;
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
+    public javax.swing.JButton reciboBtn;
     public javax.swing.JLabel rifLabel;
     public javax.swing.JButton salirActividadBtn;
     public javax.swing.JButton saveJuegoBtn;

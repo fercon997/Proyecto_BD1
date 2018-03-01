@@ -7,6 +7,7 @@ package Controller;
 
 import Model.*;
 import View.InitialView;
+import View.JDRecibo;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -152,6 +153,17 @@ public class PagoController {
             case 'B': return costo-=costo*0.1;
             default:  return costo-=costo*0.15;
         }
+    }
+    
+    public void mostrarRecibo(JTable tabla){
+        int index = tabla.getSelectedRow();
+        Pago pay = pagos.get(index);
+        JDRecibo vistaRecibo = new JDRecibo(initialView, true);
+        vistaRecibo.fechaLbl.setText(String.valueOf(pay.getFecha()) );
+        vistaRecibo.conceptoLbl.setText(pay.getConcepto());
+        vistaRecibo.montoLbl.setText(String.valueOf(pay.getMonto()) );
+        vistaRecibo.tipoPagoLbl.setText(pay.getForma_pago());
+        vistaRecibo.setVisible(true);
     }
     
 }

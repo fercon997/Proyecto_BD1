@@ -149,5 +149,9 @@ public class NinosController {
     public void pagarMensualidad(JTable tabla){
         controladorPagos.pagarMensualidad(tabla);
     }
+    
+    public void verRecibo(JTable tabla){
+        controladorPagos.mostrarRecibo(tabla);
+    }
 
 }

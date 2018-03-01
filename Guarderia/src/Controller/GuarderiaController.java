@@ -57,6 +57,7 @@ public class GuarderiaController {
             controladorNino.llenarNino(initialView.jComboGuarderiasPagos,initialView.tablaNinos2);
             initialView.pagarMensualidadBtn.setEnabled(false);
             initialView.jComboTipoPago.setEnabled(false);
+            initialView.reciboBtn.setEnabled(false);
         }
 
     }
@@ -202,6 +203,10 @@ public class GuarderiaController {
     
     public void pagarMensualidad(JTable tabla){
         controladorNino.pagarMensualidad(tabla);
+    }
+    
+    public void verRecibo(JTable tabla){
+        controladorNino.verRecibo(tabla);
     }
 
 

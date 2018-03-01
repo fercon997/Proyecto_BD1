@@ -3433,7 +3433,7 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane20" min="-2" pref="500" max="-2" attributes="0"/>
-                                  <EmptySpace pref="302" max="32767" attributes="0"/>
+                                  <EmptySpace pref="299" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
@@ -3441,7 +3441,11 @@
                                           <Component id="jComboTipoPago" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane21" min="-2" pref="436" max="-2" attributes="0"/>
-                                      <Component id="pagarMensualidadBtn" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="pagarMensualidadBtn" min="-2" pref="165" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="reciboBtn" min="-2" pref="111" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -3476,10 +3480,13 @@
                                       <Component id="jComboTipoPago" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="pagarMensualidadBtn" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="pagarMensualidadBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="reciboBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <EmptySpace pref="197" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3640,6 +3647,17 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="reciboBtn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ver recibo"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reciboBtnActionPerformed"/>
+                  </Events>
+                  <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
