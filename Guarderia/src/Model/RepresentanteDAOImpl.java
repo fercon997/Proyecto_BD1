@@ -206,5 +206,29 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         return parents;
     }
     
+    public ArrayList<Representante> getPuntuales(){
+        ArrayList<Representante> parents = new ArrayList();
+        String sql = "Select r.nombre, r.apellido, Count(a.monto_multa) morosou from representante_4 r, asistencia_4 a WHERE r.ci = "
+                + "a.ci_representante AND monto_multa is not null Group by r.nombre, r.apellido "
+                + "union "
+                + "Select r.nombre, r.apellido, 0 as morosou from representante_4 r, asistencia_4 a "
+                + "where ci = a.ci_representante AND monto_multa is null Group by r.nombre, r.apellido "
+                + "Order by morosou Limit 50;";
+        try {
+            ResultSet rs = con.selectAll(sql);
+            while(rs.next()){
+               Representante parent = new Representante();
+               parent.setApellido(rs.getString("apellido"));
+               parent.setNombre(rs.getString("nombre"));
+               parent.setPrincipal(rs.getInt("morosou"));
+               parents.add(parent);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return parents;       
+    }
+    
     
 }

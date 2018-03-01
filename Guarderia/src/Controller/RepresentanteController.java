@@ -204,5 +204,26 @@ public class RepresentanteController {
         vistaAR.setVisible(true);
         
     }
+    
+    public void llenarPuntuales(){
+        RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
+        ArrayList<Representante> parents = bdParent.getPuntuales();
+        DefaultTableModel modeloTabla = (DefaultTableModel)initialView.tablaPuntuales.getModel();
+        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+        Object[] columna = new Object[3];
+        try{
+            for(int i = 0; i<parents.size(); i++){
+                columna[0] = parents.get(i).getNombre();
+                columna[1] = parents.get(i).getApellido();
+                columna[2] = parents.get(i).getPrincipal();
+                modeloTabla.addRow(columna);
+            }
+        } catch(Exception e){
+            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+              modeloTabla.removeRow(i);
+        }
+        
+    }
 
 }
