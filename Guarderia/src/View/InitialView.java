@@ -51,7 +51,7 @@ public class InitialView extends javax.swing.JFrame {
        controladorGuarderia.llenarComboBoxGuarderias(jComboPersonal);
        controladorGuarderia.llenarComboBoxGuarderias(jComboActNino);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias7);
-       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias8);
+       controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasPagos);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderiasNinos1);
        controladorGuarderia.llenarComboBoxGuarderias(jComboGuarderias10);
        comboBoxCreado = true;
@@ -61,6 +61,8 @@ public class InitialView extends javax.swing.JFrame {
        deleteRepresentanteButton.setEnabled(false);
        this.codigoActividadTxt.setEnabled(false);
        this.agregarActividadBtn.setEnabled(false);
+       controladorGuarderia.generarMensualidad();
+
     }
 
     public void LlenarActividades(ArrayList<Guarderia_Actividad> actividades){
@@ -311,7 +313,16 @@ public class InitialView extends javax.swing.JFrame {
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
         jPanelPagos = new javax.swing.JPanel();
-        jComboGuarderias8 = new javax.swing.JComboBox<>();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        tablaNinos2 = new javax.swing.JTable();
+        buscarNinoTextField4 = new javax.swing.JTextField();
+        buscarNinoButton4 = new javax.swing.JButton();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        tablaPagos = new javax.swing.JTable();
+        jComboGuarderiasPagos = new javax.swing.JComboBox<>();
+        jLabel67 = new javax.swing.JLabel();
+        pagarMensualidadBtn = new javax.swing.JButton();
+        jComboTipoPago = new javax.swing.JComboBox<>();
         jPanelMultas = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         tablaNinos1 = new javax.swing.JTable();
@@ -2260,9 +2271,94 @@ public class InitialView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Comida", jPanelComida);
 
-        jComboGuarderias8.addActionListener(new java.awt.event.ActionListener() {
+        tablaNinos2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "CI Representante", "Nombre", "Apellido", "Edad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaNinos2.getTableHeader().setReorderingAllowed(false);
+        tablaNinos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaNinos2MouseClicked(evt);
+            }
+        });
+        jScrollPane17.setViewportView(tablaNinos2);
+
+        buscarNinoButton4.setText("Buscar");
+
+        tablaPagos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Mes", "Monto", "Pagado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPagos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPagosMouseClicked(evt);
+            }
+        });
+        jScrollPane18.setViewportView(tablaPagos);
+
+        jComboGuarderiasPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboGuarderias8ActionPerformed(evt);
+                jComboGuarderiasPagosActionPerformed(evt);
+            }
+        });
+
+        jLabel67.setText("Tipo de pago:");
+
+        pagarMensualidadBtn.setText("Pagar Multa");
+        pagarMensualidadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarMensualidadBtnActionPerformed(evt);
+            }
+        });
+
+        jComboTipoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta de crédito", "Tarjeta de débito", "Cheque", " " }));
+        jComboTipoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoPagoActionPerformed(evt);
             }
         });
 
@@ -2270,17 +2366,48 @@ public class InitialView extends javax.swing.JFrame {
         jPanelPagos.setLayout(jPanelPagosLayout);
         jPanelPagosLayout.setHorizontalGroup(
             jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagosLayout.createSequentialGroup()
-                .addContainerGap(857, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanelPagosLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPagosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pagarMensualidadBtn)
+                            .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelPagosLayout.createSequentialGroup()
+                                .addComponent(jLabel67)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelPagosLayout.createSequentialGroup()
+                        .addComponent(buscarNinoTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarNinoButton4)
+                        .addGap(490, 490, 490)
+                        .addComponent(jComboGuarderiasPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
         jPanelPagosLayout.setVerticalGroup(
             jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPagosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(771, Short.MAX_VALUE))
+                .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarNinoButton4)
+                    .addComponent(buscarNinoTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboGuarderiasPagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelPagosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel67)
+                            .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(pagarMensualidadBtn)
+                .addGap(200, 200, 200))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -2398,15 +2525,14 @@ public class InitialView extends javax.swing.JFrame {
                             .addGroup(jPanelMultasLayout.createSequentialGroup()
                                 .addComponent(jLabel66)
                                 .addGap(18, 18, 18)
-                                .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24))
+                                .addComponent(transferenciaMultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelMultasLayout.createSequentialGroup()
                         .addComponent(buscarNinoTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(buscarNinoButton3)
                         .addGap(490, 490, 490)
-                        .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addComponent(jComboGuarderiasNinos1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
         );
         jPanelMultasLayout.setVerticalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2699,12 +2825,6 @@ public class InitialView extends javax.swing.JFrame {
             codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias7);
         }
     }//GEN-LAST:event_jComboGuarderias7ActionPerformed
-
-    private void jComboGuarderias8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias8ActionPerformed
-        if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias8);
-        }
-    }//GEN-LAST:event_jComboGuarderias8ActionPerformed
 
     private void jComboGuarderias10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias10ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
@@ -3025,6 +3145,32 @@ public class InitialView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_eliminarActividadExistenteActionPerformed
 
+    private void tablaNinos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaNinos2MouseClicked
+        controladorGuarderia.llenarMensualidad(tablaNinos2);// TODO add your handling code here:
+    }//GEN-LAST:event_tablaNinos2MouseClicked
+
+    private void tablaPagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPagosMouseClicked
+        if (tablaPagos.getValueAt(tablaPagos.getSelectedRow(), 2).equals("No")){
+               this.jComboTipoPago.setEnabled(true); 
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_tablaPagosMouseClicked
+
+    private void jComboGuarderiasPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasPagosActionPerformed
+       if (comboBoxCreado && !controladorGuarderia.changing) {
+            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderiasPagos);
+        }
+        controladorGuarderia.tabbedPaneTouched(); // TODO add your handling code here:
+    }//GEN-LAST:event_jComboGuarderiasPagosActionPerformed
+
+    private void pagarMensualidadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarMensualidadBtnActionPerformed
+        controladorGuarderia.pagarMensualidad(tablaPagos);
+        controladorGuarderia.tabbedPaneTouched();// TODO add your handling code here:
+    }//GEN-LAST:event_pagarMensualidadBtnActionPerformed
+
+    private void jComboTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoPagoActionPerformed
+        this.pagarMensualidadBtn.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoPagoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3082,10 +3228,12 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JButton buscarNinoButton1;
     private javax.swing.JButton buscarNinoButton2;
     private javax.swing.JButton buscarNinoButton3;
+    private javax.swing.JButton buscarNinoButton4;
     private javax.swing.JTextField buscarNinoTextField;
     private javax.swing.JTextField buscarNinoTextField1;
     private javax.swing.JTextField buscarNinoTextField2;
     private javax.swing.JTextField buscarNinoTextField3;
+    private javax.swing.JTextField buscarNinoTextField4;
     public javax.swing.JLabel calleLabel;
     public javax.swing.JLabel calleLabel3;
     public javax.swing.JLabel calleLabel4;
@@ -3152,12 +3300,13 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboGuarderias4;
     public javax.swing.JComboBox<String> jComboGuarderias5;
     public javax.swing.JComboBox<String> jComboGuarderias7;
-    public javax.swing.JComboBox<String> jComboGuarderias8;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos;
     public javax.swing.JComboBox<String> jComboGuarderiasNinos1;
+    public javax.swing.JComboBox<String> jComboGuarderiasPagos;
     public javax.swing.JComboBox<String> jComboInscripcion;
     public javax.swing.JComboBox<String> jComboNinos;
     public javax.swing.JComboBox<String> jComboPersonal;
+    public javax.swing.JComboBox<String> jComboTipoPago;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3221,6 +3370,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -3253,6 +3403,8 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3277,6 +3429,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTextField nombreText;
     public javax.swing.JTextField nombreText1;
     public javax.swing.JTextField nombreText2;
+    public javax.swing.JButton pagarMensualidadBtn;
     public javax.swing.JButton pagarMultaBtn;
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
@@ -3296,6 +3449,8 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable tablaMultas;
     public javax.swing.JTable tablaNinos;
     public javax.swing.JTable tablaNinos1;
+    public javax.swing.JTable tablaNinos2;
+    public javax.swing.JTable tablaPagos;
     public javax.swing.JTable tablaPersonal;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;

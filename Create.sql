@@ -49,6 +49,10 @@ CREATE SEQUENCE Menu_sequence
   start 1
   increment 1;
 
+CREATE SEQUENCE Mensualidad_sequence
+  start 1
+  increment 1;
+
 
 CREATE TABLE Lugar_4(
   Codigo numeric(10),
@@ -352,13 +356,15 @@ CREATE TABLE pago_mensual_4(
   ano_inscripcion NUMERIC(4),
   ci_representante varchar(10),
   letra_nino CHAR(1),
-  concepto VARCHAR(20) NOT NULL,
-  monto NUMERIC(10, 2) NOT NULL,
-  fecha DATE NOT NULL,
-  forma_pago VARCHAR(17) NOT NULL,
-  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo),
+  mes  numeric(2),
+  concepto VARCHAR(50) NOT NULL,
+  monto NUMERIC(10, 2),
+  fecha DATE,
+  forma_pago VARCHAR(20),
+  CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo, cons_inscripcion),
   CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
-  CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito'))
+  CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito')),
+  CONSTRAINT check_mes_mensualidad CHECK ((mes between 1 and 12) OR mes IS NULL)
 );
 
 

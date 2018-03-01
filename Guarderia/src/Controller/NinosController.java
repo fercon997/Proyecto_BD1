@@ -33,6 +33,7 @@ public class NinosController {
     AddNinoView anv;
     NinoDAOImpl modeloNino = new NinoDAOImpl();
     MultaController controladorMulta;
+    PagoController controladorPagos;
     
     ArrayList<String> rifs;
     ArrayList<Nino> ninos;
@@ -80,7 +81,6 @@ public class NinosController {
             Juego_NinoDAOImpl bdGameKid = new Juego_NinoDAOImpl();
             ArrayList<Juego> games = bdGameKid.getJuegosNino(ninos.get(index));
             String juegos = new String();
-            System.out.println(games.size());
             for (int i=0; i<games.size(); i++){
                 juegos = juegos + games.get(i).getNombre() + "\n";
             }
@@ -130,6 +130,24 @@ public class NinosController {
     
     public void pagarMulta(JTable tabla){
         controladorMulta.pagarMulta(tabla);
+    }
+    
+    public void generarMensualidad(){
+        for (int i = 0; i< ninos.size(); i++){
+            System.out.println(i);
+           controladorPagos = new PagoController(initialView, ninos.get(i));
+           controladorPagos.generarMenusalidad();
+        }
+    }
+    
+    public void llenarMensualidad(JTable tabla){
+        int index = tabla.getSelectedRow();
+        controladorPagos = new PagoController(initialView, ninos.get(index));
+        controladorPagos.loadPagos(initialView.tablaPagos);
+    }
+    
+    public void pagarMensualidad(JTable tabla){
+        controladorPagos.pagarMensualidad(tabla);
     }
 
 }

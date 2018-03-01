@@ -53,7 +53,16 @@ public class GuarderiaController {
             initialView.transferenciaMultaBtn.setEnabled(false);
             initialView.pagarMultaBtn.setEnabled(false);
         }
+        if (initialView.jTabbedPane1.getSelectedIndex() == 9){
+            controladorNino.llenarNino(initialView.jComboGuarderiasPagos,initialView.tablaNinos2);
+            initialView.pagarMensualidadBtn.setEnabled(false);
+            initialView.jComboTipoPago.setEnabled(false);
+        }
 
+    }
+    
+    public void cargarDatos(){
+        controladorNino.llenarNino(initialView.jComboNinos, initialView.tablaNinos2);
     }
 
     public int guarderiaChanged(JComboBox cb) {
@@ -74,7 +83,7 @@ public class GuarderiaController {
         initialView.jComboActNino.setSelectedIndex(numGuard);
         initialView.jComboGuarderias7.setSelectedIndex(numGuard);
 //        initialView.jComboGuarderias6.setSelectedIndex(numGuard);
-        initialView.jComboGuarderias8.setSelectedIndex(numGuard);
+        initialView.jComboGuarderiasPagos.setSelectedIndex(numGuard);
         initialView.jComboGuarderiasNinos1.setSelectedIndex(numGuard);
         initialView.jComboGuarderias10.setSelectedIndex(numGuard);
         changing = false;
@@ -180,6 +189,19 @@ public class GuarderiaController {
 
     public void pagarMulta(JTable tabla){
         controladorNino.pagarMulta(tabla);
+    }
+    
+    public void generarMensualidad(){
+        cargarDatos();
+        controladorNino.generarMensualidad();
+    }
+    
+    public void llenarMensualidad(JTable tabla){
+        controladorNino.llenarMensualidad(tabla);
+    }
+    
+    public void pagarMensualidad(JTable tabla){
+        controladorNino.pagarMensualidad(tabla);
     }
 
 
