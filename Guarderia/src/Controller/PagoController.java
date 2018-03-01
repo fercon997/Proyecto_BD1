@@ -100,7 +100,7 @@ public class PagoController {
             for(int i = 0; i<pagos.size(); i++){
                 columna[0] = mesString(pagos.get(i).getMes());
                 if (pagos.get(i).getForma_pago() == null){
-                    columna[1] = calcularCosto(pagos.get(i).getMonto(), pagos.get(i).getMes());
+                    columna[1] = calcularCosto(pagos.get(i).getMonto(), pagos.get(i).getMes(), nino.getLetra());
                     columna[2] = "No";
                 }
                 else{
@@ -123,7 +123,7 @@ public class PagoController {
             Pago pay = pagos.get(index);
             pay.setFecha(Date.valueOf(localDate));
             pay.setForma_pago(String.valueOf(initialView.jComboTipoPago.getSelectedItem()));
-            pay.setMonto(calcularCosto(pay.getMonto(), pay.getMes()));
+            pay.setMonto(calcularCosto(pay.getMonto(), pay.getMes(), nino.getLetra()));
             PagoDAOImpl dbPay = new PagoDAOImpl();
             dbPay.pagarMensualidad(pay);
             JOptionPane.showMessageDialog(initialView, "Datos cargads satisfactoriamente");
@@ -135,7 +135,7 @@ public class PagoController {
         
     }
     
-    public float calcularCosto(float costo, int mesMens){
+    public float calcularCosto(float costo, int mesMens, char letra_nino){
         LocalDate localDate = LocalDate.now();
         int dia = localDate.getDayOfMonth();
         int mes = localDate.getMonthValue();
@@ -147,7 +147,11 @@ public class PagoController {
           costo = (float) (costo +costo*0.2);
         else if (dia >=26)
           costo = (float) (costo +costo*0.3);
-        return costo;
+        switch(letra_nino){
+            case 'A': return costo;
+            case 'B': return costo-=costo*0.1;
+            default:  return costo-=costo*0.15;
+        }
     }
     
 }
