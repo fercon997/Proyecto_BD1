@@ -62,7 +62,7 @@ public class InitialView extends javax.swing.JFrame {
        this.codigoActividadTxt.setEnabled(false);
        this.agregarActividadBtn.setEnabled(false);
        controladorGuarderia.generarMensualidad();
-
+       controladorRepresentante.llenarPuntuales();
        this.actMasContratadasText.setEnabled(false);
        this.actMenosContratadasText.setEnabled(false);
     }
@@ -127,6 +127,9 @@ public class InitialView extends javax.swing.JFrame {
         actMenosContratadasText = new javax.swing.JTextArea();
         jScrollPane19 = new javax.swing.JScrollPane();
         actMasContratadasText = new javax.swing.JTextArea();
+        jScrollPane22 = new javax.swing.JScrollPane();
+        tablaPuntuales = new javax.swing.JTable();
+        jLabel70 = new javax.swing.JLabel();
         jPanelInscripcion = new javax.swing.JPanel();
         jComboInscripcion = new javax.swing.JComboBox<>();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -334,6 +337,7 @@ public class InitialView extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         pagarMensualidadBtn = new javax.swing.JButton();
         jComboTipoPago = new javax.swing.JComboBox<>();
+        reciboBtn = new javax.swing.JButton();
         jPanelMultas = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         tablaNinos1 = new javax.swing.JTable();
@@ -529,20 +533,58 @@ public class InitialView extends javax.swing.JFrame {
         actMasContratadasText.setRows(5);
         jScrollPane19.setViewportView(actMasContratadasText);
 
+        tablaPuntuales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido", "Nro de multas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPuntuales.setShowHorizontalLines(false);
+        tablaPuntuales.setShowVerticalLines(false);
+        jScrollPane22.setViewportView(tablaPuntuales);
+
+        jLabel70.setText("Padres mas puntuales:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel67)
                     .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel68))
                 .addGap(48, 48, 48))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel70)
+                    .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,7 +597,11 @@ public class InitialView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel70)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout jPanelInicioLayout = new javax.swing.GroupLayout(jPanelInicio);
@@ -565,7 +611,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelInicioLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInicioLayout.createSequentialGroup()
@@ -2284,7 +2330,7 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                 .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelActividadesLayout.createSequentialGroup()
-                        .addGap(726, 726, 726)
+                        .addGap(723, 723, 723)
                         .addGroup(jPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanelActividadesLayout.createSequentialGroup()
                                 .addComponent(agregarActividadBtn)
@@ -2453,6 +2499,13 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
+        reciboBtn.setText("Ver recibo");
+        reciboBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reciboBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPagosLayout = new javax.swing.GroupLayout(jPanelPagos);
         jPanelPagos.setLayout(jPanelPagosLayout);
         jPanelPagosLayout.setHorizontalGroup(
@@ -2468,14 +2521,17 @@ public class InitialView extends javax.swing.JFrame {
                         .addComponent(jComboGuarderiasPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPagosLayout.createSequentialGroup()
                         .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                         .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelPagosLayout.createSequentialGroup()
                                 .addComponent(jLabel69)
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pagarMensualidadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanelPagosLayout.createSequentialGroup()
+                                .addComponent(pagarMensualidadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(reciboBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(24, 24, 24))
         );
         jPanelPagosLayout.setVerticalGroup(
@@ -2500,8 +2556,10 @@ public class InitialView extends javax.swing.JFrame {
                             .addComponent(jLabel69)
                             .addComponent(jComboTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(pagarMensualidadBtn)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                        .addGroup(jPanelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pagarMensualidadBtn)
+                            .addComponent(reciboBtn))))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pagos", jPanelPagos);
@@ -3248,7 +3306,10 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaPagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPagosMouseClicked
         if (tablaPagos.getValueAt(tablaPagos.getSelectedRow(), 2).equals("No")){
                this.jComboTipoPago.setEnabled(true);
-        }       // TODO add your handling code here:
+        }
+        else if(tablaPagos.getValueAt(tablaPagos.getSelectedRow(), 2).equals("Si")){
+            this.reciboBtn.setEnabled(true);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_tablaPagosMouseClicked
 
     private void jComboGuarderiasPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderiasPagosActionPerformed
@@ -3269,6 +3330,10 @@ public class InitialView extends javax.swing.JFrame {
     private void deleteGuarderiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGuarderiaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteGuarderiaButtonActionPerformed
+
+    private void reciboBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reciboBtnActionPerformed
+        controladorGuarderia.verRecibo(tablaPagos);        // TODO add your handling code here:
+    }//GEN-LAST:event_reciboBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3475,6 +3540,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -3513,6 +3579,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -3540,6 +3607,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton pagarMultaBtn;
     public javax.swing.JTextField profesionText;
     public javax.swing.JTextField profesionText1;
+    public javax.swing.JButton reciboBtn;
     public javax.swing.JLabel rifLabel;
     public javax.swing.JButton salirActividadBtn;
     public javax.swing.JButton saveJuegoBtn;
@@ -3560,6 +3628,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTable tablaNinos2;
     public javax.swing.JTable tablaPagos;
     public javax.swing.JTable tablaPersonal;
+    public javax.swing.JTable tablaPuntuales;
     public javax.swing.JTable tablaRepresentantes;
     public javax.swing.JTextField tlfCasaText;
     public javax.swing.JTextField tlfCasaText1;

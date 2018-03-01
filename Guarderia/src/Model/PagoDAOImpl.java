@@ -98,7 +98,7 @@ public class PagoDAOImpl {
     
     public void pagarMensualidad(Pago pay) throws SQLException{
         String sql  = "UPDATE pago_mensual_4 set forma_pago = '"
-                + pay.getForma_pago()+"', fecha = '"+pay.getFecha()+"' monto = "
+                + pay.getForma_pago()+"', fecha = '"+pay.getFecha()+"', monto = "
                 + pay.getMonto()+" WHERE mes = "
                 + pay.getMes()+" and cons_inscripcion = "
                 + pay.getCons_inscripcion()+";";
