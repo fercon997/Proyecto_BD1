@@ -225,5 +225,37 @@ public class RepresentanteController {
         }
         
     }
+    
+    public void llenarEstadoCuenta(JTable tabla){
+        String ci = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+        AsistenciaDAOImpl bdAssist = new AsistenciaDAOImpl();
+        ArrayList<Asistencia> assists = bdAssist.getEstadoCuenta(ci);
+        PagoController pay = new PagoController(initialView, new Nino());
+        JDEstadoCuenta vistaEC = new JDEstadoCuenta(initialView, true);
+        DefaultTableModel modeloTabla = (DefaultTableModel)vistaEC.tablaEstadoCuenta.getModel();
+        for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+          modeloTabla.removeRow(i);
+        Object[] columna = new Object[4];
+        try{
+            for(int i = 0; i<assists.size(); i++){
+                Asistencia assist = assists.get(i);
+                float costo = assist.getCostoMulta();
+                if ((assist.getComio().equals("mensualidad")) && (assist.getNumTransferencia() == 0))
+                    assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra()));
+                columna[0] = assist.getFecha();
+                columna[1] = assist.getCostoMulta();
+                columna[2] = assist.getComio();
+                if (assist.getNumTransferencia() == 0)
+                    columna[3] = "No";
+                else
+                    columna[3] = "Si";
+                modeloTabla.addRow(columna);
+            }
+        } catch(Exception e){
+            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
+              modeloTabla.removeRow(i);
+        }
+        vistaEC.setVisible(true);
+    }
 
 }

@@ -159,4 +159,36 @@ public class AsistenciaDAOImpl {
         System.out.println(String.valueOf(assist.getFecha()));
         con.insertDatos(sql);
     }
+    
+    public ArrayList<Asistencia> getEstadoCuenta(String ci){
+        ArrayList<Asistencia> assists = new ArrayList();
+        String sql = "Select fecha, 'multa' as concepto, monto_multa as monto, "
+                + "num_transferencia  as pagado, letra_nino, 0 as mes FROM asistencia_4  WHERE "
+                + "ci_representante = '"+ci+"' AND monto_multa is not null "
+                + "union "
+                + "select fecha, 'mensualidad' as concepto, monto, 1 as pagado, letra_nino, mes "
+                + "from pago_mensual_4 WHERE ci_representante = '"+ci+"' AND"
+                + " forma_pago is not null "
+                + "union all "
+                + "select CURRENT_DATE as fecha,'mensualidad' as concepto, monto,"
+                + " 0 as pagado, letra_nino, mes from pago_mensual_4 WHERE ci_representante = '"
+                + ci+"' AND forma_pago is null;";
+        try {
+            ResultSet rs = con.selectAll(sql);
+            while(rs.next()){
+                Asistencia assist = new Asistencia();
+                assist.setFecha(rs.getDate("fecha"));
+                assist.setCostoMulta(rs.getInt("monto"));
+                assist.setComio(rs.getString("concepto"));
+                assist.setNumTransferencia(rs.getInt("pagado"));
+                assist.setLetra(rs.getString("letra_nino").charAt(0));
+                assist.setConsecutivo_inscripcion(rs.getInt("mes"));
+                assists.add(assist);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return assists;
+    }
 }

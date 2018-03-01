@@ -234,6 +234,7 @@ public class InitialView extends javax.swing.JFrame {
         saveRepresentanteBtn = new javax.swing.JButton();
         buscarNinoButton1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        estadoCuentaBtn = new javax.swing.JButton();
         jPanelAutorizados = new javax.swing.JPanel();
         jComboGuarderias5 = new javax.swing.JComboBox<>();
         deleteRepresentanteButton2 = new javax.swing.JButton();
@@ -1541,6 +1542,13 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
+        estadoCuentaBtn.setText("Estado de Cuenta");
+        estadoCuentaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoCuentaBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelRepresentantesLayout = new javax.swing.GroupLayout(jPanelRepresentantes);
         jPanelRepresentantes.setLayout(jPanelRepresentantesLayout);
         jPanelRepresentantesLayout.setHorizontalGroup(
@@ -1548,21 +1556,25 @@ public class InitialView extends javax.swing.JFrame {
             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
-                            .addComponent(jComboGuarderias4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(24, 24, 24))
-                        .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
-                            .addComponent(saveRepresentanteBtn)
-                            .addGap(71, 71, 71)
-                            .addComponent(deleteRepresentanteButton)
-                            .addContainerGap()))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(estadoCuentaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
+                                .addComponent(jComboGuarderias4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))
+                            .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
+                                .addComponent(saveRepresentanteBtn)
+                                .addGap(71, 71, 71)
+                                .addComponent(deleteRepresentanteButton)
+                                .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRepresentantesLayout.createSequentialGroup()
                         .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editRepresentanteBtn)
                             .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 705, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 702, Short.MAX_VALUE)
                                 .addComponent(jPanelInfoNino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40))))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1590,7 +1602,8 @@ public class InitialView extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveRepresentanteBtn)
-                    .addComponent(deleteRepresentanteButton))
+                    .addComponent(deleteRepresentanteButton)
+                    .addComponent(estadoCuentaBtn))
                 .addGap(0, 0, 0))
             .addGroup(jPanelRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelRepresentantesLayout.createSequentialGroup()
@@ -3005,7 +3018,8 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaRepresentantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaRepresentantesMouseClicked
         controladorRepresentante.mostrarRepresentante(tablaRepresentantes);
         controladorRepresentante.bloquear();
-        deleteRepresentanteButton.setEnabled(true);// TODO add your handling code here:
+        deleteRepresentanteButton.setEnabled(true);
+        estadoCuentaBtn.setEnabled(true);// TODO add your handling code here:
     }//GEN-LAST:event_tablaRepresentantesMouseClicked
 
     private void deleteRepresentanteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRepresentanteButtonActionPerformed
@@ -3335,6 +3349,10 @@ public class InitialView extends javax.swing.JFrame {
         controladorGuarderia.verRecibo(tablaPagos);        // TODO add your handling code here:
     }//GEN-LAST:event_reciboBtnActionPerformed
 
+    private void estadoCuentaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoCuentaBtnActionPerformed
+        controladorRepresentante.llenarEstadoCuenta(tablaRepresentantes);        // TODO add your handling code here:
+    }//GEN-LAST:event_estadoCuentaBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3442,6 +3460,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JTextField emailText;
     public javax.swing.JTextField emailText1;
     public javax.swing.JCheckBox encargadaCheckBox;
+    public javax.swing.JButton estadoCuentaBtn;
     public javax.swing.JLabel estadoLabel;
     public javax.swing.JTextArea experienciaTextArea;
     public javax.swing.JTextField fechaEncargadaText;

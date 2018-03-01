@@ -1596,16 +1596,21 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jComboGuarderias4" min="-2" pref="258" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="saveRepresentanteBtn" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                      <Component id="deleteRepresentanteButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="estadoCuentaBtn" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jComboGuarderias4" min="-2" pref="258" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="saveRepresentanteBtn" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="deleteRepresentanteButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1613,7 +1618,7 @@
                                       <Component id="editRepresentanteBtn" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jButton1" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <EmptySpace pref="705" max="32767" attributes="0"/>
+                                          <EmptySpace pref="702" max="32767" attributes="0"/>
                                           <Component id="jPanelInfoNino1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1653,6 +1658,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="saveRepresentanteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deleteRepresentanteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="estadoCuentaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
@@ -2084,6 +2090,17 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="estadoCuentaBtn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Estado de Cuenta"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estadoCuentaBtnActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
