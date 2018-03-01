@@ -140,7 +140,11 @@ public class ActividadNinoController {
             System.out.println(numGuard);
             Object[] columna = new Object[3];
             try{
-                actividades = modeloActividad.loadAllowedActividades(nino.getCiRepresentante(), nino.getLetra());
+                if (modeloActividad.cantidadActividades(nino.getCiRepresentante(), nino.getLetra()) == 0) {
+                    actividades = modeloActividad.loadAllActividadesNino(nino.getCiRepresentante(), nino.getLetra());
+                } else {
+                    actividades = modeloActividad.loadAllowedActividades(nino.getCiRepresentante(), nino.getLetra());
+                }
                 for(int i = 0; i< actividades.size(); i++){
                     columna[0] = actividades.get(i).getNombre();
                     columna[1] = actividades.get(i).getHoraInicio();
