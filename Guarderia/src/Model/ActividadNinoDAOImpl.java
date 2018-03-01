@@ -106,16 +106,30 @@ public class ActividadNinoDAOImpl {
     public ArrayList<Actividad> loadAllowedActividades(String ci, char letra) {
         Connection connection = con.connectToPostgres();
         ArrayList<Actividad> actividades = new ArrayList();
-        String sql = "SELECT A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
+        String sql = "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
                 "I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, " + 
-                "NINO_4 N WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) " + 
+                "NINO_4 N, horario_act_guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) " + 
                 "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA " + 
                 "AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and " + 
                 "N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and " + 
                 "extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai " +  
-                "where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad) AND HAG.HORA_INICIO " + 
-                "NOT IN (select hag.hora_inicio from horario_act_guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and " + 
-                "ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad);";
+                "where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad) AND " + 
+                "hag2.rif_guarderia = hag.rif_guarderia and HAG.HORA_INICIO not between hag2.hora_inicio and hag2.hora_fin and hag.hora_fin " + 
+                "not between hag2.hora_inicio and hag2.hora_fin and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where " + 
+                "ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad) union " + 
+                "SELECT distinct A.codigo, A.NOMBRE, A.EDADMINIMA, A.TRANSPORTE, HAG.FECHA, HAG.HORA_INICIO, HAG.HORA_FIN, " + 
+                "I.ANO, I.CONSECUTIVO, i.rif_guarderia FROM ACTIVIDAD_4 A, Act_Guarderia_4 AG, INSCRIPCION_4 I, Horario_Act_Guarderia_4 HAG, " + 
+                "NINO_4 N, horario_act_guarderia_4 hag2 WHERE I.CI_REPRESENTANTE = '"+ ci +"' AND I.LETRA_NINO = '"+ letra +"' AND I.CONSECUTIVO = (SELECT MAX(CONSECUTIVO) " + 
+                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ ci +"' AND LETRA_NINO = '"+ letra +"') AND I.RIF_GUARDERIA = AG.RIF_GUARDERIA " + 
+                "AND AG.COD_ACTIVIDAD = A.CODIGO AND HAG.RIF_GUARDERIA = AG.RIF_GUARDERIA AND HAG.COD_ACTIVIDAD = AG.COD_ACTIVIDAD and " + 
+                "N.CI_REPRESENTANTE = '"+ ci +"' AND N.LETRA = '"+ letra +"' AND (current_date - N.FECHA_NACIMIENTO) >= A.EDADMINIMA*365 and " + 
+                "extract(dow from hag.fecha) not in (select EXTRACT(dow from hag.fecha) from Horario_Act_Guarderia_4 hag, act_inscripcion_4 ai " +  
+                "where ai.letra_nino = '"+ letra +"' and ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad) AND " + 
+                "hag2.rif_guarderia = hag.rif_guarderia and a.transporte = 1 and HAG.HORA_INICIO not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min'and hag.hora_fin " + 
+                "not between hag2.hora_inicio - interval '30 min' and hag2.hora_fin + interval '30 min' and ag.cupoMax > (Select count(ai.*) from act_inscripcion_4 ai where " + 
+                "ai.rif_guarderia = hag.rif_guarderia and ai.cod_actividad = hag.cod_actividad);";
+//                "NOT IN (select hag.hora_inicio from horario_act_guarderia_4 hag, act_inscripcion_4 ai where ai.letra_nino = '"+ letra +"' and " + 
+//                "ai.ci_representante = '"+ ci +"' and ai.cod_actividad = hag.cod_actividad);";
         try {
             Statement st;
             st = connection.createStatement();
@@ -183,7 +197,7 @@ public class ActividadNinoDAOImpl {
     public void insertActividad(Actividad actividad) {
         try {
             Connection cn = con.connectToPostgres();
-            PreparedStatement pps = cn.prepareCall("INSERT INTO act_inscripcion_4 VALUES " +
+            PreparedStatement pps = cn.prepareCall("INSERT INTO act_inscripcion_4  VALUES " +
                     "(?,?,?,?,?,?,?,?)");
             pps.setInt(1, actividad.getAnoInsc());
             pps.setInt(2, actividad.getConsInsc());

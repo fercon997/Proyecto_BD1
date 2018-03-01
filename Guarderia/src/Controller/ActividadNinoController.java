@@ -144,7 +144,7 @@ public class ActividadNinoController {
                 for(int i = 0; i< actividades.size(); i++){
                     columna[0] = actividades.get(i).getNombre();
                     columna[1] = actividades.get(i).getHoraInicio();
-                    columna[2] = actividades.get(i).getHoraInicio();
+                    columna[2] = actividades.get(i).getHoraFin();
                     modeloTabla.addRow(columna);
                 }
             } catch(Exception e){
