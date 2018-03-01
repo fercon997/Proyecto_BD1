@@ -43,7 +43,7 @@ public class PagoDAOImpl {
     public int getMesPago(int mes, int cons_ins){
         int mess = -1;
         String sql = "Select mes from pago_mensual_4 WHERE mes = "+mes+""
-                + "AND fecha is NULL AND cons_inscripcion = "+cons_ins+";";
+                + " AND cons_inscripcion = "+cons_ins+";";
         try {
             ResultSet rs = con.selectAll(sql);
             while(rs.next()){
