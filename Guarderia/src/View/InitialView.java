@@ -3559,6 +3559,7 @@ public class InitialView extends javax.swing.JFrame {
     private void tablaActividadNinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaActividadNinoMouseClicked
         eliminarActividadExistente.setEnabled(true);
         actividadExistente.setEnabled(true);
+        controladorAN.llenarHorario(tablaHorarioNino);
     }//GEN-LAST:event_tablaActividadNinoMouseClicked
 
     private void agregarActividadBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarActividadBtnMouseClicked

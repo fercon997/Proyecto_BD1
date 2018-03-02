@@ -44,7 +44,6 @@ public class ActividadNinoController {
         if (initialView.jTabbedPane1.getSelectedIndex() == 7) {
             llenarActividades(initialView.tablaActividades);
             llenarActNinos(initialView.tablaActividadNino, "nino");
-            //llenarHorario(initialView.tablaHorarioNino);
             initialView.actividadExistente.setEnabled(false);
             initialView.agregarActividadBtn.setEnabled(false);
             initialView.salirActividadBtn.setEnabled(false);
@@ -200,7 +199,7 @@ public class ActividadNinoController {
           modeloTabla.removeRow(i);
         Object[] columna = new Object[6];
         try{
-            ArrayList<Horario> horario = imprimir();
+            ArrayList<Horario> horario = leerHorario();
             for(int i = 0; i < horario.size(); i++){
                 columna[0] = horario.get(i).getHora();
                 columna[1] = horario.get(i).getLunes();
@@ -211,132 +210,82 @@ public class ActividadNinoController {
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
-
-            }
+            System.out.println(e);
         }
-    
-    public ArrayList<Horario> imprimir() {
-        ArrayList<HorarioInscripcion> horario = new ArrayList();
-        ArrayList<Horario> horarioActividades = new ArrayList();
-        horario = modeloAN.getHorario("V8108418", 'A');
-        if (horario.size() > 0) {
-            //for (int i = 0; i < horario.size(); i ++) {
-                horarioActividades = cargarLunes(horario);
-            //}
-        }
-        return horarioActividades;
-//        System.out.println("hey");
-//        if (horario.size() > 0) {
-//            int horasGuarderiaAbierta = calcularDiferenciaHoras(horario.get(0).getHoraEntradaGuarderia(), horario.get(0).getHoraSalidaGuarderia());
-//        
-//            System.out.println("Horas: " + horasGuarderiaAbierta);
-//            System.out.println("Hora de Entrada: " + horario.get(0).getHoraEntradaGuarderia());
-//            System.out.println("Hora de Salida: " + horario.get(0).getHoraSalidaGuarderia());
-//            Time horaInicio = horario.get(0).getHoraEntradaGuarderia();
-//            int k = 0;
-//        while (!convertirHora(horaInicio).equals(convertirHora(horario.get(0).getHoraSalidaGuarderia()))) {
-//            String hora = convertirHora(horaInicio);
-//            System.out.println(k + ": " + horario.get(k).getNombreAct());
-//            if (k < horario.size() && convertirHora(horario.get(k).getHoraInicioAct()).equals(hora)) {
-//                Calendar c = Calendar.getInstance();
-//                c.setTime(horario.get(k).getFechaActividad());
-//                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-//                if (dayOfWeek == 2) {
-//                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct()) * 2; j ++) {
-//                        Horario hor = new Horario();
-//                        hor.setHora(convertirHora(horaInicio));
-//                        hor.setLunes(horario.get(k).getNombreAct());
-//                        horarioActividades.add(hor);
-//                        horaInicio = sumarHoras(horaInicio);
-//                    }
-//                } if (dayOfWeek == 3) {
-//                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct())  * 2; j ++) {
-//                        Horario hor = new Horario();
-//                        hor.setHora(convertirHora(horaInicio));
-//                        hor.setMartes(horario.get(k).getNombreAct());
-//                        horarioActividades.add(hor);
-//                        horaInicio = sumarHoras(horaInicio);
-//                    }
-//                } if (dayOfWeek == 4) {
-//                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct())  * 2; j ++) {
-//                        Horario hor = new Horario();
-//                        hor.setHora(convertirHora(horaInicio));
-//                        hor.setMiercoles(horario.get(k).getNombreAct());
-//                        horarioActividades.add(hor);
-//                        horaInicio = sumarHoras(horaInicio);
-//                    }
-//                } if (dayOfWeek == 5) {
-//                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct())  * 2; j ++) {
-//                        Horario hor = new Horario();
-//                        hor.setHora(convertirHora(horaInicio));
-//                        hor.setJueves(horario.get(k).getNombreAct());
-//                        horarioActividades.add(hor);
-//                        horaInicio = sumarHoras(horaInicio);
-//                    }
-//                } if (dayOfWeek == 6) {
-//                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct())  * 2; j ++) {
-//                        Horario hor = new Horario();
-//                        hor.setHora(convertirHora(horaInicio));
-//                        hor.setViernes(horario.get(k).getNombreAct());
-//                        horarioActividades.add(hor);
-//                        horaInicio = sumarHoras(horaInicio);
-//                    }
-//                }
-//                k++;
-//            } else {
-//                Horario hor = new Horario();
-//                hor.setHora(convertirHora(horaInicio));
-//                horarioActividades.add(hor);
-//                horaInicio = sumarHoras(horaInicio);
-//            }
-//        }
-//        }
-//        System.out.println("Horario Actividades");
-//        return horarioActividades;
     }
     
-    public ArrayList<Horario> cargarLunes(ArrayList<HorarioInscripcion> horario) {
+    public ArrayList<Horario> leerHorario() {
+        ArrayList<HorarioInscripcion> horario = new ArrayList();
         ArrayList<Horario> horarioActividades = new ArrayList();
-        if (horario.size() > 0) {
-            int horasGuarderiaAbierta = calcularDiferenciaHoras(horario.get(0).getHoraEntradaGuarderia(), horario.get(0).getHoraSalidaGuarderia());
-        
-            System.out.println("Horas: " + horasGuarderiaAbierta);
-            System.out.println("Hora de Entrada: " + horario.get(0).getHoraEntradaGuarderia());
-            System.out.println("Hora de Salida: " + horario.get(0).getHoraSalidaGuarderia());
-            Time horaInicio = horario.get(0).getHoraEntradaGuarderia();
-        while (!convertirHora(horaInicio).equals(convertirHora(horario.get(0).getHoraSalidaGuarderia()))) {
-            for (int k = 0; k < horario.size(); k++) {
-            String hora = convertirHora(horaInicio);
-            System.out.println(k + ": " + horario.get(k).getNombreAct());
-            if (k < horario.size() && convertirHora(horario.get(k).getHoraInicioAct()).equals(hora)) {
-                Calendar c = Calendar.getInstance();
-                c.setTime(horario.get(k).getFechaActividad());
-                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                if (dayOfWeek == 2) {
-                    for (int j = 0; j < calcularDiferenciaHoras(horario.get(k).getHoraInicioAct(), horario.get(k).getHoraFinAct()) * 2; j ++) {
-                        Horario hor = new Horario();
-                        hor.setHora(convertirHora(horaInicio));
-                        hor.setLunes(horario.get(k).getNombreAct());
-                        horarioActividades.add(hor);
-                        horaInicio = sumarHoras(horaInicio);
-                    }
-                } else {
-                    Horario hor = new Horario();
-                    hor.setHora(convertirHora(horaInicio));
-                    horarioActividades.add(hor);
-                    horaInicio = sumarHoras(horaInicio);
-                }
-                k++;
-            } else {
-                Horario hor = new Horario();
-                hor.setHora(convertirHora(horaInicio));
-                horarioActividades.add(hor);
-                horaInicio = sumarHoras(horaInicio);
-            }
-            }
+        ArrayList<String> actividades = new ArrayList();
+        String ci = ninos.get(initialView.tablaActividadNino.getSelectedRow()).getCiRepresentante();
+        char letra = ninos.get(initialView.tablaActividadNino.getSelectedRow()).getLetra();
+        horario = modeloAN.getHorario(ci, letra);
+        Time horarioEntrada = stringToHora("00:00");
+        Time horarioSalida = stringToHora("00:00");
+        int dia = 0;
+        if (horario.size() > 0 && initialView.tablaActividadNino.getColumnName(0) == "CI Representante") {
+            horarioEntrada = horario.get(0).getHoraEntradaGuarderia();
+            horarioSalida = horario.get(0).getHoraSalidaGuarderia();
         }
+        Time inicioAct = horarioEntrada;
+        Time finAct = sumarHoras(inicioAct);
+        while (!inicioAct.equals(horarioSalida)) {
+            Horario horarioAct = new Horario();
+            horarioAct.setHora(convertirHora(inicioAct));
+            for (int i = 0; i < horario.size(); i++) {
+                dia = horario.get(i).getFechaActividad();
+                if (horario.get(i).getTransporte() == 1) {
+                    if (!esta(horario.get(i).getNombreAct(), actividades)) {
+                        horario.get(i).setHoraInicioAct(restarHoras(horario.get(i).getHoraInicioAct()));
+                        System.out.println(horario.get(i).getHoraInicioAct());
+                        horario.get(i).setHoraFinAct(sumarHoras(horario.get(i).getHoraFinAct()));
+                        System.out.println(horario.get(i).getHoraFinAct());
+                        actividades.add(horario.get(i).getNombreAct());
+                    }
+                }
+                if (inicioAct.after(horario.get(i).getHoraInicioAct()) && inicioAct.before(horario.get(i).getHoraFinAct())) {
+                    switch (dia) {
+                        case 1: horarioAct.setLunes(horario.get(i).getNombreAct());
+                            break;
+                        case 2: horarioAct.setMartes(horario.get(i).getNombreAct());
+                            break;
+                        case 3: horarioAct.setMiercoles(horario.get(i).getNombreAct());
+                            break;
+                        case 4: horarioAct.setJueves(horario.get(i).getNombreAct());
+                            break;
+                        case 5: horarioAct.setViernes(horario.get(i).getNombreAct());
+                            break;
+                    }
+                }
+                if (finAct.after(horario.get(i).getHoraInicioAct()) && finAct.before(horario.get(i).getHoraFinAct())) {
+                   switch (dia) {
+                        case 1: horarioAct.setLunes(horario.get(i).getNombreAct());
+                            break;
+                        case 2: horarioAct.setMartes(horario.get(i).getNombreAct());
+                            break;
+                        case 3: horarioAct.setMiercoles(horario.get(i).getNombreAct());
+                            break;
+                        case 4: horarioAct.setJueves(horario.get(i).getNombreAct());
+                            break;
+                        case 5: horarioAct.setViernes(horario.get(i).getNombreAct());
+                            break;
+                    } 
+                }
+            }
+            horarioActividades.add(horarioAct);
+            inicioAct = finAct;
+            finAct = sumarHoras(finAct);
         }
         return horarioActividades;
+    }
+    
+    public boolean esta(String actividad, ArrayList<String> actividades) {
+        for (int i = 0; i < actividades.size(); i++) {
+            if (actividad == actividades.get(i))
+                return true;
+        }
+        return false;
     }
     
     public int calcularDiferenciaHoras(Time hora1, Time hora2) {
@@ -355,9 +304,27 @@ public class ActividadNinoController {
         return new Time(calendar.getTime().getTime());
     }
     
+    public Time restarHoras(Time hora) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(hora);
+        calendar.add(Calendar.MINUTE, -30);
+        return new Time(calendar.getTime().getTime());
+    }
+    
     public String convertirHora(Time hora) {
         DateFormat date1 = new SimpleDateFormat("HH:mm");
         return date1.format(hora);
+    }
+    
+    public Time stringToHora(String hora) {
+        DateFormat date1 = new SimpleDateFormat("HH:mm");
+        Time time = new Time(0);
+        try {
+            return new Time(date1.parse(hora).getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(ActividadNinoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return time;
     }
     
     public void masMenosContratada() {
