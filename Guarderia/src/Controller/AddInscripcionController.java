@@ -47,7 +47,7 @@ public class AddInscripcionController {
         modeloInscripcion = new InscripcionDAOImpl();
         this.rifs = modeloGuarderia.getRifs();
     }
-    
+
     public void llenarComboBoxGuarderias(JComboBox cb) {
         ArrayList<Guarderia> guarderias = new ArrayList();
         guarderias = modeloGuarderia.loadGuarderias();
@@ -57,7 +57,7 @@ public class AddInscripcionController {
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
-    
+
     public void clearFields() {
         vistaAG.ciTxt.setText("");
         vistaAG.letraNinoTxt.setText("");
@@ -76,7 +76,7 @@ public class AddInscripcionController {
             vistaAG.tabla.setEnabled(true);
 //        }
     }
-    
+
     public void mostrarTabla(JTable tabla, String tipo){
         if (tipo == "representante") {
             DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -105,7 +105,7 @@ public class AddInscripcionController {
                     columna[1] = representantes.get(i).getNombre() + " " + representantes.get(i).getApellido();
                     modeloTabla.addRow(columna);
                 }
-            
+
             } catch(Exception e){
                 for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
                 modeloTabla.removeRow(i);
@@ -136,16 +136,16 @@ public class AddInscripcionController {
                     columna[1] = ninos.get(i).getNombre() + " " + ninos.get(i).getApellido();
                     modeloTabla.addRow(columna);
                 }
-            
+
             } catch(Exception e){
                 for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
                 modeloTabla.removeRow(i);
             }
         }
-        
-        
+
+
     }
-    
+
     public void tablaClicked(JTable tabla){
         if ((tabla.getSelectedRow() >= 0) && (tabla.getValueAt(tabla.getSelectedRow(), 0).toString().length() > 1)){
             vistaAG.ciTxt.setText(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
@@ -158,7 +158,7 @@ public class AddInscripcionController {
             vistaAG.Agregar.setEnabled(true);
         }
     }
-    
+
     public void agregarInscripcion(){
         Inscripcion inscripcion = new Inscripcion();
         try{
@@ -175,35 +175,23 @@ public class AddInscripcionController {
             utilDate = (java.util.Date) vistaAG.horaSalidaInscripcion.getValue();
             sqlTime = new java.sql.Time(utilDate.getTime());
             inscripcion.setHoraSalida(sqlTime);
-            inscripcion.setHorasExtra((int) vistaAG.horasExtra.getValue());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(inscripcion.getHoraSalida());
-            calendar.add(Calendar.HOUR, inscripcion.getHorasExtra());
-            Guarderia guarderia = modeloInscripcion.getHoraGuarderia(inscripcion.getRifGuarderia());
-            Time horaSalida = new Time(calendar.getTime().getTime());
-            
-            if (inscripcion.getHoraLlegada().after(guarderia.getHoraEntrada()) && 
-                inscripcion.getHoraLlegada().before(guarderia.getHoraSalida()) && 
-                horaSalida.after(guarderia.getHoraEntrada()) && 
-                horaSalida.before(guarderia.getHoraSalida()) && 
-                inscripcion.getHoraLlegada().before(inscripcion.getHoraSalida()) && 
-                !inscripcion.getHoraLlegada().equals(inscripcion.getHoraSalida())) {
-                modeloInscripcion.insertInscripcion(inscripcion);
-                vistaAG.dispose();
-            } else {
-                JOptionPane.showMessageDialog(vistaAG, "Es probable que tu horario exceda el horario en que está abierta la guarderia.\n" +
-                        "El horario de la guardería es desde: " + guarderia.getHoraEntrada() + " hasta: " + guarderia.getHoraSalida());
-            }
+            modeloInscripcion.insertInscripcion(inscripcion);
+            Nino kid = new Nino();
+            kid.setCiRepresentante(inscripcion.getCiRepresentante());
+            kid.setLetra(inscripcion.getLetraNino());
+            PagoController payView = new PagoController(vistaAG.parent, kid);
+            payView.generarMenusalidad(13);
+            vistaAG.dispose();
         }catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(vistaAG, "Error en los datos");
         }
     }
-    
-    
+
+
     public void agregarRepresentante() {
         JDAddRepresentante ar = new JDAddRepresentante(vistaAG, true);
         ar.setVisible(true);
     }
-    
+
 }

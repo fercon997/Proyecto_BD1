@@ -49,6 +49,7 @@ public class Juego_NinoDAOImpl {
                 game.setNombre(rs.getString("nombre"));
                 games.add(game);
             }
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(Juego_NinoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

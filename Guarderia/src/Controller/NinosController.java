@@ -134,9 +134,8 @@ public class NinosController {
     
     public void generarMensualidad(){
         for (int i = 0; i< ninos.size(); i++){
-            System.out.println(i);
            controladorPagos = new PagoController(initialView, ninos.get(i));
-           controladorPagos.generarMenusalidad();
+           controladorPagos.generarMenusalidad(0);
         }
     }
     

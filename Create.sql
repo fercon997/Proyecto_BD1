@@ -189,7 +189,7 @@ CREATE TABLE inscripcion_4(
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
   CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante) ON DELETE CASCADE,
-  Constraint tiempo_total_valid Check( (EXTRACT(HOUR FROM hora_hasta)  - Extract(HOUR FROM hora_desde) ) <= 10)
+  Constraint tiempo_total_valid Check( (EXTRACT(HOUR FROM hora_hasta)  - Extract(HOUR FROM hora_desde) ) <= 15)
 );
 
 CREATE TABLE Parentesco_Padre_4(
@@ -361,7 +361,7 @@ CREATE TABLE pago_mensual_4(
   CONSTRAINT cons_pago_mensual_pk PRIMARY KEY (consecutivo, cons_inscripcion),
   CONSTRAINT ins_pago_mensual_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, ci_representante, letra_nino) REFERENCES inscripcion_4(consecutivo, ano, ci_representante, letra_nino) ON DELETE CASCADE,
   CONSTRAINT check_forma_pago_mensual CHECK (forma_pago IN ('Cheque', 'Tarjeta de crédito', 'Tarjeta de débito')),
-  CONSTRAINT check_mes_mensualidad CHECK ((mes between 1 and 12) OR mes IS NULL)
+  CONSTRAINT check_mes_mensualidad CHECK ((mes between 1 and 13) OR mes IS NULL)
 );
 
 
@@ -390,6 +390,7 @@ CREATE TABLE comida_plato_4(
 CREATE TABLE menu_4(
   numero NUMERIC(10),
   fecha DATE,
+  fecha_fin DATE NOT NULL,
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
@@ -409,7 +410,7 @@ CREATE TABLE factura_menu_4(
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
   CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 
