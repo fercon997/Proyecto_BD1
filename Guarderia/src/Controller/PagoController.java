@@ -60,7 +60,7 @@ public class PagoController {
     }
     
     public String mesString(int mes){
-        String mesS = new String();
+        String mesS = "Multa";
         switch(mes){
             case 1: mesS = "Enero";
                     break;

@@ -205,14 +205,15 @@ public class RepresentanteController {
         
     }
     
-    public void llenarPuntuales(){
+    public void llenarPuntuales(JComboBox cb){
         RepresentanteDAOImpl bdParent = new RepresentanteDAOImpl();
-        ArrayList<Representante> parents = bdParent.getPuntuales();
+        int numGuard = cb.getSelectedIndex();
         DefaultTableModel modeloTabla = (DefaultTableModel)initialView.tablaPuntuales.getModel();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);
         Object[] columna = new Object[3];
         try{
+            ArrayList<Representante> parents = bdParent.getPuntuales(rifs.get(numGuard-1));
             for(int i = 0; i<parents.size(); i++){
                 columna[0] = parents.get(i).getNombre();
                 columna[1] = parents.get(i).getApellido();
@@ -220,8 +221,13 @@ public class RepresentanteController {
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
-            for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
-              modeloTabla.removeRow(i);
+            ArrayList<Representante> parents = bdParent.getPuntuales(null);
+            for(int i = 0; i<parents.size(); i++){
+                columna[0] = parents.get(i).getNombre();
+                columna[1] = parents.get(i).getApellido();
+                columna[2] = parents.get(i).getPrincipal();
+                modeloTabla.addRow(columna);
+            }
         }
         
     }
@@ -242,6 +248,7 @@ public class RepresentanteController {
                 float costo = assist.getCostoMulta();
                 if ((assist.getComio().equals("mensualidad")) && (assist.getNumTransferencia() == 0))
                     assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra()));
+                assist.setComio(pay.mesString(assist.getConsecutivo_inscripcion()));
                 columna[0] = assist.getFecha();
                 columna[1] = assist.getCi_auth_busco();
                 columna[2] = assist.getCostoMulta();

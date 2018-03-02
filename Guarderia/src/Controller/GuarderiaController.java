@@ -59,10 +59,6 @@ public class GuarderiaController {
             initialView.jComboTipoPago.setEnabled(false);
             initialView.reciboBtn.setEnabled(false);
         }
-        if (initialView.jTabbedPane1.getSelectedIndex() == 0){
-            RepresentanteController controladorRepresentante = new RepresentanteController(initialView);
-            controladorRepresentante.llenarPuntuales();
-        }
         if (initialView.jTabbedPane1.getSelectedIndex() == 4){
             initialView.estadoCuentaBtn.setEnabled(false);
         }
