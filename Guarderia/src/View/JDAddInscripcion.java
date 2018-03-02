@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JDAddInscripcion extends javax.swing.JDialog {
     AddInscripcionController controladorAG = new AddInscripcionController(this);
-    InitialView parent;
+    public InitialView parent;
     /**
      * Creates new form JDAgregarEmpleado
      */

@@ -214,14 +214,17 @@ public class RepresentanteDAOImpl implements RepresentanteDAO {
         String sql;
         System.out.println(rif);
         if(rif != null)
-             sql = "Select r.nombre, r.apellido, Count(a.monto_multa) morosou from representante_4 r, asistencia_4 a WHERE r.ci = a.ci_representante AND r.ci in (Select ci_representante from inscripcion_4 where rif_guarderia = '"+rif+"') Group by r.nombre, r.apellido order by morosou Limit 50;";
+             sql = "Select r.nombre, r.apellido, Count(a.monto_multa) morosou "
+                     + "from representante_4 r, asistencia_4 a WHERE "
+                     + "r.ci = a.ci_representante AND r.ci in "
+                     + "(Select ci_representante from inscripcion_4 where "
+                     + "rif_guarderia = '"+rif+"') Group by r.nombre, r.apellido "
+                     + "order by morosou Limit 50;";
         else    
-         sql = "Select r.nombre, r.apellido, Count(a.monto_multa) morosou from representante_4 r, asistencia_4 a WHERE r.ci = "
-                + "a.ci_representante Group by r.nombre, r.apellido order by morosou Limit 50";
-                /*+ "union "
-                + "Select r.nombre, r.apellido, 0 as morosou from representante_4 r, asistencia_4 a "
-                + "where ci = a.ci_representante AND monto_multa is null Group by r.nombre, r.apellido "
-                + "Order by morosou Limit 50;";*/
+         sql = "Select r.nombre, r.apellido, Count(a.monto_multa) morosou "
+                 + "from representante_4 r, asistencia_4 a WHERE r.ci = "
+                + "a.ci_representante Group by r.nombre, r.apellido "
+                 + "order by morosou Limit 50";
         try {
             ResultSet rs = con.selectAll(sql);
             while(rs.next()){

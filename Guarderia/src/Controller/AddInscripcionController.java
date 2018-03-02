@@ -175,6 +175,11 @@ public class AddInscripcionController {
             sqlTime = new java.sql.Time(utilDate.getTime());
             inscripcion.setHoraSalida(sqlTime);
             modeloInscripcion.insertInscripcion(inscripcion);
+            Nino kid = new Nino();
+            kid.setCiRepresentante(inscripcion.getCiRepresentante());
+            kid.setLetra(inscripcion.getLetraNino());
+            PagoController payView = new PagoController(vistaAG.parent, kid);
+            payView.generarMenusalidad(13);
             vistaAG.dispose();
         }catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);

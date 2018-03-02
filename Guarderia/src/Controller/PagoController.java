@@ -33,22 +33,26 @@ public class PagoController {
         this.initialView = initialView;
     }
     
-    public void generarMenusalidad(){
+    public void generarMenusalidad(int mes){
         LocalDate localDate = LocalDate.now();
-        int mes = localDate.getMonthValue();
+        if (mes != 13)
+          mes = localDate.getMonthValue();
         PagoDAOImpl bdPay = new PagoDAOImpl();
         InscripcionDAOImpl bdIns = new InscripcionDAOImpl();
         inscripcion = bdIns.getInsNino(nino);
         int mess = bdPay.getMesPago(mes, inscripcion.getConsecutivo());
         if (mess != mes){
             Pago pay = new Pago();
+            pay.setMes(mes);
             pay.setConsecutivo(bdPay.getConsAnterior(inscripcion.getConsecutivo())+1);
             pay.setAno_inscripcion(inscripcion.getAno());
             pay.setCi_representante(nino.getCiRepresentante());
-            pay.setConcepto("Pago por el mes de "+mesString(mes));
+            if (pay.getMes() == 13)
+              pay.setConcepto("Pago de inscripcion");
+            else
+              pay.setConcepto("Pago por el mes de "+mesString(mes));
             pay.setCons_inscripcion(inscripcion.getConsecutivo());
             pay.setLetra(nino.getLetra());
-            pay.setMes(mes);
             GuarderiaDAOImpl bdGuard = new GuarderiaDAOImpl();
             Guarderia guard = bdGuard.getDatosGuarderia(inscripcion.getRifGuarderia());
             if( (mes == 8) || (mes == 12))
@@ -86,6 +90,8 @@ public class PagoController {
                      break;
             case 12: mesS = "Diciembre";
                      break;
+            case 13: mesS = "Inscripcion";
+            
         }
         return mesS;
     }
