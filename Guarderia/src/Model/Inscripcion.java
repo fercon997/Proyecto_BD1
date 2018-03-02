@@ -24,6 +24,7 @@ public class Inscripcion {
     Time horaSalida;
     String nombreNino;
     String apellidoNino;
+    int horasExtra;
     
     public Inscripcion() {
         
@@ -118,5 +119,14 @@ public class Inscripcion {
 
     public void setApellidoNino(String apellidoNino) {
         this.apellidoNino = apellidoNino;
-    }  
+    } 
+
+    public int getHorasExtra() {
+        return horasExtra;
+    }
+
+    public void setHorasExtra(int horasExtra) {
+        this.horasExtra = horasExtra;
+    }
+
 }

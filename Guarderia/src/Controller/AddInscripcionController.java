@@ -18,6 +18,7 @@ import Model.RepresentanteDAOImpl;
 import View.JDAddInscripcion;
 import View.JDAddRepresentante;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -46,7 +47,7 @@ public class AddInscripcionController {
         modeloInscripcion = new InscripcionDAOImpl();
         this.rifs = modeloGuarderia.getRifs();
     }
-    
+
     public void llenarComboBoxGuarderias(JComboBox cb) {
         ArrayList<Guarderia> guarderias = new ArrayList();
         guarderias = modeloGuarderia.loadGuarderias();
@@ -56,7 +57,7 @@ public class AddInscripcionController {
             cb.addItem(guarderias.get(i).getComboText());
         }
     }
-    
+
     public void clearFields() {
         vistaAG.ciTxt.setText("");
         vistaAG.letraNinoTxt.setText("");
@@ -75,7 +76,7 @@ public class AddInscripcionController {
             vistaAG.tabla.setEnabled(true);
 //        }
     }
-    
+
     public void mostrarTabla(JTable tabla, String tipo){
         if (tipo == "representante") {
             DefaultTableModel modeloTabla = new DefaultTableModel() {
@@ -104,7 +105,7 @@ public class AddInscripcionController {
                     columna[1] = representantes.get(i).getNombre() + " " + representantes.get(i).getApellido();
                     modeloTabla.addRow(columna);
                 }
-            
+
             } catch(Exception e){
                 for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
                 modeloTabla.removeRow(i);
@@ -135,16 +136,16 @@ public class AddInscripcionController {
                     columna[1] = ninos.get(i).getNombre() + " " + ninos.get(i).getApellido();
                     modeloTabla.addRow(columna);
                 }
-            
+
             } catch(Exception e){
                 for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
                 modeloTabla.removeRow(i);
             }
         }
-        
-        
+
+
     }
-    
+
     public void tablaClicked(JTable tabla){
         if ((tabla.getSelectedRow() >= 0) && (tabla.getValueAt(tabla.getSelectedRow(), 0).toString().length() > 1)){
             vistaAG.ciTxt.setText(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
@@ -157,7 +158,7 @@ public class AddInscripcionController {
             vistaAG.Agregar.setEnabled(true);
         }
     }
-    
+
     public void agregarInscripcion(){
         Inscripcion inscripcion = new Inscripcion();
         try{
@@ -186,11 +187,11 @@ public class AddInscripcionController {
             JOptionPane.showMessageDialog(vistaAG, "Error en los datos");
         }
     }
-    
-    
+
+
     public void agregarRepresentante() {
         JDAddRepresentante ar = new JDAddRepresentante(vistaAG, true);
         ar.setVisible(true);
     }
-    
+
 }
