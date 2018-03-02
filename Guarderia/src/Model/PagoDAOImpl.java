@@ -5,8 +5,10 @@
  */
 package Model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +23,6 @@ public class PagoDAOImpl {
     public PagoDAOImpl() {
         con = new DBConnection();
     }
-    
     
     
     public void insertPago(Pago pay){
@@ -105,6 +106,29 @@ public class PagoDAOImpl {
         con.insertDatos(sql);
     }
     
-    
+    public float pagoActividades(String ci, char letra) {
+        Connection connection = con.connectToPostgres();
+        ArrayList<Actividad> actividades = new ArrayList();
+        String sql = "select sum(ag.costo_actividad) from act_inscripcion_4 ai, act_guarderia_4 ag where ai.letra_nino = '"+letra+
+                "' and ai.ci_representante = '"+ci+"' and ai.consecutivo_inscripcion = (SELECT MAX(CONSECUTIVO) " + 
+                "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ci+"' AND LETRA_NINO = '"+letra+"') and ai.cod_actividad = ag.cod_actividad " + 
+                "and ag.rif_guarderia = ai.rif_guarderia;";
+        int costo = 0;
+        try {
+            Statement st;
+            st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                costo = rs.getInt(1);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch(SQLException e) {
+            System.out.println("Error");
+            System.out.println(e);
+        }
+        return costo;
+    }
     
 }

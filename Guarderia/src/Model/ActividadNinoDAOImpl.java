@@ -107,7 +107,7 @@ public class ActividadNinoDAOImpl {
     public int cantidadActividades(String ci, char letra) {
         Connection connection = con.connectToPostgres();
         ArrayList<Actividad> actividades = new ArrayList();
-        String sql = "select count(ai.*) from act_inscripcion_4 ai, inscripcion_4 i where ai.letra_nino = '"+letra+
+        String sql = "select count(ai.*) from act_inscripcion_4 ai where ai.letra_nino = '"+letra+
                 "' and ai.ci_representante = '"+ci+"' and ai.consecutivo_inscripcion = (SELECT MAX(CONSECUTIVO) " + 
                 "FROM INSCRIPCION_4 WHERE CI_REPRESENTANTE = '"+ci+"' AND LETRA_NINO = '"+letra+"');";
         int cantidad = 0;

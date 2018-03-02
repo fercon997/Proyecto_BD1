@@ -104,10 +104,11 @@ public class PagoController {
         pagos = bdPay.getPagos(nino);
         Object[] columna = new Object[3];
         try{
+            float costoActividades = bdPay.pagoActividades(nino.getCiRepresentante(), nino.getLetra());
             for(int i = 0; i<pagos.size(); i++){
                 columna[0] = mesString(pagos.get(i).getMes());
                 if (pagos.get(i).getForma_pago() == null){
-                    columna[1] = calcularCosto(pagos.get(i).getMonto(), pagos.get(i).getMes(), nino.getLetra());
+                    columna[1] = calcularCosto(pagos.get(i).getMonto(), pagos.get(i).getMes(), nino.getLetra(), costoActividades);
                     columna[2] = "No";
                 }
                 else{
@@ -130,8 +131,9 @@ public class PagoController {
             Pago pay = pagos.get(index);
             pay.setFecha(Date.valueOf(localDate));
             pay.setForma_pago(String.valueOf(initialView.jComboTipoPago.getSelectedItem()));
-            pay.setMonto(calcularCosto(pay.getMonto(), pay.getMes(), nino.getLetra()));
             PagoDAOImpl dbPay = new PagoDAOImpl();
+            float costoActividades = dbPay.pagoActividades(nino.getCiRepresentante(), nino.getLetra());
+            pay.setMonto(calcularCosto(pay.getMonto(), pay.getMes(), nino.getLetra(), costoActividades));
             dbPay.pagarMensualidad(pay);
             JOptionPane.showMessageDialog(initialView, "Datos cargads satisfactoriamente");
             loadPagos(tabla);
@@ -142,7 +144,7 @@ public class PagoController {
         
     }
     
-    public float calcularCosto(float costo, int mesMens, char letra_nino){
+    public float calcularCosto(float costo, int mesMens, char letra_nino, float costoActividades){
         LocalDate localDate = LocalDate.now();
         int dia = localDate.getDayOfMonth();
         int mes = localDate.getMonthValue();
@@ -155,9 +157,9 @@ public class PagoController {
         else if (dia >=26)
           costo = (float) (costo +costo*0.3);
         switch(letra_nino){
-            case 'A': return costo;
-            case 'B': return costo-=costo*0.1;
-            default:  return costo-=costo*0.15;
+            case 'A': return costo + costoActividades;
+            case 'B': return (costo-=costo*0.1) + costoActividades;
+            default:  return (costo-=costo*0.15) + costoActividades;
         }
     }
     
