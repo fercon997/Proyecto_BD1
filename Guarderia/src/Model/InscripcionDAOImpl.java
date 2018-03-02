@@ -89,7 +89,7 @@ public class InscripcionDAOImpl {
     public void insertInscripcion(Inscripcion inscripcion) {
         try {
             Connection cn = con.connectToPostgres();
-            String sql= "INSERT INTO inscripcion_4 VALUES (?, nextval('Insc_sequence'), ?, ?, ?, ?, ?, ?)";
+            String sql= "INSERT INTO inscripcion_4 VALUES (?, nextval('Insc_sequence'), ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pps = cn.prepareCall(sql);
             pps.setInt(1, inscripcion.getAno());
             pps.setString(2, inscripcion.getRifGuarderia());
@@ -98,6 +98,7 @@ public class InscripcionDAOImpl {
             pps.setDate(5, inscripcion.getFechaInscripcion());
             pps.setTime(6, inscripcion.getHoraLlegada());
             pps.setTime(7, inscripcion.getHoraSalida());
+            pps.setInt(8, inscripcion.getHorasExtra());
             pps.executeUpdate();
             pps.close();
             cn.close();
@@ -106,6 +107,27 @@ public class InscripcionDAOImpl {
             Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Error en los datos");
         }
+    }
+    
+    public Guarderia getHoraGuarderia(String rif) {
+        Connection cn = con.connectToPostgres();
+
+        String sql= "SELECT horario_entrada, horario_salida from guarderia_4 where rif = '"+ rif + "';";
+        Guarderia guarderia = new Guarderia();
+        try {    
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                guarderia.setHoraEntrada(rs.getTime(1));
+                guarderia.setHoraSalida(rs.getTime(2));
+            }
+            rs.close();
+            st.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RepresentanteDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return guarderia;
     }
     
     public void updateInscripcion(Inscripcion inscripcion){
