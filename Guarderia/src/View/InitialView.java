@@ -62,7 +62,7 @@ public class InitialView extends javax.swing.JFrame {
        this.codigoActividadTxt.setEnabled(false);
        this.agregarActividadBtn.setEnabled(false);
        controladorGuarderia.generarMensualidad();
-       controladorRepresentante.llenarPuntuales();
+       controladorRepresentante.llenarPuntuales(jComboGuarderias);
        this.actMasContratadasText.setEnabled(false);
        this.actMenosContratadasText.setEnabled(false);
     }
@@ -2943,6 +2943,7 @@ public class InitialView extends javax.swing.JFrame {
             codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias);
         }
         controladorAN.masMenosContratada();
+        controladorRepresentante.llenarPuntuales(jComboGuarderias);
     }//GEN-LAST:event_jComboGuarderiasActionPerformed
 
     private void jComboInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboInscripcionActionPerformed
