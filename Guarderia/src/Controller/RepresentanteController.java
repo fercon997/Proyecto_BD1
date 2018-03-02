@@ -242,6 +242,7 @@ public class RepresentanteController {
                 float costo = assist.getCostoMulta();
                 if ((assist.getComio().equals("mensualidad")) && (assist.getNumTransferencia() == 0))
                     assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra()));
+                assist.setComio(pay.mesString(assist.getConsecutivo_inscripcion()));
                 columna[0] = assist.getFecha();
                 columna[1] = assist.getCi_auth_busco();
                 columna[2] = assist.getCostoMulta();
