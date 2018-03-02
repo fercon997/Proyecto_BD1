@@ -191,6 +191,7 @@ public class AsistenciaDAOImpl {
                 assist.setLetra(rs.getString("letra_nino").charAt(0));
                 assist.setConsecutivo_inscripcion(rs.getInt("mes"));
                 assist.setCi_auth_busco(rs.getString("nino"));
+                assist.setCi_representante(ci);
                 assists.add(assist);
             }
             rs.close();

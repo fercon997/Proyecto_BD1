@@ -243,11 +243,14 @@ public class RepresentanteController {
           modeloTabla.removeRow(i);
         Object[] columna = new Object[5];
         try{
+            PagoDAOImpl dbPago = new PagoDAOImpl();
             for(int i = 0; i<assists.size(); i++){
                 Asistencia assist = assists.get(i);
                 float costo = assist.getCostoMulta();
+                float costoActividad = 0;
                 if ((assist.getComio().equals("mensualidad")) && (assist.getNumTransferencia() == 0))
-                    assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra()));
+                    costoActividad = dbPago.pagoActividades(ci, assist.getLetra());
+                    assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra(), costoActividad));
                 assist.setComio(pay.mesString(assist.getConsecutivo_inscripcion()));
                 columna[0] = assist.getFecha();
                 columna[1] = assist.getCi_auth_busco();
