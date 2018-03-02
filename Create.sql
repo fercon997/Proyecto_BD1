@@ -185,6 +185,7 @@ CREATE TABLE inscripcion_4(
   fecha_inscripcion DATE NOT NULL,
   hora_desde time NOT NULL,
   hora_hasta time NOT NULL,
+  horas_extra NUMERIC(1) NOT NULL DEFAULT 0,
   CONSTRAINT inscripcion_pk PRIMARY KEY (ano, consecutivo, ci_representante, letra_nino),
   CONSTRAINT rif_guarderia__ins_fk FOREIGN KEY (rif_guarderia) REFERENCES Guarderia_4(rif),
   CONSTRAINT letra_ci_nino_insc_fk FOREIGN KEY (letra_nino, ci_representante) REFERENCES Nino_4(letra, ci_representante) ON DELETE CASCADE,

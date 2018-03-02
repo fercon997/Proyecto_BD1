@@ -18,6 +18,7 @@ import Model.RepresentanteDAOImpl;
 import View.JDAddInscripcion;
 import View.JDAddRepresentante;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -174,8 +175,25 @@ public class AddInscripcionController {
             utilDate = (java.util.Date) vistaAG.horaSalidaInscripcion.getValue();
             sqlTime = new java.sql.Time(utilDate.getTime());
             inscripcion.setHoraSalida(sqlTime);
-            modeloInscripcion.insertInscripcion(inscripcion);
-            vistaAG.dispose();
+            inscripcion.setHorasExtra((int) vistaAG.horasExtra.getValue());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(inscripcion.getHoraSalida());
+            calendar.add(Calendar.HOUR, inscripcion.getHorasExtra());
+            Guarderia guarderia = modeloInscripcion.getHoraGuarderia(inscripcion.getRifGuarderia());
+            Time horaSalida = new Time(calendar.getTime().getTime());
+            
+            if (inscripcion.getHoraLlegada().after(guarderia.getHoraEntrada()) && 
+                inscripcion.getHoraLlegada().before(guarderia.getHoraSalida()) && 
+                horaSalida.after(guarderia.getHoraEntrada()) && 
+                horaSalida.before(guarderia.getHoraSalida()) && 
+                inscripcion.getHoraLlegada().before(inscripcion.getHoraSalida()) && 
+                !inscripcion.getHoraLlegada().equals(inscripcion.getHoraSalida())) {
+                modeloInscripcion.insertInscripcion(inscripcion);
+                vistaAG.dispose();
+            } else {
+                JOptionPane.showMessageDialog(vistaAG, "Es probable que tu horario exceda el horario en que está abierta la guarderia.\n" +
+                        "El horario de la guardería es desde: " + guarderia.getHoraEntrada() + " hasta: " + guarderia.getHoraSalida());
+            }
         }catch(Exception e){
             Logger.getLogger(GuarderiaController.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(vistaAG, "Error en los datos");
