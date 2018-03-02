@@ -18,6 +18,7 @@ public class JDEstadoCuenta extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Estado de cuenta");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,17 +37,17 @@ public class JDEstadoCuenta extends javax.swing.JDialog {
 
         tablaEstadoCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Fecha", "Monto", "Concepto", "Pagado"
+                "Fecha", "Nombre Niño", "Monto", "Concepto", "Pagado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,7 +60,9 @@ public class JDEstadoCuenta extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

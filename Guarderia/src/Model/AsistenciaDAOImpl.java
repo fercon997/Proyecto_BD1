@@ -163,15 +163,22 @@ public class AsistenciaDAOImpl {
     public ArrayList<Asistencia> getEstadoCuenta(String ci){
         ArrayList<Asistencia> assists = new ArrayList();
         String sql = "Select fecha, 'multa' as concepto, monto_multa as monto, "
-                + "num_transferencia  as pagado, letra_nino, 0 as mes FROM asistencia_4  WHERE "
+                + "num_transferencia  as pagado, letra_nino, "
+                + "(SElECT nombre from nino_4 where a.letra_nino=letra and ci_representante = '"
+                + ci+"') as nino,"
+                + "  0 as mes FROM asistencia_4 a WHERE "
                 + "ci_representante = '"+ci+"' AND monto_multa is not null "
                 + "union "
-                + "select fecha, 'mensualidad' as concepto, monto, 1 as pagado, letra_nino, mes "
-                + "from pago_mensual_4 WHERE ci_representante = '"+ci+"' AND"
+                + "select fecha, 'mensualidad' as concepto, monto, 1 as pagado, "
+                + "letra_nino,(SElECT nombre from nino_4 where p.letra_nino=letra AND ci_representante = '"
+                + ci+"') as nino,"
+                + " mes from pago_mensual_4 p WHERE ci_representante = '"+ci+"' AND"
                 + " forma_pago is not null "
                 + "union all "
                 + "select CURRENT_DATE as fecha,'mensualidad' as concepto, monto,"
-                + " 0 as pagado, letra_nino, mes from pago_mensual_4 WHERE ci_representante = '"
+                + " 0 as pagado, letra_nino, (SElECT nombre from nino_4 where p.letra_nino=letra"
+                + " AND ci_representante = '"+ci+"') as nino,"
+                + " mes from pago_mensual_4 p WHERE ci_representante = '"
                 + ci+"' AND forma_pago is null;";
         try {
             ResultSet rs = con.selectAll(sql);
@@ -183,6 +190,7 @@ public class AsistenciaDAOImpl {
                 assist.setNumTransferencia(rs.getInt("pagado"));
                 assist.setLetra(rs.getString("letra_nino").charAt(0));
                 assist.setConsecutivo_inscripcion(rs.getInt("mes"));
+                assist.setCi_auth_busco(rs.getString("nino"));
                 assists.add(assist);
             }
             rs.close();

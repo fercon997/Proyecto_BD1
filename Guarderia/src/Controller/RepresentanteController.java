@@ -235,7 +235,7 @@ public class RepresentanteController {
         DefaultTableModel modeloTabla = (DefaultTableModel)vistaEC.tablaEstadoCuenta.getModel();
         for (int i = modeloTabla.getRowCount() -1; i >=0; i--)
           modeloTabla.removeRow(i);
-        Object[] columna = new Object[4];
+        Object[] columna = new Object[5];
         try{
             for(int i = 0; i<assists.size(); i++){
                 Asistencia assist = assists.get(i);
@@ -243,12 +243,13 @@ public class RepresentanteController {
                 if ((assist.getComio().equals("mensualidad")) && (assist.getNumTransferencia() == 0))
                     assist.setCostoMulta((int) pay.calcularCosto(costo, assist.getConsecutivo_inscripcion(), assist.getLetra()));
                 columna[0] = assist.getFecha();
-                columna[1] = assist.getCostoMulta();
-                columna[2] = assist.getComio();
+                columna[1] = assist.getCi_auth_busco();
+                columna[2] = assist.getCostoMulta();
+                columna[3] = assist.getComio();
                 if (assist.getNumTransferencia() == 0)
-                    columna[3] = "No";
+                    columna[4] = "No";
                 else
-                    columna[3] = "Si";
+                    columna[4] = "Si";
                 modeloTabla.addRow(columna);
             }
         } catch(Exception e){
