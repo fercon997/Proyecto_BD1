@@ -390,6 +390,7 @@ CREATE TABLE comida_plato_4(
 CREATE TABLE menu_4(
   numero NUMERIC(10),
   fecha DATE,
+  fecha_fin DATE NOT NULL,
   rif_guarderia VARCHAR(12),
   costo NUMERIC(6, 2) NOT NULL,
   CONSTRAINT menu_pk PRIMARY KEY (numero, fecha),
@@ -409,7 +410,7 @@ CREATE TABLE factura_menu_4(
   banco varchar(20) NOT NULL,
   CONSTRAINT factura_menu_pk PRIMARY KEY (fecha, cons_inscripcion, ano_inscripcion, letra_nino, ci_representante),
   CONSTRAINT factura_menu_insc_fk FOREIGN KEY (cons_inscripcion, ano_inscripcion, letra_nino, ci_representante) REFERENCES inscripcion_4(consecutivo, ano, letra_nino, ci_representante) ON DELETE CASCADE,
-  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha),
+  CONSTRAINT factura_menu_fk FOREIGN KEY (numero_menu, fecha_menu) REFERENCES menu_4(numero, fecha) ON DELETE CASCADE,
   Constraint fecha_anterior_valid Check( (Extract(YEAR FROM Fecha) - Ano_inscripcion) >= 0)
 );
 

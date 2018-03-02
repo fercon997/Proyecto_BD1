@@ -37,6 +37,8 @@ public class InitialView extends javax.swing.JFrame {
      private AutorizadoController controladorAutorizado = new AutorizadoController(this);
      private InscripcionController controladorInscripcion = new InscripcionController(this);
      private ActividadNinoController controladorAN = new ActividadNinoController(this);
+     private MenuDAOImpl Menu = new MenuDAOImpl();
+     private MenuController controladorMenu = new MenuController(this, Menu); 
 
     public InitialView() {
        initComponents();
@@ -327,6 +329,33 @@ public class InitialView extends javax.swing.JFrame {
         tablaActividades = new javax.swing.JTable();
         jPanelComida = new javax.swing.JPanel();
         jComboGuarderias7 = new javax.swing.JComboBox<>();
+        jScrollPane23 = new javax.swing.JScrollPane();
+        Tabla_Menus = new javax.swing.JTable();
+        addMenuBtn = new javax.swing.JButton();
+        jPanelInfoMenu = new javax.swing.JPanel();
+        Numero_MenuLabel = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        codigoLabel1 = new javax.swing.JLabel();
+        CostoText = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
+        Plato1_MenuLabel = new javax.swing.JLabel();
+        Plato2_MenuLabel = new javax.swing.JLabel();
+        Plato3_MenuLabel = new javax.swing.JLabel();
+        Plato4_MenuLabel = new javax.swing.JLabel();
+        Plato5_MenuLabel = new javax.swing.JLabel();
+        Numero_MenuLabel1 = new javax.swing.JLabel();
+        Menu_FechaLabel = new javax.swing.JLabel();
+        Plato1_MenuLabel1 = new javax.swing.JLabel();
+        Plato2_MenuLabel1 = new javax.swing.JLabel();
+        Plato3_MenuLabel1 = new javax.swing.JLabel();
+        Plato3_MenuLabel2 = new javax.swing.JLabel();
+        Plato4_MenuLabel1 = new javax.swing.JLabel();
+        Plato5_MenuLabel1 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        Menu_FechaLabel1 = new javax.swing.JLabel();
+        editMenuBtn = new javax.swing.JButton();
+        saveMenuBtn = new javax.swing.JButton();
+        deleteMenuBtn = new javax.swing.JButton();
         jPanelPagos = new javax.swing.JPanel();
         jScrollPane20 = new javax.swing.JScrollPane();
         tablaNinos2 = new javax.swing.JTable();
@@ -2402,21 +2431,256 @@ public class InitialView extends javax.swing.JFrame {
             }
         });
 
+        Tabla_Menus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero", "Costo", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Tabla_Menus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_MenusMouseClicked(evt);
+            }
+        });
+        jScrollPane23.setViewportView(Tabla_Menus);
+
+        addMenuBtn.setText("Agregar Menu");
+        addMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMenuBtnActionPerformed(evt);
+            }
+        });
+
+        jPanelInfoMenu.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion del Menu"));
+
+        Numero_MenuLabel.setText("Numero");
+
+        jLabel71.setText("Costo");
+
+        CostoText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CostoTextActionPerformed(evt);
+            }
+        });
+
+        jLabel72.setText("Fecha Inicio");
+
+        Plato1_MenuLabel.setText("Plato1");
+
+        Plato2_MenuLabel.setText("Plato2");
+
+        Plato3_MenuLabel.setText("Plato3");
+
+        Plato4_MenuLabel.setText("Plato4");
+
+        Plato5_MenuLabel.setText("Plato5");
+
+        Menu_FechaLabel.setText("  ");
+
+        Plato1_MenuLabel1.setText("   ");
+
+        Plato2_MenuLabel1.setText("   ");
+
+        Plato3_MenuLabel1.setText("   ");
+
+        Plato3_MenuLabel2.setText("   ");
+
+        Plato4_MenuLabel1.setText("   ");
+
+        Plato5_MenuLabel1.setText("    ");
+
+        jLabel73.setText("Fecha Fin");
+
+        Menu_FechaLabel1.setText("  ");
+
+        javax.swing.GroupLayout jPanelInfoMenuLayout = new javax.swing.GroupLayout(jPanelInfoMenu);
+        jPanelInfoMenu.setLayout(jPanelInfoMenuLayout);
+        jPanelInfoMenuLayout.setHorizontalGroup(
+            jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel71)
+                            .addComponent(Numero_MenuLabel)
+                            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel73)
+                                    .addComponent(jLabel72))))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Menu_FechaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CostoText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(Numero_MenuLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(codigoLabel1))
+                            .addComponent(Menu_FechaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Plato3_MenuLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Plato4_MenuLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Plato5_MenuLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(Plato1_MenuLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Plato2_MenuLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                                .addComponent(Plato1_MenuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Plato3_MenuLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Plato3_MenuLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Plato4_MenuLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Plato5_MenuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Plato2_MenuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanelInfoMenuLayout.setVerticalGroup(
+            jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Numero_MenuLabel)
+                    .addComponent(codigoLabel1)
+                    .addComponent(Numero_MenuLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel71)
+                    .addComponent(CostoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel72)
+                    .addComponent(Menu_FechaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Menu_FechaLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel73, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Plato2_MenuLabel)
+                            .addComponent(Plato2_MenuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanelInfoMenuLayout.createSequentialGroup()
+                        .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Plato3_MenuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Plato1_MenuLabel)
+                            .addComponent(Plato1_MenuLabel1))
+                        .addGap(62, 62, 62)))
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Plato3_MenuLabel)
+                    .addComponent(Plato3_MenuLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Plato4_MenuLabel)
+                    .addComponent(Plato4_MenuLabel1))
+                .addGap(22, 22, 22)
+                .addGroup(jPanelInfoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Plato5_MenuLabel1)
+                    .addComponent(Plato5_MenuLabel))
+                .addContainerGap())
+        );
+
+        editMenuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        editMenuBtn.setToolTipText("");
+        editMenuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMenuBtnMouseClicked(evt);
+            }
+        });
+        editMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMenuBtnActionPerformed(evt);
+            }
+        });
+
+        saveMenuBtn.setText("Guardar");
+        saveMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveMenuBtnActionPerformed(evt);
+            }
+        });
+
+        deleteMenuBtn.setText("Eliminar");
+        deleteMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelComidaLayout = new javax.swing.GroupLayout(jPanelComida);
         jPanelComida.setLayout(jPanelComidaLayout);
         jPanelComidaLayout.setHorizontalGroup(
             jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelComidaLayout.createSequentialGroup()
-                .addContainerGap(1023, Short.MAX_VALUE)
-                .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+            .addGroup(jPanelComidaLayout.createSequentialGroup()
+                .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(addMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(saveMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(deleteMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelComidaLayout.createSequentialGroup()
+                                .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(136, 136, 136)
+                                .addComponent(editMenuBtn))
+                            .addComponent(jPanelInfoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanelComidaLayout.setVerticalGroup(
             jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelComidaLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(732, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboGuarderias7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelInfoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelComidaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanelComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addMenuBtn)
+                            .addComponent(saveMenuBtn)
+                            .addComponent(deleteMenuBtn))))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Comida", jPanelComida);
@@ -2990,7 +3254,7 @@ public class InitialView extends javax.swing.JFrame {
 
     private void jComboGuarderias7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboGuarderias7ActionPerformed
         if (comboBoxCreado && !controladorGuarderia.changing) {
-            codDireccion = controladorGuarderia.guarderiaChanged(jComboGuarderias7);
+           codDireccion = controladorMenu.guarderiaChanged(jComboGuarderias7);
         }
     }//GEN-LAST:event_jComboGuarderias7ActionPerformed
 
@@ -3354,6 +3618,40 @@ public class InitialView extends javax.swing.JFrame {
         controladorRepresentante.llenarEstadoCuenta(tablaRepresentantes);        // TODO add your handling code here:
     }//GEN-LAST:event_estadoCuentaBtnActionPerformed
 
+    private void Tabla_MenusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_MenusMouseClicked
+        // TODO add your handling code here:
+        controladorMenu.limpiarDatos();
+        controladorMenu.datosMenu(this.Tabla_Menus);
+    }//GEN-LAST:event_Tabla_MenusMouseClicked
+
+    private void addMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenuBtnActionPerformed
+        // TODO add your handling code here:
+        controladorMenu.addMenu(this.Tabla_Menus);
+    }//GEN-LAST:event_addMenuBtnActionPerformed
+
+    private void CostoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostoTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CostoTextActionPerformed
+
+    private void editMenuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMenuBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editMenuBtnMouseClicked
+
+    private void editMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuBtnActionPerformed
+        // TODO add your handling code here:
+        controladorMenu.habilitar();
+    }//GEN-LAST:event_editMenuBtnActionPerformed
+
+    private void saveMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuBtnActionPerformed
+        // TODO add your handling code here:
+        controladorMenu.editarMenu();
+    }//GEN-LAST:event_saveMenuBtnActionPerformed
+
+    private void deleteMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuBtnActionPerformed
+        // TODO add your handling code here:
+        controladorMenu.eliminarMenu();
+    }//GEN-LAST:event_deleteMenuBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3390,8 +3688,25 @@ public class InitialView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField CostoText;
+    public javax.swing.JLabel Menu_FechaLabel;
+    public javax.swing.JLabel Menu_FechaLabel1;
+    public javax.swing.JLabel Numero_MenuLabel;
+    public javax.swing.JLabel Numero_MenuLabel1;
+    private javax.swing.JLabel Plato1_MenuLabel;
+    public javax.swing.JLabel Plato1_MenuLabel1;
+    private javax.swing.JLabel Plato2_MenuLabel;
+    public javax.swing.JLabel Plato2_MenuLabel1;
+    private javax.swing.JLabel Plato3_MenuLabel;
+    private javax.swing.JLabel Plato3_MenuLabel1;
+    public javax.swing.JLabel Plato3_MenuLabel2;
+    private javax.swing.JLabel Plato4_MenuLabel;
+    public javax.swing.JLabel Plato4_MenuLabel1;
+    private javax.swing.JLabel Plato5_MenuLabel;
+    public javax.swing.JLabel Plato5_MenuLabel1;
     public javax.swing.JTable Tabla_Alergias;
     public javax.swing.JTable Tabla_Enfermedades;
+    public javax.swing.JTable Tabla_Menus;
     public javax.swing.JTable Tabla_Pediatras;
     public javax.swing.JTable Tabla_Tratamientos;
     public javax.swing.JTextArea actMasContratadasText;
@@ -3400,6 +3715,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton addGuarderiaButton;
     public javax.swing.JButton addJuegoBtn;
     public javax.swing.JButton addJuegoNinoBtn;
+    public javax.swing.JButton addMenuBtn;
     public javax.swing.JButton addNinoButton;
     public javax.swing.JButton agregarActividadBtn;
     public javax.swing.JButton agregarInscripcionButton;
@@ -3440,9 +3756,11 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel ciudadPersonalLabel;
     public javax.swing.JTextField codigoActividadTxt;
     public javax.swing.JLabel codigoLabel;
+    public javax.swing.JLabel codigoLabel1;
     public javax.swing.JButton deleteGuarderiaButton;
     public javax.swing.JButton deleteInscripcionButton;
     public javax.swing.JButton deleteJuegoBtn;
+    public javax.swing.JButton deleteMenuBtn;
     public javax.swing.JButton deleteNinoButton;
     public javax.swing.JButton deleteRepresentanteButton;
     public javax.swing.JButton deleteRepresentanteButton1;
@@ -3451,6 +3769,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JButton editGuarderiaButton;
     public javax.swing.JButton editInscripcionButton;
     public javax.swing.JButton editJuegoBtn;
+    public javax.swing.JButton editMenuBtn;
     public javax.swing.JButton editNinoButton;
     public javax.swing.JButton editRepresentanteBtn;
     public javax.swing.JButton editRepresentanteBtn1;
@@ -3561,6 +3880,9 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -3572,6 +3894,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelInfoGuarderia;
     private javax.swing.JPanel jPanelInfoInscripcion;
     private javax.swing.JPanel jPanelInfoJuego;
+    private javax.swing.JPanel jPanelInfoMenu;
     private javax.swing.JPanel jPanelInfoNino;
     private javax.swing.JPanel jPanelInfoNino1;
     private javax.swing.JPanel jPanelInfoNino2;
@@ -3600,6 +3923,7 @@ public class InitialView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -3631,6 +3955,7 @@ public class InitialView extends javax.swing.JFrame {
     public javax.swing.JLabel rifLabel;
     public javax.swing.JButton salirActividadBtn;
     public javax.swing.JButton saveJuegoBtn;
+    public javax.swing.JButton saveMenuBtn;
     public javax.swing.JButton saveRepresentanteBtn;
     public javax.swing.JButton saveRepresentanteBtn1;
     public javax.swing.JButton saveRepresentanteBtn2;

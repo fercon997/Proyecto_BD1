@@ -403,8 +403,8 @@ insert into Padecimiento_enfermedad_4 values (5, 'A', 'V9757397', '2017-08-11');
 insert into comida_4 values(nextval('Comida_sequence'), 'Proteina', 'Carne');
 insert into comida_4 values(nextval('Comida_sequence'), 'Carbohidrato', 'Papas');
 insert into comida_4 values(nextval('Comida_sequence'), 'Ensalada', 'Ensalada Cesar');
-insert into comida_4 values(nextval('Comida_sequence'), 'Jugo natural', 'Juego de lechosa');
-insert into comida_4 values(nextval('Comida_sequence'), 'Jugo natural', 'Juego de fresa');
+insert into comida_4 values(nextval('Comida_sequence'), 'Jugo natural', 'Jugo de lechosa');
+insert into comida_4 values(nextval('Comida_sequence'), 'Jugo natural', 'Jugo de fresa');
 
 --Platos
 insert into plato_4 values(nextval('Plato_sequence'), 'Plato del lunes');
@@ -436,11 +436,11 @@ insert into comida_plato_4 values(5, 3);
 insert into comida_plato_4 values(5, 4);
 
   --Menu
-insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', 'J298754541-5', 200);
-insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', 'J764219187-2', 200);
-insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', 'J128487902-9', 200);
-insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', 'J516782778-4', 200);
-insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', 'J279154667-2', 200);
+insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', '2018-03-10' , 'J298754541-5', 200);
+insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', '2018-03-10' , 'J764219187-2', 200);
+insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', '2018-03-10' , 'J128487902-9', 200);
+insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', '2018-03-10' , 'J516782778-4', 200);
+insert into menu_4 values (nextval('Menu_sequence'), '2018-03-05', '2018-03-10' , 'J279154667-2', 200);
 
 --Factura-menu
 insert into factura_menu_4 values('2018-03-04', 2, 2014, 'V8108418', 'B', 1, '2018-03-05', '2558976495', 'Mercantil');
