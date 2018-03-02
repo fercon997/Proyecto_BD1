@@ -18,7 +18,8 @@ public class HorarioInscripcion {
     Time horaInicioAct;
     Time horaFinAct;
     String nombreAct;
-    Date fechaActividad;
+    int fechaActividad;
+    int transporte;
 
     public HorarioInscripcion() {
     }
@@ -63,13 +64,20 @@ public class HorarioInscripcion {
         this.nombreAct = nombreAct;
     }
 
-    public Date getFechaActividad() {
+    public int getFechaActividad() {
         return fechaActividad;
     }
 
-    public void setFechaActividad(Date fechaActividad) {
+    public void setFechaActividad(int fechaActividad) {
         this.fechaActividad = fechaActividad;
     }
-    
-    
+
+    public int getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(int transporte) {
+        this.transporte = transporte;
+    }
+
 }
